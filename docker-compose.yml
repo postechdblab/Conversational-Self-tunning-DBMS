@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+    DBAdminBot-frontend:
+        shm_size: 4gb
+        image: hyukkyukang/sqlbot:latest
+        container_name: DBAdminBot-frontend
+        stdin_open: true
+        tty: true
+        network_mode: "host"
+        environment:
+            - TZ=Asia/Seoul
+        volumes:
+            - /etc/timezone:/etc/timezone:ro
+            - ./web/dbadminbot:/root/dbadminbot
+
+    DBAdminBot-backend:
+        shm_size: 4gb
+        image: hyukkyukang/nl2qgm:latest
+        container_name: DBAdminBot-backend
+        stdin_open: true
+        tty: true
+        network_mode: "host"
+        environment:
+            - TZ=Asia/Seoul
+        volumes:
+            - /etc/timezone:/etc/timezone:ro
+            - ./:/root/dbadminbot/
+            - redis_data:/root/dbadminbot/data/redis/
+            - /mnt:/mnt
+        deploy:
+            resources:
+                reservations:
+                    devices:
+                        - capabilities: [gpu]
+
+    DBAdminBot-redis:
+        image: redis:latest
+        container_name: DBAdminBot-redis
+        volumes:
+            - redis_data:/data
+        ports:
+            - target: 6380
+              published: 6380
+        networks:
+            - redis
+
+volumes:
+    redis_data:
+        driver: local
+
+networks:
+    redis:
+        driver: bridge

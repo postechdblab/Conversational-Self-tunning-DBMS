@@ -1,0 +1,38 @@
+{
+    "server": {
+        "host": "0.0.0.0",
+        "port": 7000,
+        "redis": {
+            "host": "141.223.197.19",
+            "port": 6379,
+            "api_text2sql_cache_db": 0,
+            "api_analyze_cache_db": 1,
+            "api_table2text_cache_db": 2,
+            "api_user_intent_cache_db": 3
+        }
+    },
+    "model": {
+        "text_to_sql": {
+            "experiment_config_path": "/mnt/sdd/shpark/logdir/cosql-model/config.jsonnet",
+            "model_ckpt_dir_path": "/mnt/sdd/shpark/logdir/cosql-model",
+            "beam_size": 2,
+            "max_steps": 150,
+            "device": "cuda:0"
+        },
+        "text_to_intent": {
+            "experiment_config_path": "/mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4/config.jsonnet",
+            "model_ckpt_dir_path": "/mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4",
+            "possible_outputs": ["Ambiguous", "Infer SQL", "Addtion", "Sorry", "Infer SQL", "Not related", "Greeting", "Good Bye", "cannot understand", "Inform SQL:", "Affirm", "Negate", "Thank you", "Inform SQL"],
+            "device": "cuda:0"
+        },
+        "result_analysis": {
+            "experiment_config_path": "/mnt/sdd/shpark/logdir/cosql-model/config_captum.jsonnet",
+            "model_ckpt_dir_path": "/mnt/sdd/shpark/logdir/cosql-model",
+            "device": "cuda:0"
+        }
+    },
+    "data": {
+        "database_path": "/home/jeseok/sqlbot/third_party/nl2qgm/data/spider/database",
+        "table_path": "/home/jeseok/sqlbot/third_party/nl2qgm/data/spider/tables.json"
+    }
+}

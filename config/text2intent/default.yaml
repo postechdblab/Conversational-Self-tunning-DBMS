@@ -1,0 +1,17 @@
+experiment_config_path: /mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4/config.jsonnet
+model_ckpt_dir_path: /mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4
+possible_outputs:
+  - Ambiguous
+  - Infer SQL
+  - Addtion
+  - Sorry
+  - Infer SQL
+  - Not related
+  - Greeting
+  - Good Bye
+  - cannot understand
+  - Inform SQL
+  - Affirm
+  - Negate
+  - Thank you
+  - Inform SQL

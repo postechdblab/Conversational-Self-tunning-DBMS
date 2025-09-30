@@ -1,0 +1,50 @@
+M_EDS_BIN	ROOT_LOT_ID	LOT_ID 의 앞의 6자리	character varying
+M_EDS_BIN	LOT_ID	공정 진행한 Lot ID	character varying
+M_EDS_BIN	WAFER_ID	WAFER번호	character varying
+M_EDS_BIN	TKIN_TIME	공정 시작시간	timestamp without time zone
+M_EDS_BIN	TKOUT_TIME	공정 종료시간	timestamp without time zone
+M_EDS_BIN	LINE_ID	FAB START LINE ID	character varying
+M_EDS_BIN	PART_ID	공정 진행 시점의 해당 Lot 의 제품 ID	character varying
+M_EDS_BIN	PROCESS_ID	FAB PROCESS_ID	character varying
+M_EDS_BIN	STEP_SEQ	진행 공정명	character varying
+M_EDS_BIN	LOT_TYPE	공정 진행 시점의 LOT Type (P:실생산, E:연구개발)	character varying
+M_EDS_BIN	EQP_MODEL	설비 모델 정보	character varying
+M_EDS_BIN	EQP_ID	공정 진행한 설비 ID	character varying
+M_EDS_BIN	FLAT_ZONE	계측 시 flat zone방향	character varying
+M_EDS_BIN	GOOD_DIE_QTY	GOOD CHIP 개수	integer
+M_EDS_BIN	IF_VER	인터페이스버전	character varying
+M_EDS_BIN	LASER_EQP	직전 step이 laser step 인경우 laser step의 EQP_ID	character varying
+M_EDS_BIN	LAST_FLAG	LAST FLAB	character varying
+M_EDS_BIN	LOW_YIELD_LIMIT	[Y= 으로 시작하는 행의 Y= 값	integer
+M_EDS_BIN	NCE_CODE	NCE(Not Confirmed EDS) 불량 Code	character varying
+M_EDS_BIN	NET_DIE_QTY	설계상의 Chip갯수 기준으로 Lot 의 전체 Chip 수량	integer
+M_EDS_BIN	ONE_STEP_FLAG	EDS 테스트 단계들 중 한가지 테스트만 진행할지 여부	character varying
+M_EDS_BIN	OPERATOR_ID	작업자 사원아이디	character varying
+M_EDS_BIN	OVER_DRIVE	프로브카드의 부품(오버드라이브)의 값	character varying
+M_EDS_BIN	PARA	Probe Card 가 한 번에 테스트 하는 수량	character varying
+M_EDS_BIN	PGM_ID	Test PROGRAM ID	character varying
+M_EDS_BIN	PGM_MODE	EDS Test Program Mode	character varying
+M_EDS_BIN	PROBE_CARD_ID	PROBE CARD ID	character varying
+M_EDS_BIN	PROBE_TYPE	PROBE CARD 종류	character varying
+M_EDS_BIN	REWORK_CNT	동일 공정에서 재작업한 횟수	integer
+M_EDS_BIN	SCSPGM	SCS프로그램이름	character varying
+M_EDS_BIN	SHOT	TEST 시 SHOT 번호	character varying
+M_EDS_BIN	SIMAX_STEP	SIMAX STEPSEQ (파일내)	character varying
+M_EDS_BIN	OWNING_LINE_ID	LINE ID	character varying
+M_EDS_BIN	COMMENTS	공정에 대한 Comments	character varying
+M_EDS_BIN	DEV_DEN_VER	DEVICE_DENSITY_VERSION (파일내)	character varying
+M_EDS_BIN	TEST_DIE_QTY	실제 측정한 칩갯수	integer
+M_EDS_BIN	TEST_LOT_ID	테스트 라트아이디	character varying
+M_EDS_BIN	TEST_TYPE	EDS 공정에서 테스트 수행 시 Test 의 유형	character varying
+M_EDS_BIN	TIER	물량 구분 코드 (GA, RA 등)	character varying
+M_EDS_BIN	CHIP_X_MAX_POS	CHIP X 좌표 값 중 가장 큰 값	smallint
+M_EDS_BIN	CHIP_X_MIN_POS	CHIP X 좌표 값 중 가장 작은 값	smallint
+M_EDS_BIN	CHIP_X_SIZE	칩X크기	double precision
+M_EDS_BIN	CHIP_Y_MAX_POS	CHIP Y 좌표 값 중 가장 큰 값	smallint
+M_EDS_BIN	CHIP_Y_MIN_POS	CHIP Y 좌표 값 중 가장 작은 값	smallint
+M_EDS_BIN	CHIP_Y_SIZE	칩Y크기	double precision
+M_EDS_BIN	LAST_UPDATE_TIME	최종변경일시	timestamp without time zone
+M_EDS_BIN	ITEM_ID	ITEM ID	ARRAY
+M_EDS_BIN	SUBITEM_ID	ITEM 별 상세 항목	ARRAY
+M_EDS_BIN	BIN_VALUE	WAFER별 BIN SUMMARY 값	ARRAY
+M_EDS_BIN	TEST_WAFER_ID	테스트 웨이퍼 아이디	character varying

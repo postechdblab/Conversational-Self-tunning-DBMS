@@ -1,0 +1,10 @@
+host: 0.0.0.0
+port: 7000
+
+defaults:
+  - text2sql: default
+  - text2intent: default
+  - redis: default
+  - conversation: default
+  - diagnosis: default
+  - data: spider.yaml

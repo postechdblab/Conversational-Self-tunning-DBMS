@@ -1,0 +1,11 @@
+M_DEFECT_ITEM	LINE_ID	라인 ID	text
+M_DEFECT_ITEM	PROCESS_ID	Device를 제조하기 위한 공법	text
+M_DEFECT_ITEM	STEP_SEQ	Process 내에서 공정 순서를 포함한 공정 명	text
+M_DEFECT_ITEM	ITEM_ID	DEFECT_CODE	text
+M_DEFECT_ITEM	ITEM_DESC	INSPECTION 시간	text
+M_DEFECT_ITEM	DATA_CLASS	ITEM 종류 BIN, MSR, ...	text
+M_DEFECT_ITEM	ITEM_SEQ	ITEM 순서	numeric
+M_DEFECT_ITEM	SPEC_HIGH	E-SPEC에 등록된 Control Spec Upper Limit	numeric
+M_DEFECT_ITEM	TARGET	E-SPEC에 등록된 Control Spec Target	numeric
+M_DEFECT_ITEM	SPEC_LOW	E-SPEC에 등록된 Control Spec Higher Litmit	numeric
+M_DEFECT_ITEM	LAST_UPDATE_TIME	최종수정날짜	timestamp without time zone

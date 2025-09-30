@@ -1,0 +1,56 @@
+M_FAB_DCOP_MET	IS_MET	계측 데이터 여부	character varying
+M_FAB_DCOP_MET	ROOT_LOT_ID	LOT_ID 의 앞의 6자리	character varying
+M_FAB_DCOP_MET	LOT_ID	공정 진행한 Lot ID	character varying
+M_FAB_DCOP_MET	WAFER_ID	웨이퍼아이디	character varying
+M_FAB_DCOP_MET	TKIN_TIME	공정 시작시간	timestamp without time zone
+M_FAB_DCOP_MET	DCOL_TIME	DCOL TIME	timestamp without time zone
+M_FAB_DCOP_MET	TKOUT_TIME	공정 종료시간	timestamp without time zone
+M_FAB_DCOP_MET	LINE_ID	팹 공정 설비의 라인아이디	character varying
+M_FAB_DCOP_MET	PART_ID	공정 진행 시점의 해당 Lot 의 제품 ID	character varying
+M_FAB_DCOP_MET	PROCESS_ID	FAB PROCESS_ID	character varying
+M_FAB_DCOP_MET	STEP_SEQ	진행 공정명	character varying
+M_FAB_DCOP_MET	STEP_ID	단위 공정 명	character varying
+M_FAB_DCOP_MET	LOT_TYPE	공정 진행 시점의 LOT Type (P:실생산, E:연구개발)	character varying
+M_FAB_DCOP_MET	AREA	설비가 위치한 공정 이름	character varying
+M_FAB_DCOP_MET	EQP_TYPE	설비의 역할(클린/테스트)	character varying
+M_FAB_DCOP_MET	EQP_MODEL	설비 모델 정보	character varying
+M_FAB_DCOP_MET	EQP_ID	공정 진행 설비 ID	character varying
+M_FAB_DCOP_MET	CHAMBER_ID	CHAMBER ID	character varying
+M_FAB_DCOP_MET	UNIT_ID	CHAMBER ID	character varying
+M_FAB_DCOP_MET	PPID	공정별 설비조건	character varying
+M_FAB_DCOP_MET	BATCH_ID	batch lot 진행시 해당 batch ID	character varying
+M_FAB_DCOP_MET	RETICLE_ID	Photo 공정에서 사용된 레티클아이디	character varying
+M_FAB_DCOP_MET	EIN_ECN_NO	EIN Number / ECN Number	character varying
+M_FAB_DCOP_MET	REWORK_CNT	동일 MAIN공정에서 재작업한 횟수	integer
+M_FAB_DCOP_MET	FOUP_ID	LOT 을 담고 있는 물리적인 Box ID	character varying
+M_FAB_DCOP_MET	POS	Diffusion장비에서 LOT의 Position	character varying
+M_FAB_DCOP_MET	DCOL_OPERATOR	데이터 수집 작업자	character varying
+M_FAB_DCOP_MET	LOT_TKOUT_TIME	Lot의 TKOUT TIME	timestamp without time zone
+M_FAB_DCOP_MET	OUT_OPERATOR_ID	작업자	character varying
+M_FAB_DCOP_MET	LAST_FLAG	LAST FALG	character varying
+M_FAB_DCOP_MET	REWORK_MAIN_STEP	REWORK 전용 STEP을 진행할 경우 원 MAIN 공정의 STEPSEQ	character varying
+M_FAB_DCOP_MET	START_TIME	시작시간	timestamp without time zone
+M_FAB_DCOP_MET	OWNING_LINE_ID	FAB START LINE ID	character varying
+M_FAB_DCOP_MET	TXN_SEQ_KEY	Tracking sequence key	bigint
+M_FAB_DCOP_MET	APC_APPLY_YN	APC 적용 여부	character varying
+M_FAB_DCOP_MET	TKIN_WAFER_QTY	Trackin Wafer 개수	integer
+M_FAB_DCOP_MET	TEST_WAFER_QTY	테스트 Wafer 개수	integer
+M_FAB_DCOP_MET	TOTAL_WAFER_QTY	전체 Wafer 개수	integer
+M_FAB_DCOP_MET	CURR_LOT_ID	Merge LOT의 LOT_ID	character varying
+M_FAB_DCOP_MET	SENDFAB_TYPE	SENDFAB TYPE	character varying
+M_FAB_DCOP_MET	LOAD_PORT	설비 Load Port정보	character varying
+M_FAB_DCOP_MET	LAST_UPDATE_TIME	최종변경일시	timestamp without time zone
+M_FAB_DCOP_MET	ITEM_ID	항목아이디	ARRAY
+M_FAB_DCOP_MET	SUBITEM_ID	ITEM 별 상세 항목	ARRAY
+M_FAB_DCOP_MET	DATA_CLASS	GEN(wafer의 포인트)/SUM( wafer의 SUM값, 계산된값 가공된값)	ARRAY
+M_FAB_DCOP_MET	FAB_VALUE	항목값	ARRAY
+M_FAB_DCOP_MET	STR_VALUE	항목문자값	ARRAY
+M_FAB_DCOP_MET	TARGET	E-SPEC에 등록된 Control Spec Higher Litmit	ARRAY
+M_FAB_DCOP_MET	SPEC_HIGH	관리상한	ARRAY
+M_FAB_DCOP_MET	SPEC_LOW	관리하한	ARRAY
+M_FAB_DCOP_MET	LCL	Lower Control Limit	ARRAY
+M_FAB_DCOP_MET	CL	Center(Target) Control Limit	ARRAY
+M_FAB_DCOP_MET	UCL	Upper Control Limit	ARRAY
+M_FAB_DCOP_MET	SPC_CTRL_SPEC_HIGH	SPC Control Spec High	ARRAY
+M_FAB_DCOP_MET	SPC_CTRL_SPEC_LOW	SPC Control Spec Low	ARRAY
+M_FAB_DCOP_MET	SPC_CTRL_SPEC_LIMIT	SPC Control Spec Limit	ARRAY
