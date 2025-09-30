@@ -38,3 +38,7 @@ next-env.d.ts
 
 # third party
 source/text2sql/stanford-corenlp-full-2018-10-05/
+outputs/
+__pycache__/
+*.pyc
+*.props

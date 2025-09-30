@@ -1,0 +1,2 @@
+experiment_config_path: /mnt/sdd/shpark/logdir/cosql-model/config_captum.jsonnet
+model_ckpt_dir_path: /mnt/sdd/shpark/logdir/cosql-model
