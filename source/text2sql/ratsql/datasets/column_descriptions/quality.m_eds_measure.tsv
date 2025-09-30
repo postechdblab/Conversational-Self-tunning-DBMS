@@ -1,0 +1,52 @@
+M_EDS_MEASURE	ROOT_LOT_ID	LOT_ID 의 앞의 6자리	character varying
+M_EDS_MEASURE	WAFER_ID	WAFER번호	character varying
+M_EDS_MEASURE	TKOUT_TIME	공정 종료시간	timestamp without time zone
+M_EDS_MEASURE	TEST_TYPE	EDS 공정에서 테스트 수행 시 Test 의 유형	character varying
+M_EDS_MEASURE	PART_ID	공정 진행 시점의 해당 Lot 의 제품 ID	character varying
+M_EDS_MEASURE	EQP_KEY	설비 Key	integer
+M_EDS_MEASURE	STEP_SEQ	진행 공정명	character varying
+M_EDS_MEASURE	LOT_ID	공정 진행한 Lot ID	character varying
+M_EDS_MEASURE	LINE_ID	라인 ID	character varying
+M_EDS_MEASURE	EQP_ID	공정 진행한 설비 ID	character varying
+M_EDS_MEASURE	EQP_MODEL	설비 모델 정보	character varying
+M_EDS_MEASURE	LOT_TYPE	공정 진행 시점의 LOT Type (P:실생산, E:연구개발)	character varying
+M_EDS_MEASURE	NCE_CODE	NCE(Not Confirmed EDS) 불량 Code	character varying
+M_EDS_MEASURE	NET_DIE_QTY	설계상의 Chip갯수 기준으로 Lot 의 전체 Chip 수량	integer
+M_EDS_MEASURE	TEST_DIE_QTY	실제 측정한 칩갯수	integer
+M_EDS_MEASURE	GOOD_DIE_QTY	GOOD CHIP 개수	integer
+M_EDS_MEASURE	LOW_YIELD_LIMIT	[Y= 으로 시작하는 행의 Y= 값	integer
+M_EDS_MEASURE	PROBE_CARD_ID	PROBE CARD ID	character varying
+M_EDS_MEASURE	FLAT_ZONE	계측 시 flat zone방향	character varying
+M_EDS_MEASURE	PARA	Probe Card 가 한 번에 테스트 하는 수량	character varying
+M_EDS_MEASURE	SHOT	TEST 시 SHOT 번호	character varying
+M_EDS_MEASURE	PGM_MODE	EDS Test Program Mode	character varying
+M_EDS_MEASURE	PGM_ID	Test PROGRAM ID	character varying
+M_EDS_MEASURE	TKIN_TIME	공정 시작시간	timestamp without time zone
+M_EDS_MEASURE	REWORK_CNT	동일 공정에서 재작업한 횟수	integer
+M_EDS_MEASURE	COMMENTS	공정에 대한 Comments	character varying
+M_EDS_MEASURE	OPERATOR_ID	작업자 사원아이디	character varying
+M_EDS_MEASURE	LAST_FLAG	LAST FLAG	character varying
+M_EDS_MEASURE	LAST_UPDATE_TIME	최종변경일시	timestamp without time zone
+M_EDS_MEASURE	OVER_DRIVE	프로브카드의 부품(오버드라이브)의 값	character varying
+M_EDS_MEASURE	LASER_EQP	직전 step이 laser step 인경우 laser step의 EQP_ID	character varying
+M_EDS_MEASURE	DEV_DEN_VER	DEVICE_DENSITY_VERSION (파일내)	character varying
+M_EDS_MEASURE	SIMAX_STEP	SIMAX STEPSEQ (파일내)	character varying
+M_EDS_MEASURE	CHIP_X_MIN_POS	CHIP X 좌표 값 중 가장 작은 값	integer
+M_EDS_MEASURE	CHIP_X_MAX_POS	CHIP X 좌표 값 중 가장 큰 값	integer
+M_EDS_MEASURE	CHIP_Y_MIN_POS	CHIP Y 좌표 값 중 가장 작은 값	integer
+M_EDS_MEASURE	CHIP_Y_MAX_POS	CHIP Y 좌표 값 중 가장 큰 값	integer
+M_EDS_MEASURE	OWNING_LINE_ID	FAB START LINE ID	character varying
+M_EDS_MEASURE	PROCESS_ID	FAB PROCESS_ID	character varying
+M_EDS_MEASURE	TEST_LOT_ID	테스트 라트아이디	character varying
+M_EDS_MEASURE	PROBE_TYPE	PROBE CARD 종류	character varying
+M_EDS_MEASURE	CHIP_X_SIZE	칩X크기	double precision
+M_EDS_MEASURE	CHIP_Y_SIZE	칩Y크기	double precision
+M_EDS_MEASURE	SCSPGM	SCS프로그램이름	character varying
+M_EDS_MEASURE	TIER	물량 구분 코드 (GA, RA 등)	character varying
+M_EDS_MEASURE	ONE_STEP_FLAG	EDS 테스트 단계들 중 한가지 테스트만 진행할지 여부	character varying
+M_EDS_MEASURE	IF_VER	인터페이스버전	character varying
+M_EDS_MEASURE	EDS_LINE_ID	EDS라인아이디	character varying
+M_EDS_MEASURE	ITEM_ID	계측항목	ARRAY
+M_EDS_MEASURE	SUBITEM_ID	ITEM 별 상세 항목	ARRAY
+M_EDS_MEASURE	MSR_VALUE	측정값	ARRAY
+M_EDS_MEASURE	TEST_WAFER_ID	테스트 WAFER 번호	character varying

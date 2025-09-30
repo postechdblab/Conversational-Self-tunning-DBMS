@@ -1,0 +1,42 @@
+M_DEFECT_SUMMARY	ROOT_LOT_ID	LOT_ID 의 앞의 6자리	character varying
+M_DEFECT_SUMMARY	LOT_ID	공정 진행한 Lot ID	character varying
+M_DEFECT_SUMMARY	WAFER_ID	웨이퍼아이디	character varying
+M_DEFECT_SUMMARY	TKOUT_TIME	스캔날짜	timestamp without time zone
+M_DEFECT_SUMMARY	LINE_ID	SCAN 한 LINE_ID	character varying
+M_DEFECT_SUMMARY	PART_ID	해당 Lot 의 제품 ID	character varying
+M_DEFECT_SUMMARY	PROCESS_ID	공정	character varying
+M_DEFECT_SUMMARY	STEP_SEQ	INSPECTION 한 STEP_SEQ	character varying
+M_DEFECT_SUMMARY	EQP_ID	설비 ID	character varying
+M_DEFECT_SUMMARY	SLOT_ID	CARRIER내의 WAFER 1매를 담아두는 위치 구분자 : 1~25	character varying
+M_DEFECT_SUMMARY	RECIPE_ID	계측 레시피아이디	character varying
+M_DEFECT_SUMMARY	SCAN_SEQ_NO	Scan Sequence 번호	integer
+M_DEFECT_SUMMARY	INSPECT_DIE	wafer 내 검사된 chip의 개수	integer
+M_DEFECT_SUMMARY	TOTAL_DFT_CNT	wafer 내 검출된 defect 개수	integer
+M_DEFECT_SUMMARY	REVIEW_DFT_CNT	wafer 내 review된 defect의 개수	integer
+M_DEFECT_SUMMARY	GOOD_CHIP_RATIO	wafer 내 결점다이개수 /검사다이개수	double precision
+M_DEFECT_SUMMARY	DFT_DENSITY	wafer 내 cm2 당 defect의 개수	double precision
+M_DEFECT_SUMMARY	RAW_DFT_COUNT	raw defect 개수	integer
+M_DEFECT_SUMMARY	RAW_DFT_DIE_CNT	wafer 내 defect이 있는 chip의 개수	integer
+M_DEFECT_SUMMARY	RAW_UNCLUSTER_CNT	wafer 내 검출된 uncluster type 개수	integer
+M_DEFECT_SUMMARY	UNC_DEF_DIE	검사하지 않은 chip	double precision
+M_DEFECT_SUMMARY	INS_DIE	inspection chip	double precision
+M_DEFECT_SUMMARY	WAFER_AERA	SCANINDEX.WAFER_AERA	double precision
+M_DEFECT_SUMMARY	SCAN_AREA	wafer 내 검사된 면적	double precision
+M_DEFECT_SUMMARY	D0	면적과 개수 대비로 일반화 된 값. wafer d0, normalize된 영역(cm2)당 defect의 개수	double precision
+M_DEFECT_SUMMARY	WAFER_SIZE	WAFER SIZE	integer
+M_DEFECT_SUMMARY	MANUAL_REQ_TYPE	매뉴얼 재설비 타입	character varying
+M_DEFECT_SUMMARY	TEST_CNT	TEST 수행 횟수	integer
+M_DEFECT_SUMMARY	SUM_INSPECTED_DIE	inspection chip SUM	integer
+M_DEFECT_SUMMARY	SUM_DEFECTIVE_DIE	defect 있는 chip SUM	integer
+M_DEFECT_SUMMARY	TRK_SEQ_KEY	Tracking sequence key	bigint
+M_DEFECT_SUMMARY	LAST_UPDATE_TIME	최종수정날짜	timestamp without time zone
+M_DEFECT_SUMMARY	ITEM_ID	DEFECT CODE	ARRAY
+M_DEFECT_SUMMARY	ITEM_DESC	ITEM 설명	ARRAY
+M_DEFECT_SUMMARY	DATA_CLASS	GEN(wafer의 포인트)/SUM( wafer의 SUM값, 계산된값 가공된값)	ARRAY
+M_DEFECT_SUMMARY	DEFECT_VALUE	DFEFCT VALUE	ARRAY
+M_DEFECT_SUMMARY	SPEC_HIGH	E-SPEC에 등록된 Control Spec Upper Limit	ARRAY
+M_DEFECT_SUMMARY	TARGET	E-SPEC에 등록된 Control Spec Target	ARRAY
+M_DEFECT_SUMMARY	SPEC_LOW	E-SPEC에 등록된 Control Spec Higher Litmit	ARRAY
+M_DEFECT_SUMMARY	FOUP_ID	LOT 을 담고 있는 물리적인 Box ID	character varying
+M_DEFECT_SUMMARY	CHAMBER_ID	챔버아이디	character varying
+M_DEFECT_SUMMARY	EQP_MODEL_NAME	계측설비 모델	character varying
