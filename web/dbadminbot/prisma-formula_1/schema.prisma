@@ -1,0 +1,148 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@internal/prisma-formula_1/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("FORMULA_1_DATABASE_URL")
+}
+
+model circuits {
+  circuitid  Int     @id
+  circuitref String?
+  name       String?
+  location   String?
+  country    String?
+  lat        Float?  @db.Real
+  lng        Float?  @db.Real
+  alt        String?
+  url        String?
+}
+
+model constructorresults {
+  constructorresultsid Int     @id
+  raceid               Int?
+  constructorid        Int?
+  points               Float?  @db.Real
+  status               String?
+}
+
+model constructors {
+  constructorid  Int     @id
+  constructorref String?
+  name           String?
+  nationality    String?
+  url            String?
+}
+
+model constructorstandings {
+  constructorstandingsid Int     @id
+  raceid                 Int?
+  constructorid          Int?
+  points                 Float?  @db.Real
+  position               Int?
+  positiontext           String?
+  wins                   Int?
+}
+
+model drivers {
+  driverid    Int     @id
+  driverref   String?
+  number      String?
+  code        String?
+  forename    String?
+  surname     String?
+  dob         String?
+  nationality String?
+  url         String?
+}
+
+model driverstandings {
+  driverstandingsid Int     @id
+  raceid            Int?
+  driverid          Int?
+  points            Float?  @db.Real
+  position          Int?
+  positiontext      String?
+  wins              Int?
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model laptimes {
+  raceid       Int?
+  driverid     Int?
+  lap          Int?
+  position     Int?
+  time         String?
+  milliseconds Int?
+
+  @@ignore
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model pitstops {
+  raceid       Int?
+  driverid     Int?
+  stop         Int?
+  lap          Int?
+  time         String?
+  duration     String?
+  milliseconds Int?
+
+  @@ignore
+}
+
+model qualifying {
+  qualifyid     Int     @id
+  raceid        Int?
+  driverid      Int?
+  constructorid Int?
+  number        Int?
+  position      Int?
+  q1            String?
+  q2            String?
+  q3            String?
+}
+
+model races {
+  raceid    Int     @id
+  year      Int?
+  round     Int?
+  circuitid Int?
+  name      String?
+  date      String?
+  time      String?
+  url       String?
+}
+
+model results {
+  resultid        Int     @id
+  raceid          Int?
+  driverid        Int?
+  constructorid   Int?
+  number          Int?
+  grid            Int?
+  position        String?
+  positiontext    String?
+  positionorder   Int?
+  points          Float?  @db.Real
+  laps            String?
+  time            String?
+  milliseconds    String?
+  fastestlap      String?
+  rank            String?
+  fastestlaptime  String?
+  fastestlapspeed String?
+  statusid        Int?
+}
+
+model seasons {
+  year Int     @id
+  url  String?
+}
+
+model status {
+  statusid Int     @id
+  status   String?
+}

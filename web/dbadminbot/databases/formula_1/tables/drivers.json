@@ -1,0 +1,52 @@
+{
+  "name": "drivers",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "driverid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "driverref",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "number",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "code",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "forename",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "surname",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "dob",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "nationality",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

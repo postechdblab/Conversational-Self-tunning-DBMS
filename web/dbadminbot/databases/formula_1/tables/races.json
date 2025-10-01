@@ -1,0 +1,47 @@
+{
+  "name": "races",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "year",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "round",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "circuitid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "date",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "time",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "name": "student",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "stuid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "lname",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "fname",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "age",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "sex",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "major",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "advisor",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "city_code",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

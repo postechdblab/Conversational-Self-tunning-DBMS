@@ -1,0 +1,128 @@
+[
+    {
+        "source": "races",
+        "sourceKey": "circuitid",
+        "target": "circuits",
+        "targetKey": "circuitid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "constructorstandings",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "constructorstandings",
+        "sourceKey": "constructorid",
+        "target": "constructors",
+        "targetKey": "constructorid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "results",
+        "sourceKey": "driverid",
+        "target": "drivers",
+        "targetKey": "driverid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "results",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "results",
+        "sourceKey": "constructorid",
+        "target": "constructors",
+        "targetKey": "constructorid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "driverstandings",
+        "sourceKey": "driverid",
+        "target": "drivers",
+        "targetKey": "driverid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "driverstandings",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "constructorresults",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "constructorresults",
+        "sourceKey": "constructorid",
+        "target": "constructors",
+        "targetKey": "constructorid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "qualifying",
+        "sourceKey": "driverid",
+        "target": "drivers",
+        "targetKey": "driverid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "qualifying",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "qualifying",
+        "sourceKey": "constructorid",
+        "target": "constructors",
+        "targetKey": "constructorid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "pitstops",
+        "sourceKey": "driverid",
+        "target": "drivers",
+        "targetKey": "driverid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "pitstops",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "laptimes",
+        "sourceKey": "driverid",
+        "target": "drivers",
+        "targetKey": "driverId",
+        "relation": "hasMany"
+      },
+      {
+        "source": "laptimes",
+        "sourceKey": "raceid",
+        "target": "races",
+        "targetKey": "raceid",
+        "relation": "hasMany"
+      },
+      {
+        "source": "results",
+        "sourceKey": "statusid",
+        "target": "status",
+        "targetKey": "statusid",
+        "relation": "hasMany"
+      }
+]

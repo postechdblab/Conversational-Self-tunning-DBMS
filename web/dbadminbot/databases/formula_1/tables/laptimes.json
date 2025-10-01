@@ -1,0 +1,37 @@
+{
+  "name": "laptimes",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "driverid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "lap",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "position",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "time",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "milliseconds",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

@@ -1,0 +1,42 @@
+{
+  "name": "singer",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "singer_id",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "country",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "song_name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "song_release_year",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "age",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "is_male",
+      "description": "",
+      "type": "boolean"
+    }
+  ]
+}
