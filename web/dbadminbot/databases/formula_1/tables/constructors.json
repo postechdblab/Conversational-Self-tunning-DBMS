@@ -1,0 +1,32 @@
+{
+  "name": "constructors",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "constructorid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "constructorref",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "nationality",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

@@ -1,0 +1,54 @@
+{
+  "public.circuits": {
+    "x": 0,
+    "y": 0
+  },
+  "public.constructorresults": {
+    "x": 300,
+    "y": 0
+  },
+  "public.constructors": {
+    "x": 600,
+    "y": 0
+  },
+  "public.constructorstandings": {
+    "x": 900,
+    "y": 0
+  },
+  "public.drivers": {
+    "x": 0,
+    "y": 450
+  },
+  "public.driverstandings": {
+    "x": 300,
+    "y": 450
+  },
+  "public.laptimes": {
+    "x": 600,
+    "y": 450
+  },
+  "public.pitstops": {
+    "x": 900,
+    "y": 450
+  },
+  "public.qualifying": {
+    "x": 0,
+    "y": 900
+  },
+  "public.races": {
+    "x": 300,
+    "y": 900
+  },
+  "public.results": {
+    "x": 600,
+    "y": 900
+  },
+  "public.seasons": {
+    "x": 900,
+    "y": 900
+  },
+  "public.status": {
+    "x": 0,
+    "y": 1350
+  }
+}

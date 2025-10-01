@@ -1,0 +1,32 @@
+{
+  "name": "constructorresults",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "constructorresultsid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "constructorid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "points",
+      "description": "",
+      "type": "real"
+    },
+    {
+      "name": "status",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

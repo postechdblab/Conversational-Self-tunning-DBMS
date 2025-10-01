@@ -1,0 +1,42 @@
+{
+  "name": "stadium",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "stadium_id",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "location",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "capacity",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "highest",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "lowest",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "average",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

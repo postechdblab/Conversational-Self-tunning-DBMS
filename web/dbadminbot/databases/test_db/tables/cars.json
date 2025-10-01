@@ -1,0 +1,43 @@
+{
+    "name": "cars",
+    "description": "",
+    "schemaColor": "#91C4F2",
+    "columns": [
+        {
+            "name": "id",
+            "description": "",
+            "key": false,
+            "type": "integer"
+        },
+        {
+            "name": "model",
+            "description": "",
+            "key": false,
+            "type": "character varying"
+        },
+        {
+            "name": "horsepower",
+            "description": "",
+            "key": false,
+            "type": "integer"
+        },
+        {
+            "name": "max_speed",
+            "description": "",
+            "key": false,
+            "type": "integer"
+        },
+        {
+            "name": "year",
+            "description": "",
+            "key": false,
+            "type": "integer"
+        },
+        {
+            "name": "price",
+            "description": "",
+            "key": false,
+            "type": "double precision"
+        }
+    ]
+}

@@ -1,0 +1,22 @@
+{
+  "public.dorm": {
+    "x": 400,
+    "y": 0
+  },
+  "public.dorm_amenity": {
+    "x": 0,
+    "y": 0
+  },
+  "public.has_amenity": {
+    "x": 200,
+    "y": 0
+  },
+  "public.lives_in": {
+    "x": 200,
+    "y": 250
+  },
+  "public.student": {
+    "x": 0,
+    "y": 500
+  }
+}

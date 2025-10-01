@@ -1,0 +1,27 @@
+{
+  "name": "dorm",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "dormid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "dorm_name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "student_capacity",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "gender",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

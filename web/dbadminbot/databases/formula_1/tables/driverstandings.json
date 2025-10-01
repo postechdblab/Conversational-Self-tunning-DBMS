@@ -1,0 +1,42 @@
+{
+  "name": "driverstandings",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "driverstandingsid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "driverid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "points",
+      "description": "",
+      "type": "real"
+    },
+    {
+      "name": "position",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "positiontext",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "wins",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

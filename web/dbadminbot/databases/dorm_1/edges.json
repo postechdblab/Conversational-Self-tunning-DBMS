@@ -1,0 +1,30 @@
+[
+    {
+      "source": "dorm",
+      "sourceKey": "dormid",
+      "target": "lives_in",
+      "targetKey": "dormid",
+      "relation": "hasMany"
+    },
+    {
+      "source": "student",
+      "sourceKey": "stuid",
+      "target": "lives_in",
+      "targetKey": "stuid",
+      "relation": "hasMany"
+    },
+    {
+      "source": "dorm",
+      "sourceKey": "dormid",
+      "target": "has_amenity",
+      "targetKey": "dormid",
+      "relation": "hasMany"
+    },
+    {
+        "source": "dorm_amenity",
+        "sourceKey": "amenid",
+        "target": "has_amenity",
+        "targetKey": "amenid",
+        "relation": "hasMany"
+    }
+]  

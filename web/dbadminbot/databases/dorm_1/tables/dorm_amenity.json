@@ -1,0 +1,17 @@
+{
+  "name": "dorm_amenity",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "amenid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "amenity_name",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}
