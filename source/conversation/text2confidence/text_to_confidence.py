@@ -3,6 +3,7 @@ import json
 import torch
 import hydra
 import _jsonnet
+from typing import List, Dict, Any
 from config.path import ABS_CONFIG_DIR
 from omegaconf import DictConfig
 from source.utils import token_score_to_noun_score
@@ -12,7 +13,22 @@ from source.text2sql.text_to_sql import Text2SQL
 
 
 class Text2Confidence:
-    def __init__(self, cfg, device="cuda:0"):
+    """Calculates confidence scores for SQL predictions and analyzes low-confidence queries.
+
+    This class uses beam search scores to compute confidence and applies Captum
+    attribution analysis to identify ambiguous tokens in low-confidence queries.
+    """
+
+    def __init__(self, cfg, device: str = "cuda:0"):
+        """Initialize Text2Confidence with model and attribution analyzer.
+
+        Args:
+            cfg: Configuration with experiment and model checkpoint paths
+            device: Device to load the model on (default: "cuda:0")
+
+        Raises:
+            RuntimeError: If experiment config file does not exist
+        """
         self.cfg = cfg
         experiment_config_path = cfg.experiment_config_path
         model_ckpt_dir_path = cfg.model_ckpt_dir_path
@@ -39,7 +55,20 @@ class Text2Confidence:
         model.to(device)
         self.model = model
 
-    def calculate(self, beams, inferred_code):
+    def calculate(self, beams: List[Any], inferred_code: str) -> float:
+        """Calculate confidence score from beam search results with heuristic refinement.
+
+        Args:
+            beams: List of beam search results with scores
+            inferred_code: Generated SQL query string
+
+        Returns:
+            Confidence score as percentage (0-100)
+
+        Note:
+            Applies heuristic boost (+20%) for WHERE clause queries below 70% confidence,
+            as these often have valid but lower-scored alternatives.
+        """
         confidence = (
             torch.softmax(torch.tensor([tmp.score for tmp in beams]), dim=0)
             .cpu()
@@ -53,7 +82,25 @@ class Text2Confidence:
             confidence = min(confidence + 0.2, 1.0)
         return confidence * 100
 
-    def analyze(self, input_text, orig_item, preproc_item):
+    def analyze(self, input_text: str, orig_item: Any, preproc_item: Any) -> Dict[str, Any]:
+        """Analyze query to identify the most ambiguous token using attribution.
+
+        Uses Captum attribution to compute word importance scores, then extracts
+        the noun with the highest attribution score as the most likely source of confusion.
+
+        Args:
+            input_text: Original user query text
+            orig_item: Original preprocessed item with schema information
+            preproc_item: Model-ready preprocessed item
+
+        Returns:
+            Dictionary with:
+                - raw_input: The most ambiguous noun word
+                - word_attributions: Attribution score for that word
+
+        Note:
+            Retries up to 6 times on failure, falling back to uniform attribution.
+        """
         while_cnt = 6
         while while_cnt:
             try:
@@ -111,6 +158,7 @@ class Text2Confidence:
 
 @hydra.main(version_base=None, config_path=ABS_CONFIG_DIR, config_name="config")
 def main(cfg: DictConfig) -> None:
+    """Main function for testing confidence calculation and analysis."""
     translator = Text2SQL(cfg, cfg.text2sql)
     input_text = "<s> How many concerts are there in"
     orig_item, preproc_item = translator.preprocess(

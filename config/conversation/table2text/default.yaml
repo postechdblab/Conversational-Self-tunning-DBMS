@@ -1,0 +1,4 @@
+host: 141.223.197.19
+port: 30000
+max_new_tokens: 200
+temperature: 0.0
