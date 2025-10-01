@@ -2,6 +2,7 @@ import os
 import json
 import hydra
 import _jsonnet
+from typing import Tuple, List, Any
 from config.path import ABS_CONFIG_DIR
 from omegaconf import DictConfig
 from source.utils import One_time_Preprocesser, add_value_one_sql
@@ -10,7 +11,23 @@ from source.text2sql.ratsql.models.spider import spider_beam_search
 
 
 class Text2SQL:
-    def __init__(self, global_cfg, cfg, device="cuda:0"):
+    """Translates natural language text to SQL queries using RAT-SQL model with beam search.
+
+    This class handles the complete text-to-SQL pipeline including preprocessing,
+    model inference, and post-processing with value filling.
+    """
+
+    def __init__(self, global_cfg, cfg, device: str = "cuda:0"):
+        """Initialize Text2SQL translator with model and preprocessor.
+
+        Args:
+            global_cfg: Global configuration containing database and table paths
+            cfg: Text2SQL-specific configuration with model paths and beam search params
+            device: Device to load the model on (default: "cuda:0")
+
+        Raises:
+            RuntimeError: If experiment config file does not exist
+        """
         self.cfg = cfg
         experiment_config_path = cfg.experiment_config_path
         model_ckpt_dir_path = cfg.model_ckpt_dir_path
@@ -41,7 +58,21 @@ class Text2SQL:
         model.to(device)
         self.model = model
 
-    def translate(self, text, text_history, db_id):
+    def translate(
+        self, text: str, text_history: str, db_id: str
+    ) -> Tuple[List[Any], str]:
+        """Translate natural language text to SQL query.
+
+        Args:
+            text: Current user query text
+            text_history: Conversation history with previous queries
+            db_id: Database identifier for schema context
+
+        Returns:
+            Tuple containing:
+                - beams: List of beam search results with scores
+                - inferred_code: Generated SQL query string with values filled
+        """
         orig_item, preproc_item = self.preprocess(text, text_history, db_id)
         if not text_history.endswith(text):
             text_history += " <s> " + text
@@ -62,7 +93,21 @@ class Text2SQL:
 
         return beams, inferred_code
 
-    def preprocess(self, text, text_history, db_id):
+    def preprocess(
+        self, text: str, text_history: str, db_id: str
+    ) -> Tuple[Any, Any]:
+        """Preprocess input text with conversation history for model inference.
+
+        Args:
+            text: Current user query text
+            text_history: Conversation history with previous queries
+            db_id: Database identifier for schema context
+
+        Returns:
+            Tuple containing:
+                - orig_item: Original preprocessed item with schema information
+                - preproc_item: Model-ready preprocessed item with encoded features
+        """
         input_text = "<s> " + text + text_history
         orig_item, preproc_item = self.preprocessor.run(input_text, db_id)
         return orig_item, preproc_item
@@ -70,6 +115,7 @@ class Text2SQL:
 
 @hydra.main(version_base=None, config_path=ABS_CONFIG_DIR, config_name="config")
 def main(cfg: DictConfig) -> None:
+    """Main function for testing Text2SQL translation."""
     translator = Text2SQL(cfg, cfg.text2sql)
     _, inferred_code = translator.translate(
         "<s> How many concerts are there in",

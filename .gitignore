@@ -42,3 +42,4 @@ outputs/
 __pycache__/
 *.pyc
 *.props
+CLAUDE.md
