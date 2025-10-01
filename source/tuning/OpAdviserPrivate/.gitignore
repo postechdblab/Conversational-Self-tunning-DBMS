@@ -1,0 +1,15 @@
+*.pyc
+*.idea
+*.pkl
+*.DS_Store
+*.out
+train_user_*.py
+*.res
+scripts/log/
+.vscode/
+.venv
+log/
+autotune.egg-info
+build/lib/autotune
+results
+/ddpg/model_params/
