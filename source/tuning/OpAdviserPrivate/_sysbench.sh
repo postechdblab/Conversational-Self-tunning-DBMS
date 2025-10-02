@@ -5,7 +5,7 @@ mysql -ppassword -e"create database sb${db};"
 sysbench  \
     --db-driver=mysql  \
     --mysql-host=localhost  \
-    --mysql-port=3308  \
+    --mysql-port=3306  \
     --mysql-user=root  \
     --mysql-password=password  \
     --table_size=800000  \

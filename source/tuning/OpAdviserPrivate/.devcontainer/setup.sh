@@ -1,94 +1,14 @@
 #!/bin/bash
-set -e  # Exit on error, but we'll handle errors explicitly
+set -e  # Exit on error
 
 echo "=== Starting devcontainer setup ==="
 echo "Running as user: $(whoami)"
 
-# Update package list with retries
-echo "Updating package list..."
-for i in {1..3}; do
-    if apt-get update; then
-        break
-    else
-        echo "Retry $i: apt-get update failed, retrying..."
-        sleep 2
-    fi
-done
-
-# Install basic dependencies
-echo "Installing basic dependencies..."
-DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    git \
-    ant \
-    build-essential \
-    openssh-client \
-    cgroup-tools \
-    libaio1 \
-    libaio-dev \
-    autoconf \
-    pkg-config \
-    libtool \
-    automake \
-    sudo \
-    unzip \
-    wget \
-    curl \
-    gnupg \
-    ca-certificates \
-    software-properties-common || { echo "Failed to install basic dependencies"; exit 1; }
-
-# Add deadsnakes PPA for Python 3.8
-echo "Adding Python PPA and installing Python 3.8..."
-if ! add-apt-repository -y ppa:deadsnakes/ppa 2>&1; then
-    echo "Warning: Could not add deadsnakes PPA, trying to continue with system Python..."
-fi
-apt-get update || true
-
-# Try to install Python 3.8
-echo "Installing Python 3.8..."
-if DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    python3.8 \
-    python3.8-dev \
-    python3.8-distutils \
-    python3-pip \
-    python3-setuptools; then
-    echo "Python 3.8 installed successfully"
-else
-    echo "Error: Failed to install Python 3.8"
-    exit 1
-fi
-
-# Set up Python alternatives and symlinks
-echo "Setting up Python alternatives..."
-update-alternatives --install /usr/bin/python python /usr/bin/python3.8 1 || true
-update-alternatives --install /usr/bin/python3 python3 /usr/bin/python3.8 1 || true
-ln -sf /usr/bin/python3.8 /usr/local/bin/python || true
-ln -sf /usr/bin/pip3 /usr/local/bin/pip || true
-
-# Verify Python installation
+# Verify installations
+echo "Verifying installations..."
 python3.8 --version || { echo "Python 3.8 verification failed"; exit 1; }
-
-# Install Java 11
-echo "Installing Java 11..."
-DEBIAN_FRONTEND=noninteractive apt-get install -y openjdk-11-jdk || { echo "Failed to install Java 11"; exit 1; }
-
-# Verify Java installation
 java -version || { echo "Java verification failed"; exit 1; }
-
-# Install MySQL 5.7 with proper repo setup for Bionic
-echo "Installing MySQL 5.7..."
-# For Ubuntu Bionic (18.04), MySQL 5.7 should be available in default repos
-if DEBIAN_FRONTEND=noninteractive apt-get install -y \
-    mysql-server-5.7 \
-    mysql-client-5.7 \
-    libmysqlclient-dev 2>&1; then
-    echo "MySQL 5.7 installed successfully"
-else
-    echo "Error: Failed to install MySQL 5.7"
-    echo "Checking available MySQL packages..."
-    apt-cache search mysql-server || true
-    exit 1
-fi
+mysql --version || { echo "MySQL verification failed"; exit 1; }
 
 # Configure MySQL
 echo "Configuring MySQL..."
@@ -97,50 +17,50 @@ if [ -f /etc/mysql/my.cnf ]; then
     # Backup original config
     cp /etc/mysql/my.cnf /etc/mysql/my.cnf.backup
     # Append our configuration
-    if ! grep -q "port=3308" /etc/mysql/my.cnf; then
+    if ! grep -q "port=3306" /etc/mysql/my.cnf; then
         echo '' >> /etc/mysql/my.cnf
         echo '[mysqld]' >> /etc/mysql/my.cnf
-        echo 'port=3308' >> /etc/mysql/my.cnf
+        echo 'port=3306' >> /etc/mysql/my.cnf
         echo 'innodb_log_checksums = 0' >> /etc/mysql/my.cnf
         echo "MySQL configuration updated"
     fi
 else
     echo "Creating new MySQL configuration at /etc/mysql/my.cnf"
     echo '[mysqld]' > /etc/mysql/my.cnf
-    echo 'port=3308' >> /etc/mysql/my.cnf
+    echo 'port=3306' >> /etc/mysql/my.cnf
     echo 'innodb_log_checksums = 0' >> /etc/mysql/my.cnf
 fi
 
-# Create MySQL log directories
+# Ensure MySQL log directories exist with correct permissions
 echo "Setting up MySQL log directories..."
 mkdir -p /var/log/mysql/base
 touch /var/log/mysql/base/mysql-slow.log
 chmod 777 /var/log/mysql/base/mysql-slow.log
 chown -R mysql:mysql /var/log/mysql 2>/dev/null || true
 
-# Set up sudo permissions for current user
-echo "Setting up sudo permissions for current user..."
-SETUP_USER=${SUDO_USER:-${USER:-vscode}}
-echo "Configuring sudo for user: $SETUP_USER"
-if id "$SETUP_USER" &>/dev/null; then
-    usermod -aG sudo $SETUP_USER 2>/dev/null || echo "Warning: Could not add $SETUP_USER to sudo group"
-    # Use sudoers.d for better practice
-    echo "$SETUP_USER ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/$SETUP_USER
-    chmod 0440 /etc/sudoers.d/$SETUP_USER
-    echo "$SETUP_USER user configured successfully"
-else
-    echo "Warning: $SETUP_USER user does not exist yet, will be created by devcontainer"
-fi
+# Ensure MySQL directories have correct permissions
+echo "Fixing MySQL directory permissions..."
+chown -R mysql:mysql /var/lib/mysql /var/run/mysqld /var/log/mysql 2>/dev/null || true
+chmod 755 /var/run/mysqld 2>/dev/null || true
 
 # Initialize MySQL data directory if needed
 echo "Initializing MySQL..."
 if [ ! -d "/var/lib/mysql/mysql" ]; then
     echo "MySQL data directory not initialized, running mysqld --initialize-insecure..."
-    mysqld --initialize-insecure --user=mysql 2>&1 || echo "Warning: MySQL initialization might have failed"
+    mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql 2>&1 || echo "Warning: MySQL initialization might have failed"
+    # Fix permissions again after initialization
+    chown -R mysql:mysql /var/lib/mysql 2>/dev/null || true
+fi
+
+# Check if MySQL error log exists and show recent errors
+if [ -f "/var/log/mysql/error.log" ]; then
+    echo "Recent MySQL error log entries:"
+    tail -n 20 /var/log/mysql/error.log 2>/dev/null || true
 fi
 
 # Start MySQL and configure users
 echo "Starting MySQL service..."
+# Try to start MySQL with more verbose output
 if service mysql start 2>&1; then
     echo "MySQL started successfully"
     sleep 10
@@ -177,6 +97,23 @@ if service mysql start 2>&1; then
 else
     echo "Warning: MySQL failed to start during setup"
     echo "MySQL will be started via postStartCommand"
+    
+    # Show error log for debugging
+    if [ -f "/var/log/mysql/error.log" ]; then
+        echo "=== MySQL Error Log (last 30 lines) ==="
+        tail -n 30 /var/log/mysql/error.log 2>/dev/null || true
+        echo "=== End of MySQL Error Log ==="
+    fi
+    
+    # Try a more aggressive approach: remove and reinitialize
+    echo "Attempting to reinitialize MySQL database..."
+    rm -rf /var/lib/mysql/*
+    mysqld --initialize-insecure --user=mysql --datadir=/var/lib/mysql 2>&1 || echo "Reinitialization failed"
+    chown -R mysql:mysql /var/lib/mysql
+    
+    # Try starting again
+    echo "Attempting to start MySQL again..."
+    service mysql start 2>&1 || echo "MySQL still failed to start"
 fi
 
 echo "=== Devcontainer setup completed successfully ==="

@@ -31,8 +31,8 @@ setup_workload() {
     local CONFIG_FILE=$2
     
     echo "Setting up ${WORKLOAD_NAME} workload..."
-    mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS ${WORKLOAD_NAME};"
-    mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"CREATE DATABASE ${WORKLOAD_NAME};"
+    mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS ${WORKLOAD_NAME};"
+    mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE ${WORKLOAD_NAME};"
     /oltpbench/oltpbenchmark -b ${WORKLOAD_NAME} -c ${CONFIG_FILE} --create=true --load=true
     echo "${WORKLOAD_NAME} workload prepared!"
 }

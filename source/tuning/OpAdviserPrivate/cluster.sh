@@ -21,7 +21,7 @@ apt install -y mysql-server-5.7 \
     automake \
     sudo 
 echo '[mysqld]
-port=3308
+port=3306
 innodb_log_checksums = 0' | sudo tee -a /etc/mysql/my.cnf
 mkdir /var/lib/mysql-files
 mkdir /var/log/mysql
