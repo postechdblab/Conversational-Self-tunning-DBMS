@@ -163,6 +163,7 @@ class DBEnv:
             raise ValueError('Invalid workload nmae!')
 
     def get_external_metrics(self, filename=''):
+        latL = None  # Initialize latL for all workload types
         if self.workload['name'] == 'sysbench':
             for _ in range(60):
                 if os.path.exists(filename):
