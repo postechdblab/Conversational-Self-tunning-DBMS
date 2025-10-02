@@ -7,7 +7,7 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='scripts/demo.ini', help='config file')
+    parser.add_argument('--config', type=str, default='scripts/sysbench_ro.ini', help='config file')
     parser.add_argument('run',nargs='?',default=None)
     parser.add_argument('--no-debugger', action='store_true')
     parser.add_argument('--no-reload', action='store_true')

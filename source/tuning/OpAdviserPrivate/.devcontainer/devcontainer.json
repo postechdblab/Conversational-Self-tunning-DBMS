@@ -14,38 +14,70 @@
 	//  "service": "opadviser",
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	// "workspaceMount": "source=/mnt/sdd1/jeseok/OpAdviser,target=/workspaces/${localWorkspaceFolder},type=bind",
-	"workspaceFolder": "/root/${localWorkspaceFolder}",
+	// Using default workspace mount behavior - will mount to /workspaces/<folder-name>
+	"workspaceFolder": "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate",
+	// Extensions to install in the container
+	"extensions": [
+		"ms-python.python@2023.20.0",
+		"ms-python.vscode-pylance@2023.11.10",
+		"ms-python.debugpy@2024.0.0",
+		"ms-python.black-formatter"
+	],
 	// Features to add to the dev container. More info: https://containers.dev/features.
-	// "features": {},
+	// Disabled features and installing via apt-get in onCreateCommand for better reliability
+	// "features": {
+	// 	"ghcr.io/devcontainers/features/python:1": {
+	// 		"version": "3.8"
+	// 	},
+	// 	"ghcr.io/devcontainers/features/java:1": {
+	// 		"version": "11",
+	// 		"installMaven": false,
+	// 		"installGradle": false
+	// 	}
+	// },
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
-	// "forwardPorts": [],
+	// "forwardPorts": [3308, 1234],
 	// Uncomment the next line if you want start specific services in your Docker Compose config.
 	// "runServices": [],
 	// Uncomment the next line if you want to keep your containers running after VS Code shuts down.
 	"shutdownAction": "none",
-	// Uncomment the next line to run commands after the container is created.
-	// "postCreateCommand": "cat /etc/os-release",
+	// Install packages and setup environment (runs as root during container creation)
+	"onCreateCommand": "sudo bash -x .devcontainer/setup.sh 2>&1 | tee /tmp/setup.log",
+	// Install Python requirements after source code is mounted
+	"postCreateCommand": "if command -v python3.8 >/dev/null 2>&1; then python3.8 -m pip install --upgrade pip && python3.8 -m pip install --user --upgrade setuptools wheel && ([ -f requirements.txt ] && python3.8 -m pip install -r requirements.txt || echo 'No requirements.txt found'); else echo 'Python 3.8 not found, skipping pip install'; fi",
+	// Ensure MySQL starts on container start
+	"postStartCommand": "sudo service mysql start 2>&1 || true",
+	// Optional: Uncomment to auto-setup workloads (WARNING: Takes hours!)
+	// "postCreateCommand": "python -m pip install --upgrade pip && pip install --user --upgrade setuptools wheel && [ -f requirements.txt ] && python -m pip install -r requirements.txt || echo 'No requirements.txt found' && bash .devcontainer/setup_sysbench.sh && bash .devcontainer/setup_oltpbench.sh && bash .devcontainer/setup_tpch.sh",
 	// Configure tool-specific properties.
 	"customizations": {
 		"jetbrains": {
 			"backend": "PyCharm"
+		},
+		"vscode": {
+			"extensions": [
+				"ms-python.python@2023.20.0",
+				"ms-python.vscode-pylance@2023.11.10",
+				"ms-python.debugpy@2024.0.0",
+				"ms-python.black-formatter"
+			],
+			"settings": {
+				"python.defaultInterpreterPath": "/usr/bin/python3.8",
+				"[python]": {
+					"editor.defaultFormatter": "ms-python.black-formatter",
+					"editor.formatOnSave": true
+				},
+				"python.formatting.provider": "none",
+				"terminal.integrated.env.linux": {
+					"PYTHONPATH": "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
+				}
+			}
 		}
 	},
-	"runArgs": [
-		"--memory=64gb",
-		"--network=host",
-		"--dns=141.223.1.2",
-		"--dns=1.0.0.1"
-	],
-	"mounts": [
-		"source=/mnt/nvme0n1/jeseok/mysql,target=/var/lib/mysql,type=bind,consistency=cached",
-		"source=/mnt/nvme0n1/jeseok/lib,target=/usr/local/lib,type=bind,consistency=cached",
-		"source=/mnt/nvme0n1/jeseok/root,target=/root,type=bind,consistency=cached"
-	],
 	"containerEnv": {
-		"DOCKER_CLI_EXPERIMENTAL": "enabled"
+		"DOCKER_CLI_EXPERIMENTAL": "enabled",
+		"PYTHONPATH": "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
 	},
 	// Uncomment to connect as an existing user other than the container default. More info: https://aka.ms/dev-containers-non-root.
-	"remoteUser": "root"
+	"remoteUser": "vscode"
 }
