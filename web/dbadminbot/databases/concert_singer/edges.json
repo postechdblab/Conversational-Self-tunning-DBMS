@@ -1,0 +1,24 @@
+[
+    {
+      "source": "singer",
+      "sourceKey": "singer_id",
+      "target": "singer_in_concert",
+      "targetKey": "singer_id",
+      "relation": "hasMany"
+    },
+    {
+      "source": "concert",
+      "sourceKey": "concert_id",
+      "target": "singer_in_concert",
+      "targetKey": "concert_id",
+      "relation": "hasMany"
+    },
+    {
+      "source": "stadium",
+      "sourceKey": "stadium_id",
+      "target": "concert",
+      "targetKey": "stadium_id",
+      "relation": "hasMany"
+    }
+  ]
+  

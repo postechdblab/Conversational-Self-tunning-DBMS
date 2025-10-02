@@ -1,0 +1,52 @@
+{
+  "name": "qualifying",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "qualifyid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "driverid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "constructorid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "number",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "position",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "q1",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "q2",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "q3",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

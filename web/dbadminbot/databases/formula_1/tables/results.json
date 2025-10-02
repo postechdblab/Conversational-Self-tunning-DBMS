@@ -1,0 +1,97 @@
+{
+  "name": "results",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "resultid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "raceid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "driverid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "constructorid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "number",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "grid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "position",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "positiontext",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "positionorder",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "points",
+      "description": "",
+      "type": "real"
+    },
+    {
+      "name": "laps",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "time",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "milliseconds",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "fastestlap",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "rank",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "fastestlaptime",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "fastestlapspeed",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "statusid",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

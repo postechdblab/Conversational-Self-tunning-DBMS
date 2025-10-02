@@ -1,0 +1,43 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@internal/prisma-concert_singer/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("CONCERT_SINGER_DATABASE_URL")
+}
+
+model concert {
+  concert_id   String @id
+  concert_name String?
+  theme        String?
+  stadium_id   String?
+  year         String?
+}
+
+model singer {
+  singer_id         String @id
+  name              String?
+  country           String?
+  song_name         String?
+  song_release_year String?
+  age               String?
+  is_male           Boolean?
+}
+
+model singer_in_concert {
+  id String @id
+  concert_id String
+  singer_id  String
+}
+
+model stadium {
+  stadium_id String @id
+  location   String?
+  name       String?
+  capacity   Int?
+  highest    Int?
+  lowest     Int?
+  average    Int?
+}

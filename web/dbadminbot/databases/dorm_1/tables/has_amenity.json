@@ -1,0 +1,17 @@
+{
+  "name": "has_amenity",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "dormid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "amenid",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

@@ -1,0 +1,18 @@
+{
+  "public.concert": {
+    "x": 0,
+    "y": 0
+  },
+  "public.singer_in_concert": {
+    "x": 250,
+    "y": 0
+  },
+  "public.stadium": {
+    "x": 0,
+    "y": 400
+  },
+  "public.singer": {
+    "x": 450,
+    "y": 0
+  }
+}

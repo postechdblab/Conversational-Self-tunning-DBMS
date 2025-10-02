@@ -1,0 +1,22 @@
+{
+  "name": "lives_in",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "stuid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "dormid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "room_number",
+      "description": "",
+      "type": "integer"
+    }
+  ]
+}

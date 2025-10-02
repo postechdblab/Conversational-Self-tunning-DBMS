@@ -1,0 +1,22 @@
+experiment_config_path: /mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4/config.jsonnet
+model_ckpt_dir_path: /mnt/sdd/shpark/logdir/intent-model/bs=24,lr=7.4e-04,bert_lr=3.0e-06,end_lr=0e0,seed=4
+tune_check_example_num: 3
+host: 141.223.197.19
+port: 30000
+max_new_tokens: 40
+temperature: 0.0
+possible_outputs:
+  - Ambiguous
+  - Infer SQL
+  - Addtion
+  - Sorry
+  - Infer SQL
+  - Not related
+  - Greeting
+  - Good Bye
+  - cannot understand
+  - Inform SQL
+  - Affirm
+  - Negate
+  - Thank you
+  - Inform SQL

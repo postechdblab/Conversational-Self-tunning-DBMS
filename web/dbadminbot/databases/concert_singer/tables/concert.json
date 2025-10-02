@@ -1,0 +1,32 @@
+{
+  "name": "concert",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "concert_id",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "concert_name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "theme",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "stadium_id",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "year",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

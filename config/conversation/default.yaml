@@ -1,0 +1,3 @@
+defaults:
+  - text2confidence: default
+  - table2text: default

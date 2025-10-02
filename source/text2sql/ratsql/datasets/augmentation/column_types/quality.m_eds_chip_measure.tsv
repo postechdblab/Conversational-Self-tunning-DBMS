@@ -1,0 +1,17 @@
+M_EDS_CHIP_MEASURE	LINE_ID	LINE ID	character varying
+M_EDS_CHIP_MEASURE	PROCESS_ID	Device를 제조하기 위한 공법	character varying
+M_EDS_CHIP_MEASURE	STEP_SEQ	진행 공정명	character varying
+M_EDS_CHIP_MEASURE	LOT_ID	공정 진행한 Lot ID	character varying
+M_EDS_CHIP_MEASURE	ROOT_LOT_ID	LOT_ID의 앞 6자리	character varying
+M_EDS_CHIP_MEASURE	WAFER_ID	WAFER 번호	character
+M_EDS_CHIP_MEASURE	TKOUT_TIME	공정 종료 시간	timestamp without time zone
+M_EDS_CHIP_MEASURE	ITEM_TYPE	ITEM 종류	character varying
+M_EDS_CHIP_MEASURE	ITEM_ID	계측 Parameter	character varying
+M_EDS_CHIP_MEASURE	LAST_UPDATE_TIME	최종 변경 일시	timestamp without time zone
+M_EDS_CHIP_MEASURE	CHIP_X_POS	Chip X 좌표	ARRAY
+M_EDS_CHIP_MEASURE	CHIP_Y_POS	Chip Y 좌표	ARRAY
+M_EDS_CHIP_MEASURE	SHOT_ID	SHOT ID	ARRAY
+M_EDS_CHIP_MEASURE	CHIP_ID	CHIP ID	ARRAY
+M_EDS_CHIP_MEASURE	VALUE	측정 값	ARRAY
+M_EDS_CHIP_MEASURE	TEST_TYPE	EDS 공정에서 테스트 수행 시 TEST 유형	text
+M_EDS_CHIP_MEASURE	LOT_TYPE	공정 진행 시점의 LOT TYPE	text
