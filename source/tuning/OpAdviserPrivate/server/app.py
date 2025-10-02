@@ -96,7 +96,7 @@ SELECT @query_name, @query_time_ms;
 """
                 )
         while True:
-            tuner.tune()
+            tuner.tune(single_iteration_mode=True)
             try:
                 mydb = mysql.connector.connect(**dbconfig)
                 execution_times = []

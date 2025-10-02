@@ -25,3 +25,460 @@
 [INFO] [2025-10-02 05:15:20,363] [autotune] 1049 (42000): Unknown database 'sbread'
 [INFO] [2025-10-02 05:15:21,367] [autotune] 1049 (42000): Unknown database 'sbread'
 [INFO] [2025-10-02 05:15:22,371] [autotune] 1049 (42000): Unknown database 'sbread'
+[INFO] [2025-10-02 06:41:40,762] [DBTune-sbread] Start new DBTune task
+[INFO] [2025-10-02 06:41:42,434] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-02 06:41:42,453] [DBTune-sbread] [Iteration 0] [0,3] Total space size:5.885367239708822e+297
+[INFO] [2025-10-02 06:41:42,463] [autotune] max_join_size with value of is larger than max, adjusted
+[INFO] [2025-10-02 06:41:42,463] [autotune] [step 1] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 900, 'binlog_cache_size': 32768, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 0, 'binlog_group_commit_sync_no_delay_count': 0, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 32768, 'bulk_insert_buffer_size': 8388608, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 10, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 4, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 200, 'expire_logs_days': 0, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 4, 'ft_query_expansion_limit': 20, 'general_log': 'OFF', 'group_concat_max_len': 1000, 'host_cache_size': 0, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 10, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 150000, 'innodb_api_bk_commit_interval': 5, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 64, 'innodb_buffer_pool_size': 20615843020, 'innodb_change_buffer_max_size': 25, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 0, 'innodb_compression_failure_threshold_pct': 5, 'innodb_compression_level': 6, 'innodb_compression_pad_pct_max': 50, 'innodb_concurrency_tickets': 5000, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 100, 'innodb_flush_log_at_timeout': 1, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 30, 'innodb_ft_cache_size': 8000000, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 84, 'innodb_ft_min_token_size': 3, 'innodb_ft_num_word_optimize': 2000, 'innodb_ft_result_cache_limit': 2000000000, 'innodb_ft_sort_pll_degree': 2, 'innodb_ft_total_cache_size': 640000000, 'innodb_io_capacity': 200, 'innodb_io_capacity_max': 400, 'innodb_log_buffer_size': 16777216, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 50331648, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 8192, 'innodb_lru_scan_depth': 1024, 'innodb_max_dirty_pages_pct': 75, 'innodb_max_dirty_pages_pct_lwm': 0, 'innodb_max_purge_lag': 0, 'innodb_max_purge_lag_delay': 0, 'innodb_max_undo_log_size': 1073741000, 'innodb_old_blocks_time': 1000, 'innodb_online_alter_log_max_size': 134217000, 'innodb_open_files': 2000, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 300, 'innodb_purge_rseg_truncate_frequency': 128, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 56, 'innodb_read_io_threads': 4, 'innodb_replication_delay': 0, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 128, 'innodb_sort_buffer_size': 1048576, 'innodb_spin_wait_delay': 6, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 8, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 1, 'innodb_sync_spin_loops': 30, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 0, 'innodb_thread_sleep_delay': 10000, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 4, 'join_buffer_size': 262144, 'keep_files_on_create': 'OFF', 'key_buffer_size': 8388608, 'key_cache_age_threshold': 300, 'key_cache_block_size': 1024, 'key_cache_division_limit': 100, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'FILE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 4194304, 'max_binlog_cache_size': 18446744073709500000, 'max_binlog_size': 1073741824, 'max_binlog_stmt_cache_size': 18446744073709500000, 'max_connections': 1000, 'max_delayed_threads': 20, 'max_digest_length': 1024, 'max_error_count': 64, 'max_heap_table_size': 16777216, 'max_join_size': 18446744073709551615, 'max_length_for_sort_data': 1024, 'max_points_in_geometry': 65536, 'max_prepared_stmt_count': 16382, 'max_seeks_for_key': 18446744073709500000, 'max_sort_length': 1024, 'max_user_connections': 0, 'max_write_lock_count': 18446744073709500000, 'multi_range_count': 256, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 16384, 'net_read_timeout': 30, 'net_write_timeout': 60, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 50000, 'optimizer_prune_level': 1, 'optimizer_search_depth': 62, 'preload_buffer_size': 32768, 'query_alloc_block_size': 8192, 'query_cache_limit': 1048576, 'query_cache_min_res_unit': 4096, 'query_cache_size': 1048576, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 8192, 'range_alloc_block_size': 4096, 'read_buffer_size': 131072, 'read_rnd_buffer_size': 262144, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'OFF', 'sort_buffer_size': 262144, 'stored_program_cache': 256, 'sync_binlog': 1, 'sync_frm': 'ON', 'table_definition_cache': 1400, 'table_open_cache': 2000, 'table_open_cache_instances': 16, 'thread_cache_size': 0, 'tmp_table_size': 16777216, 'transaction_alloc_block_size': 8192, 'transaction_prealloc_size': 4096, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-02 06:41:42,515] [autotune] Close db successfully
+[INFO] [2025-10-02 06:41:42,516] [autotune] mysql is shut down
+[INFO] [2025-10-02 06:41:42,523] [autotune] generated config file done
+[INFO] [2025-10-02 06:41:42,554] [autotune] wait for connection
+[INFO] [2025-10-02 06:41:46,578] [autotune] Connected to MySQL db
+[INFO] [2025-10-02 06:41:46,579] [autotune] finish 4 seconds waiting for connection
+[INFO] [2025-10-02 06:41:46,580] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-02 06:41:46,581] [autotune] mysql is up
+[INFO] [2025-10-02 06:41:46,581] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-02 06:41:52,020] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_sysbench.sh read localhost 3308 root password 150 800000 10 80 180 ./log/1759387312.log sbread
+[INFO] [2025-10-02 06:45:03,246] [DBTune-sbread] Iteration 1, objective value: [2147483647].
+[INFO] [2025-10-02 06:48:39,935] [DBTune-sbread] Load 1 iterations from repo/history_sbread.json
+[INFO] [2025-10-02 06:48:41,641] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-02 06:48:41,660] [RGPE] Start to train base surrogates.
+[INFO] [2025-10-02 06:48:50,170] [RGPE] Building base surrogates took 8.510s.
+[INFO] [2025-10-02 06:48:50,185] [DBTune-sbread] Remain the space:Configuration space object:
+  Hyperparameters:
+    autocommit, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    automatic_sp_privileges, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    back_log, Type: UniformInteger, Range: [1, 65535], Default: 900
+    binlog_cache_size, Type: UniformInteger, Range: [4096, 4294967296], Default: 32768
+    binlog_direct_non_transactional_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    binlog_error_action, Type: Categorical, Choices: {IGNORE_ERROR, ABORT_SERVER}, Default: ABORT_SERVER
+    binlog_format, Type: Categorical, Choices: {ROW, STATEMENT, MIXED}, Default: ROW
+    binlog_group_commit_sync_delay, Type: UniformInteger, Range: [0, 1000000], Default: 0
+    binlog_group_commit_sync_no_delay_count, Type: UniformInteger, Range: [0, 100000], Default: 0
+    binlog_order_commits, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    binlog_row_image, Type: Categorical, Choices: {full, minimal, noblob}, Default: full
+    binlog_rows_query_log_events, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    binlog_stmt_cache_size, Type: UniformInteger, Range: [4096, 4294967296], Default: 32768
+    bulk_insert_buffer_size, Type: UniformInteger, Range: [0, 83886080], Default: 8388608
+    check_proxy_users, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    completion_type, Type: Categorical, Choices: {NO_CHAIN, CHAIN, RELEASE}, Default: NO_CHAIN
+    concurrent_insert, Type: Categorical, Choices: {NEVER, AUTO, ALWAYS}, Default: AUTO
+    connect_timeout, Type: UniformInteger, Range: [2, 31536000], Default: 10
+    default_week_format, Type: UniformInteger, Range: [0, 7], Default: 0
+    delay_key_write, Type: Categorical, Choices: {ON, OFF, ALL}, Default: ON
+    div_precision_increment, Type: UniformInteger, Range: [0, 30], Default: 4
+    end_markers_in_json, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    eq_range_index_dive_limit, Type: UniformInteger, Range: [0, 4294967295], Default: 200
+    expire_logs_days, Type: UniformInteger, Range: [0, 99], Default: 0
+    explicit_defaults_for_timestamp, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    flush, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    flush_time, Type: UniformInteger, Range: [0, 10], Default: 0
+    ft_min_word_len, Type: UniformInteger, Range: [1, 8], Default: 4
+    ft_query_expansion_limit, Type: UniformInteger, Range: [0, 1000], Default: 20
+    general_log, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    group_concat_max_len, Type: UniformInteger, Range: [0, 18446700000000000], Default: 1
+    host_cache_size, Type: UniformInteger, Range: [0, 65536], Default: 0
+    innodb_adaptive_flushing, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_adaptive_flushing_lwm, Type: UniformInteger, Range: [0, 70], Default: 10
+    innodb_adaptive_hash_index_parts, Type: UniformInteger, Range: [1, 512], Default: 8
+    innodb_adaptive_max_sleep_delay, Type: UniformInteger, Range: [0, 1000000], Default: 150000
+    innodb_api_bk_commit_interval, Type: UniformInteger, Range: [1, 1073741824], Default: 5
+    innodb_api_disable_rowlock, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_api_enable_binlog, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_api_enable_mdl, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_autoextend_increment, Type: UniformInteger, Range: [1, 1000], Default: 64
+    innodb_buffer_pool_size, Type: UniformInteger, Range: [10307921510, 34359738368], Default: 20615843020
+    innodb_change_buffer_max_size, Type: UniformInteger, Range: [0, 50], Default: 25
+    innodb_change_buffering, Type: Categorical, Choices: {none, inserts, deletes, changes, purges, all}, Default: all
+    innodb_cmp_per_index_enabled, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_commit_concurrency, Type: UniformInteger, Range: [0, 1000], Default: 0
+    innodb_compression_failure_threshold_pct, Type: UniformInteger, Range: [0, 100], Default: 5
+    innodb_compression_level, Type: UniformInteger, Range: [0, 9], Default: 6
+    innodb_compression_pad_pct_max, Type: UniformInteger, Range: [0, 75], Default: 50
+    innodb_concurrency_tickets, Type: UniformInteger, Range: [1, 4294967295], Default: 5000
+    innodb_deadlock_detect, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_default_row_format, Type: Categorical, Choices: {DYNAMIC, COMPACT, REDUNDANT}, Default: DYNAMIC
+    innodb_disable_sort_file_cache, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_doublewrite, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_file_per_table, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_fill_factor, Type: UniformInteger, Range: [10, 100], Default: 100
+    innodb_flush_log_at_timeout, Type: UniformInteger, Range: [1, 2700], Default: 1
+    innodb_flush_log_at_trx_commit, Type: Categorical, Choices: {0, 1, 2}, Default: 1
+    innodb_flush_neighbors, Type: Categorical, Choices: {0, 1, 2}, Default: 1
+    innodb_flush_sync, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_flushing_avg_loops, Type: UniformInteger, Range: [1, 1000], Default: 30
+    innodb_ft_cache_size, Type: UniformInteger, Range: [1600000, 80000000], Default: 8000000
+    innodb_ft_enable_diag_print, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_ft_enable_stopword, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_ft_max_token_size, Type: UniformInteger, Range: [10, 84], Default: 84
+    innodb_ft_min_token_size, Type: UniformInteger, Range: [0, 16], Default: 3
+    innodb_ft_num_word_optimize, Type: UniformInteger, Range: [1000, 10000], Default: 2000
+    innodb_ft_result_cache_limit, Type: UniformInteger, Range: [1000000, 4294967295], Default: 2000000000
+    innodb_ft_sort_pll_degree, Type: UniformInteger, Range: [1, 16], Default: 2
+    innodb_ft_total_cache_size, Type: UniformInteger, Range: [32000000, 1600000000], Default: 640000000
+    innodb_io_capacity, Type: UniformInteger, Range: [100, 2000000], Default: 200
+    innodb_io_capacity_max, Type: UniformInteger, Range: [100, 40000], Default: 400
+    innodb_log_buffer_size, Type: UniformInteger, Range: [262144, 4294967295], Default: 16777216
+    innodb_log_compressed_pages, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_log_file_size, Type: UniformInteger, Range: [4194304, 1073741824], Default: 50331648
+    innodb_log_files_in_group, Type: UniformInteger, Range: [2, 10], Default: 2
+    innodb_log_write_ahead_size, Type: UniformInteger, Range: [512, 16384], Default: 8192
+    innodb_lru_scan_depth, Type: UniformInteger, Range: [100, 10240], Default: 1024
+    innodb_max_dirty_pages_pct, Type: UniformInteger, Range: [0, 99], Default: 75
+    innodb_max_dirty_pages_pct_lwm, Type: UniformInteger, Range: [0, 99], Default: 0
+    innodb_max_purge_lag, Type: UniformInteger, Range: [0, 4294967295], Default: 0
+    innodb_max_purge_lag_delay, Type: UniformInteger, Range: [0, 10000000], Default: 0
+    innodb_max_undo_log_size, Type: UniformInteger, Range: [10485, 18446700000000000], Default: 1073741
+    innodb_old_blocks_time, Type: UniformInteger, Range: [0, 4294967295], Default: 1000
+    innodb_online_alter_log_max_size, Type: UniformInteger, Range: [65, 18446700000000000], Default: 134217
+    innodb_open_files, Type: UniformInteger, Range: [10, 655350], Default: 2000
+    innodb_optimize_fulltext_only, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_page_cleaners, Type: UniformInteger, Range: [1, 8], Default: 4
+    innodb_print_all_deadlocks, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_purge_batch_size, Type: UniformInteger, Range: [1, 5000], Default: 300
+    innodb_purge_rseg_truncate_frequency, Type: UniformInteger, Range: [1, 128], Default: 128
+    innodb_purge_threads, Type: UniformInteger, Range: [1, 32], Default: 4
+    innodb_random_read_ahead, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_read_ahead_threshold, Type: UniformInteger, Range: [0, 64], Default: 56
+    innodb_read_io_threads, Type: UniformInteger, Range: [1, 64], Default: 4
+    innodb_replication_delay, Type: UniformInteger, Range: [0, 10000], Default: 0
+    innodb_rollback_on_timeout, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_rollback_segments, Type: UniformInteger, Range: [1, 128], Default: 128
+    innodb_sort_buffer_size, Type: UniformInteger, Range: [65536, 67108864], Default: 1048576
+    innodb_spin_wait_delay, Type: UniformInteger, Range: [0, 6000], Default: 6
+    innodb_stats_auto_recalc, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_stats_include_delete_marked, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_stats_method, Type: Categorical, Choices: {nulls_equal, nulls_unequal, nulls_ignored}, Default: nulls_equal
+    innodb_stats_on_metadata, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_stats_persistent, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_stats_transient_sample_pages, Type: UniformInteger, Range: [1, 100], Default: 8
+    innodb_strict_mode, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_sync_array_size, Type: UniformInteger, Range: [1, 1024], Default: 1
+    innodb_sync_spin_loops, Type: UniformInteger, Range: [0, 30000], Default: 30
+    innodb_table_locks, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_thread_concurrency, Type: UniformInteger, Range: [0, 1000], Default: 0
+    innodb_thread_sleep_delay, Type: UniformInteger, Range: [0, 1000000], Default: 10000
+    innodb_undo_log_truncate, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_use_native_aio, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_write_io_threads, Type: UniformInteger, Range: [1, 64], Default: 4
+    join_buffer_size, Type: UniformInteger, Range: [128, 1073741824], Default: 262144
+    keep_files_on_create, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    key_buffer_size, Type: UniformInteger, Range: [8, 17179869184], Default: 8388608
+    key_cache_age_threshold, Type: UniformInteger, Range: [100, 30000], Default: 300
+    key_cache_block_size, Type: UniformInteger, Range: [512, 16384], Default: 1024
+    key_cache_division_limit, Type: UniformInteger, Range: [1, 100], Default: 100
+    local_infile, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_bin_trust_function_creators, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_bin_use_v1_row_events, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_builtin_as_identified_by_password, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_output, Type: Categorical, Choices: {TABLE, FILE, NONE}, Default: FILE
+    log_queries_not_using_indexes, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_slave_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_slow_admin_statements, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_statements_unsafe_for_binlog, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_syslog_include_pid, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_timestamps, Type: Categorical, Choices: {UTC, SYSTEM}, Default: UTC
+    long_query_time, Type: UniformInteger, Range: [0, 20], Default: 10
+    low_priority_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    lower_case_table_names, Type: UniformInteger, Range: [0, 2], Default: 0
+    master_verify_checksum, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    max_allowed_packet, Type: UniformInteger, Range: [1024, 1073741824], Default: 4194304
+    max_binlog_cache_size, Type: UniformInteger, Range: [4, 18446744073709552], Default: 18446744073709500
+    max_binlog_size, Type: UniformInteger, Range: [4096, 1073741824], Default: 1073741824
+    max_binlog_stmt_cache_size, Type: UniformInteger, Range: [4, 18446744073709500], Default: 18446744073709500
+    max_connections, Type: UniformInteger, Range: [1, 100000], Default: 1000
+    max_delayed_threads, Type: UniformInteger, Range: [0, 16384], Default: 20
+    max_digest_length, Type: UniformInteger, Range: [0, 1048576], Default: 1024
+    max_error_count, Type: UniformInteger, Range: [0, 65535], Default: 64
+    max_heap_table_size, Type: UniformInteger, Range: [16384, 1073741824], Default: 16777216
+    max_join_size, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709552
+    max_length_for_sort_data, Type: UniformInteger, Range: [4, 8388608], Default: 1024
+    max_points_in_geometry, Type: UniformInteger, Range: [3, 1048576], Default: 65536
+    max_prepared_stmt_count, Type: UniformInteger, Range: [0, 1048576], Default: 16382
+    max_seeks_for_key, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709500
+    max_sort_length, Type: UniformInteger, Range: [4, 8388608], Default: 1024
+    max_user_connections, Type: UniformInteger, Range: [0, 4294967295], Default: 0
+    max_write_lock_count, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709500
+    multi_range_count, Type: UniformInteger, Range: [1, 4294967295], Default: 256
+    mysql_native_password_proxy_users, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    net_buffer_length, Type: UniformInteger, Range: [1024, 1048576], Default: 16384
+    net_read_timeout, Type: UniformInteger, Range: [1, 60], Default: 30
+    net_write_timeout, Type: UniformInteger, Range: [1, 120], Default: 60
+    ngram_token_size, Type: UniformInteger, Range: [1, 10], Default: 2
+    offline_mode, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    old_alter_table, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    old_passwords, Type: Categorical, Choices: {0, 2}, Default: 0
+    open_files_limit, Type: UniformInteger, Range: [0, 655350], Default: 50000
+    optimizer_prune_level, Type: UniformInteger, Range: [0, 1], Default: 1
+    optimizer_search_depth, Type: UniformInteger, Range: [0, 62], Default: 62
+    preload_buffer_size, Type: UniformInteger, Range: [1024, 1073741824], Default: 32768
+    query_alloc_block_size, Type: UniformInteger, Range: [1024, 134217728], Default: 8192
+    query_cache_limit, Type: UniformInteger, Range: [0, 134217728], Default: 1048576
+    query_cache_min_res_unit, Type: UniformInteger, Range: [512, 65536], Default: 4096
+    query_cache_size, Type: UniformInteger, Range: [0, 2147483648], Default: 1048576
+    query_cache_wlock_invalidate, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    query_prealloc_size, Type: UniformInteger, Range: [8192, 134217728], Default: 8192
+    range_alloc_block_size, Type: UniformInteger, Range: [4096, 65536], Default: 4096
+    read_buffer_size, Type: UniformInteger, Range: [8192, 2147479552], Default: 131072
+    read_rnd_buffer_size, Type: UniformInteger, Range: [1, 134217728], Default: 262144
+    require_secure_transport, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    session_track_gtids, Type: Categorical, Choices: {OFF, OWN_GTID, ALL_GTIDS}, Default: OFF
+    session_track_schema, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    session_track_state_change, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    session_track_transaction_info, Type: Categorical, Choices: {OFF, STATE, CHARACTERISTICS}, Default: OFF
+    show_compatibility_56, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    skip_external_locking, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    skip_name_resolve, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    skip_networking, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    slow_query_log, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    sort_buffer_size, Type: UniformInteger, Range: [32768, 134217728], Default: 262144
+    stored_program_cache, Type: UniformInteger, Range: [16, 524288], Default: 256
+    sync_binlog, Type: UniformInteger, Range: [0, 4294967295], Default: 1
+    sync_frm, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    table_definition_cache, Type: UniformInteger, Range: [400, 524288], Default: 1400
+    table_open_cache, Type: UniformInteger, Range: [1, 250000], Default: 2000
+    table_open_cache_instances, Type: UniformInteger, Range: [1, 64], Default: 16
+    thread_cache_size, Type: UniformInteger, Range: [0, 16384], Default: 0
+    tmp_table_size, Type: UniformInteger, Range: [1024, 1073741824], Default: 16777216
+    transaction_alloc_block_size, Type: UniformInteger, Range: [1024, 131072], Default: 8192
+    transaction_prealloc_size, Type: UniformInteger, Range: [1024, 131072], Default: 4096
+    updatable_views_with_limit, Type: Categorical, Choices: {YES, NO}, Default: YES
+
+[INFO] [2025-10-02 06:48:50,188] [DBTune-sbread] [Iteration 1] [0,3] Total space size:5.885367239708822e+297
+[INFO] [2025-10-02 06:48:50,197] [autotune] [step 1] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 63279, 'binlog_cache_size': 789451279, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'MIXED', 'binlog_group_commit_sync_delay': 43128, 'binlog_group_commit_sync_no_delay_count': 92172, 'binlog_order_commits': 'ON', 'binlog_row_image': 'noblob', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 1333927432, 'bulk_insert_buffer_size': 71557450, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'ALWAYS', 'connect_timeout': 29730690, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 25, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 212544032, 'expire_logs_days': 89, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 9, 'ft_min_word_len': 8, 'ft_query_expansion_limit': 944, 'general_log': 'ON', 'group_concat_max_len': 16779945509648324000, 'host_cache_size': 3950, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 35, 'innodb_adaptive_hash_index_parts': 14, 'innodb_adaptive_max_sleep_delay': 548663, 'innodb_api_bk_commit_interval': 732438080, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 950, 'innodb_buffer_pool_size': 11710024657, 'innodb_change_buffer_max_size': 48, 'innodb_change_buffering': 'inserts', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 930, 'innodb_compression_failure_threshold_pct': 94, 'innodb_compression_level': 8, 'innodb_compression_pad_pct_max': 73, 'innodb_concurrency_tickets': 3995912704, 'innodb_deadlock_detect': 'OFF', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 78, 'innodb_flush_log_at_timeout': 1481, 'innodb_flush_log_at_trx_commit': '2', 'innodb_flush_neighbors': '2', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 42, 'innodb_ft_cache_size': 69857217, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 13, 'innodb_ft_min_token_size': 16, 'innodb_ft_num_word_optimize': 9570, 'innodb_ft_result_cache_limit': 2914759829, 'innodb_ft_sort_pll_degree': 1, 'innodb_ft_total_cache_size': 1408037663, 'innodb_io_capacity': 1924178, 'innodb_io_capacity_max': 39264, 'innodb_log_buffer_size': 804239246, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 519483386, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 1310, 'innodb_lru_scan_depth': 9160, 'innodb_max_dirty_pages_pct': 26, 'innodb_max_dirty_pages_pct_lwm': 95, 'innodb_max_purge_lag': 3821086463, 'innodb_max_purge_lag_delay': 801923, 'innodb_max_undo_log_size': 1299994846376092000, 'innodb_old_blocks_time': 2693861631, 'innodb_online_alter_log_max_size': 18005791393142940000, 'innodb_open_files': 13192, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 5, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 4170, 'innodb_purge_rseg_truncate_frequency': 4, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 7, 'innodb_read_io_threads': 5, 'innodb_replication_delay': 790, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 116, 'innodb_sort_buffer_size': 65621778, 'innodb_spin_wait_delay': 1892, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 90, 'innodb_strict_mode': 'OFF', 'innodb_sync_array_size': 980, 'innodb_sync_spin_loops': 3054, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 592, 'innodb_thread_sleep_delay': 191735, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 63, 'join_buffer_size': 902380565, 'keep_files_on_create': 'OFF', 'key_buffer_size': 11442905091, 'key_cache_age_threshold': 1426, 'key_cache_block_size': 4540, 'key_cache_division_limit': 94, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'ON', 'log_output': 'TABLE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 0, 'low_priority_updates': 'ON', 'lower_case_table_names': 0, 'master_verify_checksum': 'ON', 'max_allowed_packet': 1026495598, 'max_binlog_cache_size': 17638616221433726000, 'max_binlog_size': 545508383, 'max_binlog_stmt_cache_size': 16446910543668662000, 'max_connections': 82043, 'max_delayed_threads': 15749, 'max_digest_length': 918530, 'max_error_count': 1922, 'max_heap_table_size': 932833638, 'max_join_size': 1682154659084500000, 'max_length_for_sort_data': 3629081, 'max_points_in_geometry': 1024827, 'max_prepared_stmt_count': 1004617, 'max_seeks_for_key': 899013483427790000, 'max_sort_length': 7993362, 'max_user_connections': 1626073472, 'max_write_lock_count': 17597498884601414000, 'multi_range_count': 326380448, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 442437, 'net_read_timeout': 51, 'net_write_timeout': 91, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 624424, 'optimizer_prune_level': 1, 'optimizer_search_depth': 11, 'preload_buffer_size': 957580335, 'query_alloc_block_size': 69746844, 'query_cache_limit': 118751984, 'query_cache_min_res_unit': 63768, 'query_cache_size': 1956851840, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 10597815, 'range_alloc_block_size': 39597, 'read_buffer_size': 69188124, 'read_rnd_buffer_size': 131762112, 'require_secure_transport': 'ON', 'session_track_gtids': 'ALL_GTIDS', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'STATE', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 9053288, 'stored_program_cache': 500261, 'sync_binlog': 3802011647, 'sync_frm': 'OFF', 'table_definition_cache': 34159, 'table_open_cache': 232164, 'table_open_cache_instances': 10, 'thread_cache_size': 13986, 'tmp_table_size': 95575460, 'transaction_alloc_block_size': 123219, 'transaction_prealloc_size': 100759, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-02 06:48:50,257] [autotune] Close db successfully
+[INFO] [2025-10-02 06:48:50,257] [autotune] mysql is shut down
+[INFO] [2025-10-02 06:48:50,258] [autotune] modify innodb_thread_concurrency
+[INFO] [2025-10-02 06:48:50,265] [autotune] generated config file done
+[INFO] [2025-10-02 06:48:50,310] [autotune] wait for connection
+[INFO] [2025-10-02 06:48:55,334] [autotune] Connected to MySQL db
+[INFO] [2025-10-02 06:48:55,335] [autotune] finish 5 seconds waiting for connection
+[INFO] [2025-10-02 06:48:55,335] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-02 06:48:55,336] [autotune] mysql is up
+[INFO] [2025-10-02 06:48:55,336] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-02 06:49:00,373] [autotune] [2025-10-02 06:49:00] Knobs applied online!
+[INFO] [2025-10-02 06:49:00,786] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_sysbench.sh read localhost 3308 root password 150 800000 10 80 180 ./log/1759387740.log sbread
+[INFO] [2025-10-02 06:52:12,020] [autotune] internal metrics: [7722, 1446324, 33245188608, 1089024, 34, 2029622, 49, 11711315968, 0, 714802, 0, 5327, 723, 720852, 1104496, 925089, 118367, 10630440, 11811160064, 0, 338, 0, 0, 0, 169, 0, 0, 0, 0, 0, 0, 0, 1, 32233, 15, 14, 16384, 0, 0, 0, 0, 4156, 0, 0, 147, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 31, 0, 78, 2029487, 1113, 15872, 46, 0, 0, 0].
+[INFO] [2025-10-02 06:52:12,031] [DBTune-sbread] Iteration 2, objective value: [-344.3411111111111].
+[INFO] [2025-10-02 07:06:23,502] [DBTune-sbread] Load 2 iterations from repo/history_sbread.json
+[INFO] [2025-10-02 07:06:25,191] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-02 07:06:25,209] [RGPE] Start to train base surrogates.
+[INFO] [2025-10-02 07:06:33,770] [RGPE] Building base surrogates took 8.560s.
+[INFO] [2025-10-02 07:06:33,789] [DBTune-sbread] Remain the space:Configuration space object:
+  Hyperparameters:
+    autocommit, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    automatic_sp_privileges, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    back_log, Type: UniformInteger, Range: [1, 65535], Default: 900
+    binlog_cache_size, Type: UniformInteger, Range: [4096, 4294967296], Default: 32768
+    binlog_direct_non_transactional_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    binlog_error_action, Type: Categorical, Choices: {IGNORE_ERROR, ABORT_SERVER}, Default: ABORT_SERVER
+    binlog_format, Type: Categorical, Choices: {ROW, STATEMENT, MIXED}, Default: ROW
+    binlog_group_commit_sync_delay, Type: UniformInteger, Range: [0, 1000000], Default: 0
+    binlog_group_commit_sync_no_delay_count, Type: UniformInteger, Range: [0, 100000], Default: 0
+    binlog_order_commits, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    binlog_row_image, Type: Categorical, Choices: {full, minimal, noblob}, Default: full
+    binlog_rows_query_log_events, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    binlog_stmt_cache_size, Type: UniformInteger, Range: [4096, 4294967296], Default: 32768
+    bulk_insert_buffer_size, Type: UniformInteger, Range: [0, 83886080], Default: 8388608
+    check_proxy_users, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    completion_type, Type: Categorical, Choices: {NO_CHAIN, CHAIN, RELEASE}, Default: NO_CHAIN
+    concurrent_insert, Type: Categorical, Choices: {NEVER, AUTO, ALWAYS}, Default: AUTO
+    connect_timeout, Type: UniformInteger, Range: [2, 31536000], Default: 10
+    default_week_format, Type: UniformInteger, Range: [0, 7], Default: 0
+    delay_key_write, Type: Categorical, Choices: {ON, OFF, ALL}, Default: ON
+    div_precision_increment, Type: UniformInteger, Range: [0, 30], Default: 4
+    end_markers_in_json, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    eq_range_index_dive_limit, Type: UniformInteger, Range: [0, 4294967295], Default: 200
+    expire_logs_days, Type: UniformInteger, Range: [0, 99], Default: 0
+    explicit_defaults_for_timestamp, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    flush, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    flush_time, Type: UniformInteger, Range: [0, 10], Default: 0
+    ft_min_word_len, Type: UniformInteger, Range: [1, 8], Default: 4
+    ft_query_expansion_limit, Type: UniformInteger, Range: [0, 1000], Default: 20
+    general_log, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    group_concat_max_len, Type: UniformInteger, Range: [0, 18446700000000000], Default: 1
+    host_cache_size, Type: UniformInteger, Range: [0, 65536], Default: 0
+    innodb_adaptive_flushing, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_adaptive_flushing_lwm, Type: UniformInteger, Range: [0, 70], Default: 10
+    innodb_adaptive_hash_index_parts, Type: UniformInteger, Range: [1, 512], Default: 8
+    innodb_adaptive_max_sleep_delay, Type: UniformInteger, Range: [0, 1000000], Default: 150000
+    innodb_api_bk_commit_interval, Type: UniformInteger, Range: [1, 1073741824], Default: 5
+    innodb_api_disable_rowlock, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_api_enable_binlog, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_api_enable_mdl, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_autoextend_increment, Type: UniformInteger, Range: [1, 1000], Default: 64
+    innodb_buffer_pool_size, Type: UniformInteger, Range: [10307921510, 34359738368], Default: 20615843020
+    innodb_change_buffer_max_size, Type: UniformInteger, Range: [0, 50], Default: 25
+    innodb_change_buffering, Type: Categorical, Choices: {none, inserts, deletes, changes, purges, all}, Default: all
+    innodb_cmp_per_index_enabled, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_commit_concurrency, Type: UniformInteger, Range: [0, 1000], Default: 0
+    innodb_compression_failure_threshold_pct, Type: UniformInteger, Range: [0, 100], Default: 5
+    innodb_compression_level, Type: UniformInteger, Range: [0, 9], Default: 6
+    innodb_compression_pad_pct_max, Type: UniformInteger, Range: [0, 75], Default: 50
+    innodb_concurrency_tickets, Type: UniformInteger, Range: [1, 4294967295], Default: 5000
+    innodb_deadlock_detect, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_default_row_format, Type: Categorical, Choices: {DYNAMIC, COMPACT, REDUNDANT}, Default: DYNAMIC
+    innodb_disable_sort_file_cache, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_doublewrite, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_file_per_table, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_fill_factor, Type: UniformInteger, Range: [10, 100], Default: 100
+    innodb_flush_log_at_timeout, Type: UniformInteger, Range: [1, 2700], Default: 1
+    innodb_flush_log_at_trx_commit, Type: Categorical, Choices: {0, 1, 2}, Default: 1
+    innodb_flush_neighbors, Type: Categorical, Choices: {0, 1, 2}, Default: 1
+    innodb_flush_sync, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_flushing_avg_loops, Type: UniformInteger, Range: [1, 1000], Default: 30
+    innodb_ft_cache_size, Type: UniformInteger, Range: [1600000, 80000000], Default: 8000000
+    innodb_ft_enable_diag_print, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_ft_enable_stopword, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_ft_max_token_size, Type: UniformInteger, Range: [10, 84], Default: 84
+    innodb_ft_min_token_size, Type: UniformInteger, Range: [0, 16], Default: 3
+    innodb_ft_num_word_optimize, Type: UniformInteger, Range: [1000, 10000], Default: 2000
+    innodb_ft_result_cache_limit, Type: UniformInteger, Range: [1000000, 4294967295], Default: 2000000000
+    innodb_ft_sort_pll_degree, Type: UniformInteger, Range: [1, 16], Default: 2
+    innodb_ft_total_cache_size, Type: UniformInteger, Range: [32000000, 1600000000], Default: 640000000
+    innodb_io_capacity, Type: UniformInteger, Range: [100, 2000000], Default: 200
+    innodb_io_capacity_max, Type: UniformInteger, Range: [100, 40000], Default: 400
+    innodb_log_buffer_size, Type: UniformInteger, Range: [262144, 4294967295], Default: 16777216
+    innodb_log_compressed_pages, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_log_file_size, Type: UniformInteger, Range: [4194304, 1073741824], Default: 50331648
+    innodb_log_files_in_group, Type: UniformInteger, Range: [2, 10], Default: 2
+    innodb_log_write_ahead_size, Type: UniformInteger, Range: [512, 16384], Default: 8192
+    innodb_lru_scan_depth, Type: UniformInteger, Range: [100, 10240], Default: 1024
+    innodb_max_dirty_pages_pct, Type: UniformInteger, Range: [0, 99], Default: 75
+    innodb_max_dirty_pages_pct_lwm, Type: UniformInteger, Range: [0, 99], Default: 0
+    innodb_max_purge_lag, Type: UniformInteger, Range: [0, 4294967295], Default: 0
+    innodb_max_purge_lag_delay, Type: UniformInteger, Range: [0, 10000000], Default: 0
+    innodb_max_undo_log_size, Type: UniformInteger, Range: [10485, 18446700000000000], Default: 1073741
+    innodb_old_blocks_time, Type: UniformInteger, Range: [0, 4294967295], Default: 1000
+    innodb_online_alter_log_max_size, Type: UniformInteger, Range: [65, 18446700000000000], Default: 134217
+    innodb_open_files, Type: UniformInteger, Range: [10, 655350], Default: 2000
+    innodb_optimize_fulltext_only, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_page_cleaners, Type: UniformInteger, Range: [1, 8], Default: 4
+    innodb_print_all_deadlocks, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_purge_batch_size, Type: UniformInteger, Range: [1, 5000], Default: 300
+    innodb_purge_rseg_truncate_frequency, Type: UniformInteger, Range: [1, 128], Default: 128
+    innodb_purge_threads, Type: UniformInteger, Range: [1, 32], Default: 4
+    innodb_random_read_ahead, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_read_ahead_threshold, Type: UniformInteger, Range: [0, 64], Default: 56
+    innodb_read_io_threads, Type: UniformInteger, Range: [1, 64], Default: 4
+    innodb_replication_delay, Type: UniformInteger, Range: [0, 10000], Default: 0
+    innodb_rollback_on_timeout, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_rollback_segments, Type: UniformInteger, Range: [1, 128], Default: 128
+    innodb_sort_buffer_size, Type: UniformInteger, Range: [65536, 67108864], Default: 1048576
+    innodb_spin_wait_delay, Type: UniformInteger, Range: [0, 6000], Default: 6
+    innodb_stats_auto_recalc, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_stats_include_delete_marked, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_stats_method, Type: Categorical, Choices: {nulls_equal, nulls_unequal, nulls_ignored}, Default: nulls_equal
+    innodb_stats_on_metadata, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_stats_persistent, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_stats_transient_sample_pages, Type: UniformInteger, Range: [1, 100], Default: 8
+    innodb_strict_mode, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_sync_array_size, Type: UniformInteger, Range: [1, 1024], Default: 1
+    innodb_sync_spin_loops, Type: UniformInteger, Range: [0, 30000], Default: 30
+    innodb_table_locks, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_thread_concurrency, Type: UniformInteger, Range: [0, 1000], Default: 0
+    innodb_thread_sleep_delay, Type: UniformInteger, Range: [0, 1000000], Default: 10000
+    innodb_undo_log_truncate, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    innodb_use_native_aio, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    innodb_write_io_threads, Type: UniformInteger, Range: [1, 64], Default: 4
+    join_buffer_size, Type: UniformInteger, Range: [128, 1073741824], Default: 262144
+    keep_files_on_create, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    key_buffer_size, Type: UniformInteger, Range: [8, 17179869184], Default: 8388608
+    key_cache_age_threshold, Type: UniformInteger, Range: [100, 30000], Default: 300
+    key_cache_block_size, Type: UniformInteger, Range: [512, 16384], Default: 1024
+    key_cache_division_limit, Type: UniformInteger, Range: [1, 100], Default: 100
+    local_infile, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_bin_trust_function_creators, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_bin_use_v1_row_events, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_builtin_as_identified_by_password, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_output, Type: Categorical, Choices: {TABLE, FILE, NONE}, Default: FILE
+    log_queries_not_using_indexes, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_slave_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_slow_admin_statements, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    log_statements_unsafe_for_binlog, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_syslog_include_pid, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    log_timestamps, Type: Categorical, Choices: {UTC, SYSTEM}, Default: UTC
+    long_query_time, Type: UniformInteger, Range: [0, 20], Default: 10
+    low_priority_updates, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    lower_case_table_names, Type: UniformInteger, Range: [0, 2], Default: 0
+    master_verify_checksum, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    max_allowed_packet, Type: UniformInteger, Range: [1024, 1073741824], Default: 4194304
+    max_binlog_cache_size, Type: UniformInteger, Range: [4, 18446744073709552], Default: 18446744073709500
+    max_binlog_size, Type: UniformInteger, Range: [4096, 1073741824], Default: 1073741824
+    max_binlog_stmt_cache_size, Type: UniformInteger, Range: [4, 18446744073709500], Default: 18446744073709500
+    max_connections, Type: UniformInteger, Range: [1, 100000], Default: 1000
+    max_delayed_threads, Type: UniformInteger, Range: [0, 16384], Default: 20
+    max_digest_length, Type: UniformInteger, Range: [0, 1048576], Default: 1024
+    max_error_count, Type: UniformInteger, Range: [0, 65535], Default: 64
+    max_heap_table_size, Type: UniformInteger, Range: [16384, 1073741824], Default: 16777216
+    max_join_size, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709552
+    max_length_for_sort_data, Type: UniformInteger, Range: [4, 8388608], Default: 1024
+    max_points_in_geometry, Type: UniformInteger, Range: [3, 1048576], Default: 65536
+    max_prepared_stmt_count, Type: UniformInteger, Range: [0, 1048576], Default: 16382
+    max_seeks_for_key, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709500
+    max_sort_length, Type: UniformInteger, Range: [4, 8388608], Default: 1024
+    max_user_connections, Type: UniformInteger, Range: [0, 4294967295], Default: 0
+    max_write_lock_count, Type: UniformInteger, Range: [0, 18446744073709552], Default: 18446744073709500
+    multi_range_count, Type: UniformInteger, Range: [1, 4294967295], Default: 256
+    mysql_native_password_proxy_users, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    net_buffer_length, Type: UniformInteger, Range: [1024, 1048576], Default: 16384
+    net_read_timeout, Type: UniformInteger, Range: [1, 60], Default: 30
+    net_write_timeout, Type: UniformInteger, Range: [1, 120], Default: 60
+    ngram_token_size, Type: UniformInteger, Range: [1, 10], Default: 2
+    offline_mode, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    old_alter_table, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    old_passwords, Type: Categorical, Choices: {0, 2}, Default: 0
+    open_files_limit, Type: UniformInteger, Range: [0, 655350], Default: 50000
+    optimizer_prune_level, Type: UniformInteger, Range: [0, 1], Default: 1
+    optimizer_search_depth, Type: UniformInteger, Range: [0, 62], Default: 62
+    preload_buffer_size, Type: UniformInteger, Range: [1024, 1073741824], Default: 32768
+    query_alloc_block_size, Type: UniformInteger, Range: [1024, 134217728], Default: 8192
+    query_cache_limit, Type: UniformInteger, Range: [0, 134217728], Default: 1048576
+    query_cache_min_res_unit, Type: UniformInteger, Range: [512, 65536], Default: 4096
+    query_cache_size, Type: UniformInteger, Range: [0, 2147483648], Default: 1048576
+    query_cache_wlock_invalidate, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    query_prealloc_size, Type: UniformInteger, Range: [8192, 134217728], Default: 8192
+    range_alloc_block_size, Type: UniformInteger, Range: [4096, 65536], Default: 4096
+    read_buffer_size, Type: UniformInteger, Range: [8192, 2147479552], Default: 131072
+    read_rnd_buffer_size, Type: UniformInteger, Range: [1, 134217728], Default: 262144
+    require_secure_transport, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    session_track_gtids, Type: Categorical, Choices: {OFF, OWN_GTID, ALL_GTIDS}, Default: OFF
+    session_track_schema, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    session_track_state_change, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    session_track_transaction_info, Type: Categorical, Choices: {OFF, STATE, CHARACTERISTICS}, Default: OFF
+    show_compatibility_56, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    skip_external_locking, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    skip_name_resolve, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    skip_networking, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    slow_query_log, Type: Categorical, Choices: {ON, OFF}, Default: OFF
+    sort_buffer_size, Type: UniformInteger, Range: [32768, 134217728], Default: 262144
+    stored_program_cache, Type: UniformInteger, Range: [16, 524288], Default: 256
+    sync_binlog, Type: UniformInteger, Range: [0, 4294967295], Default: 1
+    sync_frm, Type: Categorical, Choices: {ON, OFF}, Default: ON
+    table_definition_cache, Type: UniformInteger, Range: [400, 524288], Default: 1400
+    table_open_cache, Type: UniformInteger, Range: [1, 250000], Default: 2000
+    table_open_cache_instances, Type: UniformInteger, Range: [1, 64], Default: 16
+    thread_cache_size, Type: UniformInteger, Range: [0, 16384], Default: 0
+    tmp_table_size, Type: UniformInteger, Range: [1024, 1073741824], Default: 16777216
+    transaction_alloc_block_size, Type: UniformInteger, Range: [1024, 131072], Default: 8192
+    transaction_prealloc_size, Type: UniformInteger, Range: [1024, 131072], Default: 4096
+    updatable_views_with_limit, Type: Categorical, Choices: {YES, NO}, Default: YES
+
+[INFO] [2025-10-02 07:06:33,792] [DBTune-sbread] [Iteration 2] [0,3] Total space size:5.885367239708822e+297
+[INFO] [2025-10-02 07:06:33,796] [autotune] [step 1] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 63279, 'binlog_cache_size': 789451279, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'MIXED', 'binlog_group_commit_sync_delay': 43128, 'binlog_group_commit_sync_no_delay_count': 92172, 'binlog_order_commits': 'ON', 'binlog_row_image': 'noblob', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 1333927432, 'bulk_insert_buffer_size': 71557450, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'ALWAYS', 'connect_timeout': 29730690, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 25, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 212544032, 'expire_logs_days': 89, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 9, 'ft_min_word_len': 8, 'ft_query_expansion_limit': 944, 'general_log': 'ON', 'group_concat_max_len': 16779945509648324000, 'host_cache_size': 3950, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 35, 'innodb_adaptive_hash_index_parts': 14, 'innodb_adaptive_max_sleep_delay': 548663, 'innodb_api_bk_commit_interval': 732438080, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 950, 'innodb_buffer_pool_size': 11710024657, 'innodb_change_buffer_max_size': 48, 'innodb_change_buffering': 'inserts', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 930, 'innodb_compression_failure_threshold_pct': 94, 'innodb_compression_level': 8, 'innodb_compression_pad_pct_max': 73, 'innodb_concurrency_tickets': 3995912704, 'innodb_deadlock_detect': 'OFF', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 78, 'innodb_flush_log_at_timeout': 1481, 'innodb_flush_log_at_trx_commit': '2', 'innodb_flush_neighbors': '2', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 42, 'innodb_ft_cache_size': 69857217, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 13, 'innodb_ft_min_token_size': 16, 'innodb_ft_num_word_optimize': 9570, 'innodb_ft_result_cache_limit': 2914759829, 'innodb_ft_sort_pll_degree': 1, 'innodb_ft_total_cache_size': 1408037663, 'innodb_io_capacity': 1924178, 'innodb_io_capacity_max': 39264, 'innodb_log_buffer_size': 804239246, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 519483386, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 1310, 'innodb_lru_scan_depth': 9160, 'innodb_max_dirty_pages_pct': 26, 'innodb_max_dirty_pages_pct_lwm': 95, 'innodb_max_purge_lag': 3821086463, 'innodb_max_purge_lag_delay': 801923, 'innodb_max_undo_log_size': 1299994846376092000, 'innodb_old_blocks_time': 2693861631, 'innodb_online_alter_log_max_size': 18005791393142940000, 'innodb_open_files': 13192, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 5, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 4170, 'innodb_purge_rseg_truncate_frequency': 4, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 7, 'innodb_read_io_threads': 5, 'innodb_replication_delay': 790, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 116, 'innodb_sort_buffer_size': 65621778, 'innodb_spin_wait_delay': 1892, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 90, 'innodb_strict_mode': 'OFF', 'innodb_sync_array_size': 980, 'innodb_sync_spin_loops': 3054, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 592, 'innodb_thread_sleep_delay': 191735, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 63, 'join_buffer_size': 902380565, 'keep_files_on_create': 'OFF', 'key_buffer_size': 11442905091, 'key_cache_age_threshold': 1426, 'key_cache_block_size': 4540, 'key_cache_division_limit': 94, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'ON', 'log_output': 'TABLE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 0, 'low_priority_updates': 'ON', 'lower_case_table_names': 0, 'master_verify_checksum': 'ON', 'max_allowed_packet': 1026495598, 'max_binlog_cache_size': 17638616221433726000, 'max_binlog_size': 545508383, 'max_binlog_stmt_cache_size': 16446910543668662000, 'max_connections': 82043, 'max_delayed_threads': 15749, 'max_digest_length': 918530, 'max_error_count': 1922, 'max_heap_table_size': 932833638, 'max_join_size': 1682154659084500000, 'max_length_for_sort_data': 3629081, 'max_points_in_geometry': 1024827, 'max_prepared_stmt_count': 1004617, 'max_seeks_for_key': 899013483427790000, 'max_sort_length': 7993362, 'max_user_connections': 1626073472, 'max_write_lock_count': 17597498884601414000, 'multi_range_count': 326380448, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 442437, 'net_read_timeout': 51, 'net_write_timeout': 91, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 624424, 'optimizer_prune_level': 1, 'optimizer_search_depth': 11, 'preload_buffer_size': 957580335, 'query_alloc_block_size': 69746844, 'query_cache_limit': 118751984, 'query_cache_min_res_unit': 63768, 'query_cache_size': 1956851840, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 10597815, 'range_alloc_block_size': 39597, 'read_buffer_size': 69188124, 'read_rnd_buffer_size': 131762112, 'require_secure_transport': 'ON', 'session_track_gtids': 'ALL_GTIDS', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'STATE', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 9053288, 'stored_program_cache': 500261, 'sync_binlog': 3802011647, 'sync_frm': 'OFF', 'table_definition_cache': 34159, 'table_open_cache': 232164, 'table_open_cache_instances': 10, 'thread_cache_size': 13986, 'tmp_table_size': 95575460, 'transaction_alloc_block_size': 123219, 'transaction_prealloc_size': 100759, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-02 07:06:33,885] [autotune] Close db successfully
+[INFO] [2025-10-02 07:06:33,886] [autotune] mysql is shut down
+[INFO] [2025-10-02 07:06:33,887] [autotune] modify innodb_thread_concurrency
+[INFO] [2025-10-02 07:06:33,894] [autotune] generated config file done
+[INFO] [2025-10-02 07:06:33,956] [autotune] wait for connection
+[INFO] [2025-10-02 07:06:36,976] [autotune] Connected to MySQL db
+[INFO] [2025-10-02 07:06:36,977] [autotune] finish 3 seconds waiting for connection
+[INFO] [2025-10-02 07:06:36,977] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-02 07:06:36,978] [autotune] mysql is up
+[INFO] [2025-10-02 07:06:36,978] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-02 07:06:42,016] [autotune] [2025-10-02 07:06:42] Knobs applied online!
+[INFO] [2025-10-02 07:06:42,443] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_sysbench.sh read localhost 3308 root password 150 800000 10 80 180 ./log/1759388802.log sbread

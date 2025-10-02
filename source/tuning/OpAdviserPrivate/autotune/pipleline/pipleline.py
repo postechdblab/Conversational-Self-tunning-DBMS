@@ -80,6 +80,7 @@ class PipleLine(BOBase):
                  history_workload_data=None,
                  only_knob = False,
                  only_range = False,
+                 single_iteration_mode=False,
                  advisor_kwargs: dict = None,
                  #  latent_dim=0,
                  #2024-12-06 softmax transformer
@@ -300,7 +301,10 @@ class PipleLine(BOBase):
             self.optimizer_list = [SMAC, MBO, DDPG, GA]
             self.optimizer = SMAC
         self.tuning_result=list()
-        self.max_iterations=self.iteration_id+1
+        # For demo/single-iteration mode (e.g., Flask app), only run one iteration at a time
+        # For normal tuning, use max_runs from config
+        if single_iteration_mode:
+            self.max_iterations=self.iteration_id+1
         #2024-12-06 softmax transformer
         self.softmax_weight=softmax_weight
         self.transformer=transformer

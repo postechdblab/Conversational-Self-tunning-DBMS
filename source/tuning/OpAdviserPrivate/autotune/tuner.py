@@ -167,7 +167,7 @@ class DBTuner:
 
         return history_workload_data
 
-    def tune(self):
+    def tune(self, single_iteration_mode=False):
         bo = PipleLine(self.env.step,
                        self.config_space,
                        num_objs=len(self.objs),
@@ -199,6 +199,7 @@ class DBTuner:
                        history_workload_data=self.history_workload_data,
                        only_knob=eval(self.args_tune['only_knob']),
                        only_range=eval(self.args_tune['only_range']),
+                       single_iteration_mode=single_iteration_mode,
                     #    latent_dim=int(self.args_tune['latent_dim'])
                  #2024-11-22 softmax weight
                  softmax_weight=self.args_tune['softmax_weight'],
