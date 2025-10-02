@@ -6,6 +6,32 @@ echo "POST-CREATE SETUP"
 echo "=========================================="
 echo ""
 
+# Ensure MySQL is running before proceeding
+echo "Checking MySQL status..."
+if ! sudo service mysql status >/dev/null 2>&1; then
+    echo "MySQL is not running. Starting MySQL..."
+    sudo service mysql start
+    sleep 5
+fi
+
+# Wait for MySQL to be fully ready
+echo "Waiting for MySQL to be ready..."
+MAX_ATTEMPTS=30
+for i in $(seq 1 $MAX_ATTEMPTS); do
+    if mysql -u root -ppassword -h localhost -P 3306 -e "SELECT 1" >/dev/null 2>&1; then
+        echo "✅ MySQL is ready on port 3306!"
+        break
+    fi
+    if [ $i -eq $MAX_ATTEMPTS ]; then
+        echo "❌ ERROR: MySQL did not become ready after ${MAX_ATTEMPTS} attempts"
+        echo "Please check MySQL status manually: sudo service mysql status"
+        exit 1
+    fi
+    echo "  Attempt $i/$MAX_ATTEMPTS: MySQL not ready yet, waiting..."
+    sleep 2
+done
+echo ""
+
 # Install/upgrade Python packages from requirements.txt
 echo "Installing Python packages..."
 if [ -f requirements.txt ]; then

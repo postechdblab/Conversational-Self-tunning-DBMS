@@ -1,18 +1,24 @@
 #!/bin/bash
-set -e
+set -e  # Exit on error
+set -x  # Verbose mode
 
-echo "======================================"
-echo "Setting up Sysbench Workloads"
-echo "======================================"
+# Function to print with timestamp
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+}
+
+log "======================================"
+log "Setting up Sysbench Workloads"
+log "======================================"
 
 # Get current user
 CURRENT_USER=$(whoami)
 MYSQL_USER=${CURRENT_USER}
-echo "Running as system user: $CURRENT_USER"
-echo "Using MySQL user: $MYSQL_USER"
+log "Running as system user: $CURRENT_USER"
+log "Using MySQL user: $MYSQL_USER"
 
 # Install Sysbench
-echo "Installing Sysbench..."
+log "Installing Sysbench (this may take 5-10 minutes)..."
 cd /
 sudo rm -rf sysbench
 sudo git clone https://github.com/akopytov/sysbench.git
@@ -24,10 +30,14 @@ git checkout ead2689ac6f61c5e7ba7c6e19198b86bd3a51d3c
 make
 sudo make install
 
-echo "Sysbench installed successfully!"
+log "✅ Sysbench installed successfully!"
 
 # Setup Sysbench Read-Write Database
-echo "Setting up Sysbench Read-Write database..."
+log "=========================================="
+log "Setting up Sysbench Read-Write database..."
+log "This will create 300 tables with 800K rows each"
+log "Estimated time: 10-15 minutes"
+log "=========================================="
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbrw;"
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbrw;"
 sysbench \
@@ -44,10 +54,14 @@ sysbench \
     oltp_read_write \
     prepare
 
-echo "Sysbench Read-Write database prepared!"
+log "✅ Sysbench Read-Write database prepared!"
 
 # Setup Sysbench Write-Only Database
-echo "Setting up Sysbench Write-Only database..."
+log "=========================================="
+log "Setting up Sysbench Write-Only database..."
+log "This will create 300 tables with 800K rows each"
+log "Estimated time: 10-15 minutes"
+log "=========================================="
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbwrite;"
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbwrite;"
 sysbench \
@@ -64,10 +78,14 @@ sysbench \
     oltp_write_only \
     prepare
 
-echo "Sysbench Write-Only database prepared!"
+log "✅ Sysbench Write-Only database prepared!"
 
 # Setup Sysbench Read-Only Database
-echo "Setting up Sysbench Read-Only database..."
+log "=========================================="
+log "Setting up Sysbench Read-Only database..."
+log "This will create 300 tables with 800K rows each"
+log "Estimated time: 10-15 minutes"
+log "=========================================="
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbread;"
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbread;"
 sysbench \
@@ -84,11 +102,12 @@ sysbench \
     oltp_read_only \
     prepare
 
-echo "Sysbench Read-Only database prepared!"
+log "✅ Sysbench Read-Only database prepared!"
 
-echo "======================================"
-echo "Sysbench Setup Complete!"
-echo "======================================"
+log ""
+log "======================================"
+log "✅ Sysbench Setup Complete!"
+log "======================================"
 echo "You can now run:"
 echo "  cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
 echo "  export PYTHONPATH=."
