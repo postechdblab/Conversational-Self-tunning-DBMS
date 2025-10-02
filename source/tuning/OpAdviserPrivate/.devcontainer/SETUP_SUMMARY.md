@@ -1,194 +1,151 @@
-# DevContainer Setup Summary
+# Dev Container Setup Summary
 
-## ✅ What Was Automated
+## ✅ Configuration Changes Applied
 
-All manual setup steps from the main README.md have been automated and integrated into the DevContainer configuration.
+### 1. MySQL Port Configuration
+- **Changed from:** Port 3308
+- **Changed to:** Port 3306 (standard MySQL port)
 
-## 📁 Files Created
+### 2. Files Updated
 
-### 1. **devcontainer.json** (Updated)
-Enhanced the DevContainer configuration with:
-- **postCreateCommand**: Runs automatic setup on container creation
-- **postStartCommand**: Ensures MySQL starts every time container starts
-- **forwardPorts**: Exposes MySQL (3308) and Flask (1234) ports
-- **remoteUser**: Changed to `root` for system-level operations
-- **containerEnv**: Sets PYTHONPATH automatically
-- **runArgs**: Added `--privileged` for MySQL service management
-- **VS Code extensions**: Python and Pylance for better development experience
-- **Python settings**: Configured Python 3.8 as default interpreter
+#### Configuration Files
+- `.devcontainer/setup.sh` - MySQL configuration
+- `.devcontainer/setup_oltpbench.sh` - OLTPBench setup
+- `.devcontainer/setup_tpch.sh` - TPC-H setup
+- `.devcontainer/setup_sysbench.sh` - Sysbench setup
+- `.devcontainer/devcontainer.json` - DevContainer lifecycle
+- `mysql-connect.sh` - MySQL connection helper
+- `README.md` - Documentation
+- `.devcontainer/SUCCESS_REPORT.md` - Status report
 
-### 2. **setup.sh** (Main Setup Script)
-Automates the "Prepare workload" and "Setup Python Environment" sections:
-- ✅ Installs all required packages (MySQL 5.7, Java, Python 3.8, build tools, etc.)
-- ✅ Configures MySQL server (port 3308, innodb settings)
-- ✅ Creates MySQL users and sets permissions
-- ✅ Sets max_connections to 100,000
-- ✅ Creates MySQL log directories
-- ✅ Sets up Python 3.8 as default
-- ✅ Installs all Python requirements
-- ✅ Configures PYTHONPATH environment variable
+#### Application Code
+- `concert_singer.py`
+- `scripts/run_benchmark.py`
+- `scripts/train.py`
+- All 29 `.ini` configuration files in `scripts/`
+- 10 shell scripts (cluster.sh, _sysbench.sh, etc.)
 
-### 3. **setup_sysbench.sh** (Sysbench Workloads)
-Automates the "Find ground truth" Sysbench sections:
-- ✅ Clones and builds Sysbench from specific commit
-- ✅ Creates and prepares `sbrw` database (Read-Write, 800K rows × 300 tables)
-- ✅ Creates and prepares `sbwrite` database (Write-Only, 800K rows × 300 tables)
-- ✅ Creates and prepares `sbread` database (Read-Only, 800K rows × 300 tables)
+### 3. Automatic Database Population
 
-**Time estimate**: 30-60 minutes depending on system
+When you **rebuild the dev container**, the following will happen automatically:
 
-### 4. **setup_oltpbench.sh** (OLTPBench Workloads)
-Automates all OLTPBench setup sections:
-- ✅ Clones and builds OLTPBench
-- ✅ Sets up Twitter benchmark database
-- ✅ Sets up TPC-C benchmark database
-- ✅ Sets up YCSB benchmark database
-- ✅ Sets up Wikipedia benchmark database
-- ✅ Sets up TATP benchmark database
-- ✅ Sets up Voter benchmark database
+1. ✅ **onCreateCommand**: MySQL and base system setup
+2. ✅ **postCreateCommand**: Python packages installation + **Database population starts in background**
+3. ✅ **postStartCommand**: MySQL service starts on every container start
 
-**Time estimate**: 1-3 hours depending on system
+#### Databases Being Populated (30-60 minutes):
+- **OLTPBench**: twitter, tpcc, ycsb, wikipedia, tatp, voter
+- **TPC-H**: tpch (scale factor 10)
+- **Sysbench**: sbrw (read-write), sbwrite (write-only), sbread (read-only)
+- **JOB**: imdbload (if available)
 
-### 5. **setup_tpch.sh** (TPC-H Workload)
-Automates the TPC-H setup section:
-- ✅ Clones queries-tpch-dbgen-mysql repository
-- ✅ Builds dbgen tool
-- ✅ Generates TPC-H data (scale factor 10, ~10GB)
-- ✅ Creates database and all tables
-- ✅ Loads data from .tbl files
-- ✅ Sets up primary keys and foreign keys
+## 🚀 Getting Started
 
-**Time estimate**: 30-90 minutes depending on system
+### After Rebuilding Container
 
-### 6. **setup_job.sh** (Join Order Benchmark)
-Automates the JOB setup section:
-- ✅ Makes job.sh executable
-- ✅ Runs job.sh setup script
+1. **Check database setup progress:**
+   ```bash
+   tail -f /tmp/database_setup.log
+   # or
+   bash .devcontainer/check_database_status.sh
+   ```
 
-**Time estimate**: 10-30 minutes depending on system
+2. **Connect to MySQL:**
+   ```bash
+   ./mysql-connect.sh
+   # or
+   mysql -u root -ppassword -h localhost -P 3306
+   ```
 
-### 7. **README.md** (DevContainer Documentation)
-Comprehensive documentation covering:
-- Overview of automatic setup
-- Detailed description of each workload script
-- Instructions for running experiments
-- Flask demo server setup
-- Container configuration details
-- Troubleshooting guide
-- Scripts reference table
+3. **List databases:**
+   ```bash
+   ./mysql-connect.sh -e "SHOW DATABASES;"
+   ```
 
-### 8. **QUICKSTART.md** (Quick Reference)
-Quick start guide with:
-- 3-step getting started process
-- Common commands reference
-- Troubleshooting tips
-- Links to full documentation
+### Manual Database Setup
 
-## 🚀 How to Use
+If you need to run database setup manually:
 
-### First Time Setup
-1. Open project in VS Code with Remote Containers extension
-2. Select "Reopen in Container"
-3. Wait for automatic setup (~5-10 minutes)
-4. Run a workload setup script (optional, only if you need specific benchmarks)
-5. Start running experiments!
+```bash
+# Setup all databases
+bash .devcontainer/setup_all_databases.sh
 
-### Running Experiments
+# Or setup individual benchmarks
+bash .devcontainer/setup_oltpbench.sh
+bash .devcontainer/setup_tpch.sh
+bash .devcontainer/setup_sysbench.sh
+bash .devcontainer/setup_job.sh
+```
 
-After container is ready:
+## 📊 Running Optimizations
+
+After databases are populated:
 
 ```bash
 cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate
 export PYTHONPATH=.
 
-# Choose your experiment
+# Example: Run optimization for Twitter workload
+python scripts/optimize.py --config=scripts/twitter.ini
+
+# Other workloads
+python scripts/optimize.py --config=scripts/tpcc.ini
+python scripts/optimize.py --config=scripts/ycsb.ini
+python scripts/optimize.py --config=scripts/tpch.ini
 python scripts/optimize.py --config=scripts/sysbench_rw.ini
 ```
 
-## 📊 What Happens Automatically vs Manually
+## 📝 Helper Scripts
 
-### ✅ Automatic (On Container Creation)
-- All system packages installation
-- MySQL server installation and configuration
-- MySQL user setup and permissions
-- Python 3.8 setup
-- Python packages installation
-- Environment variables configuration
-- MySQL auto-start on container start
+### `.devcontainer/setup_all_databases.sh`
+Master script that sets up all benchmark databases sequentially.
 
-### 🔧 Manual (Run When Needed)
-- Workload data generation (Sysbench, OLTPBench, etc.)
-  - **Why manual?** These take a long time and may not all be needed
-  - **How?** Run the appropriate `setup_*.sh` script
-- Running actual experiments
-- Flask demo server
+### `.devcontainer/check_database_status.sh`
+Checks the status of database population and lists available databases.
 
-## 🎯 Key Improvements Over Manual Setup
+### `mysql-connect.sh`
+Quick connection script for MySQL with correct port and credentials.
 
-1. **One-Click Setup**: Container creation triggers all base setup automatically
-2. **Idempotent Scripts**: Scripts can be run multiple times safely
-3. **Error Handling**: Scripts include error checking and informative messages
-4. **Documentation**: Comprehensive guides included
-5. **Environment Persistence**: MySQL auto-starts on container restart
-6. **Pre-configured**: All paths, environment variables, and settings ready to use
-7. **Modular**: Workload setup is separated into individual scripts
+## 🔧 Troubleshooting
 
-## 🔍 Technical Details
-
-### Container Configuration
-- **Image**: Ubuntu Bionic (18.04)
-- **Memory**: 64GB
-- **Network**: Host mode (direct access to ports)
-- **User**: vscode (uses sudo for privileged operations)
-- **Privileges**: Standard (uses sudo when needed)
-
-### MySQL Configuration
-- **Port**: 3308 (to avoid conflicts with host MySQL)
-- **Password**: `password`
-- **Max Connections**: 100,000
-- **Log Checksums**: Disabled (innodb_log_checksums = 0)
-- **Slow Query Log**: Enabled at /var/log/mysql/base/mysql-slow.log
-
-### Python Configuration
-- **Version**: 3.8
-- **PYTHONPATH**: Automatically set to workspace root
-- **Packages**: All from requirements.txt installed
-- **Interpreter**: Set as default in VS Code
-
-## 📝 Files Overview
-
-```
-.devcontainer/
-├── devcontainer.json          # Container configuration
-├── docker-compose.yml         # (existing, unchanged)
-├── setup.sh                   # Main setup script (auto-runs)
-├── setup_sysbench.sh          # Sysbench workload setup
-├── setup_oltpbench.sh         # OLTPBench workload setup
-├── setup_tpch.sh              # TPC-H workload setup
-├── setup_job.sh               # JOB workload setup
-├── README.md                  # Full documentation
-├── QUICKSTART.md              # Quick reference guide
-└── SETUP_SUMMARY.md           # This file
+### MySQL Not Running
+```bash
+sudo service mysql status
+sudo service mysql start
 ```
 
-## 🎉 Result
+### Database Setup Failed
+```bash
+# Check logs
+cat /tmp/database_setup.log
 
-You can now:
-1. Open the project in a DevContainer
-2. Wait for automatic setup
-3. Optionally run workload setup scripts
-4. Immediately start running experiments
+# Restart setup
+pkill -f setup_all_databases.sh
+bash .devcontainer/setup_all_databases.sh
+```
 
-**No more manual installation steps!** Everything from the README.md is automated.
+### Check MySQL Port
+```bash
+mysql -u root -ppassword -h localhost -P 3306 -e "SELECT @@port;"
+# Should return: 3306
+```
 
-## 📚 Next Steps
+## 📖 Documentation
 
-1. **For quick testing**: Run `setup_sysbench.sh` and try `sysbench_rw.ini`
-2. **For comprehensive testing**: Run all setup scripts (will take several hours)
-3. **For demo**: Follow Flask demo instructions in README.md
-4. **For development**: Python environment is ready, start coding!
+- **Database Setup Guide**: `.devcontainer/DATABASES.md`
+- **Main README**: `README.md`
+- **Success Report**: `.devcontainer/SUCCESS_REPORT.md`
 
-## 🙏 Credits
+## ⚙️ DevContainer Lifecycle
 
-All setup procedures are based on the original README.md instructions, now automated for DevContainer environments.
+1. **Build** → Dockerfile creates base image with all dependencies
+2. **onCreateCommand** → Runs `setup.sh` to configure MySQL and system
+3. **postCreateCommand** → Installs Python packages + **starts database population**
+4. **postStartCommand** → Ensures MySQL is running on every container start
 
+## 🎯 Next Steps
+
+1. Wait for database population to complete (check with `tail -f /tmp/database_setup.log`)
+2. Verify databases are available: `./mysql-connect.sh -e "SHOW DATABASES;"`
+3. Start running optimization scripts
+4. Enjoy automated DBMS tuning! 🎉

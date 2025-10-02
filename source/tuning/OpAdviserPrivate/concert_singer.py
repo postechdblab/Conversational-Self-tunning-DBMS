@@ -117,7 +117,7 @@ def insert_to_mysql(data: Tuple[List[tuple]]) -> None:
             user="root",
             password="password",
             database="concert_singer",
-            port=3308,
+            port=3306,
         )
     except mysql.connector.Error as err:
         if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
@@ -125,7 +125,7 @@ def insert_to_mysql(data: Tuple[List[tuple]]) -> None:
                 host="localhost",
                 user="root",
                 password="password",
-                port=3308,
+                port=3306,
             )
             cursor = conn.cursor()
             with open("/workspaces/OpAdviserPrivate/concert_singer.sql", "r") as f:

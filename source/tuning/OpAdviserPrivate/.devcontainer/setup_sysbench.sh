@@ -28,12 +28,12 @@ echo "Sysbench installed successfully!"
 
 # Setup Sysbench Read-Write Database
 echo "Setting up Sysbench Read-Write database..."
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbrw;"
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbrw;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbrw;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbrw;"
 sysbench \
     --db-driver=mysql \
     --mysql-host=localhost \
-    --mysql-port=3308 \
+    --mysql-port=3306 \
     --mysql-user=$MYSQL_USER \
     --mysql-password=password \
     --table_size=800000 \
@@ -48,12 +48,12 @@ echo "Sysbench Read-Write database prepared!"
 
 # Setup Sysbench Write-Only Database
 echo "Setting up Sysbench Write-Only database..."
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbwrite;"
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbwrite;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbwrite;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbwrite;"
 sysbench \
     --db-driver=mysql \
     --mysql-host=localhost \
-    --mysql-port=3308 \
+    --mysql-port=3306 \
     --mysql-user=$MYSQL_USER \
     --mysql-password=password \
     --table_size=800000 \
@@ -68,12 +68,12 @@ echo "Sysbench Write-Only database prepared!"
 
 # Setup Sysbench Read-Only Database
 echo "Setting up Sysbench Read-Only database..."
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbread;"
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbread;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS sbread;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE sbread;"
 sysbench \
     --db-driver=mysql \
     --mysql-host=localhost \
-    --mysql-port=3308 \
+    --mysql-port=3306 \
     --mysql-user=$MYSQL_USER \
     --mysql-password=password \
     --table_size=800000 \

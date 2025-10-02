@@ -31,9 +31,9 @@ echo "Generating TPC-H data (scale factor 10)..."
 
 # Create database and tables
 echo "Creating TPC-H database and loading data..."
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS tpch;"
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword -e"CREATE DATABASE tpch;"
-mysql -h localhost -P 3308 -u $MYSQL_USER -ppassword tpch <<'EOF'
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS tpch;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE tpch;"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword tpch <<'EOF'
 CREATE TABLE NATION  ( N_NATIONKEY  INTEGER NOT NULL,
                             N_NAME       CHAR(25) NOT NULL,
                             N_REGIONKEY  INTEGER NOT NULL,
