@@ -1,0 +1,52 @@
+{
+  "name": "circuits",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "circuitid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "circuitref",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "name",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "location",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "country",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "lat",
+      "description": "",
+      "type": "real"
+    },
+    {
+      "name": "lng",
+      "description": "",
+      "type": "real"
+    },
+    {
+      "name": "alt",
+      "description": "",
+      "type": "text"
+    },
+    {
+      "name": "url",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

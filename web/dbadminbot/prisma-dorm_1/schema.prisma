@@ -1,0 +1,48 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../node_modules/@internal/prisma-dorm_1/client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DORM_1_DATABASE_URL")
+}
+
+model dorm {
+  dormid           Int    @id
+  dorm_name        String? @db.VarChar(20)
+  student_capacity Int?
+  gender           String? @db.VarChar(1)
+
+}
+
+model dorm_amenity {
+  amenid       Int @id
+  amenity_name String? @db.VarChar(25)
+}
+
+model has_amenity {
+  id Int @id
+  dormid Int?
+  amenid Int?
+
+}
+
+model lives_in {
+  id Int @id
+  stuid       Int?
+  dormid      Int?
+  room_number Int?
+
+}
+
+model student {
+  stuid     Int     @id
+  lname     String? @db.VarChar(12)
+  fname     String? @db.VarChar(12)
+  age       Int?
+  sex       String? @db.VarChar(1)
+  major     Int?
+  advisor   Int?
+  city_code String? @db.VarChar(3)
+}

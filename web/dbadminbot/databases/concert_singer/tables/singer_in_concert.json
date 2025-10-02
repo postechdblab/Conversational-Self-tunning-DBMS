@@ -1,0 +1,17 @@
+{
+  "name": "singer_in_concert",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "concert_id",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "singer_id",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

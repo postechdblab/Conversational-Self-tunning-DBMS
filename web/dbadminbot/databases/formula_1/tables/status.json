@@ -1,0 +1,17 @@
+{
+  "name": "status",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "statusid",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "status",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}

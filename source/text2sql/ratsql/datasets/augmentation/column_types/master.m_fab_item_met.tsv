@@ -1,0 +1,29 @@
+M_FAB_ITEM_MET	LINE_ID	팹 공정 설비의 라인아이디	character varying
+M_FAB_ITEM_MET	PROCESS_ID	FAB PROCESS_ID	character varying
+M_FAB_ITEM_MET	STEP_SEQ	진행 공정명	character varying
+M_FAB_ITEM_MET	STEP_DESC	step description	character varying
+M_FAB_ITEM_MET	MAIN_FLAG	MAIN_FLAG	character varying
+M_FAB_ITEM_MET	VIRTUAL_METRO_STEP_YN	가상 계측 스텝 여부	character varying
+M_FAB_ITEM_MET	VIRTUAL_METRO_ITEM_YN	가상 계측 아이템 여부	character varying
+M_FAB_ITEM_MET	ITEM_ID	항목아이디	character varying
+M_FAB_ITEM_MET	SUBITEM_ID	ITEM 별 상세 항목	character varying
+M_FAB_ITEM_MET	DATA_CLASS	GEN(wafer의 포인트)/SUM( wafer의 SUM값, 계산된값 가공된값)	character varying
+M_FAB_ITEM_MET	RECIPE_ID	레시피아이디	character varying
+M_FAB_ITEM_MET	DCSPEC_ID	아이템그룹핑(레시피, 설비가 처음 들어왔을 때 측정 항목을 정의한 ID)	character varying
+M_FAB_ITEM_MET	UNIT	계측 단위	character varying
+M_FAB_ITEM_MET	ITEM_SEQ	오더링순서(결과값 순서)	integer
+M_FAB_ITEM_MET	TARGET	E-SPEC에 등록된 Control Spec Higher Litmit	double precision
+M_FAB_ITEM_MET	SPEC_HIGH	관리상한	double precision
+M_FAB_ITEM_MET	SPEC_LOW	관리하한	double precision
+M_FAB_ITEM_MET	LCL	Lower Control Limit	double precision
+M_FAB_ITEM_MET	CL	Center(Target) Control Limit	double precision
+M_FAB_ITEM_MET	UCL	Upper Control Limit	double precision
+M_FAB_ITEM_MET	SPC_CTRL_SPEC_HIGH	SPC Control Spec High	double precision
+M_FAB_ITEM_MET	SPC_CTRL_SPEC_LOW	SPC Control Spec Low	double precision
+M_FAB_ITEM_MET	SPC_CTRL_SPEC_LIMIT	SPC Control Spec Limit	double precision
+M_FAB_ITEM_MET	REG_TIME	SPEC 등록일시	timestamp without time zone
+M_FAB_ITEM_MET	LAST_UPDATE_TIME	최종변경일시	timestamp without time zone
+M_FAB_ITEM_MET	LAST_DCOL_TIME	최종데이터콜렉션날짜	timestamp without time zone
+M_FAB_ITEM_MET	ITEM_GRADE	ITEM GRADE	character varying
+M_FAB_ITEM_MET	EQP_TYPE	설비의 역할(클린/테스트)	character varying
+M_FAB_ITEM_MET	STEP_TYPE	STEP TYPE	character varying

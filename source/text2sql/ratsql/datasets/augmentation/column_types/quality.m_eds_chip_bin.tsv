@@ -1,0 +1,17 @@
+M_EDS_CHIP_BIN	LINE_ID	LINE ID	character varying
+M_EDS_CHIP_BIN	LOT_ID	공정 진행한 Lot ID	character varying
+M_EDS_CHIP_BIN	ROOT_LOT_ID	Lot ID의 앞의 6자리	character varying
+M_EDS_CHIP_BIN	WAFER_ID	WAFER 번호	character
+M_EDS_CHIP_BIN	PROCESS_ID	Device 제조하기 위한 공법	character varying
+M_EDS_CHIP_BIN	STEP_SEQ	진행 공정명	character varying
+M_EDS_CHIP_BIN	TKOUT_TIME	공정 종료 시간	timestamp without time zone
+M_EDS_CHIP_BIN	LAST_UPDATE_TIME	최종 변경 일시	timestamp without time zone
+M_EDS_CHIP_BIN	CHIP_X_POS	Chip X 좌표	ARRAY
+M_EDS_CHIP_BIN	CHIP_Y_POS	Chip Y 좌표	ARRAY
+M_EDS_CHIP_BIN	BIN_NO	BIN 번호	ARRAY
+M_EDS_CHIP_BIN	GOOD_BIN	GOOD BIN	ARRAY
+M_EDS_CHIP_BIN	DUT_NO	DUT	ARRAY
+M_EDS_CHIP_BIN	SHOT_ID	SHOT ID	ARRAY
+M_EDS_CHIP_BIN	CHIP_ID	CHIP ID	ARRAY
+M_EDS_CHIP_BIN	TEST_TYPE	EDS 공정에서 테스트 수행 시 TEST 유형	character varying
+M_EDS_CHIP_BIN	LOT_TYPE	공정 진행 시점의 LOT TYPE	character varying

@@ -1,0 +1,64 @@
+M_DEFECT_CHIP	ROOT_LOT_ID	LOT_ID 의 앞의 6자리	character varying
+M_DEFECT_CHIP	TRK_SEQ_KEY	tracking sequence 번호	double precision
+M_DEFECT_CHIP	TKOUT_TIME	스캔날짜	timestamp without time zone
+M_DEFECT_CHIP	PART_ID	해당 Lot 의 제품 ID	character varying
+M_DEFECT_CHIP	LOT_ID	공정 진행한 Lot ID	character varying
+M_DEFECT_CHIP	WAFER_ID	웨이퍼아이디	character varying
+M_DEFECT_CHIP	STEP_SEQ	INSPECTION 한 STEP_SEQ	character varying
+M_DEFECT_CHIP	EQP_ID	설비 ID	character varying
+M_DEFECT_CHIP	SCAN_SEQ_NO	scan sequence 번호	integer
+M_DEFECT_CHIP	FLAT_ZONE	계측 시 flat zone방향	character varying
+M_DEFECT_CHIP	DIE_PITCH_X	기준 chip의 x축 길이	double precision
+M_DEFECT_CHIP	DIE_PITCH_Y	기준 chip의 y축 길이	double precision
+M_DEFECT_CHIP	WAFER_SIZE	WAFER SIZE	integer
+M_DEFECT_CHIP	ORIGIN_DIE_OFFSET_X	원DIE오프셋X값	double precision
+M_DEFECT_CHIP	ORIGIN_DIE_OFFSET_Y	원DIE오프셋Y값	double precision
+M_DEFECT_CHIP	TEST_NO	wafer 내 세부 검사 type. 테스트번호는 메모리에서는 사용안하고	double precision
+M_DEFECT_CHIP	TEST_PIXEL	검사 테스트 화소	double precision
+M_DEFECT_CHIP	AVAILABLE	AVAILABLE	character varying
+M_DEFECT_CHIP	LINE_ID	SCAN 한 LINE_ID	character varying
+M_DEFECT_CHIP	SLOT_ID	CARRIER내의 WAFER 1매를 담아두는 위치 구분자 : 1~25	character varying
+M_DEFECT_CHIP	DEVICE	제품	character varying
+M_DEFECT_CHIP	NET_DIE	해당 PART 의 제품이 가지는 NET DIE 수량	integer
+M_DEFECT_CHIP	RECIPE_ID	계측 레시피아이디	character varying
+M_DEFECT_CHIP	STEP_DESC	step description	character varying
+M_DEFECT_CHIP	MAP_INFO	map Information	character varying
+M_DEFECT_CHIP	INSPECT_DIE	test 내 검사된 chip의 개수	integer
+M_DEFECT_CHIP	SCAN_AREA	test 내 검사된 면적. 웨이퍼 스캔 면적의 합계	double precision
+M_DEFECT_CHIP	LAYER_IMAGE_CNT	test 내 촬영된 image개수	integer
+M_DEFECT_CHIP	RAW_CLUSTER_CNT	test 내 검출된 cluster type 개수	integer
+M_DEFECT_CHIP	RAW_DFT_CNT	test 내 검출된 defect 개수	integer
+M_DEFECT_CHIP	RAW_DEFECTIVE_DIE_CNT	test 내 defect이 있는 chip의 개수	integer
+M_DEFECT_CHIP	RAW_CLUSTER_AREA	test 내 검출된 cluster 영역	double precision
+M_DEFECT_CHIP	RAW_DFT_AREA	test 내 검출된 defect 영역	double precision
+M_DEFECT_CHIP	TOTAL_DFT_CNT	test 내 검출된 defect 전체 개수	integer
+M_DEFECT_CHIP	TOTAL_DFT_AREA	test 내 검출된 defect 전체 영역	double precision
+M_DEFECT_CHIP	GOOD_CHIP_RATIO	wafer 내 결점다이개수 /검사다이개수	double precision
+M_DEFECT_CHIP	DFT_DENSITY	test 내 cm2 당 defect의 개수	double precision
+M_DEFECT_CHIP	REVIEW_DFT_CNT	test 내 review된 defect의 개수	integer
+M_DEFECT_CHIP	RAW_UNCLUSTER_CNT	test 내 검출된 uncluster type 개수	integer
+M_DEFECT_CHIP	FAMILY_CODE	제품 RULE 코드	character varying
+M_DEFECT_CHIP	MAKE_TIME	제작 일자	character varying
+M_DEFECT_CHIP	EQP_GROUP	설비 그룹	character varying
+M_DEFECT_CHIP	MATCH_FLAG	동일 표시	character varying
+M_DEFECT_CHIP	PROCESS_ID	공정	character varying
+M_DEFECT_CHIP	FILE_TYPE	파일 타입	character varying
+M_DEFECT_CHIP	EDS_PART_ID	test 제품 파트 정보	character varying
+M_DEFECT_CHIP	LAYOUT	layout	character varying
+M_DEFECT_CHIP	RETICLE_ID	Photo 공정에서 사용된 레티클아이디	character varying
+M_DEFECT_CHIP	STATUS	auto or manual sampling 등	character varying
+M_DEFECT_CHIP	D0	면적과 개수 대비로 일반화 된 값	double precision
+M_DEFECT_CHIP	NEW_SERVER_FLAG	새로운 서버 표시	character varying
+M_DEFECT_CHIP	LAST_UPDATE_TIME	최종수정날짜	timestamp without time zone
+M_DEFECT_CHIP	DIE_INDEX	die 지수	ARRAY
+M_DEFECT_CHIP	DIE_TYPE	die 타입	ARRAY
+M_DEFECT_CHIP	DIE_NO_X	wafer 내 chip X 좌표	ARRAY
+M_DEFECT_CHIP	DIE_NO_Y	wafer 내 chip Y 좌표	ARRAY
+M_DEFECT_CHIP	DIE_DFT_CNT	die defect 개수	ARRAY
+M_DEFECT_CHIP	DIE_DFT_TYPE	die defect 타입	ARRAY
+M_DEFECT_CHIP	DIE_DFT_SIZE	die defect 크기	ARRAY
+M_DEFECT_CHIP	READ_FLAG	read 표시	ARRAY
+M_DEFECT_CHIP	ROUGH_BIN_NO	ROUGH BIN NO	ARRAY
+M_DEFECT_CHIP	CHIP_X	Chip X 인덱스	ARRAY
+M_DEFECT_CHIP	CHIP_Y	Chip Y 인덱스	ARRAY
+M_DEFECT_CHIP	FOUP_ID	LOT 을 담고 있는 물리적인 Box ID	character varying

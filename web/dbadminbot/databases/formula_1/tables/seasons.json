@@ -1,0 +1,17 @@
+{
+  "name": "seasons",
+  "description": "",
+  "schemaColor": "#91C4F2",
+  "columns": [
+    {
+      "name": "year",
+      "description": "",
+      "type": "integer"
+    },
+    {
+      "name": "url",
+      "description": "",
+      "type": "text"
+    }
+  ]
+}
