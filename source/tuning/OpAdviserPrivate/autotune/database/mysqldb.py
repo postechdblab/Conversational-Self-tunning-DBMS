@@ -122,8 +122,8 @@ class MysqlDB:
     def _kill_mysqld(self):
         mysqladmin = 'mysqladmin'
         kill_cmd = '{} -u{} -S {} -ppassword shutdown'.format(mysqladmin, self.user, self.sock)
-        force_kill_cmd1 = "ps aux|grep '" + self.sock + "'|awk '{print $2}'|xargs kill -9"
-        force_kill_cmd2 = "ps aux|grep '" + self.mycnf + "'|awk '{print $2}'|xargs kill -9"
+        force_kill_cmd1 = "ps aux|grep '" + self.sock + "'|awk '{print $2}'|xargs sudo kill -9"
+        force_kill_cmd2 = "ps aux|grep '" + self.mycnf + "'|awk '{print $2}'|xargs sudo kill -9"
 
         if self.remote_mode:
             ssh = paramiko.SSHClient()
@@ -180,7 +180,7 @@ class MysqlDB:
                     logger.info('Failed: add {} to memory,cpuset:server'.format(self.pid))
 
         else:
-            proc = subprocess.Popen([self.mysqld, '--defaults-file={}'.format(self.mycnf)])
+            proc = subprocess.Popen(['sudo', self.mysqld, '--defaults-file={}'.format(self.mycnf)])
             self.pid = proc.pid
             if self.isolation_mode:
                 command = 'sudo cgclassify -g memory,cpuset:server ' + str(self.pid)
