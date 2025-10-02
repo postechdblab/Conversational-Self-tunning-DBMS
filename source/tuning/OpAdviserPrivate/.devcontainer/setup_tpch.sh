@@ -1,36 +1,45 @@
 #!/bin/bash
-set -e
+set -e  # Exit on error
+set -x  # Verbose mode
 
-echo "======================================"
-echo "Setting up TPC-H Workload"
-echo "======================================"
+# Function to print with timestamp
+log() {
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
+}
+
+log "======================================"
+log "Setting up TPC-H Workload"
+log "======================================"
 
 # Get current user
 CURRENT_USER=$(whoami)
 MYSQL_USER=${CURRENT_USER}
-echo "Running as system user: $CURRENT_USER"
-echo "Using MySQL user: $MYSQL_USER"
+log "Running as system user: $CURRENT_USER"
+log "Using MySQL user: $MYSQL_USER"
 
 cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate
 
 # Clone TPC-H repository
-echo "Cloning TPC-H repository..."
+log "Cloning TPC-H repository..."
 rm -rf queries-tpch-dbgen-mysql
 git clone https://github.com/seokjeongeum/queries-tpch-dbgen-mysql.git
 cd queries-tpch-dbgen-mysql
 
 # Unzip and build
-echo "Building TPC-H dbgen..."
+log "Building TPC-H dbgen..."
 unzip -o 'TPC-H V3.0.1.zip'
 cd dbgen
 make
+log "✅ TPC-H dbgen built successfully"
 
 # Generate data
-echo "Generating TPC-H data (scale factor 10)..."
+log "Generating TPC-H data (scale factor 10)..."
+log "This may take 10-15 minutes..."
 ./dbgen -s 10
+log "✅ TPC-H data generated (scale factor 10)"
 
 # Create database and tables
-echo "Creating TPC-H database and loading data..."
+log "Creating TPC-H database and loading data..."
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS tpch;"
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE tpch;"
 mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword tpch <<'EOF'
@@ -129,9 +138,11 @@ ALTER TABLE LINEITEM ADD FOREIGN KEY LINEITEM_FK1 (L_ORDERKEY)  references ORDER
 ALTER TABLE LINEITEM ADD FOREIGN KEY LINEITEM_FK2 (L_PARTKEY,L_SUPPKEY) references PARTSUPP(PS_PARTKEY, PS_SUPPKEY);
 EOF
 
-echo "======================================"
-echo "TPC-H Setup Complete!"
-echo "======================================"
+log "✅ TPC-H data loaded and indexes created"
+log ""
+log "======================================"
+log "✅ TPC-H Setup Complete!"
+log "======================================"
 echo "You can now run:"
 echo "  cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
 echo "  export PYTHONPATH=."

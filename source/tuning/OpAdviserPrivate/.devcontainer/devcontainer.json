@@ -29,7 +29,8 @@
 	"postCreateCommand": "bash .devcontainer/post_create.sh 2>&1 | tee /tmp/post_create.log",
 	
 	// Runs every time the container starts
-	"postStartCommand": "sudo service mysql start 2>&1 || true",
+	// Ensure MySQL is always running and ready
+	"postStartCommand": "bash -c 'sudo service mysql start 2>&1 || true; for i in {1..10}; do if mysql -u root -ppassword -h localhost -P 3306 -e \"SELECT 1\" >/dev/null 2>&1; then echo \"MySQL is ready on port 3306\"; break; fi; echo \"Waiting for MySQL... ($i/10)\"; sleep 1; done'",
 	"customizations": {
 		"vscode": {
 			"extensions": [
