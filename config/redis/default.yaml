@@ -1,5 +1,5 @@
-host: 141.223.197.19
-port: 6379
+host: localhost
+port: 6380
 api_text2sql_cache_db: 0
 api_analyze_cache_db: 1
 api_table2text_cache_db: 2

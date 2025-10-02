@@ -37,18 +37,12 @@ services:
     DBAdminBot-redis:
         image: redis:latest
         container_name: DBAdminBot-redis
+        network_mode: "host"  # Changed from bridge to host
         volumes:
             - redis_data:/data
-        ports:
-            - target: 6380
-              published: 6380
-        networks:
-            - redis
+        command: redis-server --port 6380  # Explicitly set port
+        # Remove the ports section when using host network
 
 volumes:
     redis_data:
         driver: local
-
-networks:
-    redis:
-        driver: bridge

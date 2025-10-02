@@ -1,9 +1,10 @@
 import os
+import re
 import json
 import hydra
-import logging
+import requests
 import _jsonnet
-from typing import List, Any
+from typing import List, Any, Dict
 from config.path import ABS_CONFIG_DIR
 from omegaconf import DictConfig
 from source.utils import One_time_Preprocesser
@@ -34,6 +35,10 @@ class IntentInferer:
         text2sql_model_ckpt_dir_path = global_cfg.text2sql.model_ckpt_dir_path
         db_path = global_cfg.data.database_path
         table_path = global_cfg.data.table_path
+        self.tune_check_example_num = cfg.tune_check_example_num
+        self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        self.max_new_tokens = cfg.max_new_tokens
+        self.temperature = cfg.temperature
 
         if os.path.isfile(intent_experiment_config_path):
             exp_config = json.loads(
@@ -80,7 +85,58 @@ class IntentInferer:
         inferer = Inferer(intent_model_config)
         self.model, _ = inferer.load_model(intent_model_ckpt_dir_path)
 
-    def infer(self, input_text: str, db_id: str) -> List[str]:
+    @property
+    def tune_check_instruction(self) -> str:
+        return """
+                <|begin_of_text|><|start_header_id|>system<|end_header_id|>
+                Using f_tune() API, return True to detect when an user message involves performing tuning operations on the database. 
+                Strictly follow the format of the below examples. 
+
+                {few_shot_examples}
+
+                <|eot_id|><|start_header_id|>user<|end_header_id|>
+                user: {question}
+                intent: <|eot_id|><|start_header_id|>assistant<|end_header_id|>
+                """
+
+    @property
+    def tune_check_few_shot_examples(self) -> List[Dict]:
+        return [
+            """
+                user: Please tune the database.
+                intent: f_tune([True])
+                """,
+            """
+                user: Find the name of concerts happened in the years of both 2014 and 2015
+                intent: f_tune([False])
+                """,
+            """
+                user: Enhance the database's performance.
+                intent: f_tune([True])
+                """,
+            """
+                user: Show all stadiums
+                intent: f_tune([False])
+                """,
+            """
+                user: Only name and capacity
+                intent: f_tune([False])
+                """,
+            """
+                user: Optimize the database.
+                intent: f_tune([True])
+                """,
+        ]
+
+    def tune_check_prompt_generate(self, input_text):
+        return self.tune_check_instruction.format(
+            question=input_text,
+            few_shot_examples="\n\n".join(
+                self.tune_check_few_shot_examples[: self.tune_check_example_num]
+            ),
+        )
+
+    def infer(self, input_text: str, db_id: str, is_tune_check=False) -> List[str]:
         """Infer user intent from input text.
 
         Args:
@@ -90,12 +146,33 @@ class IntentInferer:
         Returns:
             List of predicted intent labels (e.g., ['query'] or ['database_tuning'])
         """
-        model_input = self.preprocess(input_text, db_id)
-        enc_features = self.model.encoder(model_input)
-        logits = self.model.decoder.decoder_layers(enc_features)
-        pred_ids = logits.argmax(dim=1)
-        pred_labels = [self.model.decoder.output_classes[id] for id in pred_ids]
-        return pred_labels
+        if is_tune_check:
+            # generate prompt
+            prompt = self.tune_check_prompt_generate(input_text)
+
+            # send request to llm
+            response_list = requests.post(
+                self.llm_address,
+                json={
+                    "text": [prompt],
+                    "sampling_params": {
+                        "max_new_tokens": self.max_new_tokens,
+                        "temperature": self.temperature,
+                    },
+                },
+                timeout=None,
+            ).json()
+            tune_check_result = response_list[0]["text"]
+            is_tune = self.tune_check_preprocess(tune_check_result)
+            return [is_tune]
+
+        else:
+            model_input = self.preprocess(input_text, db_id)
+            enc_features = self.model.encoder(model_input)
+            logits = self.model.decoder.decoder_layers(enc_features)
+            pred_ids = logits.argmax(dim=1)
+            pred_labels = [self.model.decoder.output_classes[id] for id in pred_ids]
+            return pred_labels
 
     def preprocess(self, input_text: str, db_id: str) -> List[Any]:
         """Preprocess input text for intent classification.
@@ -114,6 +191,20 @@ class IntentInferer:
         input_changed = input_changed.replace("<s>", "[CLS]")
         _, preproc_item = self.preprocessor.run(input_changed, db_id)
         return [preproc_item]
+
+    def tune_check_preprocess(self, input_text: str) -> List[Any]:
+        # parse response
+        pattern_col = r"f_tune\(\[(.*?)\]\)"
+
+        try:
+            pred = re.findall(pattern_col, input_text, re.S)[0].strip()
+        except:
+            return False
+
+        if "true" == pred.lower():
+            return True
+        else:
+            return False
 
 
 @hydra.main(version_base=None, config_path=ABS_CONFIG_DIR, config_name="config")
