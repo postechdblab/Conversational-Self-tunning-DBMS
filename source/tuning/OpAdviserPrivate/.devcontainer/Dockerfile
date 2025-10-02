@@ -55,13 +55,11 @@ RUN python3.8 -m pip install --upgrade pip setuptools wheel
 
 # Install common Python packages for better layer caching
 # These rarely change, so installing them here speeds up rebuilds
+# Note: Avoiding specific versions here to prevent conflicts with requirements.txt
 RUN python3.8 -m pip install --no-cache-dir \
-    numpy \
-    pandas \
     scipy \
     scikit-learn \
-    matplotlib \
-    seaborn
+    matplotlib
 
 # Install CMake >= 3.18 from Kitware's official repository (more reliable than pip)
 RUN wget -O - https://apt.kitware.com/keys/kitware-archive-latest.asc 2>/dev/null | gpg --dearmor - | tee /usr/share/keyrings/kitware-archive-keyring.gpg >/dev/null && \
