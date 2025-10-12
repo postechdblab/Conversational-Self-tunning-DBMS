@@ -1,0 +1,8 @@
+Collecting typing_extensions
+  Using cached typing_extensions-4.15.0-py3-none-any.whl (44 kB)
+Installing collected packages: typing_extensions
+  Attempting uninstall: typing_extensions
+    Found existing installation: typing_extensions 4.15.0
+    Uninstalling typing_extensions-4.15.0:
+      Successfully uninstalled typing_extensions-4.15.0
+Successfully installed typing_extensions-4.15.0

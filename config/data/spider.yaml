@@ -1,2 +1,3 @@
 database_path: /mnt/sdd/shpark/spider/database
 table_path: /mnt/sdd/shpark/spider/tables.json
+eval_data_path: /mnt/sdd/shpark/spider/dev.json
