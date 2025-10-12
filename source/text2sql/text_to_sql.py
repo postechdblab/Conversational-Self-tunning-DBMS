@@ -194,7 +194,7 @@ class Text2SQL(BaseText2SQL):
         self.model = model
 
     def translate(
-        self, text: str, text_history: str, db_id: str
+        self, text: str, text_history: str, db_id: str, table_id: List[str] = []
     ) -> Tuple[List[Any], str]:
         """Translate natural language text to SQL query.
 

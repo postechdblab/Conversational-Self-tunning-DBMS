@@ -815,6 +815,7 @@ def evaluate(
                     )
 
     print_scores(scores, etype)
+    return scores
 
 
 def eval_exec_match(db, p_str, g_str, pred, gold):

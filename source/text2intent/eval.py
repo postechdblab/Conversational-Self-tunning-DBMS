@@ -63,7 +63,12 @@ class CoSQLDataset(Dataset):
         question = f"{instance['utterance']}"
         intent = instance["intent"]
         db_id = instance["database_id"]
-        return question, intent, db_id, ""
+        return (
+            question if question else "",
+            intent if intent else "",
+            db_id if db_id else "",
+            "",
+        )
 
 
 DATASET_REGISTRY = {"cosql": CoSQLDataset}
@@ -100,18 +105,21 @@ def main(cfg: DictConfig) -> None:
 
         glist = []
         plist = []
-        count = 0
         for eval_instance in tqdm(eval_dataloader):
             question, gold_intent, db_id, table_id = eval_instance
-            pred_intent = inferer.infer(f"<s> {question[0]} <s>", db_id[0])
-            glist.append([gold_intent[0][0].lower(), db_id[0]])
-            plist.append([pred_intent[0], db_id[0]])
-            print(f"Question: {question[0]}")
-            print(f"Gold Intent: {gold_intent[0][0].lower()}")
-            print(f"Predicted Intent: {pred_intent[0]}\n")
-            count += 1
-            if count >= 15:
-                break
+            try:
+                pred_intent = inferer.infer(f"<s> {question[0]} <s>", db_id[0])
+            except Exception as e:
+                print(f"Error during inference: {e}")
+                pred_intent = ["ambiguous"]
+            try:
+                glist.append([[intent.lower() for intent in gold_intent[0]], db_id[0]])
+                plist.append([pred_intent[0], db_id[0]])
+                print(f"Question: {question[0]}")
+                print(f"Gold Intent: {[intent.lower() for intent in gold_intent[0]]}")
+                print(f"Predicted Intent: {pred_intent[0]}\n")
+            except Exception as e:
+                print(f"Error appending results: {e}")
 
         # Save results to JSON files
         print(f"Saving results to {glist_path} and {plist_path}")
@@ -124,7 +132,7 @@ def main(cfg: DictConfig) -> None:
     # Convert loaded lists back to tuples for evaluation
     exact_math_count = 0
     for gold, pred in zip(glist, plist):
-        if gold[0] == pred[0]:
+        if pred[0] in gold[0]:
             exact_math_count += 1
 
     total_count = len(glist)

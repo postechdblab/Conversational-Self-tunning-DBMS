@@ -7,4 +7,4 @@ defaults:
   - redis: default
   - conversation: default
   - diagnosis: default
-  - data: cosql
+  - data: spider

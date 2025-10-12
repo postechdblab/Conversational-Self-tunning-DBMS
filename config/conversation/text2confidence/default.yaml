@@ -1,2 +1,6 @@
 experiment_config_path: /mnt/sdd/shpark/logdir/cosql-model/config_captum.jsonnet
 model_ckpt_dir_path: /mnt/sdd/shpark/logdir/cosql-model
+bin_eval_output_path: /root/dbadminbot/eval_results/confidence/confidence_bin_eval.json
+glist_output_path: /root/dbadminbot/eval_results/confidence/glist.json
+plist_output_path: /root/dbadminbot/eval_results/confidence/plist.json
+confidence_output_path: /root/dbadminbot/eval_results/confidence/confidence_scores.json
