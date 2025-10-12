@@ -31,6 +31,19 @@
 	// Runs every time the container starts
 	// Ensure MySQL is always running and ready
 	"postStartCommand": "bash -c 'sudo service mysql start 2>&1 || true; for i in {1..10}; do if mysql -u root -ppassword -h localhost -P 3306 -e \"SELECT 1\" >/dev/null 2>&1; then echo \"MySQL is ready on port 3306\"; break; fi; echo \"Waiting for MySQL... ($i/10)\"; sleep 1; done'",
+	
+	// Install common utilities like ping, curl, wget, netcat, etc.
+	// These tools are essential for debugging and testing connectivity
+	"features": {
+		"ghcr.io/devcontainers/features/common-utils:2": {
+			"installZsh": "true",
+			"configureZshAsDefaultShell": "false",
+			"installOhMyZsh": "false",
+			"upgradePackages": "true",
+			"username": "vscode"
+		}
+	},
+	
 	"customizations": {
 		"vscode": {
 			"extensions": [
