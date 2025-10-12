@@ -59,7 +59,7 @@ class LLMBasedText2SQL(BaseText2SQL):
             self.slm_translator = Text2SQL(global_cfg, cfg)
 
     def translate(
-        self, text: str, text_history: str, db_id: str
+        self, text: str, text_history: str, db_id: str, table_id: List[str] = []
     ) -> Tuple[List[Any], str]:
 
         # Load database schema
@@ -67,7 +67,10 @@ class LLMBasedText2SQL(BaseText2SQL):
         db_engine = create_engine(f"sqlite:///{sqlite_path}")
         schema_engine = SchemaEngine(engine=db_engine, db_name=db_id)
         mschema = schema_engine.mschema
-        mschema_str = mschema.to_mschema()
+        if len(table_id) == 0:
+            mschema_str = mschema.to_mschema()
+        else:
+            mschema_str = mschema.to_mschema(selected_tables=table_id)
         original_inferred_code = None
         beams = []
         if self.is_fix_mode:

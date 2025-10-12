@@ -31,6 +31,7 @@ Verify if the SQL query's semantic meaning matches the question's intent. Check 
 1. Semantic equivalence between the question and the original SQL query
 2. Correct table and column names from the schema
 3. Valid {dialect} syntax
+4. Avoid using '*' in the SELECT clause for projection
 
 If the original SQL query is correct, return it as-is. If not, generate a corrected version. Return only the SQL query wrapped in ```sql and ``` code blocks.
 ```sql

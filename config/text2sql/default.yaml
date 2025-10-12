@@ -1,17 +1,18 @@
 experiment_config_path: /mnt/sdd/shpark/logdir/cosql-model/config.jsonnet
 model_ckpt_dir_path: /mnt/sdd/shpark/logdir/cosql-model
-glist_output_path: /root/dbadminbot/eval_results/glist_granite.json
-plist_output_path: /root/dbadminbot/eval_results/plist_granite.json
-load_existing_results: True
+glist_output_path: /root/dbadminbot/eval_results/glist_wiki_gpt_oss_fixed.json
+plist_output_path: /root/dbadminbot/eval_results/plist_wiki_gpt_oss_fixed.json
+load_existing_results: false
 is_postgresql: false
 beam_size: 2
 max_steps: 150
 
-host: 141.223.199.149
-port: 30000
+host: 141.223.197.19
+port: 30001
 max_new_tokens: 200
 temperature: 0.0
 
 is_fix_mode: True
 is_llm: True
 model_type: gpt
+eval_mode: exec # all, exec, match 

@@ -6,7 +6,7 @@ from omegaconf import DictConfig
 from functools import cached_property
 from config.path import ABS_CONFIG_DIR
 from torch.utils.data import Dataset, DataLoader
-from source.text2sql.text_to_sql import Text2SQL, LLMBasedText2SQL
+from source.text2intent.intent_inferer import IntentInferer
 from source.text2sql.spider.evaluation import evaluate, build_foreign_key_map_from_json
 import sqlglot
 from sqlglot import exp
@@ -40,7 +40,7 @@ def remove_aliases(sql: str) -> str:
     return tree.sql(dialect="sqlite")
 
 
-class SpiderDataset(Dataset):
+class CoSQLDataset(Dataset):
     def __init__(self, cfg):
         self.cfg = cfg
 
@@ -60,49 +60,22 @@ class SpiderDataset(Dataset):
 
     def __getitem__(self, idx):
         instance = self.eval_dataset[idx]
-        question = f"{instance['question']}"
-        gold_sql = instance["query"]
-        db_id = instance["db_id"]
-        return question, gold_sql, db_id, ""
+        question = f"{instance['utterance']}"
+        intent = instance["intent"]
+        db_id = instance["database_id"]
+        return question, intent, db_id, ""
 
 
-class WikiDataset(Dataset):
-    def __init__(self, cfg):
-        self.cfg = cfg
-
-    def __len__(self):
-        return len(self.eval_dataset)
-
-    @cached_property
-    def eval_dataset(self):
-        with open(self.cfg.eval_data_path, "r", encoding="utf-8") as f:
-            dataset = json.load(f)
-        return dataset
-
-    @cached_property
-    def kmaps(self):
-        kmaps = build_foreign_key_map_from_json(self.cfg.table_path)
-        return kmaps
-
-    def __getitem__(self, idx):
-        instance = self.eval_dataset[idx]
-        question = f"{instance['question']}"
-        gold_sql = instance["query"]
-        db_id = instance["db_id"]
-        table_id = instance.get("table_id", [])
-        return question, gold_sql, db_id, table_id
-
-
-DATASET_REGISTRY = {"wikisql": WikiDataset, "spider": SpiderDataset}
+DATASET_REGISTRY = {"cosql": CoSQLDataset}
 
 
 @hydra.main(version_base=None, config_path=ABS_CONFIG_DIR, config_name="config")
 def main(cfg: DictConfig) -> None:
-    """Main function for testing Text2SQL translation."""
+    """Main function for testing Text2Intent."""
     # Define output file paths
-    glist_path = cfg.text2sql.get("glist_output_path", "eval_results/glist.json")
-    plist_path = cfg.text2sql.get("plist_output_path", "eval_results/plist.json")
-    load_existing = cfg.text2sql.get("load_existing_results", False)
+    glist_path = cfg.text2intent.get("glist_output_path", "eval_results/glist.json")
+    plist_path = cfg.text2intent.get("plist_output_path", "eval_results/plist.json")
+    load_existing = cfg.text2intent.get("load_existing_results", False)
 
     # Create output directory if it doesn't exist
     os.makedirs(os.path.dirname(glist_path), exist_ok=True)
@@ -120,32 +93,25 @@ def main(cfg: DictConfig) -> None:
     else:
         # Generate new results
         print("Generating new evaluation results...")
-        if cfg.text2sql.is_llm:
-            translator = LLMBasedText2SQL(cfg, cfg.text2sql)
-        else:
-            translator = Text2SQL(cfg, cfg.text2sql)
+        inferer = IntentInferer(cfg, cfg.text2intent)
 
         dataset = DATASET_REGISTRY[cfg.data.name](cfg.data)
         eval_dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
 
         glist = []
         plist = []
+        count = 0
         for eval_instance in tqdm(eval_dataloader):
-            question, gold_sql, db_id, table_id = eval_instance
-            _, inferred_code = translator.translate(
-                question[0],
-                "",
-                db_id[0],
-                table_id=[table_id[0]] if table_id[0] else [],
-            )
-            inferred_code = remove_aliases(
-                inferred_code.lower().replace("distinct", "")
-            )
-            glist.append([gold_sql[0], db_id[0]])
-            plist.append([inferred_code, db_id[0]])
+            question, gold_intent, db_id, table_id = eval_instance
+            pred_intent = inferer.infer(f"<s> {question[0]} <s>", db_id[0])
+            glist.append([gold_intent[0][0].lower(), db_id[0]])
+            plist.append([pred_intent[0], db_id[0]])
             print(f"Question: {question[0]}")
-            print(f"Gold SQL: {gold_sql[0]}")
-            print(f"Predicted SQL: {inferred_code}\n")
+            print(f"Gold Intent: {gold_intent[0][0].lower()}")
+            print(f"Predicted Intent: {pred_intent[0]}\n")
+            count += 1
+            if count >= 15:
+                break
 
         # Save results to JSON files
         print(f"Saving results to {glist_path} and {plist_path}")
@@ -156,21 +122,14 @@ def main(cfg: DictConfig) -> None:
         print(f"Saved {len(glist)} gold queries and {len(plist)} predicted queries")
 
     # Convert loaded lists back to tuples for evaluation
-    glist_tuples = [(item[0], item[1]) for item in glist]
-    plist_tuples = [(item[0], item[1]) for item in plist]
+    exact_math_count = 0
+    for gold, pred in zip(glist, plist):
+        if gold[0] == pred[0]:
+            exact_math_count += 1
 
-    # Run evaluation
-    evaluate(
-        cfg.data.database_path,
-        "exec",
-        dataset.kmaps,
-        glist=glist_tuples,
-        plist=plist_tuples,
-    )
-
-    # Print last predicted query as example
-    if plist_tuples:
-        print(f"\nExample prediction: {plist_tuples[-1][0]}")
+    total_count = len(glist)
+    accuracy = exact_math_count / total_count if total_count > 0 else 0.0
+    print(f"Exact Match Accuracy: {accuracy:.4f} ({exact_math_count}/{total_count})")
 
 
 if __name__ == "__main__":

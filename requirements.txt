@@ -181,3 +181,4 @@ xxhash==3.5.0
 yarl==1.18.3
 zipp==1.0.0
 llama_index
+sqlglot

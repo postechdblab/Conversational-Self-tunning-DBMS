@@ -696,7 +696,9 @@ def evaluate(
 
         try:
             p_sql = get_sql(schema, p_str)
-        except:
+        except Exception as e:
+            print("Failed to parse predicted SQL: {}".format(p_str))
+            print(e)
             # If p_sql is not valid, then we will use an empty sql to evaluate with the correct sql
             p_sql = {
                 "except": None,
@@ -1059,7 +1061,7 @@ def build_foreign_key_map(entry):
 
 
 def build_foreign_key_map_from_json(table):
-    with open(table) as f:
+    with open(table, "r", encoding="utf-8") as f:
         data = json.load(f)
     tables = {}
     for entry in data:
