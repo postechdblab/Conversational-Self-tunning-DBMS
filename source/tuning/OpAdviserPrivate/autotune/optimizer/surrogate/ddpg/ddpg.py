@@ -62,6 +62,14 @@ class Normalizer(object):
     def normalize(self, x):
         if isinstance(x, list):
             x = np.array(x)
+        # Ensure 2D shape (batch, dim)
+        if x.ndim == 1:
+            x = x.reshape(1, -1)
+        # Guard: empty state vector → return zeros with expected dim
+        if x.shape[1] == 0:
+            # build a zero row matching mean's shape
+            z = np.zeros_like(self.mean).reshape(1, -1)
+            return Variable(torch.FloatTensor(z))
         x = x - self.mean
         x = x / self.std
         return Variable(torch.FloatTensor(x))

@@ -179,6 +179,9 @@ class DBEnv:
                 time.sleep(1)
             if not os.path.exists('results/{}.summary'.format(filename)):
                 print("benchmark result file does not exist!")
+            # When file is missing, mark as failed by returning large objective
+            if not os.path.exists('results/{}.summary'.format(filename)):
+                return [MAXINT], None
             result = parse_oltpbench('results/{}.summary'.format(filename))
         elif self.workload['name'] == 'job' or self.workload['name'] == 'tpch'or self.workload['name'] == 'demo':
             for _ in range(60):

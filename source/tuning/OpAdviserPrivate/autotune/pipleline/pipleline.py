@@ -411,16 +411,34 @@ class PipleLine(BOBase):
                 # Ensemble mode: iterate returns a list of results
                 results = self.iterate(compact_space)
                 # Process all results and add to history
-                # Get the observations that were just added (last 4)
-                start_obs_idx = len(self.history_container.observations) - 4
+                # Store results for updating optimizers
+                observations_to_update = []
                 for idx, (config, trial_state, constraints, objs, latL) in enumerate(results):
                     self.tuning_result.append((objs, config))
                     optimizer_name = ['SMAC', 'MBO', 'DDPG', 'GA'][idx]
                     self.logger.info('[Ensemble][{}] Iteration {}, objective value: {}.'.format(
                         optimizer_name, self.iteration_id + 1, objs))
                     
-                    # Update DDPG and GA optimizers with their observations
-                    observation = self.history_container.observations[start_obs_idx + idx]
+                    # Store observation for later update (it's the last one added)
+                    obs_idx = len(self.history_container.configurations) - 1
+                    from autotune.utils.history_container import Observation
+                    observation = Observation(
+                        config=self.history_container.configurations[obs_idx],
+                        trial_state=self.history_container.trial_states[obs_idx],
+                        constraints=self.history_container.constraint_perfs[obs_idx],
+                        objs=[self.history_container.perfs[obs_idx]] if self.num_objs == 1 else self.history_container.perfs[obs_idx],
+                        elapsed_time=self.history_container.elapsed_times[obs_idx],
+                        iter_time=self.history_container.iter_times[obs_idx],
+                        EM=self.history_container.external_metrics[obs_idx],
+                        IM=self.history_container.internal_metrics[obs_idx],
+                        resource=self.history_container.resource[obs_idx],
+                        info=self.history_container.info,
+                        context=self.history_container.contexts[obs_idx] if obs_idx < len(self.history_container.contexts) else None
+                    )
+                    observations_to_update.append((observation, trial_state))
+                
+                # Update DDPG and GA optimizers with their observations
+                for observation, trial_state in observations_to_update:
                     if trial_state != FAILED:  
                         self.optimizer_list[2].update(observation)
                         self.optimizer_list[3].update(observation)
@@ -429,8 +447,9 @@ class PipleLine(BOBase):
                 self.iteration_id += 1
                 
                 # Debug logging for ensemble mode
-                total_evals = len(self.history_container.observations)
-                expected_evals = self.init_num + (self.iteration_id - self.init_num) * 4
+                total_evals = len(self.history_container.configurations)
+                # Ensemble mode evaluates 4 configs per iteration from the start
+                expected_evals = self.iteration_id * 4
                 self.logger.info(f"[Ensemble] Total evaluations: {total_evals}, Expected: {expected_evals}, Iteration: {self.iteration_id}")
                 
                 # Use best result for space exploration decisions
@@ -657,7 +676,11 @@ class PipleLine(BOBase):
             self.logger.info('Start new DBTune task')
         else:
             self.history_container.load_history_from_json(fn)
-            self.iteration_id = len(self.history_container.configurations)
+            if self.ensemble_mode:
+                # In ensemble mode, each iteration evaluates 4 configs
+                self.iteration_id = len(self.history_container.configurations) // 4
+            else:
+                self.iteration_id = len(self.history_container.configurations)
             if self.space_transfer:
                 self.space_step = self.space_step_limit
             self.logger.info('Load {} iterations from {}'.format(self.iteration_id, fn))
@@ -1187,30 +1210,34 @@ class PipleLine(BOBase):
         Y_pred_mean, Y_pred_var = surrogate.predict(X_aug)
         
         # Add synthetic observations to history
+        # These are used ONLY for surrogate training, NOT for incumbent tracking
         from autotune.utils.history_container import Observation
         from autotune.utils.constants import SUCCESS
         
         for i, config in enumerate(augmented_configs):
             synthetic_obs = Observation(
                 config=config,
-                objs=[Y_pred_mean[i][0]],  # Use predicted mean
-                constraints=None,
                 trial_state=SUCCESS,
+                constraints=None,
+                objs=[Y_pred_mean[i][0]],  # Use predicted mean
                 elapsed_time=0,
                 iter_time=0,
                 EM={},
-                resource={},
                 IM={},
-                info={'synthetic': True, 'variance': Y_pred_var[i][0]}
+                resource={},
+                info=self.history_container.info,  # Use shared info
+                context=None
             )
-            self.history_container.update_observation(synthetic_obs)
+            self.history_container.update_observation(synthetic_obs, is_synthetic=True)
+            # Note: Synthetics are excluded from incumbent updates in history_container.update_observation()
         
         # Count total synthetic observations in history
-        synthetic_count = sum(1 for obs in self.history_container.observations 
-                              if obs.info.get('synthetic', False))
+        synthetic_count = sum(1 for is_synthetic in self.history_container.synthetic_flags if is_synthetic)
         
         self.logger.info(f"[Augmentation] Added {len(augmented_configs)} synthetic observations to history")
         self.logger.info(f"[Augmentation] Total synthetic observations in history: {synthetic_count}")
+        self.logger.info(f"[Augmentation] Total configs in history.data (for incumbent tracking): {len(self.history_container.data)}")
+        self.logger.info(f"[Augmentation] Verify synthetics excluded from acquisition: {len(self.history_container.get_all_configs())} configs available")
 
     def _perturb_config(self, base_config):
         """Create a slightly perturbed version of a configuration."""

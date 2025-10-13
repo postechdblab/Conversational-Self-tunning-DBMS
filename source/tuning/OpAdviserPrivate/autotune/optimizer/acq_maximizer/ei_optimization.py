@@ -13,6 +13,7 @@ from typing import Iterable, List, Union, Tuple, Optional
 import random
 import scipy
 import numpy as np
+import itertools
 
 from autotune.optimizer.acquisition_function.acquisition import AbstractAcquisitionFunction
 from autotune.utils.config_space import get_one_exchange_neighbourhood, \
@@ -244,8 +245,14 @@ class LocalSearch(AcquisitionFunctionMaximizer):
             n_steps_plateau_walk: int = 10,
     ):
         super().__init__(acquisition_function, config_space, rng)
-        self.max_steps = max_steps
+        # Hard cap for local search steps per start (fallback if None)
+        self.max_steps = max_steps if max_steps is not None else 300
         self.n_steps_plateau_walk = n_steps_plateau_walk
+        # Early-stop for tiny gains
+        self.improvement_tolerance = 1e-6  # stop counting gains below this
+        self.small_gain_patience = 50      # end search after this many tiny gains
+        # Per-iteration neighbor cap to bound work
+        self.neighbor_cap = 1000
 
 
     def _maximize(
@@ -282,9 +289,67 @@ class LocalSearch(AcquisitionFunctionMaximizer):
         init_points = self._get_initial_points(
             num_points, runhistory)
 
+        # Debug logging for acquisition optimization
+        self.logger.info(f"[AcqOpt] Got {len(init_points)} initial points for local search")
+        if hasattr(runhistory, 'synthetic_flags'):
+            total_configs = len(runhistory.configurations)
+            # Treat missing tail as real if flags are shorter than configurations
+            flags = list(runhistory.synthetic_flags)
+            if len(flags) < total_configs:
+                flags = flags + [False] * (total_configs - len(flags))
+            synthetic_count = sum(1 for f in flags if f)
+            real_count = total_configs - synthetic_count
+            self.logger.info(f"[AcqOpt] History contains {total_configs} configs: {real_count} real, {synthetic_count} synthetic")
+            self.logger.info(f"[AcqOpt] get_all_configs() returned {len(runhistory.get_all_configs())} configs (should be {real_count} real only)")
+
+            # Extra diagnostics: real evaluations breakdown
+            try:
+                from autotune.utils.constants import SUCCESS  # local import to avoid cycles
+                real_indices = [i for i in range(total_configs) if not flags[i]]
+                data_keys = set(runhistory.data.keys()) if hasattr(runhistory, 'data') else set()
+
+                total_real = len(real_indices)
+                failed_real = 0
+                duplicate_real = 0
+                successful_real = 0
+                excluded_samples = []  # (idx, reason)
+
+                for i in real_indices:
+                    cfg = runhistory.configurations[i]
+                    state = runhistory.trial_states[i] if i < len(runhistory.trial_states) else None
+                    if state != SUCCESS:
+                        failed_real += 1
+                        if len(excluded_samples) < 10:
+                            excluded_samples.append((i, 'failed'))
+                    else:
+                        # SUCCESS but may be duplicate (not added to data)
+                        if cfg in data_keys:
+                            successful_real += 1
+                        else:
+                            duplicate_real += 1
+                            if len(excluded_samples) < 10:
+                                excluded_samples.append((i, 'duplicate'))
+
+                data_size = len(runhistory.data) if hasattr(runhistory, 'data') else 0
+                self.logger.info(
+                    f"[AcqOpt] Real evals: total={total_real}, successful={successful_real}, "
+                    f"failed={failed_real}, duplicates={duplicate_real}, data_size={data_size}")
+                if excluded_samples:
+                    self.logger.info(
+                        "[AcqOpt] Excluded real configs (index -> reason): " +
+                        ", ".join([f"{idx}->{reason}" for idx, reason in excluded_samples])
+                    )
+            except Exception as e:
+                self.logger.warning(f"[AcqOpt] Diagnostics failed: {e}")
+
         acq_configs = []
         # Start N local search from different random start points
-        for start_point in init_points:
+        for idx, start_point in enumerate(init_points):
+            # Log initial acquisition value for this starting point
+            init_acq_val = self.acquisition_function([start_point], **kwargs)
+            init_acq_scalar = float(init_acq_val) if hasattr(init_acq_val, '__iter__') else init_acq_val
+            self.logger.debug(f"[AcqOpt] Init point {idx}: acq_val={init_acq_scalar:.6f}")
+            
             acq_val, configuration = self._one_iter(
                 start_point, **kwargs)
 
@@ -335,25 +400,45 @@ class LocalSearch(AcquisitionFunctionMaximizer):
         local_search_steps = 0
         neighbors_looked_at = 0
         time_n = []
+        improvements = 0  # Track number of improvements found
+        plateau_steps = 0  # Track steps without improvement
+        small_gain_steps = 0  # Track consecutive tiny gains
+        
         while True:
 
             local_search_steps += 1
+            
+            # Log progress every 100 iterations
+            if local_search_steps % 100 == 0:
+                acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
+                self.logger.info(
+                    f"[AcqOpt] Local search step {local_search_steps}: "
+                    f"current_acq={acq_val_scalar:.6f}, improvements={improvements}, "
+                    f"plateau={plateau_steps}, neighbors_checked={neighbors_looked_at}"
+                )
+            
             if local_search_steps % 1000 == 0:
+                acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
                 self.logger.warning(
                     "Local search took already %d iterations. Is it maybe "
                     "stuck in a infinite loop?", local_search_steps
+                )
+                self.logger.warning(
+                    f"[AcqOpt] Stuck details: acq_val={acq_val_scalar:.6f}, "
+                    f"improvements={improvements}, neighbors_checked={neighbors_looked_at}, "
+                    f"plateau_steps={plateau_steps}"
                 )
 
             # Get neighborhood of the current incumbent
             # by randomly drawing configurations
             changed_inc = False
 
-            # Get one exchange neighborhood returns an iterator (in contrast of
-            # the previously returned list).
-            all_neighbors = get_one_exchange_neighbourhood(
-                incumbent, seed=42)
+            # Get one exchange neighborhood returns an iterator. Cap how many we consider.
+            all_neighbors_iter = get_one_exchange_neighbourhood(incumbent, seed=42)
+            # Limit neighbors per iteration to reduce work
+            limited_neighbors = itertools.islice(all_neighbors_iter, self.neighbor_cap)
 
-            for neighbor in all_neighbors:
+            for neighbor in limited_neighbors:
                 s_time = time.time()
                 acq_val = self.acquisition_function([neighbor], **kwargs)
                 neighbors_looked_at += 1
@@ -361,20 +446,48 @@ class LocalSearch(AcquisitionFunctionMaximizer):
 
                 if acq_val > acq_val_incumbent:
                     self.logger.debug("Switch to one of the neighbors")
+                    # Check improvement magnitude before updating
+                    try:
+                        delta = float(acq_val) - float(acq_val_incumbent)
+                    except Exception:
+                        delta = 0.0
                     incumbent = neighbor
                     acq_val_incumbent = acq_val
+                    improvements += 1
+                    plateau_steps = 0  # Reset plateau counter
+                    if delta < self.improvement_tolerance:
+                        small_gain_steps += 1
+                    else:
+                        small_gain_steps = 0
                     changed_inc = True
                     break
 
-            if (not changed_inc) or \
-                    (self.max_steps is not None and
-                     local_search_steps == self.max_steps):
+            # Track plateau (no improvement found this iteration)
+            if not changed_inc:
+                plateau_steps += 1
+
+            # Early stop if too many tiny gains
+            if small_gain_steps >= self.small_gain_patience:
+                self.logger.info(
+                    f"[AcqOpt] Early stop due to tiny gains: tolerance={self.improvement_tolerance}, "
+                    f"patience={self.small_gain_patience}, small_gain_steps={small_gain_steps}"
+                )
+                self.logger.info(
+                    f"[AcqOpt] Local search interim: steps={local_search_steps}, improvements={improvements}"
+                )
+                break
+
+            # Stop if no change (plateau) or step cap reached
+            if (not changed_inc) or (local_search_steps >= self.max_steps):
                 self.logger.debug("Local search took %d steps and looked at %d "
                                   "configurations. Computing the acquisition "
                                   "value for one configuration took %f seconds"
                                   " on average.",
                                   local_search_steps, neighbors_looked_at,
                                   np.mean(time_n))
+                acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
+                self.logger.info(f"[AcqOpt] Local search completed: steps={local_search_steps}, "
+                                 f"improvements={improvements}, final_acq={acq_val_scalar:.6f}")
                 break
 
         return acq_val_incumbent, incumbent

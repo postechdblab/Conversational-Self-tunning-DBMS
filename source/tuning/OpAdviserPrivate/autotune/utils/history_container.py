@@ -105,6 +105,7 @@ class HistoryContainer(object):
         self.internal_metrics = list() # all internal metrics
         self.resource = list() # all resource information
         self.contexts = list()
+        self.synthetic_flags = list()  # track which observations are synthetic
 
         self.update_times = list()  # record all update times
 
@@ -130,7 +131,7 @@ class HistoryContainer(object):
 
         return c_new
 
-    def update_observation(self, observation: Observation):
+    def update_observation(self, observation: Observation, is_synthetic=False):
         self.update_times.append(time.time() - self.global_start_time)
         config = observation.config
         objs = observation.objs
@@ -163,10 +164,25 @@ class HistoryContainer(object):
         self.external_metrics.append(external_metrics)
         self.resource.append(resource)
         self.contexts.append(context)
+        # Mark as synthetic if explicitly specified OR if info contains 'synthetic' key
+        self.synthetic_flags.append(is_synthetic or (info.get('synthetic', False) if isinstance(info, dict) else False))
 
         transform_perf = False
         failed = False
-        if trial_state == SUCCESS and all(perf < MAXINT for perf in objs):
+        
+        # Skip incumbent updates for synthetic observations
+        if is_synthetic:
+            # Synthetic observations are only for surrogate training, not incumbent tracking
+            # Add to successful_perfs for percentile/min/max calculations but don't call add()
+            if trial_state == SUCCESS and all(perf < MAXINT for perf in objs):
+                if self.num_objs == 1:
+                    self.successful_perfs.append(objs[0])
+                else:
+                    self.successful_perfs.append(objs)
+                self.perc = np.percentile(self.successful_perfs, self.scale_perc, axis=0)
+                self.min_y = np.min(self.successful_perfs, axis=0).tolist()
+                self.max_y = np.max(self.successful_perfs, axis=0).tolist()
+        elif trial_state == SUCCESS and all(perf < MAXINT for perf in objs):
             if self.num_constraints > 0 and constraints is None:
                 self.logger.error('Constraint is None in a SUCCESS trial!')
                 failed = True
@@ -289,7 +305,8 @@ class HistoryContainer(object):
                 'context': self.contexts[i],
                 'trial_state': self.trial_states[i],
                 'elapsed_time': self.elapsed_times[i],
-                'iter_time': self.iter_times[i]
+                'iter_time': self.iter_times[i],
+                'synthetic': self.synthetic_flags[i] if i < len(self.synthetic_flags) else False
             }
             data.append(tmp)
 
@@ -354,6 +371,8 @@ class HistoryContainer(object):
             self.external_metrics.append(em)
             self.resource.append(resource)
             self.contexts.append(context)
+            # Backfill synthetic flag from file (default False)
+            self.synthetic_flags.append(tmp.get('synthetic', False))
 
             objs = self.get_objs(res, y_variables)
             if self.num_objs == 1:

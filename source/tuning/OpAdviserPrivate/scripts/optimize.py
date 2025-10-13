@@ -4,6 +4,8 @@ from autotune.database.postgresqldb import PostgresqlDB
 from autotune.dbenv import DBEnv
 from autotune.tuner import DBTuner
 import argparse
+import logging
+import os
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
@@ -46,6 +48,27 @@ if __name__ == '__main__':
     # args_tune['optimize_method'] = opt.optimize_method
     # args_tune['initial_tunable_knob_num']=opt.knob_num
     # 2024-11-19 code for clusters
+
+    # Configure logging to write DEBUG level to logs/DBTune-<task_id>.log
+    try:
+        task_id = args_tune.get('task_id', 'DBTune')
+        logs_dir = 'logs'
+        os.makedirs(logs_dir, exist_ok=True)
+        log_file = os.path.join(logs_dir, f"DBTune-{task_id}.log")
+
+        root_logger = logging.getLogger()
+        root_logger.setLevel(logging.DEBUG)
+        # Avoid duplicate handlers if rerun in the same process
+        has_file_handler = any(isinstance(h, logging.FileHandler) and getattr(h, 'baseFilename', '') == os.path.abspath(log_file) for h in root_logger.handlers)
+        if not has_file_handler:
+            fh = logging.FileHandler(log_file)
+            fh.setLevel(logging.DEBUG)
+            formatter = logging.Formatter('[%(levelname)s] [%(asctime)s] [%(name)s] %(message)s')
+            fh.setFormatter(formatter)
+            root_logger.addHandler(fh)
+    except Exception as e:
+        # If logging setup fails, proceed without crashing
+        print(f"Logging setup failed: {e}")
     
     # Determine ensemble_mode: CLI flag overrides config file
     if opt.ensemble_mode:
