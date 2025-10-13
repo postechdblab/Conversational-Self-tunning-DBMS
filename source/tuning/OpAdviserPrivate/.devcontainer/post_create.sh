@@ -6,6 +6,11 @@ echo "POST-CREATE SETUP"
 echo "=========================================="
 echo ""
 
+# Remove Git HTTPS->SSH redirect configuration (redundant check)
+git config --global --unset url.ssh://git@github.com/.insteadof 2>/dev/null || true
+echo "Git configuration verified"
+echo ""
+
 # Ensure MySQL is running before proceeding
 echo "Checking MySQL status..."
 if ! sudo service mysql status >/dev/null 2>&1; then

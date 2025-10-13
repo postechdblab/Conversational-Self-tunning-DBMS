@@ -77,12 +77,10 @@
 	],
 
 	// Network configuration to fix DNS resolution
-	// GPU support enabled with --gpus=all
 	"runArgs": [
 		"--network=host",
 		"--dns=141.223.1.2",
-		"--dns=8.8.8.8",
-		"--gpus=all"
+		"--dns=8.8.8.8"
 	],
 
 	// Connect as the non-root 'vscode' user

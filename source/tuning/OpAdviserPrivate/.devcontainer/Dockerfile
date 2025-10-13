@@ -82,17 +82,17 @@ RUN apt-get update && \
     && rm -rf /var/lib/apt/lists/*
 
 # Install NVIDIA utilities for GPU monitoring
-# This provides nvidia-smi and other NVIDIA tools
-# Note: Requires host to have NVIDIA drivers and container runtime
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends \
-    nvidia-utils-525 || \
-    apt-get install -y --no-install-recommends \
-    nvidia-utils-520 || \
-    apt-get install -y --no-install-recommends \
-    nvidia-utils-510 || \
-    echo "Warning: Could not install nvidia-utils, nvidia-smi may not be available" && \
-    rm -rf /var/lib/apt/lists/*
+# DISABLED: GPU support not available on this host
+# Uncomment these lines if you have NVIDIA GPUs and nvidia-docker configured
+# RUN apt-get update && \
+#     apt-get install -y --no-install-recommends \
+#     nvidia-utils-525 || \
+#     apt-get install -y --no-install-recommends \
+#     nvidia-utils-520 || \
+#     apt-get install -y --no-install-recommends \
+#     nvidia-utils-510 || \
+#     echo "Warning: Could not install nvidia-utils, nvidia-smi may not be available" && \
+#     rm -rf /var/lib/apt/lists/*
 
 # Create MySQL directories and fix permissions
 RUN mkdir -p /var/log/mysql/base && \
@@ -108,10 +108,10 @@ RUN mkdir -p /var/log/mysql/base && \
 RUN echo "vscode ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vscode && \
     chmod 0440 /etc/sudoers.d/vscode
 
-# Install PyTorch with CUDA support for GPU acceleration
-# Using CUDA 11.8 compatible version
-RUN python3.8 -m pip install --no-cache-dir \
-    torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+# Install PyTorch (CPU version - faster build, smaller image)
+# For GPU support with CUDA 11.8, uncomment the line below and comment out the CPU line
+# RUN python3.8 -m pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cu118
+RUN python3.8 -m pip install --no-cache-dir torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
 
 # Verify installations
 RUN python3.8 --version && java -version && mysql --version && \

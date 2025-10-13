@@ -4,6 +4,12 @@ set -e  # Exit on error
 echo "=== Starting devcontainer setup ==="
 echo "Running as user: $(whoami)"
 
+# Remove Git HTTPS->SSH redirect configuration that causes clone failures
+echo "Removing Git HTTPS->SSH redirect configuration..."
+git config --global --unset url.ssh://git@github.com/.insteadof 2>/dev/null || true
+sudo -u vscode git config --global --unset url.ssh://git@github.com/.insteadof 2>/dev/null || true
+echo "Git configuration cleaned"
+
 # Verify installations
 echo "Verifying installations..."
 python3.8 --version || { echo "Python 3.8 verification failed"; exit 1; }
