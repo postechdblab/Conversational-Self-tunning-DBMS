@@ -33,6 +33,20 @@ RUN apt-get update && apt-get install -y \
     cmake \
     && rm -rf /var/lib/apt/lists/*
 
+# Install common utilities (previously from common-utils feature)
+RUN apt-get update && apt-get install -y \
+    zsh \
+    vim \
+    nano \
+    less \
+    jq \
+    iputils-ping \
+    net-tools \
+    netcat \
+    dnsutils \
+    telnet \
+    && rm -rf /var/lib/apt/lists/*
+
 # Add deadsnakes PPA and install Python 3.8
 RUN add-apt-repository -y ppa:deadsnakes/ppa && \
     apt-get update && \
@@ -73,13 +87,25 @@ RUN apt-get update && \
     apt-get install -y openjdk-11-jdk && \
     rm -rf /var/lib/apt/lists/*
 
-# Install MySQL 5.7
+# Prevent services from trying to start during installation
+RUN echo "exit 0" > /usr/sbin/policy-rc.d && \
+    chmod +x /usr/sbin/policy-rc.d && \
+    echo '#!/bin/sh\nexit 0' > /usr/sbin/invoke-rc.d && \
+    chmod +x /usr/sbin/invoke-rc.d
+
+# Install MySQL 5.7 with proper configuration to prevent startup during build
 RUN apt-get update && \
-    apt-get install -y \
+    echo "mysql-server-5.7 mysql-server/root_password password password" | debconf-set-selections && \
+    echo "mysql-server-5.7 mysql-server/root_password_again password password" | debconf-set-selections && \
+    DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     mysql-server-5.7 \
     mysql-client-5.7 \
     libmysqlclient-dev \
     && rm -rf /var/lib/apt/lists/*
+
+# Restore invoke-rc.d after MySQL installation
+RUN rm -f /usr/sbin/invoke-rc.d && \
+    dpkg-divert --rename --remove /usr/sbin/invoke-rc.d 2>/dev/null || true
 
 # Install NVIDIA utilities for GPU monitoring
 # DISABLED: GPU support not available on this host
@@ -103,6 +129,9 @@ RUN mkdir -p /var/log/mysql/base && \
     chown -R mysql:mysql /var/run/mysqld && \
     chmod 755 /var/run/mysqld && \
     usermod -d /var/lib/mysql mysql
+
+# Ensure vscode user exists (previously from common-utils feature)
+RUN id -u vscode &>/dev/null || useradd -m -s /bin/bash -u 1000 vscode
 
 # Configure vscode user for sudo access
 RUN echo "vscode ALL=(ALL) NOPASSWD: ALL" > /etc/sudoers.d/vscode && \

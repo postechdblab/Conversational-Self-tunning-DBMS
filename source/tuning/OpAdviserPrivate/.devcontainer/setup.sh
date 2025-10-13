@@ -27,6 +27,7 @@ if [ -f /etc/mysql/my.cnf ]; then
         echo '' >> /etc/mysql/my.cnf
         echo '[mysqld]' >> /etc/mysql/my.cnf
         echo 'port=3306' >> /etc/mysql/my.cnf
+        echo 'bind-address=0.0.0.0' >> /etc/mysql/my.cnf
         echo 'innodb_log_checksums = 0' >> /etc/mysql/my.cnf
         echo "MySQL configuration updated"
     fi
@@ -34,7 +35,14 @@ else
     echo "Creating new MySQL configuration at /etc/mysql/my.cnf"
     echo '[mysqld]' > /etc/mysql/my.cnf
     echo 'port=3306' >> /etc/mysql/my.cnf
+    echo 'bind-address=0.0.0.0' >> /etc/mysql/my.cnf
     echo 'innodb_log_checksums = 0' >> /etc/mysql/my.cnf
+fi
+
+# Also update bind-address in /etc/mysql/mysql.conf.d/mysqld.cnf if it exists
+if [ -f /etc/mysql/mysql.conf.d/mysqld.cnf ]; then
+    echo "Updating bind-address in /etc/mysql/mysql.conf.d/mysqld.cnf"
+    sed -i 's/^bind-address.*$/bind-address = 0.0.0.0/' /etc/mysql/mysql.conf.d/mysqld.cnf
 fi
 
 # Ensure MySQL log directories exist with correct permissions

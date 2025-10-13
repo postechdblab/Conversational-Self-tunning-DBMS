@@ -3,10 +3,7 @@
 	"name": "OpAdviser",
 	"build": {
 		"dockerfile": "Dockerfile",
-		"context": ".",
-		"options": [
-			"--network=host"
-		]
+		"context": "."
 	},
 	"workspaceFolder": "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate",
 
@@ -31,18 +28,6 @@
 	// Runs every time the container starts
 	// Ensure MySQL is always running and ready
 	"postStartCommand": "bash -c 'sudo service mysql start 2>&1 || true; for i in {1..10}; do if mysql -u root -ppassword -h localhost -P 3306 -e \"SELECT 1\" >/dev/null 2>&1; then echo \"MySQL is ready on port 3306\"; break; fi; echo \"Waiting for MySQL... ($i/10)\"; sleep 1; done'",
-	
-	// Install common utilities like ping, curl, wget, netcat, etc.
-	// These tools are essential for debugging and testing connectivity
-	"features": {
-		"ghcr.io/devcontainers/features/common-utils:2": {
-			"installZsh": "true",
-			"configureZshAsDefaultShell": "false",
-			"installOhMyZsh": "false",
-			"upgradePackages": "true",
-			"username": "vscode"
-		}
-	},
 	
 	"customizations": {
 		"vscode": {
@@ -76,9 +61,9 @@
 		"type=tmpfs,target=/tmp,tmpfs-mode=1777"
 	],
 
-	// Network configuration to fix DNS resolution
+	// Network configuration: DNS settings for name resolution
+	// Using bridge mode (default) instead of host mode to avoid port conflicts
 	"runArgs": [
-		"--network=host",
 		"--dns=141.223.1.2",
 		"--dns=8.8.8.8"
 	],
