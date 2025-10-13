@@ -7,7 +7,7 @@ import argparse
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='scripts/sysbench_ro.ini', help='config file')
+    parser.add_argument('--config', type=str, default='scripts/twitter.ini', help='config file')
     parser.add_argument('run',nargs='?',default=None)
     parser.add_argument('--no-debugger', action='store_true')
     parser.add_argument('--no-reload', action='store_true')
@@ -20,11 +20,11 @@ if __name__ == '__main__':
     # parser.add_argument('--task_id', type=str, default="ycsb_ddpg_26")
     # parser.add_argument('--optimize_method', type=str, default='DDPG')
     # parser.add_argument('--workload_type', type=str, default='read')
+    # 2024-11-19 code for clusters
     #2024-12-06 softmax transformer
     parser.add_argument('--softmax_weight', action='store_true')
     parser.add_argument('--transformer', action='store_true')
     #2024-12-06 softmax transformer
-    # 2024-11-19 code for clusters
     opt = parser.parse_args()
 
 
