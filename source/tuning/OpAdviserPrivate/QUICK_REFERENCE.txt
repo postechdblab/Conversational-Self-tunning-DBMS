@@ -1,0 +1,124 @@
+╔══════════════════════════════════════════════════════════════════════════════╗
+║                    FEATURE VERIFICATION QUICK REFERENCE                      ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  QUICK START                                                                 ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  Run complete test (recommended):                                           ║
+║    $ bash scripts/quick_test.sh                                             ║
+║                                                                              ║
+║  Run with CLI flags:                                                         ║
+║    $ python scripts/optimize.py --config=scripts/twitter.ini \              ║
+║        --ensemble-mode --augment-history                                    ║
+║                                                                              ║
+║  Run with test config:                                                       ║
+║    $ python scripts/optimize.py --config=scripts/twitter_test.ini           ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  VERIFICATION                                                                ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  Verify features:                                                            ║
+║    $ bash scripts/verify_features.sh twitter_test_ensemble_augment          ║
+║                                                                              ║
+║  Manual checks:                                                              ║
+║    $ grep '\[Ensemble\]' logs/twitter_test_ensemble_augment.log             ║
+║    $ grep '\[Augmentation\]' logs/twitter_test_ensemble_augment.log         ║
+║                                                                              ║
+║  Live monitoring:                                                            ║
+║    $ tail -f logs/twitter_test_ensemble_augment.log | \                     ║
+║        grep -E '\[Ensemble\]|\[Augmentation\]'                              ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  EXPECTED RESULTS (twitter_test.ini)                                         ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  Ensemble Mode:                                                              ║
+║    • Initial runs: 5 random configurations                                   ║
+║    • Ensemble iterations: 15                                                 ║
+║    • Configs per iteration: 4 (SMAC, MBO, DDPG, GA)                         ║
+║    • Total evaluations: 65 (5 + 15×4)                                       ║
+║    • Log markers: 60 [Ensemble] messages                                     ║
+║                                                                              ║
+║  History Augmentation:                                                       ║
+║    • Augmentation events: 15 (after initial phase)                          ║
+║    • Synthetic obs per event: 10                                             ║
+║    • Total synthetic: 150 (15×10)                                            ║
+║    • Log markers: 15 [Augmentation] messages                                 ║
+║                                                                              ║
+║  Runtime: ~15-30 minutes                                                     ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  LOG INDICATORS                                                              ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  ✅ Ensemble mode working:                                                   ║
+║    [Ensemble][SMAC] Iteration 6, objective value: [123.45]                  ║
+║    [Ensemble][MBO] Iteration 6, objective value: [125.67]                   ║
+║    [Ensemble][DDPG] Iteration 6, objective value: [120.34]                  ║
+║    [Ensemble][GA] Iteration 6, objective value: [128.90]                    ║
+║    [Ensemble] Total evaluations: 24, Expected: 24                           ║
+║                                                                              ║
+║  ✅ Augmentation working:                                                    ║
+║    [Augmentation] Added 10 synthetic observations to history                ║
+║    [Augmentation] Total synthetic observations in history: 10               ║
+║                                                                              ║
+║  ❌ Features NOT enabled:                                                    ║
+║    Iteration 6, objective value: [123.45]  (no [Ensemble] prefix)           ║
+║    (No [Augmentation] messages)                                              ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  TROUBLESHOOTING                                                             ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  No [Ensemble] markers:                                                      ║
+║    → Check config: grep "ensemble_mode" scripts/twitter_test.ini            ║
+║    → Use CLI flag: --ensemble-mode                                          ║
+║    → Wait for initial runs to complete                                       ║
+║                                                                              ║
+║  No [Augmentation] messages:                                                 ║
+║    → Wait for iteration > 0 (after initial runs)                            ║
+║    → Check config: grep "augment_history" scripts/twitter_test.ini          ║
+║    → Look for surrogate errors in log                                        ║
+║                                                                              ║
+║  Database not found:                                                         ║
+║    → Run: bash .devcontainer/setup_oltpbench.sh                             ║
+║    → Verify: mysql -u root -ppassword -e "USE twitter;"                     ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  FILES CREATED                                                               ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  scripts/twitter_test.ini         Test configuration                        ║
+║  scripts/verify_features.sh       Automated verification                    ║
+║  scripts/quick_test.sh            End-to-end test                           ║
+║  VERIFICATION_GUIDE.md            Detailed documentation                    ║
+║  IMPLEMENTATION_SUMMARY.md        Implementation overview                   ║
+║  QUICK_REFERENCE.txt              This file                                 ║
+║                                                                              ║
+║  Code changes:                                                               ║
+║  autotune/pipleline/pipleline.py  Added debug logging (lines 431-434,       ║
+║                                    1203-1208)                                ║
+║                                                                              ║
+╠══════════════════════════════════════════════════════════════════════════════╣
+║                                                                              ║
+║  DOCUMENTATION                                                               ║
+║  ────────────────────────────────────────────────────────────────────────── ║
+║                                                                              ║
+║  Comprehensive guide:                                                        ║
+║    $ cat VERIFICATION_GUIDE.md                                              ║
+║                                                                              ║
+║  Implementation summary:                                                     ║
+║    $ cat IMPLEMENTATION_SUMMARY.md                                          ║
+║                                                                              ║
+║  This quick reference:                                                       ║
+║    $ cat QUICK_REFERENCE.txt                                                ║
+║                                                                              ║
+╚══════════════════════════════════════════════════════════════════════════════╝
+

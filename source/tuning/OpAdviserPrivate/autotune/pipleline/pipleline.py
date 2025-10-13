@@ -428,6 +428,11 @@ class PipleLine(BOBase):
                 # Increment iteration_id once per iteration (not per optimizer)
                 self.iteration_id += 1
                 
+                # Debug logging for ensemble mode
+                total_evals = len(self.history_container.observations)
+                expected_evals = self.init_num + (self.iteration_id - self.init_num) * 4
+                self.logger.info(f"[Ensemble] Total evaluations: {total_evals}, Expected: {expected_evals}, Iteration: {self.iteration_id}")
+                
                 # Use best result for space exploration decisions
                 best_objs = min([r[3] for r in results], key=lambda x: x[0])
                 if (self.space_transfer or self.auto_optimizer) and len(self.history_container.get_incumbents()) > 0 and best_objs[0] < self.history_container.get_incumbents()[0][1]:
@@ -1200,7 +1205,12 @@ class PipleLine(BOBase):
             )
             self.history_container.update_observation(synthetic_obs)
         
+        # Count total synthetic observations in history
+        synthetic_count = sum(1 for obs in self.history_container.observations 
+                              if obs.info.get('synthetic', False))
+        
         self.logger.info(f"[Augmentation] Added {len(augmented_configs)} synthetic observations to history")
+        self.logger.info(f"[Augmentation] Total synthetic observations in history: {synthetic_count}")
 
     def _perturb_config(self, base_config):
         """Create a slightly perturbed version of a configuration."""
