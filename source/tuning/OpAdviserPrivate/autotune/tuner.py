@@ -18,7 +18,7 @@ import pdb
 from ConfigSpace.hyperparameters import NormalFloatHyperparameter
 from autotune.utils.config_space import Configuration
 class DBTuner:
-    def __init__(self, args_db, args_tune, env, ensemble_mode=False):
+    def __init__(self, args_db, args_tune, env, ensemble_mode=False, augment_history=False):
         self.env = env
         self.create_output_folders()
         self.args_tune = args_tune
@@ -30,6 +30,7 @@ class DBTuner:
         self.space_transfer = eval(self.args_tune['space_transfer'])
         self.auto_optimizer = eval(self.args_tune['auto_optimizer'])
         self.ensemble_mode = ensemble_mode
+        self.augment_history = augment_history
 
         self.hcL = list()
         self.history_workload_data = list()
@@ -197,6 +198,8 @@ class DBTuner:
                        auto_optimizer=self.auto_optimizer,
                        auto_optimizer_type= self.args_tune['auto_optimizer_type'],
                        ensemble_mode=self.ensemble_mode,
+                       augment_history=self.augment_history,
+                       augment_samples=int(self.args_tune['augment_samples']),
                        hold_out_workload=self.args_db['workload'],
                        history_workload_data=self.history_workload_data,
                        only_knob=eval(self.args_tune['only_knob']),

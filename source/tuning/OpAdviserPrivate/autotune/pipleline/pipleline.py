@@ -77,6 +77,8 @@ class PipleLine(BOBase):
                  auto_optimizer=False,
                  auto_optimizer_type='learned',
                  ensemble_mode=False,
+                 augment_history=False,
+                 augment_samples=10,
                  hold_out_workload=None,
                  history_workload_data=None,
                  only_knob = False,
@@ -119,6 +121,8 @@ class PipleLine(BOBase):
         self.knob_config_file = knob_config_file
         self.auto_optimizer = auto_optimizer
         self.ensemble_mode = ensemble_mode
+        self.augment_history = augment_history
+        self.augment_samples = augment_samples
         if space_transfer or auto_optimizer or ensemble_mode:
             self.space_step_limit = 3
             self.space_step = 0
@@ -397,6 +401,9 @@ class PipleLine(BOBase):
                 space = compact_space if not compact_space is None else self.config_space
                 self.logger.info("[Iteration {}] [{},{}] Total space size:{}".format(self.iteration_id,self.space_step , self.space_step_limit, estimate_size(space, self.knob_config_file)))
 
+            # Augment history with surrogate predictions
+            if self.augment_history and self.iteration_id > 0:
+                self.augment_history_with_surrogate()
 
             f = open('all.record', 'a')
             
@@ -1123,3 +1130,102 @@ class PipleLine(BOBase):
 #2024-11-11: code for experiment
         # return target_space,target_space2
 #2024-11-11: code for experiment
+
+    def augment_history_with_surrogate(self):
+        """
+        Augment history with synthetic observations predicted by surrogate.
+        Generates configs near promising regions and predicts performance.
+        """
+        if not self.augment_history:
+            return
+        
+        # Need enough real data to train surrogate
+        if len(self.history_container.configurations) < self.init_num:
+            return
+        
+        # Get surrogate model from first optimizer (SMAC or current optimizer)
+        if self.ensemble_mode:
+            surrogate = self.optimizer_list[0].surrogate_model
+        else:
+            surrogate = self.optimizer.surrogate_model
+        
+        if surrogate is None:
+            return
+        
+        # Train surrogate on current history
+        from autotune.utils.config_space.util import convert_configurations_to_array
+        X = convert_configurations_to_array(self.history_container.configurations)
+        Y = self.history_container.get_transformed_perfs()
+        
+        try:
+            surrogate.train(X, Y)
+        except:
+            self.logger.warning("Failed to train surrogate for augmentation")
+            return
+        
+        # Generate configs near good regions
+        incumbent_configs = [inc[0] for inc in self.history_container.get_incumbents()[:5]]
+        
+        augmented_configs = []
+        for _ in range(self.augment_samples):
+            if len(incumbent_configs) > 0:
+                # Sample near incumbents with some noise
+                base_config = incumbent_configs[np.random.randint(len(incumbent_configs))]
+                config = self._perturb_config(base_config)
+            else:
+                # Random sampling if no incumbents
+                config = self.config_space.sample_configuration()
+            augmented_configs.append(config)
+        
+        # Predict performance with surrogate
+        X_aug = convert_configurations_to_array(augmented_configs)
+        Y_pred_mean, Y_pred_var = surrogate.predict(X_aug)
+        
+        # Add synthetic observations to history
+        from autotune.utils.history_container import Observation
+        from autotune.utils.constants import SUCCESS
+        
+        for i, config in enumerate(augmented_configs):
+            synthetic_obs = Observation(
+                config=config,
+                objs=[Y_pred_mean[i][0]],  # Use predicted mean
+                constraints=None,
+                trial_state=SUCCESS,
+                elapsed_time=0,
+                iter_time=0,
+                EM={},
+                resource={},
+                IM={},
+                info={'synthetic': True, 'variance': Y_pred_var[i][0]}
+            )
+            self.history_container.update_observation(synthetic_obs)
+        
+        self.logger.info(f"[Augmentation] Added {len(augmented_configs)} synthetic observations to history")
+
+    def _perturb_config(self, base_config):
+        """Create a slightly perturbed version of a configuration."""
+        new_config_dict = {}
+        for hp_name in base_config:
+            hp = self.config_space.get_hyperparameter(hp_name)
+            base_value = base_config[hp_name]
+            
+            # Perturb based on type
+            if hasattr(hp, 'choices'):  # Categorical
+                # 70% keep same, 30% random choice
+                if np.random.random() < 0.7:
+                    new_config_dict[hp_name] = base_value
+                else:
+                    new_config_dict[hp_name] = np.random.choice(hp.choices)
+            else:  # Numerical
+                # Add Gaussian noise (10% of range)
+                noise_std = (hp.upper - hp.lower) * 0.1
+                noisy_value = base_value + np.random.normal(0, noise_std)
+                noisy_value = np.clip(noisy_value, hp.lower, hp.upper)
+                
+                if hasattr(hp, 'q'):  # Integer
+                    new_config_dict[hp_name] = int(noisy_value)
+                else:  # Float
+                    new_config_dict[hp_name] = noisy_value
+        
+        from autotune.utils.config_space import Configuration
+        return Configuration(self.config_space, new_config_dict)

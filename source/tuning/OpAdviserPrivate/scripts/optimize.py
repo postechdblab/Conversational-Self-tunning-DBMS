@@ -28,6 +28,9 @@ if __name__ == '__main__':
     # Ensemble mode: run all 4 optimizers (SMAC, MBO, DDPG, GA) in parallel
     parser.add_argument('--ensemble-mode', action='store_true',
                         help='Use all 4 optimizers (SMAC, MBO, DDPG, GA) in ensemble mode')
+    # History augmentation: generate synthetic observations using surrogate model
+    parser.add_argument('--augment-history', action='store_true',
+                        help='Augment history with surrogate-predicted configurations')
     opt = parser.parse_args()
 
 
@@ -52,13 +55,21 @@ if __name__ == '__main__':
         # Use config file value (convert string to boolean)
         ensemble_mode = eval(args_tune['ensemble_mode'])
     
+    # Determine augment_history: CLI flag overrides config file
+    if opt.augment_history:
+        augment_history = True
+    else:
+        augment_history = eval(args_tune.get('augment_history', 'False'))
+    
     if args_db['db'] == 'mysql':
         db = MysqlDB(args_db)
     elif args_db['db'] == 'postgresql':
         db = PostgresqlDB(args_db)
 
     env = DBEnv(args_db, args_tune, db)
-    tuner = DBTuner(args_db, args_tune, env, ensemble_mode=ensemble_mode)
+    tuner = DBTuner(args_db, args_tune, env, 
+                    ensemble_mode=ensemble_mode,
+                    augment_history=augment_history)
     tuner.tune()
     #code for error case analysis
     # tuner.f()
