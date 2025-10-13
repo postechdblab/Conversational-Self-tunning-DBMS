@@ -21,28 +21,41 @@ cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate
 
 # Clone TPC-H repository
 log "Cloning TPC-H repository..."
+log "  → Removing old directory (if exists)..."
 rm -rf queries-tpch-dbgen-mysql
-git clone https://github.com/seokjeongeum/queries-tpch-dbgen-mysql.git
+log "  → Cloning from GitHub..."
+git clone --depth 1 --verbose https://github.com/seokjeongeum/queries-tpch-dbgen-mysql.git 2>&1 | tee -a /tmp/tpch_setup.log
 cd queries-tpch-dbgen-mysql
 
 # Unzip and build
 log "Building TPC-H dbgen..."
-unzip -o 'TPC-H V3.0.1.zip'
+log "  → Extracting TPC-H archive..."
+unzip -o 'TPC-H V3.0.1.zip' 2>&1 | tee -a /tmp/tpch_setup.log
 cd dbgen
-make
+log "  → Compiling dbgen tool..."
+make 2>&1 | tee -a /tmp/tpch_setup.log
 log "✅ TPC-H dbgen built successfully"
 
 # Generate data
+DATAGEN_START=$(date +%s)
 log "Generating TPC-H data (scale factor 10)..."
 log "This may take 10-15 minutes..."
-./dbgen -s 10
-log "✅ TPC-H data generated (scale factor 10)"
+log "  → Running: ./dbgen -s 10"
+./dbgen -s 10 2>&1 | tee -a /tmp/tpch_setup.log
+DATAGEN_END=$(date +%s)
+DATAGEN_TIME=$((DATAGEN_END - DATAGEN_START))
+log "✅ TPC-H data generated (scale factor 10) - took ${DATAGEN_TIME}s"
 
 # Create database and tables
+DBLOAD_START=$(date +%s)
 log "Creating TPC-H database and loading data..."
-mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS tpch;"
-mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE tpch;"
-mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword tpch <<'EOF'
+log "  → Step 1/3: Dropping existing database (if exists)..."
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"DROP DATABASE IF EXISTS tpch;" 2>&1 | tee -a /tmp/tpch_setup.log
+log "  → Step 2/3: Creating database 'tpch'..."
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword -e"CREATE DATABASE tpch;" 2>&1 | tee -a /tmp/tpch_setup.log
+log "  → Step 3/3: Creating tables, loading data, and building indexes..."
+log "     (This may take 5-10 minutes)"
+mysql -h localhost -P 3306 -u $MYSQL_USER -ppassword tpch 2>&1 <<'EOF' | tee -a /tmp/tpch_setup.log
 CREATE TABLE NATION  ( N_NATIONKEY  INTEGER NOT NULL,
                             N_NAME       CHAR(25) NOT NULL,
                             N_REGIONKEY  INTEGER NOT NULL,
@@ -137,14 +150,22 @@ ALTER TABLE ORDERS ADD FOREIGN KEY ORDERS_FK1 (O_CUSTKEY) references CUSTOMER(C_
 ALTER TABLE LINEITEM ADD FOREIGN KEY LINEITEM_FK1 (L_ORDERKEY)  references ORDERS(O_ORDERKEY);
 ALTER TABLE LINEITEM ADD FOREIGN KEY LINEITEM_FK2 (L_PARTKEY,L_SUPPKEY) references PARTSUPP(PS_PARTKEY, PS_SUPPKEY);
 EOF
+DBLOAD_END=$(date +%s)
+DBLOAD_TIME=$((DBLOAD_END - DBLOAD_START))
+DBLOAD_MIN=$((DBLOAD_TIME / 60))
+DBLOAD_SEC=$((DBLOAD_TIME % 60))
 
-log "✅ TPC-H data loaded and indexes created"
+log "✅ TPC-H data loaded and indexes created - took ${DBLOAD_MIN}m ${DBLOAD_SEC}s"
 log ""
 log "======================================"
 log "✅ TPC-H Setup Complete!"
 log "======================================"
-echo "You can now run:"
-echo "  cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
-echo "  export PYTHONPATH=."
-echo "  python scripts/optimize.py --config=scripts/tpch.ini"
+log "Database: tpch (scale factor 10)"
+log "Setup log: /tmp/tpch_setup.log"
+log ""
+log "You can now run:"
+log "  cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate"
+log "  export PYTHONPATH=."
+log "  python scripts/optimize.py --config=scripts/tpch.ini"
+log ""
 
