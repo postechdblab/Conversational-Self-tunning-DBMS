@@ -34,7 +34,8 @@ default_value = {
 'tr_init': 'True',
 'batch_size':16,
 'transfer_framework':'auto',
-'data_repo': 'repo'
+'data_repo': 'repo',
+'ensemble_mode': 'False'
 }
 
 auto_setting = ['knob_num', 'initial_tunable_knob_num', 'incremental_every',  'transfer_framework']

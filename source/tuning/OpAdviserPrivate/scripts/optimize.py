@@ -25,6 +25,9 @@ if __name__ == '__main__':
     parser.add_argument('--softmax_weight', action='store_true')
     parser.add_argument('--transformer', action='store_true')
     #2024-12-06 softmax transformer
+    # Ensemble mode: run all 4 optimizers (SMAC, MBO, DDPG, GA) in parallel
+    parser.add_argument('--ensemble-mode', action='store_true',
+                        help='Use all 4 optimizers (SMAC, MBO, DDPG, GA) in ensemble mode')
     opt = parser.parse_args()
 
 
@@ -40,13 +43,22 @@ if __name__ == '__main__':
     # args_tune['optimize_method'] = opt.optimize_method
     # args_tune['initial_tunable_knob_num']=opt.knob_num
     # 2024-11-19 code for clusters
+    
+    # Determine ensemble_mode: CLI flag overrides config file
+    if opt.ensemble_mode:
+        # CLI flag explicitly set to True
+        ensemble_mode = True
+    else:
+        # Use config file value (convert string to boolean)
+        ensemble_mode = eval(args_tune['ensemble_mode'])
+    
     if args_db['db'] == 'mysql':
         db = MysqlDB(args_db)
     elif args_db['db'] == 'postgresql':
         db = PostgresqlDB(args_db)
 
     env = DBEnv(args_db, args_tune, db)
-    tuner = DBTuner(args_db, args_tune, env)
+    tuner = DBTuner(args_db, args_tune, env, ensemble_mode=ensemble_mode)
     tuner.tune()
     #code for error case analysis
     # tuner.f()

@@ -76,6 +76,7 @@ class PipleLine(BOBase):
                  knob_config_file=None,
                  auto_optimizer=False,
                  auto_optimizer_type='learned',
+                 ensemble_mode=False,
                  hold_out_workload=None,
                  history_workload_data=None,
                  only_knob = False,
@@ -117,7 +118,8 @@ class PipleLine(BOBase):
         self.only_range = only_range
         self.knob_config_file = knob_config_file
         self.auto_optimizer = auto_optimizer
-        if space_transfer or auto_optimizer:
+        self.ensemble_mode = ensemble_mode
+        if space_transfer or auto_optimizer or ensemble_mode:
             self.space_step_limit = 3
             self.space_step = 0
 
@@ -172,7 +174,7 @@ class PipleLine(BOBase):
                                                         ref_point=ref_point)
         # load history container if exists
         self.load_history()
-        if not self.auto_optimizer:
+        if not self.auto_optimizer and not self.ensemble_mode:
             if optimizer_type in ('MBO', 'SMAC', 'auto'):
                 self.optimizer = BO_Optimizer(config_space,
                                               self.history_container,
@@ -342,7 +344,7 @@ class PipleLine(BOBase):
             time_b = time.time()
             start_time = time.time()
             # get another compact space
-            if (self.space_transfer or self.auto_optimizer) and (self.space_step >= self.space_step_limit):
+            if (self.space_transfer or self.auto_optimizer or self.ensemble_mode) and (self.space_step >= self.space_step_limit):
                 self.space_step_limit = 3
                 self.space_step = 0
                 if self.space_transfer:
@@ -397,23 +399,52 @@ class PipleLine(BOBase):
 
 
             f = open('all.record', 'a')
-            config, _, _, objs,latL = self.iterate(compact_space)
-            self.tuning_result.append((objs,config))
-            #2024-11-11: code for experiment
-            # _ , _, _, objs,_ , _, _, objs2 = self.iterate(compact_space,compact_space2)
-            #2024-11-11: code for experiment
+            
+            if self.ensemble_mode:
+                # Ensemble mode: iterate returns a list of results
+                results = self.iterate(compact_space)
+                # Process all results and add to history
+                # Get the observations that were just added (last 4)
+                start_obs_idx = len(self.history_container.observations) - 4
+                for idx, (config, trial_state, constraints, objs, latL) in enumerate(results):
+                    self.tuning_result.append((objs, config))
+                    optimizer_name = ['SMAC', 'MBO', 'DDPG', 'GA'][idx]
+                    self.logger.info('[Ensemble][{}] Iteration {}, objective value: {}.'.format(
+                        optimizer_name, self.iteration_id + 1, objs))
+                    
+                    # Update DDPG and GA optimizers with their observations
+                    observation = self.history_container.observations[start_obs_idx + idx]
+                    if trial_state != FAILED:  
+                        self.optimizer_list[2].update(observation)
+                        self.optimizer_list[3].update(observation)
+                
+                # Increment iteration_id once per iteration (not per optimizer)
+                self.iteration_id += 1
+                
+                # Use best result for space exploration decisions
+                best_objs = min([r[3] for r in results], key=lambda x: x[0])
+                if (self.space_transfer or self.auto_optimizer) and len(self.history_container.get_incumbents()) > 0 and best_objs[0] < self.history_container.get_incumbents()[0][1]:
+                    self.space_step_limit += 1
+            else:
+                # Regular mode: iterate returns a single result
+                config, _, _, objs, latL = self.iterate(compact_space)
+                self.tuning_result.append((objs,config))
+                #2024-11-11: code for experiment
+                # _ , _, _, objs,_ , _, _, objs2 = self.iterate(compact_space,compact_space2)
+                #2024-11-11: code for experiment
+                
+                # determine whether explore one more step in the space
+                if (self.space_transfer or self.auto_optimizer) and  len(self.history_container.get_incumbents()) > 0 and objs[0] < self.history_container.get_incumbents()[0][1]:
+                    self.space_step_limit += 1
+            
             f.write(str(time.time() - time_b) + '\n')
             f.close()
-
-            # determine whether explore one more step in the space
-            if (self.space_transfer or self.auto_optimizer) and  len(self.history_container.get_incumbents()) > 0 and objs[0] < self.history_container.get_incumbents()[0][1]:
-                self.space_step_limit += 1
 
             self.save_history()
             runtime = time.time() - start_time
             self.budget_left -= runtime
             # recode the step in the space
-            if self.space_transfer or self.auto_optimizer:
+            if self.space_transfer or self.auto_optimizer or self.ensemble_mode:
                 self.space_step += 1
 
         return self.get_history()
@@ -530,6 +561,22 @@ class PipleLine(BOBase):
         #2024-11-11: code for experiment                
                 ):
         self.knob_selection()
+        
+        # Ensemble mode: get suggestions from all 4 optimizers
+        if self.ensemble_mode:
+            configs = []
+            for optimizer in self.optimizer_list:
+                config = optimizer.get_suggestion(history_container=self.history_container, compact_space=compact_space)
+                configs.append(config)
+            
+            # Evaluate all 4 configurations
+            results = []
+            for config in configs:
+                _, trial_state, constraints, objs, latL = self.evaluate(config)
+                results.append((config, trial_state, constraints, objs, latL))
+            
+            return results
+        
         #get configuration suggestion
         if self.space_transfer and len(self.history_container.configurations) < self.init_num:
             #space transfer: use best source config to init
@@ -658,22 +705,26 @@ class PipleLine(BOBase):
         # self.history_container2.update_observation(observation2)
         #2024-11-11: code for experiment   
 
-        if self.optimizer_type in ['GA', 'TurBO', 'DDPG'] and not self.auto_optimizer:
-            if  not self.optimizer_type == 'DDPG' or not trial_state == FAILED:
-                self.optimizer.update(observation)
+        # Don't increment iteration_id or update optimizers in ensemble mode
+        # (handled in run() method instead)
+        if not self.ensemble_mode:
+            if self.optimizer_type in ['GA', 'TurBO', 'DDPG'] and not self.auto_optimizer:
+                if  not self.optimizer_type == 'DDPG' or not trial_state == FAILED:
+                    self.optimizer.update(observation)
 
-        if not trial_state == FAILED and self.auto_optimizer and not self.space_transfer:
-            self.optimizer_list[2].update(observation)
-            self.optimizer_list[3].update(observation)
+            if not trial_state == FAILED and self.auto_optimizer and not self.space_transfer:
+                self.optimizer_list[2].update(observation)
+                self.optimizer_list[3].update(observation)
 
-        self.iteration_id += 1
-        # Logging.
-        if self.num_constraints > 0:
-            self.logger.info('Iteration %d, objective value: %s, constraints: %s.'
-                             % (self.iteration_id, objs, constraints))
-        else:
-            #self.logger.info('Iteration %d, objective value: %s ,improvement,: :.2%' % (self.iteration_id, objs, (objs-self.default_obj))/self.default_obj)
-            self.logger.info('Iteration %d, objective value: %s.' % (self.iteration_id, objs))
+            self.iteration_id += 1
+            # Logging.
+            if self.num_constraints > 0:
+                self.logger.info('Iteration %d, objective value: %s, constraints: %s.'
+                                 % (self.iteration_id, objs, constraints))
+            else:
+                #self.logger.info('Iteration %d, objective value: %s ,improvement,: :.2%' % (self.iteration_id, objs, (objs-self.default_obj))/self.default_obj)
+                self.logger.info('Iteration %d, objective value: %s.' % (self.iteration_id, objs))
+        
         return config, trial_state, constraints, objs,latL
         #2024-11-11: code for experiment   
         # return config, trial_state, constraints, objs,config2, trial_state2, constraints2, objs2
