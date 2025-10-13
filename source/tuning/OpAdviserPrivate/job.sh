@@ -10,4 +10,4 @@ mv -f ./csv_files/schematext_backup.sql ./csv_files/schematext.sql
 mysql -u root -ppassword < csv_files/schematext.sql
 mysql -u root -ppassword imdbload < csv_files/fkindexes.sql
 ./load_data_mysql.sh
-cd ~/OpAdviserPrivate
+cd /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate
