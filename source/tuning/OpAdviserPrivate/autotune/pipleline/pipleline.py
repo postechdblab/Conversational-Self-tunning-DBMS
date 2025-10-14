@@ -782,9 +782,9 @@ class PipleLine(BOBase):
         similarity_list = [1 - i for i in rank_loss_list]
 
         #2024-12-06 softmax transformer
-        with open(f'{self.task_id}_similarity_list','a')as f:
-            f.write(f'''{similarity_list}
-''')
+#         with open(f'{self.task_id}_similarity_list','a')as f:
+#             f.write(f'''{similarity_list}
+# ''')
         #2024-12-06 softmax transformer
 
         ### filter unsimilar task
@@ -858,9 +858,9 @@ class PipleLine(BOBase):
                             [similarity_list[i] for i in sample_list])
 
         #2024-12-06 softmax transformer
-        with open(f'{self.task_id}_sample_list','a')as f:
-            f.write(f'''{sample_list}
-''')
+#         with open(f'{self.task_id}_sample_list','a')as f:
+#             f.write(f'''{sample_list}
+# ''')
         #2024-12-06 softmax transformer
 
 #code for error case analysis
