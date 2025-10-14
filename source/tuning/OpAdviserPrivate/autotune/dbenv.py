@@ -165,7 +165,7 @@ class DBEnv:
     def get_external_metrics(self, filename=''):
         latL = None  # Initialize latL for all workload types
         if self.workload['name'] == 'sysbench':
-            for _ in range(60):
+            for _ in range(240):
                 if os.path.exists(filename):
                     break
                 time.sleep(1)
@@ -173,18 +173,15 @@ class DBEnv:
                 print("benchmark result file does not exist!")
             result = parse_sysbench(filename)
         elif self.workload['name'] == 'oltpbench':
-            for _ in range(120):
+            for _ in range(240):
                 if os.path.exists('results/{}.summary'.format(filename)):
                     break
                 time.sleep(1)
             if not os.path.exists('results/{}.summary'.format(filename)):
                 print("benchmark result file does not exist!")
-            # When file is missing, mark as failed by returning large objective
-            if not os.path.exists('results/{}.summary'.format(filename)):
-                return [MAXINT], None
             result = parse_oltpbench('results/{}.summary'.format(filename))
         elif self.workload['name'] == 'job' or self.workload['name'] == 'tpch'or self.workload['name'] == 'demo':
-            for _ in range(60):
+            for _ in range(240):
                 if os.path.exists(filename):
                     break
                 time.sleep(1)
@@ -506,6 +503,6 @@ class DBEnv:
             return objs, constraints, external_metrics, resource, list(internal_metrics), self.info, trial_state,latL
 
         except:
-            traceback.print_exc()
+            logger.exception("Exception occurred during step execution:")
             return None, None, {}, {}, [], self.info, FAILED,[]
         
