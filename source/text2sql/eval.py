@@ -116,6 +116,7 @@ def main(cfg: DictConfig) -> None:
         with open(plist_path, "r", encoding="utf-8") as f:
             plist = json.load(f)
         glist = glist[: len(plist)]  # Ensure both lists are of the same length
+        dataset = DATASET_REGISTRY[cfg.data.name](cfg.data)
         print(f"Loaded {len(glist)} gold queries and {len(plist)} predicted queries")
     else:
         # Generate new results

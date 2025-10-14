@@ -130,7 +130,12 @@ def evaluate_by_confidence_bins(
             plist=plist_bin,
         )
 
-        bin_results[bin_label] = scores
+        bin_results[bin_label] = {
+            "exact": scores["all"]["exact"],
+            "exec": scores["all"]["exec"],
+            "avg_conf": float(np.mean([confidences[idx] for idx in bin_indices])),
+            "count": len(glist_bin),
+        }
 
     # JSON 저장
     os.makedirs(os.path.dirname(output_json_path), exist_ok=True)
@@ -156,7 +161,7 @@ def main(cfg: DictConfig) -> None:
     bin_eval_path = cfg.conversation.text2confidence.get(
         "bin_eval_output_path", "eval_results/confidence_bin_eval.json"
     )
-    load_existing = cfg.text2sql.get("load_existing_results", False)
+    load_existing = cfg.conversation.text2confidence.get("load_existing_results", False)
 
     os.makedirs(os.path.dirname(glist_path), exist_ok=True)
     os.makedirs(os.path.dirname(plist_path), exist_ok=True)
@@ -181,6 +186,7 @@ def main(cfg: DictConfig) -> None:
         dataset = DATASET_REGISTRY[cfg.data.name](cfg.data)
         eval_dataloader = DataLoader(dataset, batch_size=1, shuffle=False)
 
+        count = 0
         glist, plist, confidences = [], [], []
         for eval_instance in tqdm(eval_dataloader):
             question, gold_sql, db_id, table_id = eval_instance
@@ -209,6 +215,16 @@ def main(cfg: DictConfig) -> None:
             print(f"Gold SQL: {gold_sql[0]}")
             print(f"Predicted SQL: {inferred_code}")
             print(f"Confidence: {conf:.4f}\n")
+            count += 1
+            if count % 1000 == 0:
+                print(f"Processed {count} examples...")
+                print(f"Saving results to {glist_path}, {plist_path}, and {conf_path}")
+                with open(glist_path, "w", encoding="utf-8") as f:
+                    json.dump(glist, f, indent=2, ensure_ascii=False)
+                with open(plist_path, "w", encoding="utf-8") as f:
+                    json.dump(plist, f, indent=2, ensure_ascii=False)
+                with open(conf_path, "w", encoding="utf-8") as f:
+                    json.dump(confidences, f, indent=2, ensure_ascii=False)
 
         print(f"Saving results to {glist_path}, {plist_path}, and {conf_path}")
         with open(glist_path, "w", encoding="utf-8") as f:

@@ -4,3 +4,4 @@ bin_eval_output_path: /root/dbadminbot/eval_results/confidence/confidence_bin_ev
 glist_output_path: /root/dbadminbot/eval_results/confidence/glist.json
 plist_output_path: /root/dbadminbot/eval_results/confidence/plist.json
 confidence_output_path: /root/dbadminbot/eval_results/confidence/confidence_scores.json
+load_existing_results: True

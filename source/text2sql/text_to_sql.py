@@ -74,11 +74,15 @@ class LLMBasedText2SQL(BaseText2SQL):
         original_inferred_code = None
         beams = []
         if self.is_fix_mode:
-            beams, original_inferred_code = self.slm_translator.translate(
-                text,
-                text_history,
-                db_id,
-            )
+            try:
+                beams, original_inferred_code = self.slm_translator.translate(
+                    text,
+                    text_history,
+                    db_id,
+                )
+            except Exception as e:
+                print(f"Error in SLM translator: {e}")
+                original_inferred_code = ""
 
         # Prepare prompts
         prompt = self.preprocess(

@@ -689,16 +689,18 @@ def evaluate(
         db_name = db
         db = os.path.join(db_dir, db, db + ".sqlite")
         schema = Schema(get_schema(db))
-        g_sql = get_sql(schema, g_str)
-        hardness = evaluator.eval_hardness(g_sql)
-        scores[hardness]["count"] += 1
-        scores["all"]["count"] += 1
+        try:
+            g_sql = get_sql(schema, g_str)
+        except Exception as e:
+            print("Failed to parse predicted SQL: {}".format(g_str))
+            continue
 
         try:
             p_sql = get_sql(schema, p_str)
         except Exception as e:
             print("Failed to parse predicted SQL: {}".format(p_str))
             print(e)
+            continue
             # If p_sql is not valid, then we will use an empty sql to evaluate with the correct sql
             p_sql = {
                 "except": None,
@@ -714,6 +716,10 @@ def evaluate(
             }
             eval_err_num += 1
             print("eval_err_num:{}".format(eval_err_num))
+
+        hardness = evaluator.eval_hardness(g_sql)
+        scores[hardness]["count"] += 1
+        scores["all"]["count"] += 1
 
         # rebuild sql for value evaluation
         kmap = kmaps[db_name]
