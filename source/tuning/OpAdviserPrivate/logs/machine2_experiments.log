@@ -38461,3 +38461,258 @@ Traceback (most recent call last):
     raise ValueError(f"Expected more than 1 value per channel when training, got input size {size}")
 ValueError: Expected more than 1 value per channel when training, got input size torch.Size([1, 128])
 [2025-10-15 04:28:31] ❌ FAILED: TATP (Ensemble) (ran for 2785s)
+[2025-10-15 04:30:20] ==========================================
+[2025-10-15 04:30:20] MACHINE 2 EXPERIMENT SUITE
+[2025-10-15 04:30:20] ==========================================
+[2025-10-15 04:30:20] Workloads: tatp, voter, tpch, job
+[2025-10-15 04:30:20] Modes: Single-optimizer + Ensemble
+[2025-10-15 04:30:20] Total experiments: 8
+[2025-10-15 04:30:20] Start time: Wed Oct 15 04:30:20 UTC 2025
+[2025-10-15 04:30:20] ==========================================
+[2025-10-15 04:30:20] 
+[2025-10-15 04:30:20] ========================================
+[2025-10-15 04:30:20] Starting: TATP (Single-Optimizer)
+[2025-10-15 04:30:20] Config: tatp.ini
+[2025-10-15 04:30:20] ========================================
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/xgboost/core.py:265: FutureWarning: Your system has an old version of glibc (< 2.28). We will stop supporting Linux distros with glibc older than 2.28 after **May 31, 2025**. Please upgrade to a recent Linux distro (with glibc 2.28+) to use future versions of XGBoost.
+Note: You have installed the 'manylinux2014' variant of XGBoost. Certain features such as GPU algorithms or federated learning are not available. To use these features, please upgrade to a recent Linux distro with glibc 2.28+, and install the 'manylinux_2_28' variant.
+  warnings.warn(
+[INFO] [2025-10-15 04:30:30,518] [DBTune-oltpbench_tatp] Load 200 iterations from repo/history_oltpbench_tatp.json
+[INFO] [2025-10-15 04:30:31,698] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+[2025-10-15 04:30:32] ✅ SUCCESS: TATP (Single-Optimizer) completed in 0h 0m 12s
+[2025-10-15 04:30:32] 
+[2025-10-15 04:30:32] ========================================
+[2025-10-15 04:30:32] Starting: TATP (Ensemble)
+[2025-10-15 04:30:32] Config: tatp_ensemble.ini
+[2025-10-15 04:30:32] ========================================
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/xgboost/core.py:265: FutureWarning: Your system has an old version of glibc (< 2.28). We will stop supporting Linux distros with glibc older than 2.28 after **May 31, 2025**. Please upgrade to a recent Linux distro (with glibc 2.28+) to use future versions of XGBoost.
+Note: You have installed the 'manylinux2014' variant of XGBoost. Certain features such as GPU algorithms or federated learning are not available. To use these features, please upgrade to a recent Linux distro with glibc 2.28+, and install the 'manylinux_2_28' variant.
+  warnings.warn(
+[INFO] [2025-10-15 04:30:40,563] [DBTune-oltpbench_tatp_ensemble] Start new DBTune task
+[INFO] [2025-10-15 04:30:41,633] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-15 04:30:42,702] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-15 04:30:43,776] [DDPG_Optimizer] Load state mean and var.
+[INFO] [2025-10-15 04:30:44,486] [DDPG] Finish Initializing Networks
+[INFO] [2025-10-15 04:30:44,487] [DDPG] DDPG Initialzed!
+  0%|          | 0/200 [00:00<?, ?it/s][INFO] [2025-10-15 04:30:44,502] [autotune] max_join_size with value of is larger than max, adjusted
+[INFO] [2025-10-15 04:30:44,502] [autotune] [step 1] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 900, 'binlog_cache_size': 32768, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 0, 'binlog_group_commit_sync_no_delay_count': 0, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 32768, 'bulk_insert_buffer_size': 8388608, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 10, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 4, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 200, 'expire_logs_days': 0, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 4, 'ft_query_expansion_limit': 20, 'general_log': 'OFF', 'group_concat_max_len': 1000, 'host_cache_size': 0, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 10, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 150000, 'innodb_api_bk_commit_interval': 5, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 64, 'innodb_buffer_pool_size': 20615843020, 'innodb_change_buffer_max_size': 25, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 0, 'innodb_compression_failure_threshold_pct': 5, 'innodb_compression_level': 6, 'innodb_compression_pad_pct_max': 50, 'innodb_concurrency_tickets': 5000, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 100, 'innodb_flush_log_at_timeout': 1, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 30, 'innodb_ft_cache_size': 8000000, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 84, 'innodb_ft_min_token_size': 3, 'innodb_ft_num_word_optimize': 2000, 'innodb_ft_result_cache_limit': 2000000000, 'innodb_ft_sort_pll_degree': 2, 'innodb_ft_total_cache_size': 640000000, 'innodb_io_capacity': 200, 'innodb_io_capacity_max': 400, 'innodb_log_buffer_size': 16777216, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 50331648, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 8192, 'innodb_lru_scan_depth': 1024, 'innodb_max_dirty_pages_pct': 75, 'innodb_max_dirty_pages_pct_lwm': 0, 'innodb_max_purge_lag': 0, 'innodb_max_purge_lag_delay': 0, 'innodb_max_undo_log_size': 1073741000, 'innodb_old_blocks_time': 1000, 'innodb_online_alter_log_max_size': 134217000, 'innodb_open_files': 2000, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 300, 'innodb_purge_rseg_truncate_frequency': 128, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 56, 'innodb_read_io_threads': 4, 'innodb_replication_delay': 0, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 128, 'innodb_sort_buffer_size': 1048576, 'innodb_spin_wait_delay': 6, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 8, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 1, 'innodb_sync_spin_loops': 30, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 0, 'innodb_thread_sleep_delay': 10000, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 4, 'join_buffer_size': 262144, 'keep_files_on_create': 'OFF', 'key_buffer_size': 8388608, 'key_cache_age_threshold': 300, 'key_cache_block_size': 1024, 'key_cache_division_limit': 100, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'FILE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 4194304, 'max_binlog_cache_size': 18446744073709500000, 'max_binlog_size': 1073741824, 'max_binlog_stmt_cache_size': 18446744073709500000, 'max_connections': 1000, 'max_delayed_threads': 20, 'max_digest_length': 1024, 'max_error_count': 64, 'max_heap_table_size': 16777216, 'max_join_size': 18446744073709551615, 'max_length_for_sort_data': 1024, 'max_points_in_geometry': 65536, 'max_prepared_stmt_count': 16382, 'max_seeks_for_key': 18446744073709500000, 'max_sort_length': 1024, 'max_user_connections': 0, 'max_write_lock_count': 18446744073709500000, 'multi_range_count': 256, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 16384, 'net_read_timeout': 30, 'net_write_timeout': 60, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 50000, 'optimizer_prune_level': 1, 'optimizer_search_depth': 62, 'preload_buffer_size': 32768, 'query_alloc_block_size': 8192, 'query_cache_limit': 1048576, 'query_cache_min_res_unit': 4096, 'query_cache_size': 1048576, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 8192, 'range_alloc_block_size': 4096, 'read_buffer_size': 131072, 'read_rnd_buffer_size': 262144, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'OFF', 'sort_buffer_size': 262144, 'stored_program_cache': 256, 'sync_binlog': 1, 'sync_frm': 'ON', 'table_definition_cache': 1400, 'table_open_cache': 2000, 'table_open_cache_instances': 16, 'thread_cache_size': 0, 'tmp_table_size': 16777216, 'transaction_alloc_block_size': 8192, 'transaction_prealloc_size': 4096, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-15 04:30:44,559] [autotune] Close db successfully
+[INFO] [2025-10-15 04:30:44,560] [autotune] mysql is shut down
+[INFO] [2025-10-15 04:30:44,564] [autotune] generated config file done
+[INFO] [2025-10-15 04:30:44,595] [autotune] wait for connection
+[INFO] [2025-10-15 04:30:51,617] [autotune] Connected to MySQL db
+[INFO] [2025-10-15 04:30:51,618] [autotune] finish 7 seconds waiting for connection
+[INFO] [2025-10-15 04:30:51,618] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-15 04:30:51,619] [autotune] mysql is up
+[INFO] [2025-10-15 04:30:51,619] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-15 04:30:56,706] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_oltpbench.sh tatp /oltpbench/config/sample_tatp_config.xml 1760502656
+collect internal metrics 11
+collect internal metrics 12
+collect internal metrics 13
+collect internal metrics 14
+collect internal metrics 15
+collect internal metrics 16
+collect internal metrics 17
+collect internal metrics 18
+collect internal metrics 19
+collect internal metrics 20
+collect internal metrics 21
+collect internal metrics 22
+collect internal metrics 23
+collect internal metrics 24
+collect internal metrics 25
+collect internal metrics 26
+collect internal metrics 27
+collect internal metrics 28
+collect internal metrics 29
+collect internal metrics 30
+collect internal metrics 31
+collect internal metrics 32
+collect internal metrics 33
+collect internal metrics 34
+collect internal metrics 35
+collect internal metrics 36
+collect internal metrics 37
+collect internal metrics 38
+collect internal metrics 39
+collect internal metrics 40
+collect internal metrics 41
+collect internal metrics 42
+collect internal metrics 43
+collect internal metrics 44
+collect internal metrics 45
+collect internal metrics 46
+collect internal metrics 47
+collect internal metrics 48
+collect internal metrics 49
+collect internal metrics 50
+collect internal metrics 51
+collect internal metrics 52
+collect internal metrics 53
+collect internal metrics 54
+collect internal metrics 55
+collect internal metrics 56
+collect internal metrics 57
+collect internal metrics 58
+collect internal metrics 59
+collect internal metrics 60
+collect internal metrics 61
+collect internal metrics 62
+collect internal metrics 63
+collect internal metrics 64
+collect internal metrics 65
+collect internal metrics 66
+collect internal metrics 67
+collect internal metrics 68
+collect internal metrics 69
+collect internal metrics 70
+collect internal metrics 71
+collect internal metrics 72
+collect internal metrics 73
+collect internal metrics 74
+collect internal metrics 75
+collect internal metrics 76
+collect internal metrics 77
+collect internal metrics 78
+collect internal metrics 79
+collect internal metrics 80
+collect internal metrics 81
+collect internal metrics 82
+collect internal metrics 83
+collect internal metrics 84
+collect internal metrics 85
+collect internal metrics 86
+collect internal metrics 87
+collect internal metrics 88
+collect internal metrics 89
+collect internal metrics 90
+collect internal metrics 91
+collect internal metrics 92
+collect internal metrics 93
+collect internal metrics 94
+collect internal metrics 95
+collect internal metrics 96
+collect internal metrics 97
+collect internal metrics 98
+collect internal metrics 99
+collect internal metrics 100
+collect internal metrics 101
+collect internal metrics 102
+collect internal metrics 103
+collect internal metrics 104
+collect internal metrics 105
+collect internal metrics 106
+collect internal metrics 107
+collect internal metrics 108
+collect internal metrics 109
+collect internal metrics 110
+collect internal metrics 111
+collect internal metrics 112
+collect internal metrics 113
+collect internal metrics 114
+collect internal metrics 115
+collect internal metrics 116
+collect internal metrics 117
+collect internal metrics 118
+collect internal metrics 119
+collect internal metrics 120
+collect internal metrics 121
+collect internal metrics 122
+collect internal metrics 123
+collect internal metrics 124
+collect internal metrics 125
+collect internal metrics 126
+collect internal metrics 127
+collect internal metrics 128
+collect internal metrics 129
+collect internal metrics 130
+collect internal metrics 131
+collect internal metrics 132
+collect internal metrics 133
+collect internal metrics 134
+collect internal metrics 135
+collect internal metrics 136
+collect internal metrics 137
+collect internal metrics 138
+collect internal metrics 139
+collect internal metrics 140
+collect internal metrics 141
+collect internal metrics 142
+collect internal metrics 143
+collect internal metrics 144
+collect internal metrics 145
+collect internal metrics 146
+collect internal metrics 147
+collect internal metrics 148
+collect internal metrics 149
+collect internal metrics 150
+collect internal metrics 151
+collect internal metrics 152
+collect internal metrics 153
+collect internal metrics 154
+collect internal metrics 155
+collect internal metrics 156
+collect internal metrics 157
+collect internal metrics 158
+collect internal metrics 159
+collect internal metrics 160
+collect internal metrics 161
+collect internal metrics 162
+collect internal metrics 163
+collect internal metrics 164
+collect internal metrics 165
+collect internal metrics 166
+collect internal metrics 167
+collect internal metrics 168
+collect internal metrics 169
+collect internal metrics 170
+collect internal metrics 171
+collect internal metrics 172
+collect internal metrics 173
+collect internal metrics 174
+collect internal metrics 175
+collect internal metrics 176
+collect internal metrics 177
+collect internal metrics 178
+collect internal metrics 179
+collect internal metrics 180
+collect internal metrics 181
+collect internal metrics 182
+collect internal metrics 183
+collect internal metrics 184
+collect internal metrics 185
+collect internal metrics 186
+collect internal metrics 187
+collect internal metrics 188
+collect internal metrics 189
+bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_oltpbench.sh tatp /oltpbench/config/sample_tatp_config.xml 1760502656
+[2025-10-15 04:30:56] benchmark start!
+[2025-10-15 04:34:32] benchmark finished!
+[2025-10-15 04:34:32] clear processlist
+[INFO] [2025-10-15 04:34:32,241] [autotune] internal metrics: [492818, 4101221, 6010573312, 7493375488, 550, 366918, 209638, 6020595712, 1023950848, 367468, 62497, 927947, 15145, 1310560, 365583, 0, 0, 18657199, 21474836480, 0, 4131979, 11008, 20868, 413888, 23, 2481, 0, 0, 0, 0, 0, 2577, 1, 686862, 209604, 3603, 16384, 2064, 81265, 3114, 5355, 14757, 0, 15563, 538880, 0, 0, 0, 0, 0, 0, 0, 0, 199519744, 0, 380004, 465884, 392487, 366947, 594992, 624681472, 380144, 0, 0, 0].
+[INFO] [2025-10-15 04:34:32,256] [autotune] max_join_size with value of is larger than max, adjusted
+[INFO] [2025-10-15 04:34:32,256] [autotune] [step 2] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 900, 'binlog_cache_size': 32768, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 0, 'binlog_group_commit_sync_no_delay_count': 0, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 32768, 'bulk_insert_buffer_size': 8388608, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 10, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 4, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 200, 'expire_logs_days': 0, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 4, 'ft_query_expansion_limit': 20, 'general_log': 'OFF', 'group_concat_max_len': 1000, 'host_cache_size': 0, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 10, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 150000, 'innodb_api_bk_commit_interval': 5, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 64, 'innodb_buffer_pool_size': 20615843020, 'innodb_change_buffer_max_size': 25, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 0, 'innodb_compression_failure_threshold_pct': 5, 'innodb_compression_level': 6, 'innodb_compression_pad_pct_max': 50, 'innodb_concurrency_tickets': 5000, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 100, 'innodb_flush_log_at_timeout': 1, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 30, 'innodb_ft_cache_size': 8000000, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 84, 'innodb_ft_min_token_size': 3, 'innodb_ft_num_word_optimize': 2000, 'innodb_ft_result_cache_limit': 2000000000, 'innodb_ft_sort_pll_degree': 2, 'innodb_ft_total_cache_size': 640000000, 'innodb_io_capacity': 200, 'innodb_io_capacity_max': 400, 'innodb_log_buffer_size': 16777216, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 50331648, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 8192, 'innodb_lru_scan_depth': 1024, 'innodb_max_dirty_pages_pct': 75, 'innodb_max_dirty_pages_pct_lwm': 0, 'innodb_max_purge_lag': 0, 'innodb_max_purge_lag_delay': 0, 'innodb_max_undo_log_size': 1073741000, 'innodb_old_blocks_time': 1000, 'innodb_online_alter_log_max_size': 134217000, 'innodb_open_files': 2000, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 300, 'innodb_purge_rseg_truncate_frequency': 128, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 56, 'innodb_read_io_threads': 4, 'innodb_replication_delay': 0, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 128, 'innodb_sort_buffer_size': 1048576, 'innodb_spin_wait_delay': 6, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 8, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 1, 'innodb_sync_spin_loops': 30, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 0, 'innodb_thread_sleep_delay': 10000, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 4, 'join_buffer_size': 262144, 'keep_files_on_create': 'OFF', 'key_buffer_size': 8388608, 'key_cache_age_threshold': 300, 'key_cache_block_size': 1024, 'key_cache_division_limit': 100, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'FILE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 4194304, 'max_binlog_cache_size': 18446744073709500000, 'max_binlog_size': 1073741824, 'max_binlog_stmt_cache_size': 18446744073709500000, 'max_connections': 1000, 'max_delayed_threads': 20, 'max_digest_length': 1024, 'max_error_count': 64, 'max_heap_table_size': 16777216, 'max_join_size': 18446744073709551615, 'max_length_for_sort_data': 1024, 'max_points_in_geometry': 65536, 'max_prepared_stmt_count': 16382, 'max_seeks_for_key': 18446744073709500000, 'max_sort_length': 1024, 'max_user_connections': 0, 'max_write_lock_count': 18446744073709500000, 'multi_range_count': 256, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 16384, 'net_read_timeout': 30, 'net_write_timeout': 60, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 50000, 'optimizer_prune_level': 1, 'optimizer_search_depth': 62, 'preload_buffer_size': 32768, 'query_alloc_block_size': 8192, 'query_cache_limit': 1048576, 'query_cache_min_res_unit': 4096, 'query_cache_size': 1048576, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 8192, 'range_alloc_block_size': 4096, 'read_buffer_size': 131072, 'read_rnd_buffer_size': 262144, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'OFF', 'sort_buffer_size': 262144, 'stored_program_cache': 256, 'sync_binlog': 1, 'sync_frm': 'ON', 'table_definition_cache': 1400, 'table_open_cache': 2000, 'table_open_cache_instances': 16, 'thread_cache_size': 0, 'tmp_table_size': 16777216, 'transaction_alloc_block_size': 8192, 'transaction_prealloc_size': 4096, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-15 04:34:32,308] [autotune] Close db successfully
+[INFO] [2025-10-15 04:34:32,309] [autotune] mysql is shut down
+[INFO] [2025-10-15 04:34:32,313] [autotune] generated config file done
+[INFO] [2025-10-15 04:34:32,362] [autotune] wait for connection
+[INFO] [2025-10-15 04:35:03,427] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:04,430] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:05,434] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:06,437] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:07,440] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:08,444] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:09,447] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:10,450] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-15 04:35:11,452] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)

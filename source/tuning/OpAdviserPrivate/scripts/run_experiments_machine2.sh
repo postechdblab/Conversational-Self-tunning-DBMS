@@ -35,9 +35,9 @@ run_experiment() {
     # Set PYTHONPATH
     export PYTHONPATH="$PROJECT_ROOT"
     
-    # Run the experiment (redirect output directly to avoid pipe hanging issues)
-    python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" >> "$MACHINE_LOG" 2>&1
-    local exit_code=$?
+    # Run the experiment (use tee for live output, capture correct exit code)
+    python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" 2>&1 | tee -a "$MACHINE_LOG"
+    local exit_code=${PIPESTATUS[0]}
     
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))
