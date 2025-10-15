@@ -34,10 +34,14 @@ run_experiment() {
     # Set PYTHONPATH
     export PYTHONPATH="$PROJECT_ROOT"
     
-    # Run the experiment
-    if python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" 2>&1 | tee -a "$MACHINE_LOG"; then
-        local end_time=$(date +%s)
-        local duration=$((end_time - start_time))
+    # Run the experiment (redirect output directly to avoid pipe hanging issues)
+    python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" >> "$MACHINE_LOG" 2>&1
+    local exit_code=$?
+    
+    local end_time=$(date +%s)
+    local duration=$((end_time - start_time))
+    
+    if [ $exit_code -eq 0 ]; then
         local hours=$((duration / 3600))
         local minutes=$(((duration % 3600) / 60))
         local seconds=$((duration % 60))
@@ -45,9 +49,6 @@ run_experiment() {
         log "✅ SUCCESS: $experiment_name completed in ${hours}h ${minutes}m ${seconds}s"
         return 0
     else
-        local end_time=$(date +%s)
-        local duration=$((end_time - start_time))
-        
         log "❌ FAILED: $experiment_name (ran for ${duration}s)"
         return 1
     fi
