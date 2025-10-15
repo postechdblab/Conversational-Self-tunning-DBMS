@@ -17,7 +17,8 @@ mkdir -p "$LOG_DIR"
 
 # Logging function
 log() {
-    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" | tee -a "$MACHINE_LOG"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*" >> "$MACHINE_LOG"
+    echo "[$(date '+%Y-%m-%d %H:%M:%S')] $*"
 }
 
 # Function to run a single experiment

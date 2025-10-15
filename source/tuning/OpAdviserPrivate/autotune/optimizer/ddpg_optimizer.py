@@ -221,7 +221,8 @@ class DDPG_Optimizer:
         self.model.add_sample(self.state, config2action(observation.config, self.config_space), reward, next_state, done)
         self.state = next_state
 
-        if len(self.model.replay_memory) > self.batch_size:
+        # Ensure we have enough samples for batch normalization (need at least 2 samples)
+        if len(self.model.replay_memory) >= max(self.batch_size, 2):
             losses = []
 
             for _ in range(4):

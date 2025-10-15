@@ -439,6 +439,12 @@ class DDPG(object):
         """ Update the Actor and Critic with a batch data
         """
         idxs, states, next_states, actions, rewards, terminates = self._sample_batch()
+        
+        # Safety check: batch normalization requires batch_size >= 2
+        if len(states) < 2:
+            self.logger.warning(f'[DDPG] Skipping update: batch size {len(states)} is too small for batch normalization')
+            return 0.0
+        
         batch_states = self.normalizer(states)
         batch_next_states = self.normalizer(next_states)
         batch_actions = DDPG.totensor(actions)
