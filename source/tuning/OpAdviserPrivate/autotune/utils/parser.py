@@ -10,6 +10,7 @@ import statistics
 from ConfigSpace import Configuration
 from ConfigSpace.configuration_space import OrderedDict
 from autotune.knobs import logger
+from autotune.utils.constants import MAXINT
 
 TIMEOUT = 4
 num_samples_normal = 0
@@ -161,10 +162,20 @@ def parse_oltpbench(file_path):
 
     tps_temporal_pattern = re.compile("Throughput.*?(\d+.\d+),")
     tps_temporal = tps_temporal_pattern.findall(lines)
+    
+    if not tps_temporal:
+        logger.error(f"Failed to parse throughput from {file_path}. File content:\n{lines[:500]}")
+        return [0, MAXINT, 0, -1, -1, -1]  # Return failure metrics
+    
     tps = float(tps_temporal[0])
 
     lat_temporal_pattern = re.compile("95th.*?(\d+.\d+),")
     lat_temporal = lat_temporal_pattern.findall(lines)
+    
+    if not lat_temporal:
+        logger.error(f"Failed to parse latency from {file_path}. File content:\n{lines[:500]}")
+        return [0, MAXINT, 0, -1, -1, -1]  # Return failure metrics
+    
     latency = float(lat_temporal[0])
 
     return [tps, latency, tps, -1, -1, -1]

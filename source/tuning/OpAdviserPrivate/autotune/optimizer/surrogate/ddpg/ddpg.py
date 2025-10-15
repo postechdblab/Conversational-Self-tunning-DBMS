@@ -452,6 +452,15 @@ class DDPG(object):
 
         mask = [0 if x else 1 for x in terminates]
         mask = DDPG.totensor(mask)
+        
+        # Set target networks to eval mode to use running statistics in BatchNorm
+        self.target_actor.eval()
+        self.target_critic.eval()
+        
+        # Set main networks to train mode
+        self.critic.train()
+        self.actor.train()
+        
         if self.debug:
             action0= self.target_actor(batch_states).detach().data.numpy()
             current_value0 = self.target_critic(batch_states, batch_actions).data.numpy()

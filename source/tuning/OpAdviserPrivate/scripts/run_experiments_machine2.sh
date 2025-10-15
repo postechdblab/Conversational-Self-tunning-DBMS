@@ -4,7 +4,7 @@
 # Workloads: tatp, voter, tpch, job (both single and ensemble modes)
 ################################################################################
 
-set -e
+# set -e  # Removed to allow experiments to continue even if one fails
 
 # Configuration
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
