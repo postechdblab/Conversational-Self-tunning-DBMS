@@ -289,14 +289,90 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
 
 
     def get_surrogate(self, history_container: HistoryContainer):
+        import time as time_module
+        
         if not history_container.config_space == self.surrogate_model.config_space:
+            self.logger.info(f"[BO] Setting up BO basics (config space mismatch)")
             self.setup_bo_basics(history_container.config_space)
 
-        X = convert_configurations_to_array(history_container.configurations)
-        Y = history_container.get_transformed_perfs()
-        cY = history_container.get_transformed_constraint_perfs()
+        convert_start = time_module.time()
+        
+        # Filter out synthetic observations for GP models only (they're slow with O(n³) complexity)
+        # Random Forest and other models can benefit from synthetic data and are fast enough
+        total_obs = len(history_container.configurations)
+        use_all_data = True
+        
+        # Only filter for GP models (they have O(n³) complexity and are slow)
+        if self.surrogate_type in ['gp', 'gp_mcmc', 'gp_sklearn']:
+            use_all_data = False
+            self.logger.info(f"[BO] GP model detected - will filter out synthetic observations for training")
+        else:
+            self.logger.info(f"[BO] Non-GP model ({self.surrogate_type}) - will use all observations including synthetic")
+        
+        if not use_all_data:
+            # Filter out synthetic observations - only use real evaluations for training GP
+            real_indices = []
+            
+            # Use synthetic_flags to identify real observations
+            if hasattr(history_container, 'synthetic_flags') and len(history_container.synthetic_flags) > 0:
+                for idx in range(total_obs):
+                    if idx < len(history_container.synthetic_flags):
+                        if not history_container.synthetic_flags[idx]:  # False means real observation
+                            real_indices.append(idx)
+                    else:
+                        # If flag doesn't exist for this index, assume it's real
+                        real_indices.append(idx)
+            else:
+                # No synthetic flags, use all observations
+                real_indices = list(range(total_obs))
+            
+            # Get only real configurations and their performance
+            configs_to_use = [history_container.configurations[i] for i in real_indices]
+            
+            if len(configs_to_use) == 0:
+                self.logger.warning(f"[BO] No real configurations found! Using all {total_obs} configurations")
+                configs_to_use = history_container.configurations
+                real_indices = list(range(total_obs))
+        else:
+            # Use all data (real + synthetic) for non-GP models
+            configs_to_use = history_container.configurations
+            real_indices = list(range(total_obs))
+        
+        X = convert_configurations_to_array(configs_to_use)
+        convert_time = time_module.time() - convert_start
+        
+        if not use_all_data:
+            self.logger.info(f"[BO] Filtered {len(configs_to_use)} real samples from {total_obs} total (excluded {total_obs - len(configs_to_use)} synthetic)")
+        else:
+            self.logger.info(f"[BO] Using all {len(configs_to_use)} samples (real + synthetic)")
+        self.logger.info(f"[BO] Convert configs to array: {convert_time:.2f}s, X.shape={X.shape}")
+        
+        transform_start = time_module.time()
+        # Get transformed performance for selected observations
+        all_perfs = history_container.get_transformed_perfs()
+        all_constraint_perfs = history_container.get_transformed_constraint_perfs()
+        
+        # Index using numpy array indexing
+        import numpy as np
+        indices_array = np.array(real_indices)
+        
+        if len(all_perfs.shape) > 1:
+            Y = all_perfs[indices_array]
+        else:
+            Y = all_perfs[indices_array].reshape(-1, 1)
+        
+        if all_constraint_perfs is not None and len(all_constraint_perfs) > 0:
+            cY = all_constraint_perfs[indices_array]
+        else:
+            cY = all_constraint_perfs if all_constraint_perfs is not None else np.array([])
+        
+        transform_time = time_module.time() - transform_start
+        self.logger.info(f"[BO] Transform perfs: {transform_time:.2f}s, Y.shape={Y.shape}")
 
         if self.num_objs == 1:
+            train_start = time_module.time()
+            self.logger.info(f"[BO] Starting surrogate model training (type={self.surrogate_type}, samples={X.shape[0]})")
+            
             if self.surrogate_type.startswith('tlbo_'):
                 self.surrogate_model.train(history_container)
             elif self.surrogate_type.startswith('context_'):
@@ -304,32 +380,58 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
                 self.surrogate_model.train(X, Y, contexts= contexts)
             else:
                 self.surrogate_model.train(X, Y)
+            
+            train_time = time_module.time() - train_start
+            self.logger.info(f"[BO] Surrogate model training completed in {train_time:.2f}s")
         elif self.acq_type == 'parego':
+            train_start = time_module.time()
             weights = self.rng.random_sample(self.num_objs)
             weights = weights / np.sum(weights)
             scalarized_obj = get_chebyshev_scalarization(weights, Y)
             self.surrogate_model.train(X, scalarized_obj(Y))
+            train_time = time_module.time() - train_start
+            self.logger.info(f"[BO] Parego surrogate training completed in {train_time:.2f}s")
         else:  # multi-objectives
             for i in range(self.num_objs):
+                train_start = time_module.time()
+                self.logger.info(f"[BO] Training surrogate model {i+1}/{self.num_objs}")
                 self.surrogate_model[i].train(X, Y[:, i])
+                train_time = time_module.time() - train_start
+                self.logger.info(f"[BO] Surrogate model {i+1}/{self.num_objs} trained in {train_time:.2f}s")
 
-            # train constraint model
-        for i in range(self.num_constraints):
-            self.constraint_models[i].train(X, cY[:, i])
+        # train constraint model
+        if self.num_constraints > 0:
+            self.logger.info(f"[BO] Training {self.num_constraints} constraint models")
+            for i in range(self.num_constraints):
+                constraint_start = time_module.time()
+                self.constraint_models[i].train(X, cY[:, i])
+                constraint_time = time_module.time() - constraint_start
+                self.logger.info(f"[BO] Constraint model {i+1}/{self.num_constraints} trained in {constraint_time:.2f}s")
 
         return X, Y, cY
 
     def get_suggestion(self, history_container: HistoryContainer, return_list=False, compact_space=None):
+        import time as time_module
+        suggestion_start = time_module.time()
+        
         # if have enough data, get_suggorate
         num_config_evaluated = len(history_container.configurations)
         num_config_successful = len(history_container.successful_perfs)
+        
+        self.logger.info(f"[BO] get_suggestion called: {num_config_evaluated} configs evaluated, {num_config_successful} successful")
 
         if num_config_evaluated < self.init_num:
             return self.initial_configurations[num_config_evaluated]
 
+        surrogate_start = time_module.time()
         X, Y, cY = self.get_surrogate(history_container)
+        surrogate_time = time_module.time() - surrogate_start
+        self.logger.info(f"[BO] get_surrogate took {surrogate_time:.2f}s, X shape: {X.shape if hasattr(X, 'shape') else len(X)}")
 
+        alter_start = time_module.time()
         self.alter_model(history_container)
+        alter_time = time_module.time() - alter_start
+        self.logger.info(f"[BO] alter_model took {alter_time:.2f}s")
 
         if self.optimization_strategy == 'random':
             return self.sample_random_configs(num_configs=1, excluded_configs=history_container.configurations)[0]
@@ -340,8 +442,10 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
 
         if self.optimization_strategy == 'bo':
             # update acquisition function
+            acq_update_start = time_module.time()
             if self.num_objs == 1:
                 incumbent_value = history_container.get_incumbents()[0][1]
+                self.logger.info(f"[BO] Updating acquisition function, incumbent value: {incumbent_value}")
                 self.acquisition_function.update(model=self.surrogate_model,
                                                  constraint_models=self.constraint_models,
                                                  eta=incumbent_value,
@@ -349,7 +453,10 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
                                                  compact_space=compact_space,
                                                  incumbent = history_container.get_incumbents()[0][0]
                                                  )
+                acq_update_time = time_module.time() - acq_update_start
+                self.logger.info(f"[BO] Acquisition function update took {acq_update_time:.2f}s")
             else:  # multi-objectives
+                acq_update_start = time_module.time()
                 mo_incumbent_value = history_container.get_mo_incumbent_value()
                 if self.acq_type == 'parego':
                     self.acquisition_function.update(model=self.surrogate_model,
@@ -379,6 +486,8 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
                                                      compact_space=compact_space,
                                                      incumbent=history_container.get_incumbents()[0][0]
                                                      )
+                acq_update_time = time_module.time() - acq_update_start
+                self.logger.info(f"[BO] Acquisition function update (multi-obj) took {acq_update_time:.2f}s")
 
             # if self.latent_dim!=0:
             #     challengers = self.optimizer.maximize(runhistory=history_container, num_points=5000)
@@ -392,14 +501,35 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
             # optimize acquisition function
             if not compact_space is None:
                 self.optimizer.set_compact_space(compact_space)
+            
+            acq_opt_start = time_module.time()
             challengers = self.optimizer.maximize(runhistory=history_container, num_points=5000)
+            acq_opt_time = time_module.time() - acq_opt_start
+            self.logger.info(f"[BO] Acquisition optimization took {acq_opt_time:.2f}s, got {len(challengers.challengers)} candidates")
+            
             if return_list:
                 # Caution: return_list doesn't contain random configs sampled according to rand_prob
                 return challengers.challengers
 
-            for config in challengers.challengers:
-                if config not in history_container.configurations:
-                    return config
+            # Check for non-duplicate configurations
+            dedup_start = time_module.time()
+            history_set = set(history_container.configurations)  # Convert to set for O(1) lookup
+            self.logger.info(f"[BO] Checking {len(challengers.challengers)} candidates against {len(history_set)} history configs")
+            
+            found_config = None
+            for idx, config in enumerate(challengers.challengers):
+                if config not in history_set:
+                    found_config = config
+                    break
+                if idx > 0 and idx % 100 == 0:
+                    self.logger.info(f"[BO] Checked {idx}/{len(challengers.challengers)} candidates, all duplicates so far")
+            
+            dedup_time = time_module.time() - dedup_start
+            self.logger.info(f"[BO] Duplicate check took {dedup_time:.2f}s, found={'config' if found_config else 'none'}")
+            
+            if found_config:
+                return found_config
+                
             self.logger.warning('Cannot get non duplicate configuration from BO candidates (len=%d). '
                                 'Sample random config.' % (len(challengers.challengers), ))
             return self.sample_random_configs(num_configs=1, excluded_configs=history_container.configurations)[0]

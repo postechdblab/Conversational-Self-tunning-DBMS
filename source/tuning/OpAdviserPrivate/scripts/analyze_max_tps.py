@@ -14,21 +14,21 @@ from collections import defaultdict
 # Format: (display_name, single_task_id_pattern, ensemble_task_id_pattern)
 MACHINE_EXPERIMENTS = {
     'machine1': [
-        ('Twitter', 'oltpbench_twitter_smac', 'oltpbench_twitter_ensemble'),
-        ('TPC-C', 'oltpbench_tpcc', 'oltpbench_tpcc_ensemble'),
-        ('YCSB', 'oltpbench_ycsb', 'oltpbench_ycsb_ensemble'),
-        ('Wikipedia', 'oltpbench_wikipedia', 'oltpbench_wikipedia_ensemble'),
+        ('Twitter', 'oltpbench_twitter_ga', 'oltpbench_twitter_ensemble'),
+        ('TPC-C', 'oltpbench_tpcc_ga', 'oltpbench_tpcc_ensemble'),
+        ('YCSB', 'oltpbench_ycsb_ga', 'oltpbench_ycsb_ensemble'),
+        ('Wikipedia', 'oltpbench_wikipedia_ga', 'oltpbench_wikipedia_ensemble'),
     ],
     'machine2': [
-        ('TATP', 'oltpbench_tatp', 'oltpbench_tatp_ensemble'),
-        ('Voter', 'oltpbench_voter', 'oltpbench_voter_ensemble'),
-        ('TPC-H', 'tpch', 'tpch_ensemble'),
-        ('JOB', 'job', 'job_ensemble'),
+        ('TATP', 'oltpbench_tatp_ga', 'oltpbench_tatp_ensemble'),
+        ('Voter', 'oltpbench_voter_ga', 'oltpbench_voter_ensemble'),
+        ('TPC-H', 'tpch_ga', 'tpch_ensemble'),
+        ('JOB', 'job_ga', 'job_ensemble'),
     ],
     'machine3': [
-        ('Sysbench-RW', 'sysbench_rw', 'sysbench_rw_ensemble'),
-        ('Sysbench-WO', 'sysbench_wo', 'sysbench_wo_ensemble'),
-        ('Sysbench-RO', 'sysbench_ro', 'sysbench_ro_ensemble'),
+        ('Sysbench-RW', 'sbrw_ga', 'sysbench_rw_ensemble'),
+        ('Sysbench-WO', 'sbwrite_ga', 'sysbench_wo_ensemble'),
+        ('Sysbench-RO', 'sbread_ga', 'sysbench_ro_ensemble'),
     ],
 }
 

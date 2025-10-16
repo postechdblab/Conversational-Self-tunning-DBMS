@@ -595,17 +595,26 @@ class PipleLine(BOBase):
         
         # Ensemble mode: get suggestions from all 4 optimizers
         if self.ensemble_mode:
+            self.logger.info("[Ensemble] Getting suggestions from 4 optimizers")
             configs = []
-            for optimizer in self.optimizer_list:
+            for idx, optimizer in enumerate(self.optimizer_list):
+                optimizer_name = ['SMAC', 'MBO', 'DDPG', 'GA'][idx]
+                self.logger.info(f"[Ensemble] Getting suggestion from {optimizer_name}")
                 config = optimizer.get_suggestion(history_container=self.history_container, compact_space=compact_space)
+                self.logger.info(f"[Ensemble] Got suggestion from {optimizer_name}")
                 configs.append(config)
             
             # Evaluate all 4 configurations
+            self.logger.info("[Ensemble] Starting evaluation of 4 configurations")
             results = []
-            for config in configs:
+            for idx, config in enumerate(configs):
+                optimizer_name = ['SMAC', 'MBO', 'DDPG', 'GA'][idx]
+                self.logger.info(f"[Ensemble] Evaluating configuration {idx+1}/4 from {optimizer_name}")
                 _, trial_state, constraints, objs, latL = self.evaluate(config)
+                self.logger.info(f"[Ensemble] Completed evaluation {idx+1}/4 from {optimizer_name}")
                 results.append((config, trial_state, constraints, objs, latL))
             
+            self.logger.info("[Ensemble] All 4 evaluations completed")
             return results
         
         #get configuration suggestion
@@ -707,11 +716,14 @@ class PipleLine(BOBase):
         iter_time = time.time() - self.iter_begin_time
         trial_state = SUCCESS
         start_time = time.time()
+        
+        self.logger.info(f"[Evaluate] Starting benchmark execution for config: {config.get_dictionary()}")
         objs, constraints, em, resource, im, info, trial_state,latL = self.objective_function(config)
+        elapsed_time = time.time() - start_time
+        self.logger.info(f"[Evaluate] Benchmark completed in {elapsed_time:.2f}s, trial_state={trial_state}, objs={objs}")
+        
         if trial_state == FAILED :
             objs = self.FAILED_PERF
-
-        elapsed_time = time.time() - start_time
 
         self.iter_begin_time = time.time()
 

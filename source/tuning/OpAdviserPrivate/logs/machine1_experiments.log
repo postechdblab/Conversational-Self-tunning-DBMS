@@ -62363,3 +62363,481 @@ Note: You have installed the 'manylinux2014' variant of XGBoost. Certain feature
 [INFO] [2025-10-16 04:57:16,811] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=17, improvements=16, final_acq=721.003539
 [INFO] [2025-10-16 04:57:27,984] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=88.330587
 [INFO] [2025-10-16 04:57:42,643] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=10, improvements=9, final_acq=1470.421473
+[2025-10-16 05:07:53] ==========================================
+[2025-10-16 05:07:53] MACHINE 1 EXPERIMENT SUITE
+[2025-10-16 05:07:53] ==========================================
+[2025-10-16 05:07:53] Workloads: twitter, tpcc, ycsb, wikipedia
+[2025-10-16 05:07:53] Modes: Single-optimizer + Ensemble
+[2025-10-16 05:07:53] Total experiments: 8
+[2025-10-16 05:07:53] Start time: Thu Oct 16 05:07:53 UTC 2025
+[2025-10-16 05:07:53] ==========================================
+[2025-10-16 05:07:53] 
+[2025-10-16 05:07:53] ========================================
+[2025-10-16 05:07:53] Starting: Twitter (Single-Optimizer)
+[2025-10-16 05:07:53] Config: twitter.ini
+[2025-10-16 05:07:53] ========================================
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/xgboost/core.py:265: FutureWarning: Your system has an old version of glibc (< 2.28). We will stop supporting Linux distros with glibc older than 2.28 after **May 31, 2025**. Please upgrade to a recent Linux distro (with glibc 2.28+) to use future versions of XGBoost.
+Note: You have installed the 'manylinux2014' variant of XGBoost. Certain features such as GPU algorithms or federated learning are not available. To use these features, please upgrade to a recent Linux distro with glibc 2.28+, and install the 'manylinux_2_28' variant.
+  warnings.warn(
+[INFO] [2025-10-16 05:08:02,428] [DBTune-oltpbench_twitter_smac] Load 200 iterations from repo/history_oltpbench_twitter_smac.json
+[INFO] [2025-10-16 05:08:03,620] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+0it [00:00, ?it/s]0it [00:00, ?it/s]
+[2025-10-16 05:08:04] ✅ SUCCESS: Twitter (Single-Optimizer) completed in 0h 0m 11s
+[2025-10-16 05:08:04] 
+[2025-10-16 05:08:04] ========================================
+[2025-10-16 05:08:04] Starting: Twitter (Ensemble)
+[2025-10-16 05:08:04] Config: twitter_ensemble.ini
+[2025-10-16 05:08:04] ========================================
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/pkey.py:100: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "cipher": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/paramiko/transport.py:259: CryptographyDeprecationWarning: TripleDES has been moved to cryptography.hazmat.decrepit.ciphers.algorithms.TripleDES and will be removed from cryptography.hazmat.primitives.ciphers.algorithms in 48.0.0.
+  "class": algorithms.TripleDES,
+/home/vscode/.local/lib/python3.8/site-packages/xgboost/core.py:265: FutureWarning: Your system has an old version of glibc (< 2.28). We will stop supporting Linux distros with glibc older than 2.28 after **May 31, 2025**. Please upgrade to a recent Linux distro (with glibc 2.28+) to use future versions of XGBoost.
+Note: You have installed the 'manylinux2014' variant of XGBoost. Certain features such as GPU algorithms or federated learning are not available. To use these features, please upgrade to a recent Linux distro with glibc 2.28+, and install the 'manylinux_2_28' variant.
+  warnings.warn(
+[WARNING] [2025-10-16 05:08:12,179] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-16 05:08:12,186] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-16 05:08:12,654] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-16 05:08:12,927] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-16 05:08:16,016] [HistoryContainer] Repeated configuration detected!
+[INFO] [2025-10-16 05:08:16,456] [DBTune-oltpbench_twitter_ensemble] Load 183 iterations from repo/history_oltpbench_twitter_ensemble.json
+[INFO] [2025-10-16 05:08:17,645] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-16 05:08:18,839] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-16 05:08:21,542] [DDPG_Optimizer] Load state mean and var.
+[INFO] [2025-10-16 05:08:22,551] [DDPG] Finish Initializing Networks
+[INFO] [2025-10-16 05:08:22,552] [DDPG] DDPG Initialzed!
+[INFO] [2025-10-16 05:08:34,768] [DDPG_Optimizer] New Episode-1, initialize
+[INFO] [2025-10-16 05:08:34,946] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_5
+[INFO] [2025-10-16 05:08:35,007] [DDPG_Optimizer] New Episode-2, initialize
+[INFO] [2025-10-16 05:08:35,015] [DDPG_Optimizer] New Episode-3, initialize
+[INFO] [2025-10-16 05:08:35,022] [DDPG_Optimizer] New Episode-4, initialize
+[INFO] [2025-10-16 05:08:35,030] [DDPG_Optimizer] New Episode-5, initialize
+[INFO] [2025-10-16 05:08:35,038] [DDPG_Optimizer] New Episode-6, initialize
+[INFO] [2025-10-16 05:08:35,045] [DDPG_Optimizer] New Episode-7, initialize
+[INFO] [2025-10-16 05:08:35,052] [DDPG_Optimizer] New Episode-8, initialize
+[INFO] [2025-10-16 05:08:35,060] [DDPG_Optimizer] New Episode-9, initialize
+[INFO] [2025-10-16 05:08:35,067] [DDPG_Optimizer] New Episode-10, initialize
+[INFO] [2025-10-16 05:08:35,075] [DDPG_Optimizer] New Episode-11, initialize
+[INFO] [2025-10-16 05:08:35,082] [DDPG_Optimizer] New Episode-12, initialize
+[INFO] [2025-10-16 05:08:35,090] [DDPG_Optimizer] New Episode-13, initialize
+[INFO] [2025-10-16 05:08:35,097] [DDPG_Optimizer] New Episode-14, initialize
+[INFO] [2025-10-16 05:08:35,105] [DDPG_Optimizer] New Episode-15, initialize
+[INFO] [2025-10-16 05:08:35,112] [DDPG_Optimizer] New Episode-16, initialize
+[INFO] [2025-10-16 05:08:35,120] [DDPG_Optimizer] New Episode-17, initialize
+[INFO] [2025-10-16 05:08:35,127] [DDPG_Optimizer] New Episode-18, initialize
+[INFO] [2025-10-16 05:08:35,135] [DDPG_Optimizer] New Episode-19, initialize
+[INFO] [2025-10-16 05:08:35,142] [DDPG_Optimizer] New Episode-20, initialize
+[INFO] [2025-10-16 05:08:35,150] [DDPG_Optimizer] New Episode-21, initialize
+[INFO] [2025-10-16 05:08:35,157] [DDPG_Optimizer] New Episode-22, initialize
+[INFO] [2025-10-16 05:08:35,169] [DDPG_Optimizer] New Episode-23, initialize
+[INFO] [2025-10-16 05:08:35,213] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_30
+[INFO] [2025-10-16 05:08:35,214] [DDPG_Optimizer] New Episode-24, initialize
+[INFO] [2025-10-16 05:08:35,221] [DDPG_Optimizer] New Episode-25, initialize
+[INFO] [2025-10-16 05:08:35,229] [DDPG_Optimizer] New Episode-26, initialize
+[INFO] [2025-10-16 05:08:35,236] [DDPG_Optimizer] New Episode-27, initialize
+[INFO] [2025-10-16 05:08:35,244] [DDPG_Optimizer] New Episode-28, initialize
+[INFO] [2025-10-16 05:08:35,251] [DDPG_Optimizer] New Episode-29, initialize
+[INFO] [2025-10-16 05:08:35,259] [DDPG_Optimizer] New Episode-30, initialize
+[INFO] [2025-10-16 05:08:35,266] [DDPG_Optimizer] New Episode-31, initialize
+[INFO] [2025-10-16 05:08:35,274] [DDPG_Optimizer] New Episode-32, initialize
+[INFO] [2025-10-16 05:08:35,281] [DDPG_Optimizer] New Episode-33, initialize
+[INFO] [2025-10-16 05:08:35,289] [DDPG_Optimizer] New Episode-34, initialize
+[INFO] [2025-10-16 05:08:35,311] [DDPG_Optimizer] New Episode-35, initialize
+[INFO] [2025-10-16 05:08:35,319] [DDPG_Optimizer] New Episode-36, initialize
+[INFO] [2025-10-16 05:08:35,327] [DDPG_Optimizer] New Episode-37, initialize
+[INFO] [2025-10-16 05:08:35,335] [DDPG_Optimizer] New Episode-38, initialize
+[INFO] [2025-10-16 05:08:35,342] [DDPG_Optimizer] New Episode-39, initialize
+[INFO] [2025-10-16 05:08:35,350] [DDPG_Optimizer] New Episode-40, initialize
+[INFO] [2025-10-16 05:08:35,357] [DDPG_Optimizer] New Episode-41, initialize
+[INFO] [2025-10-16 05:08:35,365] [DDPG_Optimizer] New Episode-42, initialize
+[INFO] [2025-10-16 05:08:35,372] [DDPG_Optimizer] New Episode-43, initialize
+[INFO] [2025-10-16 05:08:35,380] [DDPG_Optimizer] New Episode-44, initialize
+[INFO] [2025-10-16 05:08:35,387] [DDPG_Optimizer] New Episode-45, initialize
+[INFO] [2025-10-16 05:08:35,395] [DDPG_Optimizer] New Episode-46, initialize
+[INFO] [2025-10-16 05:08:35,421] [DDPG_Optimizer] New Episode-47, initialize
+[INFO] [2025-10-16 05:08:35,429] [DDPG_Optimizer] New Episode-48, initialize
+[INFO] [2025-10-16 05:08:35,438] [DDPG_Optimizer] New Episode-49, initialize
+[INFO] [2025-10-16 05:08:35,446] [DDPG_Optimizer] New Episode-50, initialize
+[INFO] [2025-10-16 05:08:35,453] [DDPG_Optimizer] New Episode-51, initialize
+[INFO] [2025-10-16 05:08:35,461] [DDPG_Optimizer] New Episode-52, initialize
+[INFO] [2025-10-16 05:08:35,468] [DDPG_Optimizer] New Episode-53, initialize
+[INFO] [2025-10-16 05:08:35,476] [DDPG_Optimizer] New Episode-54, initialize
+[INFO] [2025-10-16 05:08:35,483] [DDPG_Optimizer] New Episode-55, initialize
+[INFO] [2025-10-16 05:08:35,491] [DDPG_Optimizer] New Episode-56, initialize
+[INFO] [2025-10-16 05:08:35,498] [DDPG_Optimizer] New Episode-57, initialize
+[INFO] [2025-10-16 05:08:35,524] [DDPG_Optimizer] New Episode-58, initialize
+[INFO] [2025-10-16 05:08:35,532] [DDPG_Optimizer] New Episode-59, initialize
+[INFO] [2025-10-16 05:08:35,540] [DDPG_Optimizer] New Episode-60, initialize
+[INFO] [2025-10-16 05:08:35,547] [DDPG_Optimizer] New Episode-61, initialize
+[INFO] [2025-10-16 05:08:35,555] [DDPG_Optimizer] New Episode-62, initialize
+[INFO] [2025-10-16 05:08:35,562] [DDPG_Optimizer] New Episode-63, initialize
+[INFO] [2025-10-16 05:08:35,570] [DDPG_Optimizer] New Episode-64, initialize
+[INFO] [2025-10-16 05:08:35,577] [DDPG_Optimizer] New Episode-65, initialize
+[INFO] [2025-10-16 05:08:35,585] [DDPG_Optimizer] New Episode-66, initialize
+[INFO] [2025-10-16 05:08:35,592] [DDPG_Optimizer] New Episode-67, initialize
+[INFO] [2025-10-16 05:08:35,600] [DDPG_Optimizer] New Episode-68, initialize
+[INFO] [2025-10-16 05:08:35,633] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_75
+[INFO] [2025-10-16 05:08:35,633] [DDPG_Optimizer] New Episode-69, initialize
+[INFO] [2025-10-16 05:08:35,641] [DDPG_Optimizer] New Episode-70, initialize
+[INFO] [2025-10-16 05:08:35,649] [DDPG_Optimizer] New Episode-71, initialize
+[INFO] [2025-10-16 05:08:35,656] [DDPG_Optimizer] New Episode-72, initialize
+[INFO] [2025-10-16 05:08:35,664] [DDPG_Optimizer] New Episode-73, initialize
+[INFO] [2025-10-16 05:08:35,672] [DDPG_Optimizer] New Episode-74, initialize
+[INFO] [2025-10-16 05:08:35,680] [DDPG_Optimizer] New Episode-75, initialize
+[INFO] [2025-10-16 05:08:35,687] [DDPG_Optimizer] New Episode-76, initialize
+[INFO] [2025-10-16 05:08:35,695] [DDPG_Optimizer] New Episode-77, initialize
+[INFO] [2025-10-16 05:08:35,703] [DDPG_Optimizer] New Episode-78, initialize
+[INFO] [2025-10-16 05:08:35,710] [DDPG_Optimizer] New Episode-79, initialize
+[INFO] [2025-10-16 05:08:35,718] [DDPG_Optimizer] New Episode-80, initialize
+[INFO] [2025-10-16 05:08:35,726] [DDPG_Optimizer] New Episode-81, initialize
+[INFO] [2025-10-16 05:08:35,734] [DDPG_Optimizer] New Episode-82, initialize
+[INFO] [2025-10-16 05:08:35,741] [DDPG_Optimizer] New Episode-83, initialize
+[INFO] [2025-10-16 05:08:35,749] [DDPG_Optimizer] New Episode-84, initialize
+[INFO] [2025-10-16 05:08:35,756] [DDPG_Optimizer] New Episode-85, initialize
+[INFO] [2025-10-16 05:08:35,764] [DDPG_Optimizer] New Episode-86, initialize
+[INFO] [2025-10-16 05:08:35,772] [DDPG_Optimizer] New Episode-87, initialize
+[INFO] [2025-10-16 05:08:35,779] [DDPG_Optimizer] New Episode-88, initialize
+[INFO] [2025-10-16 05:08:35,787] [DDPG_Optimizer] New Episode-89, initialize
+[INFO] [2025-10-16 05:08:35,795] [DDPG_Optimizer] New Episode-90, initialize
+[INFO] [2025-10-16 05:08:35,803] [DDPG_Optimizer] New Episode-91, initialize
+[INFO] [2025-10-16 05:08:35,829] [DDPG_Optimizer] New Episode-92, initialize
+[INFO] [2025-10-16 05:08:35,838] [DDPG_Optimizer] New Episode-93, initialize
+[INFO] [2025-10-16 05:08:35,846] [DDPG_Optimizer] New Episode-94, initialize
+[INFO] [2025-10-16 05:08:35,853] [DDPG_Optimizer] New Episode-95, initialize
+[INFO] [2025-10-16 05:08:35,861] [DDPG_Optimizer] New Episode-96, initialize
+[INFO] [2025-10-16 05:08:35,868] [DDPG_Optimizer] New Episode-97, initialize
+[INFO] [2025-10-16 05:08:35,876] [DDPG_Optimizer] New Episode-98, initialize
+[INFO] [2025-10-16 05:08:35,883] [DDPG_Optimizer] New Episode-99, initialize
+[INFO] [2025-10-16 05:08:35,891] [DDPG_Optimizer] New Episode-100, initialize
+[INFO] [2025-10-16 05:08:35,899] [DDPG_Optimizer] New Episode-101, initialize
+[INFO] [2025-10-16 05:08:35,906] [DDPG_Optimizer] New Episode-102, initialize
+[INFO] [2025-10-16 05:08:35,935] [DDPG_Optimizer] New Episode-103, initialize
+[INFO] [2025-10-16 05:08:35,974] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_110
+[INFO] [2025-10-16 05:08:35,974] [DDPG_Optimizer] New Episode-104, initialize
+[INFO] [2025-10-16 05:08:35,983] [DDPG_Optimizer] New Episode-105, initialize
+[INFO] [2025-10-16 05:08:35,991] [DDPG_Optimizer] New Episode-106, initialize
+[INFO] [2025-10-16 05:08:35,998] [DDPG_Optimizer] New Episode-107, initialize
+[INFO] [2025-10-16 05:08:36,006] [DDPG_Optimizer] New Episode-108, initialize
+[INFO] [2025-10-16 05:08:36,013] [DDPG_Optimizer] New Episode-109, initialize
+[INFO] [2025-10-16 05:08:36,020] [DDPG_Optimizer] New Episode-110, initialize
+[INFO] [2025-10-16 05:08:36,028] [DDPG_Optimizer] New Episode-111, initialize
+[INFO] [2025-10-16 05:08:36,035] [DDPG_Optimizer] New Episode-112, initialize
+[INFO] [2025-10-16 05:08:36,043] [DDPG_Optimizer] New Episode-113, initialize
+[INFO] [2025-10-16 05:08:36,050] [DDPG_Optimizer] New Episode-114, initialize
+[INFO] [2025-10-16 05:08:37,195] [DDPG_Optimizer] New Episode-115, initialize
+[INFO] [2025-10-16 05:08:38,246] [DDPG_Optimizer] New Episode-116, initialize
+[INFO] [2025-10-16 05:08:38,255] [DDPG_Optimizer] New Episode-117, initialize
+[INFO] [2025-10-16 05:08:38,262] [DDPG_Optimizer] New Episode-118, initialize
+[INFO] [2025-10-16 05:08:38,270] [DDPG_Optimizer] New Episode-119, initialize
+[INFO] [2025-10-16 05:08:38,277] [DDPG_Optimizer] New Episode-120, initialize
+[INFO] [2025-10-16 05:08:38,285] [DDPG_Optimizer] New Episode-121, initialize
+[INFO] [2025-10-16 05:08:38,292] [DDPG_Optimizer] New Episode-122, initialize
+[INFO] [2025-10-16 05:08:38,300] [DDPG_Optimizer] New Episode-123, initialize
+[INFO] [2025-10-16 05:08:38,308] [DDPG_Optimizer] New Episode-124, initialize
+[INFO] [2025-10-16 05:08:38,315] [DDPG_Optimizer] New Episode-125, initialize
+[INFO] [2025-10-16 05:08:38,323] [DDPG_Optimizer] New Episode-126, initialize
+[INFO] [2025-10-16 05:08:39,332] [DDPG_Optimizer] New Episode-127, initialize
+[INFO] [2025-10-16 05:08:39,341] [DDPG_Optimizer] New Episode-128, initialize
+[INFO] [2025-10-16 05:08:39,348] [DDPG_Optimizer] New Episode-129, initialize
+[INFO] [2025-10-16 05:08:39,356] [DDPG_Optimizer] New Episode-130, initialize
+[INFO] [2025-10-16 05:08:39,364] [DDPG_Optimizer] New Episode-131, initialize
+[INFO] [2025-10-16 05:08:39,371] [DDPG_Optimizer] New Episode-132, initialize
+[INFO] [2025-10-16 05:08:39,379] [DDPG_Optimizer] New Episode-133, initialize
+[INFO] [2025-10-16 05:08:39,387] [DDPG_Optimizer] New Episode-134, initialize
+[INFO] [2025-10-16 05:08:39,395] [DDPG_Optimizer] New Episode-135, initialize
+[INFO] [2025-10-16 05:08:39,402] [DDPG_Optimizer] New Episode-136, initialize
+[INFO] [2025-10-16 05:08:39,410] [DDPG_Optimizer] New Episode-137, initialize
+[INFO] [2025-10-16 05:08:40,302] [DDPG_Optimizer] New Episode-138, initialize
+[INFO] [2025-10-16 05:08:40,310] [DDPG_Optimizer] New Episode-139, initialize
+[INFO] [2025-10-16 05:08:40,318] [DDPG_Optimizer] New Episode-140, initialize
+[INFO] [2025-10-16 05:08:40,326] [DDPG_Optimizer] New Episode-141, initialize
+[INFO] [2025-10-16 05:08:40,334] [DDPG_Optimizer] New Episode-142, initialize
+[INFO] [2025-10-16 05:08:40,342] [DDPG_Optimizer] New Episode-143, initialize
+[INFO] [2025-10-16 05:08:40,349] [DDPG_Optimizer] New Episode-144, initialize
+[INFO] [2025-10-16 05:08:40,357] [DDPG_Optimizer] New Episode-145, initialize
+[INFO] [2025-10-16 05:08:40,364] [DDPG_Optimizer] New Episode-146, initialize
+[INFO] [2025-10-16 05:08:40,372] [DDPG_Optimizer] New Episode-147, initialize
+[INFO] [2025-10-16 05:08:40,380] [DDPG_Optimizer] New Episode-148, initialize
+[INFO] [2025-10-16 05:08:40,388] [DDPG_Optimizer] New Episode-149, initialize
+[INFO] [2025-10-16 05:08:41,437] [DDPG_Optimizer] New Episode-150, initialize
+[INFO] [2025-10-16 05:08:41,446] [DDPG_Optimizer] New Episode-151, initialize
+[INFO] [2025-10-16 05:08:41,453] [DDPG_Optimizer] New Episode-152, initialize
+[INFO] [2025-10-16 05:08:41,461] [DDPG_Optimizer] New Episode-153, initialize
+[INFO] [2025-10-16 05:08:41,468] [DDPG_Optimizer] New Episode-154, initialize
+[INFO] [2025-10-16 05:08:41,476] [DDPG_Optimizer] New Episode-155, initialize
+[INFO] [2025-10-16 05:08:41,484] [DDPG_Optimizer] New Episode-156, initialize
+[INFO] [2025-10-16 05:08:41,492] [DDPG_Optimizer] New Episode-157, initialize
+[INFO] [2025-10-16 05:08:41,500] [DDPG_Optimizer] New Episode-158, initialize
+[INFO] [2025-10-16 05:08:41,507] [DDPG_Optimizer] New Episode-159, initialize
+[INFO] [2025-10-16 05:08:41,515] [DDPG_Optimizer] New Episode-160, initialize
+[INFO] [2025-10-16 05:08:42,535] [DDPG_Optimizer] New Episode-161, initialize
+[INFO] [2025-10-16 05:08:42,543] [DDPG_Optimizer] New Episode-162, initialize
+[INFO] [2025-10-16 05:08:42,551] [DDPG_Optimizer] New Episode-163, initialize
+[INFO] [2025-10-16 05:08:42,559] [DDPG_Optimizer] New Episode-164, initialize
+[INFO] [2025-10-16 05:08:42,566] [DDPG_Optimizer] New Episode-165, initialize
+[INFO] [2025-10-16 05:08:42,574] [DDPG_Optimizer] New Episode-166, initialize
+[INFO] [2025-10-16 05:08:42,581] [DDPG_Optimizer] New Episode-167, initialize
+[INFO] [2025-10-16 05:08:42,589] [DDPG_Optimizer] New Episode-168, initialize
+[INFO] [2025-10-16 05:08:42,596] [DDPG_Optimizer] New Episode-169, initialize
+[INFO] [2025-10-16 05:08:42,604] [DDPG_Optimizer] New Episode-170, initialize
+[INFO] [2025-10-16 05:08:42,611] [DDPG_Optimizer] New Episode-171, initialize
+[INFO] [2025-10-16 05:08:42,619] [DDPG_Optimizer] New Episode-172, initialize
+[INFO] [2025-10-16 05:08:43,504] [DDPG_Optimizer] New Episode-173, initialize
+[INFO] [2025-10-16 05:08:43,512] [DDPG_Optimizer] New Episode-174, initialize
+[INFO] [2025-10-16 05:08:43,520] [DDPG_Optimizer] New Episode-175, initialize
+[INFO] [2025-10-16 05:08:43,528] [DDPG_Optimizer] New Episode-176, initialize
+[INFO] [2025-10-16 05:08:43,535] [DDPG_Optimizer] New Episode-177, initialize
+[INFO] [2025-10-16 05:08:43,543] [DDPG_Optimizer] New Episode-178, initialize
+[INFO] [2025-10-16 05:08:43,550] [DDPG_Optimizer] New Episode-179, initialize
+[INFO] [2025-10-16 05:08:43,558] [DDPG_Optimizer] New Episode-180, initialize
+[INFO] [2025-10-16 05:08:43,566] [DDPG_Optimizer] New Episode-181, initialize
+[INFO] [2025-10-16 05:08:43,573] [DDPG_Optimizer] New Episode-182, initialize
+[INFO] [2025-10-16 05:08:43,581] [DDPG_Optimizer] New Episode-183, initialize
+[INFO] [2025-10-16 05:08:44,626] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_190
+[INFO] [2025-10-16 05:08:44,627] [DDPG_Optimizer] New Episode-184, initialize
+[INFO] [2025-10-16 05:08:44,635] [DDPG_Optimizer] New Episode-185, initialize
+[INFO] [2025-10-16 05:08:44,643] [DDPG_Optimizer] New Episode-186, initialize
+[INFO] [2025-10-16 05:08:44,650] [DDPG_Optimizer] New Episode-187, initialize
+[INFO] [2025-10-16 05:08:44,658] [DDPG_Optimizer] New Episode-188, initialize
+[INFO] [2025-10-16 05:08:44,666] [DDPG_Optimizer] New Episode-189, initialize
+[INFO] [2025-10-16 05:08:44,675] [DDPG_Optimizer] New Episode-190, initialize
+[INFO] [2025-10-16 05:08:44,684] [DDPG_Optimizer] New Episode-191, initialize
+[INFO] [2025-10-16 05:08:44,693] [DDPG_Optimizer] New Episode-192, initialize
+[INFO] [2025-10-16 05:08:44,702] [DDPG_Optimizer] New Episode-193, initialize
+[INFO] [2025-10-16 05:08:44,711] [DDPG_Optimizer] New Episode-194, initialize
+[INFO] [2025-10-16 05:08:44,720] [DDPG_Optimizer] New Episode-195, initialize
+[INFO] [2025-10-16 05:08:45,741] [DDPG_Optimizer] New Episode-196, initialize
+[INFO] [2025-10-16 05:08:45,749] [DDPG_Optimizer] New Episode-197, initialize
+[INFO] [2025-10-16 05:08:45,757] [DDPG_Optimizer] New Episode-198, initialize
+[INFO] [2025-10-16 05:08:45,765] [DDPG_Optimizer] New Episode-199, initialize
+[INFO] [2025-10-16 05:08:45,772] [DDPG_Optimizer] New Episode-200, initialize
+[INFO] [2025-10-16 05:08:45,780] [DDPG_Optimizer] New Episode-201, initialize
+[INFO] [2025-10-16 05:08:45,787] [DDPG_Optimizer] New Episode-202, initialize
+[INFO] [2025-10-16 05:08:45,795] [DDPG_Optimizer] New Episode-203, initialize
+[INFO] [2025-10-16 05:08:45,802] [DDPG_Optimizer] New Episode-204, initialize
+[INFO] [2025-10-16 05:08:45,810] [DDPG_Optimizer] New Episode-205, initialize
+[INFO] [2025-10-16 05:08:45,817] [DDPG_Optimizer] New Episode-206, initialize
+[INFO] [2025-10-16 05:08:46,887] [DDPG_Optimizer] New Episode-207, initialize
+[INFO] [2025-10-16 05:08:46,896] [DDPG_Optimizer] New Episode-208, initialize
+[INFO] [2025-10-16 05:08:46,903] [DDPG_Optimizer] New Episode-209, initialize
+[INFO] [2025-10-16 05:08:46,910] [DDPG_Optimizer] New Episode-210, initialize
+[INFO] [2025-10-16 05:08:46,918] [DDPG_Optimizer] New Episode-211, initialize
+[INFO] [2025-10-16 05:08:46,925] [DDPG_Optimizer] New Episode-212, initialize
+[INFO] [2025-10-16 05:08:46,933] [DDPG_Optimizer] New Episode-213, initialize
+[INFO] [2025-10-16 05:08:46,940] [DDPG_Optimizer] New Episode-214, initialize
+[INFO] [2025-10-16 05:08:46,948] [DDPG_Optimizer] New Episode-215, initialize
+[INFO] [2025-10-16 05:08:46,955] [DDPG_Optimizer] New Episode-216, initialize
+[INFO] [2025-10-16 05:08:46,962] [DDPG_Optimizer] New Episode-217, initialize
+[INFO] [2025-10-16 05:08:46,970] [DDPG_Optimizer] New Episode-218, initialize
+[INFO] [2025-10-16 05:08:46,978] [DDPG_Optimizer] New Episode-219, initialize
+[INFO] [2025-10-16 05:08:46,985] [DDPG_Optimizer] New Episode-220, initialize
+[INFO] [2025-10-16 05:08:46,993] [DDPG_Optimizer] New Episode-221, initialize
+[INFO] [2025-10-16 05:08:47,000] [DDPG_Optimizer] New Episode-222, initialize
+[INFO] [2025-10-16 05:08:47,007] [DDPG_Optimizer] New Episode-223, initialize
+[INFO] [2025-10-16 05:08:47,015] [DDPG_Optimizer] New Episode-224, initialize
+[INFO] [2025-10-16 05:08:47,022] [DDPG_Optimizer] New Episode-225, initialize
+[INFO] [2025-10-16 05:08:47,030] [DDPG_Optimizer] New Episode-226, initialize
+[INFO] [2025-10-16 05:08:47,037] [DDPG_Optimizer] New Episode-227, initialize
+[INFO] [2025-10-16 05:08:47,044] [DDPG_Optimizer] New Episode-228, initialize
+[INFO] [2025-10-16 05:08:47,052] [DDPG_Optimizer] New Episode-229, initialize
+[INFO] [2025-10-16 05:08:47,060] [DDPG_Optimizer] New Episode-230, initialize
+[INFO] [2025-10-16 05:08:47,067] [DDPG_Optimizer] New Episode-231, initialize
+[INFO] [2025-10-16 05:08:47,074] [DDPG_Optimizer] New Episode-232, initialize
+[INFO] [2025-10-16 05:08:47,082] [DDPG_Optimizer] New Episode-233, initialize
+[INFO] [2025-10-16 05:08:47,089] [DDPG_Optimizer] New Episode-234, initialize
+[INFO] [2025-10-16 05:08:47,097] [DDPG_Optimizer] New Episode-235, initialize
+[INFO] [2025-10-16 05:08:47,104] [DDPG_Optimizer] New Episode-236, initialize
+[INFO] [2025-10-16 05:08:47,112] [DDPG_Optimizer] New Episode-237, initialize
+[INFO] [2025-10-16 05:08:47,119] [DDPG_Optimizer] New Episode-238, initialize
+[INFO] [2025-10-16 05:08:47,127] [DDPG_Optimizer] New Episode-239, initialize
+[INFO] [2025-10-16 05:08:47,134] [DDPG_Optimizer] New Episode-240, initialize
+[INFO] [2025-10-16 05:08:48,047] [DDPG_Optimizer] New Episode-241, initialize
+[INFO] [2025-10-16 05:08:48,055] [DDPG_Optimizer] New Episode-242, initialize
+[INFO] [2025-10-16 05:08:48,063] [DDPG_Optimizer] New Episode-243, initialize
+[INFO] [2025-10-16 05:08:48,070] [DDPG_Optimizer] New Episode-244, initialize
+[INFO] [2025-10-16 05:08:48,078] [DDPG_Optimizer] New Episode-245, initialize
+[INFO] [2025-10-16 05:08:48,086] [DDPG_Optimizer] New Episode-246, initialize
+[INFO] [2025-10-16 05:08:48,093] [DDPG_Optimizer] New Episode-247, initialize
+[INFO] [2025-10-16 05:08:48,101] [DDPG_Optimizer] New Episode-248, initialize
+[INFO] [2025-10-16 05:08:48,108] [DDPG_Optimizer] New Episode-249, initialize
+[INFO] [2025-10-16 05:08:48,116] [DDPG_Optimizer] New Episode-250, initialize
+[INFO] [2025-10-16 05:08:48,123] [DDPG_Optimizer] New Episode-251, initialize
+[INFO] [2025-10-16 05:08:49,078] [DDPG_Optimizer] New Episode-252, initialize
+[INFO] [2025-10-16 05:08:49,087] [DDPG_Optimizer] New Episode-253, initialize
+[INFO] [2025-10-16 05:08:49,095] [DDPG_Optimizer] New Episode-254, initialize
+[INFO] [2025-10-16 05:08:49,103] [DDPG_Optimizer] New Episode-255, initialize
+[INFO] [2025-10-16 05:08:49,111] [DDPG_Optimizer] New Episode-256, initialize
+[INFO] [2025-10-16 05:08:49,118] [DDPG_Optimizer] New Episode-257, initialize
+[INFO] [2025-10-16 05:08:49,126] [DDPG_Optimizer] New Episode-258, initialize
+[INFO] [2025-10-16 05:08:49,134] [DDPG_Optimizer] New Episode-259, initialize
+[INFO] [2025-10-16 05:08:49,141] [DDPG_Optimizer] New Episode-260, initialize
+[INFO] [2025-10-16 05:08:49,149] [DDPG_Optimizer] New Episode-261, initialize
+[INFO] [2025-10-16 05:08:49,156] [DDPG_Optimizer] New Episode-262, initialize
+[INFO] [2025-10-16 05:08:49,165] [DDPG_Optimizer] New Episode-263, initialize
+[INFO] [2025-10-16 05:08:50,146] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_270
+[INFO] [2025-10-16 05:08:50,147] [DDPG_Optimizer] New Episode-264, initialize
+[INFO] [2025-10-16 05:08:50,154] [DDPG_Optimizer] New Episode-265, initialize
+[INFO] [2025-10-16 05:08:50,162] [DDPG_Optimizer] New Episode-266, initialize
+[INFO] [2025-10-16 05:08:50,171] [DDPG_Optimizer] New Episode-267, initialize
+[INFO] [2025-10-16 05:08:50,180] [DDPG_Optimizer] New Episode-268, initialize
+[INFO] [2025-10-16 05:08:50,189] [DDPG_Optimizer] New Episode-269, initialize
+[INFO] [2025-10-16 05:08:50,198] [DDPG_Optimizer] New Episode-270, initialize
+[INFO] [2025-10-16 05:08:50,207] [DDPG_Optimizer] New Episode-271, initialize
+[INFO] [2025-10-16 05:08:50,216] [DDPG_Optimizer] New Episode-272, initialize
+[INFO] [2025-10-16 05:08:50,225] [DDPG_Optimizer] New Episode-273, initialize
+[INFO] [2025-10-16 05:08:50,234] [DDPG_Optimizer] New Episode-274, initialize
+[INFO] [2025-10-16 05:08:50,247] [DDPG_Optimizer] New Episode-275, initialize
+[INFO] [2025-10-16 05:08:51,292] [DDPG_Optimizer] New Episode-276, initialize
+[INFO] [2025-10-16 05:08:51,301] [DDPG_Optimizer] New Episode-277, initialize
+[INFO] [2025-10-16 05:08:51,309] [DDPG_Optimizer] New Episode-278, initialize
+[INFO] [2025-10-16 05:08:51,317] [DDPG_Optimizer] New Episode-279, initialize
+[INFO] [2025-10-16 05:08:51,325] [DDPG_Optimizer] New Episode-280, initialize
+[INFO] [2025-10-16 05:08:51,333] [DDPG_Optimizer] New Episode-281, initialize
+[INFO] [2025-10-16 05:08:51,340] [DDPG_Optimizer] New Episode-282, initialize
+[INFO] [2025-10-16 05:08:51,348] [DDPG_Optimizer] New Episode-283, initialize
+[INFO] [2025-10-16 05:08:51,356] [DDPG_Optimizer] New Episode-284, initialize
+[INFO] [2025-10-16 05:08:51,363] [DDPG_Optimizer] New Episode-285, initialize
+[INFO] [2025-10-16 05:08:51,371] [DDPG_Optimizer] New Episode-286, initialize
+[INFO] [2025-10-16 05:08:51,379] [DDPG_Optimizer] New Episode-287, initialize
+[INFO] [2025-10-16 05:08:51,387] [DDPG_Optimizer] New Episode-288, initialize
+[INFO] [2025-10-16 05:08:51,394] [DDPG_Optimizer] New Episode-289, initialize
+[INFO] [2025-10-16 05:08:51,402] [DDPG_Optimizer] New Episode-290, initialize
+[INFO] [2025-10-16 05:08:51,410] [DDPG_Optimizer] New Episode-291, initialize
+[INFO] [2025-10-16 05:08:51,417] [DDPG_Optimizer] New Episode-292, initialize
+[INFO] [2025-10-16 05:08:51,425] [DDPG_Optimizer] New Episode-293, initialize
+[INFO] [2025-10-16 05:08:51,433] [DDPG_Optimizer] New Episode-294, initialize
+[INFO] [2025-10-16 05:08:51,440] [DDPG_Optimizer] New Episode-295, initialize
+[INFO] [2025-10-16 05:08:51,448] [DDPG_Optimizer] New Episode-296, initialize
+[INFO] [2025-10-16 05:08:51,456] [DDPG_Optimizer] New Episode-297, initialize
+[INFO] [2025-10-16 05:08:51,463] [DDPG_Optimizer] New Episode-298, initialize
+[INFO] [2025-10-16 05:08:52,366] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_305
+[INFO] [2025-10-16 05:08:52,367] [DDPG_Optimizer] New Episode-299, initialize
+[INFO] [2025-10-16 05:08:52,375] [DDPG_Optimizer] New Episode-300, initialize
+[INFO] [2025-10-16 05:08:52,382] [DDPG_Optimizer] New Episode-301, initialize
+[INFO] [2025-10-16 05:08:52,390] [DDPG_Optimizer] New Episode-302, initialize
+[INFO] [2025-10-16 05:08:52,398] [DDPG_Optimizer] New Episode-303, initialize
+[INFO] [2025-10-16 05:08:52,406] [DDPG_Optimizer] New Episode-304, initialize
+[INFO] [2025-10-16 05:08:52,414] [DDPG_Optimizer] New Episode-305, initialize
+[INFO] [2025-10-16 05:08:52,422] [DDPG_Optimizer] New Episode-306, initialize
+[INFO] [2025-10-16 05:08:52,429] [DDPG_Optimizer] New Episode-307, initialize
+[INFO] [2025-10-16 05:08:52,437] [DDPG_Optimizer] New Episode-308, initialize
+[INFO] [2025-10-16 05:08:52,444] [DDPG_Optimizer] New Episode-309, initialize
+[INFO] [2025-10-16 05:08:53,570] [DDPG_Optimizer] New Episode-310, initialize
+[INFO] [2025-10-16 05:08:53,578] [DDPG_Optimizer] New Episode-311, initialize
+[INFO] [2025-10-16 05:08:53,585] [DDPG_Optimizer] New Episode-312, initialize
+[INFO] [2025-10-16 05:08:53,593] [DDPG_Optimizer] New Episode-313, initialize
+[INFO] [2025-10-16 05:08:53,601] [DDPG_Optimizer] New Episode-314, initialize
+[INFO] [2025-10-16 05:08:53,608] [DDPG_Optimizer] New Episode-315, initialize
+[INFO] [2025-10-16 05:08:53,616] [DDPG_Optimizer] New Episode-316, initialize
+[INFO] [2025-10-16 05:08:53,623] [DDPG_Optimizer] New Episode-317, initialize
+[INFO] [2025-10-16 05:08:53,631] [DDPG_Optimizer] New Episode-318, initialize
+[INFO] [2025-10-16 05:08:53,638] [DDPG_Optimizer] New Episode-319, initialize
+[INFO] [2025-10-16 05:08:53,645] [DDPG_Optimizer] New Episode-320, initialize
+[INFO] [2025-10-16 05:08:53,653] [DDPG_Optimizer] New Episode-321, initialize
+[INFO] [2025-10-16 05:08:54,566] [DDPG_Optimizer] New Episode-322, initialize
+[INFO] [2025-10-16 05:08:54,574] [DDPG_Optimizer] New Episode-323, initialize
+[INFO] [2025-10-16 05:08:54,582] [DDPG_Optimizer] New Episode-324, initialize
+[INFO] [2025-10-16 05:08:54,590] [DDPG_Optimizer] New Episode-325, initialize
+[INFO] [2025-10-16 05:08:54,598] [DDPG_Optimizer] New Episode-326, initialize
+[INFO] [2025-10-16 05:08:54,605] [DDPG_Optimizer] New Episode-327, initialize
+[INFO] [2025-10-16 05:08:54,613] [DDPG_Optimizer] New Episode-328, initialize
+[INFO] [2025-10-16 05:08:54,620] [DDPG_Optimizer] New Episode-329, initialize
+[INFO] [2025-10-16 05:08:54,628] [DDPG_Optimizer] New Episode-330, initialize
+[INFO] [2025-10-16 05:08:54,635] [DDPG_Optimizer] New Episode-331, initialize
+[INFO] [2025-10-16 05:08:54,643] [DDPG_Optimizer] New Episode-332, initialize
+[INFO] [2025-10-16 05:08:54,651] [DDPG_Optimizer] New Episode-333, initialize
+[INFO] [2025-10-16 05:08:55,597] [DDPG_Optimizer] Save model_params to oltpbench_twitter_ensemble_340
+[INFO] [2025-10-16 05:08:55,598] [DDPG_Optimizer] New Episode-334, initialize
+[INFO] [2025-10-16 05:08:55,606] [DDPG_Optimizer] New Episode-335, initialize
+[INFO] [2025-10-16 05:08:55,613] [DDPG_Optimizer] New Episode-336, initialize
+[INFO] [2025-10-16 05:08:55,621] [DDPG_Optimizer] New Episode-337, initialize
+[INFO] [2025-10-16 05:08:55,628] [DDPG_Optimizer] New Episode-338, initialize
+[INFO] [2025-10-16 05:08:55,636] [DDPG_Optimizer] New Episode-339, initialize
+[INFO] [2025-10-16 05:08:55,644] [DDPG_Optimizer] New Episode-340, initialize
+[INFO] [2025-10-16 05:08:55,651] [DDPG_Optimizer] New Episode-341, initialize
+[INFO] [2025-10-16 05:08:55,659] [DDPG_Optimizer] New Episode-342, initialize
+[INFO] [2025-10-16 05:08:55,668] [DDPG_Optimizer] New Episode-343, initialize
+[INFO] [2025-10-16 05:08:55,677] [DDPG_Optimizer] New Episode-344, initialize
+[INFO] [2025-10-16 05:08:56,718] [DDPG_Optimizer] New Episode-345, initialize
+  0%|          | 0/17 [00:00<?, ?it/s][INFO] [2025-10-16 05:08:57,321] [DBTune-oltpbench_twitter_ensemble] [Augmentation] Added 20 synthetic observations to history
+[INFO] [2025-10-16 05:08:57,321] [DBTune-oltpbench_twitter_ensemble] [Augmentation] Total synthetic observations in history: 620
+[INFO] [2025-10-16 05:08:57,321] [DBTune-oltpbench_twitter_ensemble] [Augmentation] Total configs in history.data (for incumbent tracking): 91
+[INFO] [2025-10-16 05:08:57,338] [DBTune-oltpbench_twitter_ensemble] [Augmentation] Verify synthetics excluded from acquisition: 91 configs available
+[INFO] [2025-10-16 05:08:57,668] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting acquisition optimization: 10 local searches, max_steps=50, neighbor_cap=150
+[INFO] [2025-10-16 05:08:57,669] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] History contains 752 configs: 132 real, 620 synthetic
+[INFO] [2025-10-16 05:08:57,684] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] get_all_configs() returned 91 configs (should be 132 real only)
+[INFO] [2025-10-16 05:08:57,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Real evals: total=132, successful=96, failed=36, duplicates=0, data_size=91
+[INFO] [2025-10-16 05:08:57,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Excluded real configs (index -> reason): 4->failed, 5->failed, 8->failed, 9->failed, 33->failed, 35->failed, 59->failed, 81->failed, 104->failed, 128->failed
+[INFO] [2025-10-16 05:08:57,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 1/10
+[INFO] [2025-10-16 05:08:57,741] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.942294 (eval took 0.004s)
+[INFO] [2025-10-16 05:08:58,867] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=1.177705
+[INFO] [2025-10-16 05:08:58,867] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.13s, acq_eval=1.09s (96.5%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:08:58,867] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 1/10 in 1.14s
+[INFO] [2025-10-16 05:08:58,867] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 2/10
+[INFO] [2025-10-16 05:08:58,878] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=28.850275 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:00,127] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=70.859513, impr=4, plateau=0, neighbors=208, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.3s
+[INFO] [2025-10-16 05:09:01,830] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=93.387884
+[INFO] [2025-10-16 05:09:01,830] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.96s, acq_eval=2.87s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:01,830] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 2/10 in 2.96s
+[INFO] [2025-10-16 05:09:01,831] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 3/10
+[INFO] [2025-10-16 05:09:01,841] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=8.634136 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:03,760] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=51.193191
+[INFO] [2025-10-16 05:09:03,760] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.92s, acq_eval=1.86s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:03,760] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 3/10 in 1.93s
+[INFO] [2025-10-16 05:09:03,760] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 4/10
+[INFO] [2025-10-16 05:09:03,771] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=103.433278 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:05,418] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=718.571706, impr=4, plateau=0, neighbors=276, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.7s
+[INFO] [2025-10-16 05:09:06,311] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=718.571706
+[INFO] [2025-10-16 05:09:06,311] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.54s, acq_eval=2.47s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:06,312] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 4/10 in 2.55s
+[INFO] [2025-10-16 05:09:06,312] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 5/10
+[INFO] [2025-10-16 05:09:06,322] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=44.610655 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:07,474] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=258.536981, impr=4, plateau=0, neighbors=191, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.2s
+[INFO] [2025-10-16 05:09:08,368] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=258.536981
+[INFO] [2025-10-16 05:09:08,368] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.05s, acq_eval=1.98s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:08,368] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 5/10 in 2.06s
+[INFO] [2025-10-16 05:09:08,369] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 6/10
+[INFO] [2025-10-16 05:09:08,379] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=217.912207 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:10,186] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=510.817814
+[INFO] [2025-10-16 05:09:10,186] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.81s, acq_eval=1.75s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:10,186] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 6/10 in 1.82s
+[INFO] [2025-10-16 05:09:10,186] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 7/10
+[INFO] [2025-10-16 05:09:10,197] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=33.729603 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:12,131] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=114.803425
+[INFO] [2025-10-16 05:09:12,132] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.94s, acq_eval=1.88s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:12,132] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 7/10 in 1.95s
+[INFO] [2025-10-16 05:09:12,132] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 8/10
+[INFO] [2025-10-16 05:09:12,142] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000067 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:13,540] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=8.454695, impr=4, plateau=0, neighbors=234, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.4s
+[INFO] [2025-10-16 05:09:15,390] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=7, improvements=6, final_acq=18.890277
+[INFO] [2025-10-16 05:09:15,390] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=3.25s, acq_eval=3.15s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:15,390] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 8/10 in 3.26s
+[INFO] [2025-10-16 05:09:15,391] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 9/10
+[INFO] [2025-10-16 05:09:15,401] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=30.572361 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:16,909] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=143.287647, impr=4, plateau=0, neighbors=252, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.5s
+[INFO] [2025-10-16 05:09:17,799] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=143.287647
+[INFO] [2025-10-16 05:09:17,799] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.40s, acq_eval=2.33s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:17,799] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 9/10 in 2.41s
+[INFO] [2025-10-16 05:09:17,799] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 10/10
+[INFO] [2025-10-16 05:09:17,810] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000290 (eval took 0.004s)
+[INFO] [2025-10-16 05:09:19,905] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=2.193866
+[INFO] [2025-10-16 05:09:19,905] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.10s, acq_eval=2.04s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-16 05:09:19,906] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 10/10 in 2.11s
+[INFO] [2025-10-16 05:09:19,906] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Acquisition optimization completed in 22.25s (2.22s per search)
+[2025-10-16 05:46:19] ==========================================
+[2025-10-16 05:46:19] MACHINE 1 EXPERIMENT SUITE
+[2025-10-16 05:46:19] ==========================================
+[2025-10-16 05:46:19] Workloads: twitter, tpcc, ycsb, wikipedia
+[2025-10-16 05:46:19] Modes: Single-optimizer + Ensemble
+[2025-10-16 05:46:19] Total experiments: 8
+[2025-10-16 05:46:19] Start time: Thu Oct 16 05:46:19 UTC 2025
+[2025-10-16 05:46:19] ==========================================
+[2025-10-16 05:46:19] 
+[2025-10-16 05:46:19] ========================================
+[2025-10-16 05:46:19] Starting: Twitter (Single-Optimizer)
+[2025-10-16 05:46:19] Config: twitter.ini
+[2025-10-16 05:46:19] ========================================
