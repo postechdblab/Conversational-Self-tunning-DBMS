@@ -246,13 +246,16 @@ class LocalSearch(AcquisitionFunctionMaximizer):
     ):
         super().__init__(acquisition_function, config_space, rng)
         # Hard cap for local search steps per start (fallback if None)
-        self.max_steps = max_steps if max_steps is not None else 300
+        # Reduced from 300 to 50 for faster convergence with large config spaces
+        self.max_steps = max_steps if max_steps is not None else 50
         self.n_steps_plateau_walk = n_steps_plateau_walk
         # Early-stop for tiny gains
         self.improvement_tolerance = 1e-6  # stop counting gains below this
-        self.small_gain_patience = 50      # end search after this many tiny gains
+        # Reduced from 50 to 15 for faster termination
+        self.small_gain_patience = 15      # end search after this many tiny gains
         # Per-iteration neighbor cap to bound work
-        self.neighbor_cap = 1000
+        # Reduced from 1000 to 150 for faster neighbor evaluation
+        self.neighbor_cap = 150
 
 
     def _maximize(
@@ -286,11 +289,16 @@ class LocalSearch(AcquisitionFunctionMaximizer):
 
         """
 
+        acq_opt_start_time = time.time()
+        
         init_points = self._get_initial_points(
             num_points, runhistory)
 
         # Debug logging for acquisition optimization
-        self.logger.info(f"[AcqOpt] Got {len(init_points)} initial points for local search")
+        self.logger.info(
+            f"[AcqOpt] Starting acquisition optimization: {len(init_points)} local searches, "
+            f"max_steps={self.max_steps}, neighbor_cap={self.neighbor_cap}"
+        )
         if hasattr(runhistory, 'synthetic_flags'):
             total_configs = len(runhistory.configurations)
             # Treat missing tail as real if flags are shorter than configurations
@@ -345,6 +353,9 @@ class LocalSearch(AcquisitionFunctionMaximizer):
         acq_configs = []
         # Start N local search from different random start points
         for idx, start_point in enumerate(init_points):
+            search_start = time.time()
+            self.logger.info(f"[AcqOpt] Starting local search {idx+1}/{len(init_points)}")
+            
             # Log initial acquisition value for this starting point
             init_acq_val = self.acquisition_function([start_point], **kwargs)
             init_acq_scalar = float(init_acq_val) if hasattr(init_acq_val, '__iter__') else init_acq_val
@@ -352,6 +363,9 @@ class LocalSearch(AcquisitionFunctionMaximizer):
             
             acq_val, configuration = self._one_iter(
                 start_point, **kwargs)
+
+            search_time = time.time() - search_start
+            self.logger.info(f"[AcqOpt] Completed local search {idx+1}/{len(init_points)} in {search_time:.2f}s")
 
             configuration.origin = "Local Search"
             acq_configs.append((acq_val, configuration))
@@ -361,6 +375,12 @@ class LocalSearch(AcquisitionFunctionMaximizer):
 
         # sort according to acq value
         acq_configs.sort(reverse=True, key=lambda x: x[0])
+        
+        total_acq_opt_time = time.time() - acq_opt_start_time
+        self.logger.info(
+            f"[AcqOpt] Acquisition optimization completed in {total_acq_opt_time:.2f}s "
+            f"({total_acq_opt_time/len(init_points):.2f}s per search)"
+        )
 
         return acq_configs
 
@@ -392,14 +412,24 @@ class LocalSearch(AcquisitionFunctionMaximizer):
             start_point: Configuration,
             **kwargs
     ) -> Tuple[float, Configuration]:
-
+        
+        start_time_total = time.time()
+        
         incumbent = start_point
         # Compute the acquisition value of the incumbent
+        acq_start = time.time()
         acq_val_incumbent = self.acquisition_function([incumbent], **kwargs)[0]
+        acq_time_initial = time.time() - acq_start
+        
+        self.logger.info(
+            f"[AcqOpt] Starting local search from init_acq={float(acq_val_incumbent):.6f} "
+            f"(eval took {acq_time_initial:.3f}s)"
+        )
 
         local_search_steps = 0
         neighbors_looked_at = 0
         time_n = []
+        time_neighbor_gen = []
         improvements = 0  # Track number of improvements found
         plateau_steps = 0  # Track steps without improvement
         small_gain_steps = 0  # Track consecutive tiny gains
@@ -407,26 +437,32 @@ class LocalSearch(AcquisitionFunctionMaximizer):
         while True:
 
             local_search_steps += 1
+            step_start_time = time.time()
             
-            # Log progress every 100 iterations
-            if local_search_steps % 100 == 0:
+            # Log progress every 5 iterations for detailed tracking
+            if local_search_steps % 5 == 0:
                 acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
+                avg_acq_time = np.mean(time_n) if time_n else 0
+                avg_neighbor_time = np.mean(time_neighbor_gen) if time_neighbor_gen else 0
+                elapsed = time.time() - start_time_total
                 self.logger.info(
-                    f"[AcqOpt] Local search step {local_search_steps}: "
-                    f"current_acq={acq_val_scalar:.6f}, improvements={improvements}, "
-                    f"plateau={plateau_steps}, neighbors_checked={neighbors_looked_at}"
+                    f"[AcqOpt] Step {local_search_steps}/{self.max_steps}: "
+                    f"acq={acq_val_scalar:.6f}, impr={improvements}, plateau={plateau_steps}, "
+                    f"neighbors={neighbors_looked_at}, avg_acq={avg_acq_time:.3f}s, "
+                    f"avg_neighgen={avg_neighbor_time:.3f}s, elapsed={elapsed:.1f}s"
                 )
             
-            if local_search_steps % 1000 == 0:
+            if local_search_steps % 20 == 0:
                 acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
+                elapsed = time.time() - start_time_total
                 self.logger.warning(
-                    "Local search took already %d iterations. Is it maybe "
-                    "stuck in a infinite loop?", local_search_steps
+                    f"[AcqOpt] Local search took already {local_search_steps} iterations "
+                    f"({elapsed:.1f}s elapsed). Possible stuck?"
                 )
                 self.logger.warning(
-                    f"[AcqOpt] Stuck details: acq_val={acq_val_scalar:.6f}, "
+                    f"[AcqOpt] Details: acq_val={acq_val_scalar:.6f}, "
                     f"improvements={improvements}, neighbors_checked={neighbors_looked_at}, "
-                    f"plateau_steps={plateau_steps}"
+                    f"plateau_steps={plateau_steps}, small_gain_steps={small_gain_steps}"
                 )
 
             # Get neighborhood of the current incumbent
@@ -434,15 +470,28 @@ class LocalSearch(AcquisitionFunctionMaximizer):
             changed_inc = False
 
             # Get one exchange neighborhood returns an iterator. Cap how many we consider.
+            neighbor_gen_start = time.time()
             all_neighbors_iter = get_one_exchange_neighbourhood(incumbent, seed=42)
             # Limit neighbors per iteration to reduce work
             limited_neighbors = itertools.islice(all_neighbors_iter, self.neighbor_cap)
+            neighbor_gen_time = time.time() - neighbor_gen_start
+            time_neighbor_gen.append(neighbor_gen_time)
 
+            neighbors_this_iter = 0
             for neighbor in limited_neighbors:
                 s_time = time.time()
                 acq_val = self.acquisition_function([neighbor], **kwargs)
                 neighbors_looked_at += 1
-                time_n.append(time.time() - s_time)
+                neighbors_this_iter += 1
+                acq_eval_time = time.time() - s_time
+                time_n.append(acq_eval_time)
+                
+                # Log slow acquisition evaluations
+                if acq_eval_time > 2.0:
+                    self.logger.warning(
+                        f"[AcqOpt] Slow acquisition eval: {acq_eval_time:.2f}s "
+                        f"(step {local_search_steps}, neighbor {neighbors_this_iter}/{self.neighbor_cap})"
+                    )
 
                 if acq_val > acq_val_incumbent:
                     self.logger.debug("Switch to one of the neighbors")
@@ -479,15 +528,29 @@ class LocalSearch(AcquisitionFunctionMaximizer):
 
             # Stop if no change (plateau) or step cap reached
             if (not changed_inc) or (local_search_steps >= self.max_steps):
+                total_time = time.time() - start_time_total
+                avg_acq_time = np.mean(time_n) if time_n else 0
+                avg_neighbor_time = np.mean(time_neighbor_gen) if time_neighbor_gen else 0
+                total_acq_time = sum(time_n) if time_n else 0
+                total_neighbor_time = sum(time_neighbor_gen) if time_neighbor_gen else 0
+                
                 self.logger.debug("Local search took %d steps and looked at %d "
                                   "configurations. Computing the acquisition "
                                   "value for one configuration took %f seconds"
                                   " on average.",
                                   local_search_steps, neighbors_looked_at,
-                                  np.mean(time_n))
+                                  avg_acq_time)
                 acq_val_scalar = float(acq_val_incumbent) if hasattr(acq_val_incumbent, '__iter__') else acq_val_incumbent
-                self.logger.info(f"[AcqOpt] Local search completed: steps={local_search_steps}, "
-                                 f"improvements={improvements}, final_acq={acq_val_scalar:.6f}")
+                self.logger.info(
+                    f"[AcqOpt] Local search completed: steps={local_search_steps}, "
+                    f"improvements={improvements}, final_acq={acq_val_scalar:.6f}"
+                )
+                self.logger.info(
+                    f"[AcqOpt] Time breakdown: total={total_time:.2f}s, "
+                    f"acq_eval={total_acq_time:.2f}s ({total_acq_time/total_time*100:.1f}%), "
+                    f"neighbor_gen={total_neighbor_time:.2f}s ({total_neighbor_time/total_time*100:.1f}%), "
+                    f"avg_per_acq={avg_acq_time:.3f}s, avg_per_neighgen={avg_neighbor_time:.3f}s"
+                )
                 break
 
         return acq_val_incumbent, incumbent

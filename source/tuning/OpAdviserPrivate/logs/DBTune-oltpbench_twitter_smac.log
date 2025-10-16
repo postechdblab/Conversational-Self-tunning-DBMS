@@ -5682,3 +5682,5 @@ IndexError: list index out of range
 [INFO] [2025-10-15 06:55:12,805] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
 [INFO] [2025-10-15 23:11:56,397] [DBTune-oltpbench_twitter_smac] Load 200 iterations from repo/history_oltpbench_twitter_smac.json
 [INFO] [2025-10-15 23:11:57,587] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-16 04:53:46,436] [DBTune-oltpbench_twitter_smac] Load 200 iterations from repo/history_oltpbench_twitter_smac.json
+[INFO] [2025-10-16 04:53:47,674] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
