@@ -35,9 +35,24 @@ run_experiment() {
     # Set PYTHONPATH
     export PYTHONPATH="$PROJECT_ROOT"
     
-    # Run the experiment (use tee for live output, capture correct exit code)
-    python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" 2>&1 | tee -a "$MACHINE_LOG"
-    local exit_code=${PIPESTATUS[0]}
+    # Run the experiment with live output using tee
+    # Start Python process with tee, monitor it, and auto-kill tee if it hangs
+    python "$SCRIPT_DIR/optimize.py" --config="$SCRIPT_DIR/$config_file" 2>&1 | tee -a "$MACHINE_LOG" &
+    local pipeline_pid=$!
+    
+    # Find the actual Python process (first process in the pipeline)
+    local python_pid=$(ps -o pid= --ppid $pipeline_pid | head -1 | tr -d ' ')
+    
+    # Wait for Python to complete
+    local exit_code=1
+    if [ -n "$python_pid" ]; then
+        wait $python_pid 2>/dev/null && exit_code=0 || exit_code=$?
+    fi
+    
+    # Give tee 3 seconds to flush and exit, then force kill the entire pipeline
+    sleep 3
+    kill -9 -$pipeline_pid 2>/dev/null || true
+    wait $pipeline_pid 2>/dev/null || true
     
     local end_time=$(date +%s)
     local duration=$((end_time - start_time))

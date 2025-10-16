@@ -6757,3 +6757,5 @@ IndexError: list index out of range
 [INFO] [2025-10-15 04:09:58,763] [DBTune-oltpbench_tatp] [Ensemble][GA] Iteration 51, objective value: [2147483647].
 [INFO] [2025-10-15 04:30:30,518] [DBTune-oltpbench_tatp] Load 200 iterations from repo/history_oltpbench_tatp.json
 [INFO] [2025-10-15 04:30:31,698] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-15 06:55:58,270] [DBTune-oltpbench_tatp] Load 200 iterations from repo/history_oltpbench_tatp.json
+[INFO] [2025-10-15 06:55:59,458] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
