@@ -685,14 +685,17 @@ class PipleLine(BOBase):
             self.logger.info('Start new DBTune task')
         else:
             self.history_container.load_history_from_json(fn)
+            # Count only non-synthetic configurations for resume (augment_history creates synthetic ones)
+            non_synthetic_count = sum(1 for flag in self.history_container.synthetic_flags if not flag)
             if self.ensemble_mode:
                 # In ensemble mode, each iteration evaluates 4 configs
-                self.iteration_id = len(self.history_container.configurations) // 4
+                self.iteration_id = non_synthetic_count // 4
             else:
-                self.iteration_id = len(self.history_container.configurations)
+                self.iteration_id = non_synthetic_count
             if self.space_transfer:
                 self.space_step = self.space_step_limit
-            self.logger.info('Load {} iterations from {}'.format(self.iteration_id, fn))
+            self.logger.info('Load {} iterations from {} ({} non-synthetic configs, {} total configs)'.format(
+                self.iteration_id, fn, non_synthetic_count, len(self.history_container.configurations)))
         #2024-11-11: code for experiment
         # fn = os.path.join('repo', 'history_%s_ground_truth2.json' % self.task_id)
         # if not os.path.exists(fn):

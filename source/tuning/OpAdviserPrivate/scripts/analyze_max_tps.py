@@ -26,9 +26,9 @@ MACHINE_EXPERIMENTS = {
         ('JOB', 'job_ga', 'job_ensemble'),
     ],
     'machine3': [
-        ('Sysbench-RW', 'sbrw_ga', 'sysbench_rw_ensemble'),
-        ('Sysbench-WO', 'sbwrite_ga', 'sysbench_wo_ensemble'),
-        ('Sysbench-RO', 'sbread_ga', 'sysbench_ro_ensemble'),
+        ('Sysbench-RW', 'sbrw_ga', 'sbrw_ensemble'),
+        ('Sysbench-WO', 'sbwrite_ga', 'sbwrite_ensemble'),
+        ('Sysbench-RO', 'sbread_ga', 'sbread_ensemble'),
     ],
 }
 
