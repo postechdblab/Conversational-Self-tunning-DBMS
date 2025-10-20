@@ -104,6 +104,10 @@ class DDPG_Optimizer:
         if self.create_model():
             configurations = configs2space(history_container.configurations, self.config_space)
             for i in range(len(configurations)):
+                # Skip synthetic observations (they have empty IM dicts and corrupt DDPG state)
+                if i < len(history_container.synthetic_flags) and history_container.synthetic_flags[i]:
+                    continue
+                    
                 objs = [history_container.perfs[i]]
 
                 observation = Observation(config=configurations[i],

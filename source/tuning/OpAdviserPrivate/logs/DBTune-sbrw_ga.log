@@ -6965,3 +6965,7 @@
 [INFO] [2025-10-16 22:46:19,497] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json
 [INFO] [2025-10-19 22:35:20,333] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json
 [INFO] [2025-10-19 23:48:52,654] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 01:25:38,861] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 01:27:05,685] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 02:10:08,787] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 02:15:00,552] [DBTune-sbrw_ga] Load 200 iterations from repo/history_sbrw_ga.json (200 non-synthetic configs, 200 total configs)
