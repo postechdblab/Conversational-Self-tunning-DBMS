@@ -426,3 +426,4 @@ FileNotFoundError: [Errno 2] No such file or directory: 'results/1760916252.summ
 [INFO] [2025-10-19 23:28:14,961] [BO_Optimizer] [BO] Surrogate model training completed in 0.01s
 [INFO] [2025-10-19 23:28:14,961] [BO_Optimizer] [BO] get_surrogate took 0.01s, X shape: (32, 197)
 [INFO] [2025-10-19 23:28:14,961] [BO_Optimizer] [BO] alter_model took 0.00s
+[INFO] [2025-10-20 23:49:04,087] [DBTune-oltpbench_tpcc_ensemble] Start new DBTune task

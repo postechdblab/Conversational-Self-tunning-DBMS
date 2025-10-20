@@ -731,6 +731,7 @@ class PipleLine(BOBase):
     def load_history(self):
         # TODO: check info
         fn = os.path.join('repo', 'history_%s.json' % self.task_id)
+        non_synthetic_count = 0  # Initialize to avoid UnboundLocalError
         if not os.path.exists(fn):
             self.logger.info('Start new DBTune task')
         else:

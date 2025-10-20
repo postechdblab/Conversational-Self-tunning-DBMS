@@ -3754,3 +3754,4 @@ FileNotFoundError: [Errno 2] No such file or directory: 'results/1760691032.summ
 [INFO] [2025-10-17 17:35:13,674] [DBTune-oltpbench_tpcc_ga] [Evaluate] Benchmark completed in 211.05s, trial_state=0, objs=[-6458.387098438893]
 [INFO] [2025-10-17 17:35:13,684] [DBTune-oltpbench_tpcc_ga] Iteration 200, objective value: [-6458.387098438893].
 [INFO] [2025-10-19 22:37:00,432] [DBTune-oltpbench_tpcc_ga] Load 200 iterations from repo/history_oltpbench_tpcc_ga.json
+[INFO] [2025-10-20 23:48:51,171] [DBTune-oltpbench_tpcc_ga] Load 200 iterations from repo/history_oltpbench_tpcc_ga.json (200 non-synthetic configs, 200 total configs)
