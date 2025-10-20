@@ -41888,3 +41888,1045 @@ FileNotFoundError: [Errno 2] No such file or directory: 'results/1760910877.summ
 [INFO] [2025-10-20 23:19:21,686] [BO_Optimizer] [BO] Convert configs to array: 0.00s, X.shape=(492, 197)
 [INFO] [2025-10-20 23:19:21,687] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(492, 1)
 [INFO] [2025-10-20 23:19:21,687] [BO_Optimizer] [BO] Starting surrogate model training (type=gp, samples=492)
+[WARNING] [2025-10-20 23:24:09,580] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:09,586] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:09,923] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:10,197] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:11,449] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:14,816] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:24:25,280] [HistoryContainer] Repeated configuration detected!
+[INFO] [2025-10-20 23:24:26,569] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Resuming with 2892 total configs, 492 non-synthetic
+[INFO] [2025-10-20 23:24:26,569] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Ensemble configs detected: 2892
+[INFO] [2025-10-20 23:24:26,569] [DBTune-oltpbench_tatp_ensemble] Load 123 iterations from repo/history_oltpbench_tatp_ensemble.json (492 non-synthetic configs, 2892 total configs)
+[INFO] [2025-10-20 23:24:26,569] [HistoryContainer] Updated synthetic flag for observation 1: False -> True
+[INFO] [2025-10-20 23:24:26,570] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1 as synthetic (perf=-14126.784174714316)
+[INFO] [2025-10-20 23:24:26,570] [HistoryContainer] Updated synthetic flag for observation 2: False -> True
+[INFO] [2025-10-20 23:24:26,570] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2 as synthetic (perf=-14018.15019890885)
+[INFO] [2025-10-20 23:24:26,570] [HistoryContainer] Updated synthetic flag for observation 3: False -> True
+[INFO] [2025-10-20 23:24:26,570] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 3 as synthetic (perf=-3311.792155842106)
+[INFO] [2025-10-20 23:24:26,570] [HistoryContainer] Updated synthetic flag for observation 4: False -> True
+[INFO] [2025-10-20 23:24:26,570] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 4 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,570] [HistoryContainer] Updated synthetic flag for observation 5: False -> True
+[INFO] [2025-10-20 23:24:26,570] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 5 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,571] [HistoryContainer] Updated synthetic flag for observation 6: False -> True
+[INFO] [2025-10-20 23:24:26,571] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 6 as synthetic (perf=-4795.425905116127)
+[INFO] [2025-10-20 23:24:26,571] [HistoryContainer] Updated synthetic flag for observation 8: False -> True
+[INFO] [2025-10-20 23:24:26,571] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 8 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,571] [HistoryContainer] Updated synthetic flag for observation 9: False -> True
+[INFO] [2025-10-20 23:24:26,571] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 9 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,571] [HistoryContainer] Updated synthetic flag for observation 10: False -> True
+[INFO] [2025-10-20 23:24:26,571] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 10 as synthetic (perf=-4517.994030809577)
+[INFO] [2025-10-20 23:24:26,571] [HistoryContainer] Updated synthetic flag for observation 33: False -> True
+[INFO] [2025-10-20 23:24:26,572] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 33 as synthetic (perf=-4768.321164582097)
+[INFO] [2025-10-20 23:24:26,572] [HistoryContainer] Updated synthetic flag for observation 34: False -> True
+[INFO] [2025-10-20 23:24:26,572] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 34 as synthetic (perf=-4782.383506748361)
+[INFO] [2025-10-20 23:24:26,572] [HistoryContainer] Updated synthetic flag for observation 35: False -> True
+[INFO] [2025-10-20 23:24:26,572] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 35 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,572] [HistoryContainer] Updated synthetic flag for observation 56: False -> True
+[INFO] [2025-10-20 23:24:26,572] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 56 as synthetic (perf=-4219.735451679934)
+[INFO] [2025-10-20 23:24:26,572] [HistoryContainer] Updated synthetic flag for observation 57: False -> True
+[INFO] [2025-10-20 23:24:26,572] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 57 as synthetic (perf=-7929.735998870717)
+[INFO] [2025-10-20 23:24:26,572] [HistoryContainer] Updated synthetic flag for observation 59: False -> True
+[INFO] [2025-10-20 23:24:26,573] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 59 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,573] [HistoryContainer] Updated synthetic flag for observation 80: False -> True
+[INFO] [2025-10-20 23:24:26,573] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 80 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,573] [HistoryContainer] Updated synthetic flag for observation 82: False -> True
+[INFO] [2025-10-20 23:24:26,573] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 82 as synthetic (perf=-4750.174865946975)
+[INFO] [2025-10-20 23:24:26,573] [HistoryContainer] Updated synthetic flag for observation 83: False -> True
+[INFO] [2025-10-20 23:24:26,573] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 83 as synthetic (perf=-10620.03212693868)
+[INFO] [2025-10-20 23:24:26,573] [HistoryContainer] Updated synthetic flag for observation 104: False -> True
+[INFO] [2025-10-20 23:24:26,573] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 104 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,573] [HistoryContainer] Updated synthetic flag for observation 105: False -> True
+[INFO] [2025-10-20 23:24:26,574] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 105 as synthetic (perf=-8398.896937914013)
+[INFO] [2025-10-20 23:24:26,574] [HistoryContainer] Updated synthetic flag for observation 106: False -> True
+[INFO] [2025-10-20 23:24:26,574] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 106 as synthetic (perf=-13915.099625793233)
+[INFO] [2025-10-20 23:24:26,574] [HistoryContainer] Updated synthetic flag for observation 128: False -> True
+[INFO] [2025-10-20 23:24:26,574] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 128 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,574] [HistoryContainer] Updated synthetic flag for observation 129: False -> True
+[INFO] [2025-10-20 23:24:26,574] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 129 as synthetic (perf=-4215.436484684948)
+[INFO] [2025-10-20 23:24:26,574] [HistoryContainer] Updated synthetic flag for observation 130: False -> True
+[INFO] [2025-10-20 23:24:26,574] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 130 as synthetic (perf=-4676.951027851232)
+[INFO] [2025-10-20 23:24:26,574] [HistoryContainer] Updated synthetic flag for observation 152: False -> True
+[INFO] [2025-10-20 23:24:26,575] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 152 as synthetic (perf=-7762.283411356564)
+[INFO] [2025-10-20 23:24:26,575] [HistoryContainer] Updated synthetic flag for observation 153: False -> True
+[INFO] [2025-10-20 23:24:26,575] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 153 as synthetic (perf=-9990.116457899074)
+[INFO] [2025-10-20 23:24:26,575] [HistoryContainer] Updated synthetic flag for observation 154: False -> True
+[INFO] [2025-10-20 23:24:26,575] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 154 as synthetic (perf=-4719.255991935507)
+[INFO] [2025-10-20 23:24:26,575] [HistoryContainer] Updated synthetic flag for observation 176: False -> True
+[INFO] [2025-10-20 23:24:26,575] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 176 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,575] [HistoryContainer] Updated synthetic flag for observation 177: False -> True
+[INFO] [2025-10-20 23:24:26,575] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 177 as synthetic (perf=-4962.40164612947)
+[INFO] [2025-10-20 23:24:26,575] [HistoryContainer] Updated synthetic flag for observation 178: False -> True
+[INFO] [2025-10-20 23:24:26,576] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 178 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,576] [HistoryContainer] Updated synthetic flag for observation 200: False -> True
+[INFO] [2025-10-20 23:24:26,576] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 200 as synthetic (perf=-10885.774624354583)
+[INFO] [2025-10-20 23:24:26,576] [HistoryContainer] Updated synthetic flag for observation 201: False -> True
+[INFO] [2025-10-20 23:24:26,576] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 201 as synthetic (perf=-9217.098452605465)
+[INFO] [2025-10-20 23:24:26,576] [HistoryContainer] Updated synthetic flag for observation 202: False -> True
+[INFO] [2025-10-20 23:24:26,576] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 202 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,576] [HistoryContainer] Updated synthetic flag for observation 224: False -> True
+[INFO] [2025-10-20 23:24:26,576] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 224 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,576] [HistoryContainer] Updated synthetic flag for observation 225: False -> True
+[INFO] [2025-10-20 23:24:26,577] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 225 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,577] [HistoryContainer] Updated synthetic flag for observation 226: False -> True
+[INFO] [2025-10-20 23:24:26,577] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 226 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,577] [HistoryContainer] Updated synthetic flag for observation 248: False -> True
+[INFO] [2025-10-20 23:24:26,577] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 248 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,577] [HistoryContainer] Updated synthetic flag for observation 249: False -> True
+[INFO] [2025-10-20 23:24:26,577] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 249 as synthetic (perf=-3825.849159498412)
+[INFO] [2025-10-20 23:24:26,577] [HistoryContainer] Updated synthetic flag for observation 250: False -> True
+[INFO] [2025-10-20 23:24:26,577] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 250 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,577] [HistoryContainer] Updated synthetic flag for observation 272: False -> True
+[INFO] [2025-10-20 23:24:26,578] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 272 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,578] [HistoryContainer] Updated synthetic flag for observation 273: False -> True
+[INFO] [2025-10-20 23:24:26,578] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 273 as synthetic (perf=-10557.42194192819)
+[INFO] [2025-10-20 23:24:26,578] [HistoryContainer] Updated synthetic flag for observation 274: False -> True
+[INFO] [2025-10-20 23:24:26,578] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 274 as synthetic (perf=-11792.240486562163)
+[INFO] [2025-10-20 23:24:26,578] [HistoryContainer] Updated synthetic flag for observation 296: False -> True
+[INFO] [2025-10-20 23:24:26,578] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 296 as synthetic (perf=-3534.236280790598)
+[INFO] [2025-10-20 23:24:26,578] [HistoryContainer] Updated synthetic flag for observation 297: False -> True
+[INFO] [2025-10-20 23:24:26,578] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 297 as synthetic (perf=-10857.924752353436)
+[INFO] [2025-10-20 23:24:26,578] [HistoryContainer] Updated synthetic flag for observation 298: False -> True
+[INFO] [2025-10-20 23:24:26,579] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 298 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,579] [HistoryContainer] Updated synthetic flag for observation 320: False -> True
+[INFO] [2025-10-20 23:24:26,579] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 320 as synthetic (perf=-4796.13380919209)
+[INFO] [2025-10-20 23:24:26,579] [HistoryContainer] Updated synthetic flag for observation 321: False -> True
+[INFO] [2025-10-20 23:24:26,579] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 321 as synthetic (perf=-5281.095090273462)
+[INFO] [2025-10-20 23:24:26,579] [HistoryContainer] Updated synthetic flag for observation 323: False -> True
+[INFO] [2025-10-20 23:24:26,579] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 323 as synthetic (perf=-13743.07126876501)
+[INFO] [2025-10-20 23:24:26,579] [HistoryContainer] Updated synthetic flag for observation 344: False -> True
+[INFO] [2025-10-20 23:24:26,580] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 344 as synthetic (perf=-5347.10576888427)
+[INFO] [2025-10-20 23:24:26,580] [HistoryContainer] Updated synthetic flag for observation 345: False -> True
+[INFO] [2025-10-20 23:24:26,580] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 345 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,580] [HistoryContainer] Updated synthetic flag for observation 346: False -> True
+[INFO] [2025-10-20 23:24:26,580] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 346 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,580] [HistoryContainer] Updated synthetic flag for observation 368: False -> True
+[INFO] [2025-10-20 23:24:26,580] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 368 as synthetic (perf=-4144.387265214483)
+[INFO] [2025-10-20 23:24:26,580] [HistoryContainer] Updated synthetic flag for observation 369: False -> True
+[INFO] [2025-10-20 23:24:26,580] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 369 as synthetic (perf=-11176.702027215142)
+[INFO] [2025-10-20 23:24:26,580] [HistoryContainer] Updated synthetic flag for observation 370: False -> True
+[INFO] [2025-10-20 23:24:26,581] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 370 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,581] [HistoryContainer] Updated synthetic flag for observation 392: False -> True
+[INFO] [2025-10-20 23:24:26,581] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 392 as synthetic (perf=-5110.1489616177305)
+[INFO] [2025-10-20 23:24:26,581] [HistoryContainer] Updated synthetic flag for observation 393: False -> True
+[INFO] [2025-10-20 23:24:26,581] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 393 as synthetic (perf=-10843.764094712744)
+[INFO] [2025-10-20 23:24:26,581] [HistoryContainer] Updated synthetic flag for observation 394: False -> True
+[INFO] [2025-10-20 23:24:26,581] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 394 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,581] [HistoryContainer] Updated synthetic flag for observation 416: False -> True
+[INFO] [2025-10-20 23:24:26,581] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 416 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,582] [HistoryContainer] Updated synthetic flag for observation 417: False -> True
+[INFO] [2025-10-20 23:24:26,582] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 417 as synthetic (perf=-4708.685139677452)
+[INFO] [2025-10-20 23:24:26,582] [HistoryContainer] Updated synthetic flag for observation 418: False -> True
+[INFO] [2025-10-20 23:24:26,582] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 418 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,582] [HistoryContainer] Updated synthetic flag for observation 440: False -> True
+[INFO] [2025-10-20 23:24:26,582] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 440 as synthetic (perf=-10003.442417851307)
+[INFO] [2025-10-20 23:24:26,582] [HistoryContainer] Updated synthetic flag for observation 441: False -> True
+[INFO] [2025-10-20 23:24:26,582] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 441 as synthetic (perf=-13570.51452763206)
+[INFO] [2025-10-20 23:24:26,582] [HistoryContainer] Updated synthetic flag for observation 442: False -> True
+[INFO] [2025-10-20 23:24:26,582] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 442 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,583] [HistoryContainer] Updated synthetic flag for observation 464: False -> True
+[INFO] [2025-10-20 23:24:26,583] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 464 as synthetic (perf=-10813.787730824484)
+[INFO] [2025-10-20 23:24:26,583] [HistoryContainer] Updated synthetic flag for observation 466: False -> True
+[INFO] [2025-10-20 23:24:26,583] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 466 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,583] [HistoryContainer] Updated synthetic flag for observation 467: False -> True
+[INFO] [2025-10-20 23:24:26,583] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 467 as synthetic (perf=-13554.795924309183)
+[INFO] [2025-10-20 23:24:26,583] [HistoryContainer] Updated synthetic flag for observation 488: False -> True
+[INFO] [2025-10-20 23:24:26,583] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 488 as synthetic (perf=-11088.797109430006)
+[INFO] [2025-10-20 23:24:26,583] [HistoryContainer] Updated synthetic flag for observation 489: False -> True
+[INFO] [2025-10-20 23:24:26,584] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 489 as synthetic (perf=-8241.801186160435)
+[INFO] [2025-10-20 23:24:26,584] [HistoryContainer] Updated synthetic flag for observation 490: False -> True
+[INFO] [2025-10-20 23:24:26,584] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 490 as synthetic (perf=-4533.957276690015)
+[INFO] [2025-10-20 23:24:26,584] [HistoryContainer] Updated synthetic flag for observation 512: False -> True
+[INFO] [2025-10-20 23:24:26,584] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 512 as synthetic (perf=-9750.995985224496)
+[INFO] [2025-10-20 23:24:26,584] [HistoryContainer] Updated synthetic flag for observation 513: False -> True
+[INFO] [2025-10-20 23:24:26,584] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 513 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,584] [HistoryContainer] Updated synthetic flag for observation 514: False -> True
+[INFO] [2025-10-20 23:24:26,584] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 514 as synthetic (perf=-4998.297057224839)
+[INFO] [2025-10-20 23:24:26,585] [HistoryContainer] Updated synthetic flag for observation 536: False -> True
+[INFO] [2025-10-20 23:24:26,585] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 536 as synthetic (perf=-4907.9878440593075)
+[INFO] [2025-10-20 23:24:26,585] [HistoryContainer] Updated synthetic flag for observation 537: False -> True
+[INFO] [2025-10-20 23:24:26,585] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 537 as synthetic (perf=-5152.549417876417)
+[INFO] [2025-10-20 23:24:26,585] [HistoryContainer] Updated synthetic flag for observation 538: False -> True
+[INFO] [2025-10-20 23:24:26,585] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 538 as synthetic (perf=-4853.076959123112)
+[INFO] [2025-10-20 23:24:26,585] [HistoryContainer] Updated synthetic flag for observation 560: False -> True
+[INFO] [2025-10-20 23:24:26,585] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 560 as synthetic (perf=-3168.2312423627855)
+[INFO] [2025-10-20 23:24:26,585] [HistoryContainer] Updated synthetic flag for observation 561: False -> True
+[INFO] [2025-10-20 23:24:26,586] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 561 as synthetic (perf=-7430.337698513922)
+[INFO] [2025-10-20 23:24:26,586] [HistoryContainer] Updated synthetic flag for observation 562: False -> True
+[INFO] [2025-10-20 23:24:26,586] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 562 as synthetic (perf=-4880.247746210225)
+[INFO] [2025-10-20 23:24:26,586] [HistoryContainer] Updated synthetic flag for observation 584: False -> True
+[INFO] [2025-10-20 23:24:26,586] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 584 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,586] [HistoryContainer] Updated synthetic flag for observation 585: False -> True
+[INFO] [2025-10-20 23:24:26,586] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 585 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,586] [HistoryContainer] Updated synthetic flag for observation 586: False -> True
+[INFO] [2025-10-20 23:24:26,586] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 586 as synthetic (perf=-5280.954335629887)
+[INFO] [2025-10-20 23:24:26,587] [HistoryContainer] Updated synthetic flag for observation 608: False -> True
+[INFO] [2025-10-20 23:24:26,587] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 608 as synthetic (perf=-8117.668514807282)
+[INFO] [2025-10-20 23:24:26,587] [HistoryContainer] Updated synthetic flag for observation 609: False -> True
+[INFO] [2025-10-20 23:24:26,587] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 609 as synthetic (perf=-8444.201950473675)
+[INFO] [2025-10-20 23:24:26,587] [HistoryContainer] Updated synthetic flag for observation 610: False -> True
+[INFO] [2025-10-20 23:24:26,587] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 610 as synthetic (perf=-4894.326831534742)
+[INFO] [2025-10-20 23:24:26,587] [HistoryContainer] Updated synthetic flag for observation 632: False -> True
+[INFO] [2025-10-20 23:24:26,587] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 632 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,587] [HistoryContainer] Updated synthetic flag for observation 633: False -> True
+[INFO] [2025-10-20 23:24:26,587] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 633 as synthetic (perf=-7510.4671135634335)
+[INFO] [2025-10-20 23:24:26,588] [HistoryContainer] Updated synthetic flag for observation 634: False -> True
+[INFO] [2025-10-20 23:24:26,588] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 634 as synthetic (perf=-5043.955780444663)
+[INFO] [2025-10-20 23:24:26,588] [HistoryContainer] Updated synthetic flag for observation 656: False -> True
+[INFO] [2025-10-20 23:24:26,588] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 656 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,588] [HistoryContainer] Updated synthetic flag for observation 657: False -> True
+[INFO] [2025-10-20 23:24:26,588] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 657 as synthetic (perf=-9144.635054029352)
+[INFO] [2025-10-20 23:24:26,588] [HistoryContainer] Updated synthetic flag for observation 658: False -> True
+[INFO] [2025-10-20 23:24:26,588] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 658 as synthetic (perf=-5157.955211355975)
+[INFO] [2025-10-20 23:24:26,588] [HistoryContainer] Updated synthetic flag for observation 680: False -> True
+[INFO] [2025-10-20 23:24:26,589] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 680 as synthetic (perf=-8467.072893102586)
+[INFO] [2025-10-20 23:24:26,589] [HistoryContainer] Updated synthetic flag for observation 681: False -> True
+[INFO] [2025-10-20 23:24:26,589] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 681 as synthetic (perf=-7917.737530720019)
+[INFO] [2025-10-20 23:24:26,589] [HistoryContainer] Updated synthetic flag for observation 682: False -> True
+[INFO] [2025-10-20 23:24:26,589] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 682 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,589] [HistoryContainer] Updated synthetic flag for observation 704: False -> True
+[INFO] [2025-10-20 23:24:26,589] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 704 as synthetic (perf=-12011.3466738358)
+[INFO] [2025-10-20 23:24:26,589] [HistoryContainer] Updated synthetic flag for observation 705: False -> True
+[INFO] [2025-10-20 23:24:26,589] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 705 as synthetic (perf=-8331.531241563556)
+[INFO] [2025-10-20 23:24:26,589] [HistoryContainer] Updated synthetic flag for observation 706: False -> True
+[INFO] [2025-10-20 23:24:26,590] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 706 as synthetic (perf=-5150.423687848758)
+[INFO] [2025-10-20 23:24:26,590] [HistoryContainer] Updated synthetic flag for observation 728: False -> True
+[INFO] [2025-10-20 23:24:26,590] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 728 as synthetic (perf=-15638.48207092991)
+[INFO] [2025-10-20 23:24:26,590] [HistoryContainer] Updated synthetic flag for observation 729: False -> True
+[INFO] [2025-10-20 23:24:26,590] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 729 as synthetic (perf=-5123.639471732913)
+[INFO] [2025-10-20 23:24:26,590] [HistoryContainer] Updated synthetic flag for observation 730: False -> True
+[INFO] [2025-10-20 23:24:26,590] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 730 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,590] [HistoryContainer] Updated synthetic flag for observation 752: False -> True
+[INFO] [2025-10-20 23:24:26,590] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 752 as synthetic (perf=-5314.359438623148)
+[INFO] [2025-10-20 23:24:26,590] [HistoryContainer] Updated synthetic flag for observation 753: False -> True
+[INFO] [2025-10-20 23:24:26,591] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 753 as synthetic (perf=-3201.3125323271706)
+[INFO] [2025-10-20 23:24:26,591] [HistoryContainer] Updated synthetic flag for observation 754: False -> True
+[INFO] [2025-10-20 23:24:26,591] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 754 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,591] [HistoryContainer] Updated synthetic flag for observation 776: False -> True
+[INFO] [2025-10-20 23:24:26,591] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 776 as synthetic (perf=-4155.676806526847)
+[INFO] [2025-10-20 23:24:26,591] [HistoryContainer] Updated synthetic flag for observation 777: False -> True
+[INFO] [2025-10-20 23:24:26,591] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 777 as synthetic (perf=-10146.377912106213)
+[INFO] [2025-10-20 23:24:26,591] [HistoryContainer] Updated synthetic flag for observation 778: False -> True
+[INFO] [2025-10-20 23:24:26,591] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 778 as synthetic (perf=-4985.4029015261085)
+[INFO] [2025-10-20 23:24:26,592] [HistoryContainer] Updated synthetic flag for observation 800: False -> True
+[INFO] [2025-10-20 23:24:26,592] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 800 as synthetic (perf=-3516.920778721627)
+[INFO] [2025-10-20 23:24:26,592] [HistoryContainer] Updated synthetic flag for observation 801: False -> True
+[INFO] [2025-10-20 23:24:26,592] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 801 as synthetic (perf=-12338.321294579815)
+[INFO] [2025-10-20 23:24:26,592] [HistoryContainer] Updated synthetic flag for observation 802: False -> True
+[INFO] [2025-10-20 23:24:26,592] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 802 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,592] [HistoryContainer] Updated synthetic flag for observation 824: False -> True
+[INFO] [2025-10-20 23:24:26,592] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 824 as synthetic (perf=-13760.953770927812)
+[INFO] [2025-10-20 23:24:26,592] [HistoryContainer] Updated synthetic flag for observation 825: False -> True
+[INFO] [2025-10-20 23:24:26,593] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 825 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,593] [HistoryContainer] Updated synthetic flag for observation 826: False -> True
+[INFO] [2025-10-20 23:24:26,593] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 826 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,593] [HistoryContainer] Updated synthetic flag for observation 848: False -> True
+[INFO] [2025-10-20 23:24:26,593] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 848 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,593] [HistoryContainer] Updated synthetic flag for observation 849: False -> True
+[INFO] [2025-10-20 23:24:26,593] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 849 as synthetic (perf=-5302.291643980198)
+[INFO] [2025-10-20 23:24:26,593] [HistoryContainer] Updated synthetic flag for observation 851: False -> True
+[INFO] [2025-10-20 23:24:26,593] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 851 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,593] [HistoryContainer] Updated synthetic flag for observation 872: False -> True
+[INFO] [2025-10-20 23:24:26,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 872 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,594] [HistoryContainer] Updated synthetic flag for observation 873: False -> True
+[INFO] [2025-10-20 23:24:26,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 873 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,594] [HistoryContainer] Updated synthetic flag for observation 874: False -> True
+[INFO] [2025-10-20 23:24:26,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 874 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,594] [HistoryContainer] Updated synthetic flag for observation 896: False -> True
+[INFO] [2025-10-20 23:24:26,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 896 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,594] [HistoryContainer] Updated synthetic flag for observation 897: False -> True
+[INFO] [2025-10-20 23:24:26,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 897 as synthetic (perf=-5182.680401980505)
+[INFO] [2025-10-20 23:24:26,594] [HistoryContainer] Updated synthetic flag for observation 898: False -> True
+[INFO] [2025-10-20 23:24:26,595] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 898 as synthetic (perf=-13830.709858048798)
+[INFO] [2025-10-20 23:24:26,595] [HistoryContainer] Updated synthetic flag for observation 920: False -> True
+[INFO] [2025-10-20 23:24:26,595] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 920 as synthetic (perf=-10023.62670318931)
+[INFO] [2025-10-20 23:24:26,595] [HistoryContainer] Updated synthetic flag for observation 921: False -> True
+[INFO] [2025-10-20 23:24:26,595] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 921 as synthetic (perf=-5225.844034999564)
+[INFO] [2025-10-20 23:24:26,595] [HistoryContainer] Updated synthetic flag for observation 922: False -> True
+[INFO] [2025-10-20 23:24:26,595] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 922 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,595] [HistoryContainer] Updated synthetic flag for observation 944: False -> True
+[INFO] [2025-10-20 23:24:26,595] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 944 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,596] [HistoryContainer] Updated synthetic flag for observation 945: False -> True
+[INFO] [2025-10-20 23:24:26,596] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 945 as synthetic (perf=-5003.30902468825)
+[INFO] [2025-10-20 23:24:26,596] [HistoryContainer] Updated synthetic flag for observation 946: False -> True
+[INFO] [2025-10-20 23:24:26,596] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 946 as synthetic (perf=-8771.262048468463)
+[INFO] [2025-10-20 23:24:26,596] [HistoryContainer] Updated synthetic flag for observation 968: False -> True
+[INFO] [2025-10-20 23:24:26,596] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 968 as synthetic (perf=-11543.572124608008)
+[INFO] [2025-10-20 23:24:26,596] [HistoryContainer] Updated synthetic flag for observation 969: False -> True
+[INFO] [2025-10-20 23:24:26,596] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 969 as synthetic (perf=-7376.702077191931)
+[INFO] [2025-10-20 23:24:26,596] [HistoryContainer] Updated synthetic flag for observation 970: False -> True
+[INFO] [2025-10-20 23:24:26,597] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 970 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,597] [HistoryContainer] Updated synthetic flag for observation 992: False -> True
+[INFO] [2025-10-20 23:24:26,597] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 992 as synthetic (perf=-4872.9828418691195)
+[INFO] [2025-10-20 23:24:26,597] [HistoryContainer] Updated synthetic flag for observation 994: False -> True
+[INFO] [2025-10-20 23:24:26,597] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 994 as synthetic (perf=-11391.76360294304)
+[INFO] [2025-10-20 23:24:26,597] [HistoryContainer] Updated synthetic flag for observation 995: False -> True
+[INFO] [2025-10-20 23:24:26,597] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 995 as synthetic (perf=-254.6499814515783)
+[INFO] [2025-10-20 23:24:26,597] [HistoryContainer] Updated synthetic flag for observation 1016: False -> True
+[INFO] [2025-10-20 23:24:26,597] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1016 as synthetic (perf=-12057.25014653917)
+[INFO] [2025-10-20 23:24:26,597] [HistoryContainer] Updated synthetic flag for observation 1017: False -> True
+[INFO] [2025-10-20 23:24:26,598] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1017 as synthetic (perf=-8164.208767993131)
+[INFO] [2025-10-20 23:24:26,598] [HistoryContainer] Updated synthetic flag for observation 1018: False -> True
+[INFO] [2025-10-20 23:24:26,598] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1018 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,598] [HistoryContainer] Updated synthetic flag for observation 1040: False -> True
+[INFO] [2025-10-20 23:24:26,598] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1040 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,598] [HistoryContainer] Updated synthetic flag for observation 1041: False -> True
+[INFO] [2025-10-20 23:24:26,598] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1041 as synthetic (perf=-9060.977277076798)
+[INFO] [2025-10-20 23:24:26,598] [HistoryContainer] Updated synthetic flag for observation 1042: False -> True
+[INFO] [2025-10-20 23:24:26,598] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1042 as synthetic (perf=-4896.491328932507)
+[INFO] [2025-10-20 23:24:26,599] [HistoryContainer] Updated synthetic flag for observation 1064: False -> True
+[INFO] [2025-10-20 23:24:26,599] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1064 as synthetic (perf=-9326.294284861186)
+[INFO] [2025-10-20 23:24:26,599] [HistoryContainer] Updated synthetic flag for observation 1065: False -> True
+[INFO] [2025-10-20 23:24:26,599] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1065 as synthetic (perf=-5028.808180740771)
+[INFO] [2025-10-20 23:24:26,599] [HistoryContainer] Updated synthetic flag for observation 1066: False -> True
+[INFO] [2025-10-20 23:24:26,599] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1066 as synthetic (perf=-10161.459241296756)
+[INFO] [2025-10-20 23:24:26,599] [HistoryContainer] Updated synthetic flag for observation 1088: False -> True
+[INFO] [2025-10-20 23:24:26,599] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1088 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,599] [HistoryContainer] Updated synthetic flag for observation 1089: False -> True
+[INFO] [2025-10-20 23:24:26,600] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1089 as synthetic (perf=-9618.314615507641)
+[INFO] [2025-10-20 23:24:26,600] [HistoryContainer] Updated synthetic flag for observation 1090: False -> True
+[INFO] [2025-10-20 23:24:26,600] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1090 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,600] [HistoryContainer] Updated synthetic flag for observation 1112: False -> True
+[INFO] [2025-10-20 23:24:26,600] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1112 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,600] [HistoryContainer] Updated synthetic flag for observation 1113: False -> True
+[INFO] [2025-10-20 23:24:26,600] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1113 as synthetic (perf=-5163.290102284899)
+[INFO] [2025-10-20 23:24:26,600] [HistoryContainer] Updated synthetic flag for observation 1114: False -> True
+[INFO] [2025-10-20 23:24:26,600] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1114 as synthetic (perf=-10817.82233331317)
+[INFO] [2025-10-20 23:24:26,600] [HistoryContainer] Updated synthetic flag for observation 1136: False -> True
+[INFO] [2025-10-20 23:24:26,601] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1136 as synthetic (perf=-11823.11686592065)
+[INFO] [2025-10-20 23:24:26,601] [HistoryContainer] Updated synthetic flag for observation 1137: False -> True
+[INFO] [2025-10-20 23:24:26,601] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1137 as synthetic (perf=-5006.677059347435)
+[INFO] [2025-10-20 23:24:26,601] [HistoryContainer] Updated synthetic flag for observation 1138: False -> True
+[INFO] [2025-10-20 23:24:26,601] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1138 as synthetic (perf=-4706.25479353926)
+[INFO] [2025-10-20 23:24:26,602] [HistoryContainer] Updated synthetic flag for observation 1160: False -> True
+[INFO] [2025-10-20 23:24:26,602] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1160 as synthetic (perf=-5052.848240294516)
+[INFO] [2025-10-20 23:24:26,602] [HistoryContainer] Updated synthetic flag for observation 1161: False -> True
+[INFO] [2025-10-20 23:24:26,602] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1161 as synthetic (perf=-8859.302878672663)
+[INFO] [2025-10-20 23:24:26,602] [HistoryContainer] Updated synthetic flag for observation 1162: False -> True
+[INFO] [2025-10-20 23:24:26,602] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1162 as synthetic (perf=-2211.288789294899)
+[INFO] [2025-10-20 23:24:26,602] [HistoryContainer] Updated synthetic flag for observation 1184: False -> True
+[INFO] [2025-10-20 23:24:26,602] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1184 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,602] [HistoryContainer] Updated synthetic flag for observation 1185: False -> True
+[INFO] [2025-10-20 23:24:26,602] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1185 as synthetic (perf=-7879.509734516986)
+[INFO] [2025-10-20 23:24:26,603] [HistoryContainer] Updated synthetic flag for observation 1186: False -> True
+[INFO] [2025-10-20 23:24:26,603] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1186 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,603] [HistoryContainer] Updated synthetic flag for observation 1208: False -> True
+[INFO] [2025-10-20 23:24:26,603] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1208 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,603] [HistoryContainer] Updated synthetic flag for observation 1209: False -> True
+[INFO] [2025-10-20 23:24:26,603] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1209 as synthetic (perf=-4699.290480386202)
+[INFO] [2025-10-20 23:24:26,603] [HistoryContainer] Updated synthetic flag for observation 1210: False -> True
+[INFO] [2025-10-20 23:24:26,603] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1210 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,603] [HistoryContainer] Updated synthetic flag for observation 1232: False -> True
+[INFO] [2025-10-20 23:24:26,603] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1232 as synthetic (perf=-4854.346287395959)
+[INFO] [2025-10-20 23:24:26,604] [HistoryContainer] Updated synthetic flag for observation 1233: False -> True
+[INFO] [2025-10-20 23:24:26,604] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1233 as synthetic (perf=-4607.181848003501)
+[INFO] [2025-10-20 23:24:26,604] [HistoryContainer] Updated synthetic flag for observation 1234: False -> True
+[INFO] [2025-10-20 23:24:26,604] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1234 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,604] [HistoryContainer] Updated synthetic flag for observation 1256: False -> True
+[INFO] [2025-10-20 23:24:26,604] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1256 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,604] [HistoryContainer] Updated synthetic flag for observation 1257: False -> True
+[INFO] [2025-10-20 23:24:26,604] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1257 as synthetic (perf=-10077.68290620754)
+[INFO] [2025-10-20 23:24:26,604] [HistoryContainer] Updated synthetic flag for observation 1258: False -> True
+[INFO] [2025-10-20 23:24:26,604] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1258 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,605] [HistoryContainer] Updated synthetic flag for observation 1280: False -> True
+[INFO] [2025-10-20 23:24:26,605] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1280 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,605] [HistoryContainer] Updated synthetic flag for observation 1281: False -> True
+[INFO] [2025-10-20 23:24:26,605] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1281 as synthetic (perf=-4617.344622753027)
+[INFO] [2025-10-20 23:24:26,605] [HistoryContainer] Updated synthetic flag for observation 1282: False -> True
+[INFO] [2025-10-20 23:24:26,605] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1282 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,605] [HistoryContainer] Updated synthetic flag for observation 1304: False -> True
+[INFO] [2025-10-20 23:24:26,605] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1304 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,605] [HistoryContainer] Updated synthetic flag for observation 1305: False -> True
+[INFO] [2025-10-20 23:24:26,606] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1305 as synthetic (perf=-9535.94225153065)
+[INFO] [2025-10-20 23:24:26,606] [HistoryContainer] Updated synthetic flag for observation 1306: False -> True
+[INFO] [2025-10-20 23:24:26,606] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1306 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,606] [HistoryContainer] Updated synthetic flag for observation 1328: False -> True
+[INFO] [2025-10-20 23:24:26,606] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1328 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,606] [HistoryContainer] Updated synthetic flag for observation 1329: False -> True
+[INFO] [2025-10-20 23:24:26,606] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1329 as synthetic (perf=-12999.0927029515)
+[INFO] [2025-10-20 23:24:26,606] [HistoryContainer] Updated synthetic flag for observation 1330: False -> True
+[INFO] [2025-10-20 23:24:26,606] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1330 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,607] [HistoryContainer] Updated synthetic flag for observation 1352: False -> True
+[INFO] [2025-10-20 23:24:26,607] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1352 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,607] [HistoryContainer] Updated synthetic flag for observation 1353: False -> True
+[INFO] [2025-10-20 23:24:26,607] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1353 as synthetic (perf=-9766.710340223895)
+[INFO] [2025-10-20 23:24:26,607] [HistoryContainer] Updated synthetic flag for observation 1354: False -> True
+[INFO] [2025-10-20 23:24:26,607] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1354 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,607] [HistoryContainer] Updated synthetic flag for observation 1376: False -> True
+[INFO] [2025-10-20 23:24:26,607] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1376 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,607] [HistoryContainer] Updated synthetic flag for observation 1377: False -> True
+[INFO] [2025-10-20 23:24:26,607] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1377 as synthetic (perf=-14410.556546328315)
+[INFO] [2025-10-20 23:24:26,608] [HistoryContainer] Updated synthetic flag for observation 1378: False -> True
+[INFO] [2025-10-20 23:24:26,608] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1378 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,608] [HistoryContainer] Updated synthetic flag for observation 1400: False -> True
+[INFO] [2025-10-20 23:24:26,608] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1400 as synthetic (perf=-9172.989566590706)
+[INFO] [2025-10-20 23:24:26,608] [HistoryContainer] Updated synthetic flag for observation 1401: False -> True
+[INFO] [2025-10-20 23:24:26,608] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1401 as synthetic (perf=-3381.9163758218583)
+[INFO] [2025-10-20 23:24:26,608] [HistoryContainer] Updated synthetic flag for observation 1402: False -> True
+[INFO] [2025-10-20 23:24:26,608] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1402 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,608] [HistoryContainer] Updated synthetic flag for observation 1424: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1424 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,609] [HistoryContainer] Updated synthetic flag for observation 1425: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1425 as synthetic (perf=-4869.729245796929)
+[INFO] [2025-10-20 23:24:26,609] [HistoryContainer] Updated synthetic flag for observation 1426: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1426 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,609] [HistoryContainer] Updated synthetic flag for observation 1448: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1448 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,609] [HistoryContainer] Updated synthetic flag for observation 1449: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1449 as synthetic (perf=-9164.78304036577)
+[INFO] [2025-10-20 23:24:26,609] [HistoryContainer] Updated synthetic flag for observation 1450: False -> True
+[INFO] [2025-10-20 23:24:26,609] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1450 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,610] [HistoryContainer] Updated synthetic flag for observation 1472: False -> True
+[INFO] [2025-10-20 23:24:26,610] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1472 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,610] [HistoryContainer] Updated synthetic flag for observation 1473: False -> True
+[INFO] [2025-10-20 23:24:26,610] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1473 as synthetic (perf=-4834.0258301662625)
+[INFO] [2025-10-20 23:24:26,610] [HistoryContainer] Updated synthetic flag for observation 1474: False -> True
+[INFO] [2025-10-20 23:24:26,610] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1474 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,610] [HistoryContainer] Updated synthetic flag for observation 1496: False -> True
+[INFO] [2025-10-20 23:24:26,610] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1496 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,610] [HistoryContainer] Updated synthetic flag for observation 1497: False -> True
+[INFO] [2025-10-20 23:24:26,611] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1497 as synthetic (perf=-5031.897032595815)
+[INFO] [2025-10-20 23:24:26,611] [HistoryContainer] Updated synthetic flag for observation 1498: False -> True
+[INFO] [2025-10-20 23:24:26,611] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1498 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,611] [HistoryContainer] Updated synthetic flag for observation 1520: False -> True
+[INFO] [2025-10-20 23:24:26,611] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1520 as synthetic (perf=-8960.5457310657)
+[INFO] [2025-10-20 23:24:26,611] [HistoryContainer] Updated synthetic flag for observation 1521: False -> True
+[INFO] [2025-10-20 23:24:26,611] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1521 as synthetic (perf=-4943.9700004845035)
+[INFO] [2025-10-20 23:24:26,611] [HistoryContainer] Updated synthetic flag for observation 1522: False -> True
+[INFO] [2025-10-20 23:24:26,611] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1522 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,612] [HistoryContainer] Updated synthetic flag for observation 1544: False -> True
+[INFO] [2025-10-20 23:24:26,612] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1544 as synthetic (perf=-4907.7168447479025)
+[INFO] [2025-10-20 23:24:26,612] [HistoryContainer] Updated synthetic flag for observation 1545: False -> True
+[INFO] [2025-10-20 23:24:26,612] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1545 as synthetic (perf=-3826.787700628788)
+[INFO] [2025-10-20 23:24:26,612] [HistoryContainer] Updated synthetic flag for observation 1546: False -> True
+[INFO] [2025-10-20 23:24:26,612] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1546 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,612] [HistoryContainer] Updated synthetic flag for observation 1568: False -> True
+[INFO] [2025-10-20 23:24:26,612] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1568 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,612] [HistoryContainer] Updated synthetic flag for observation 1569: False -> True
+[INFO] [2025-10-20 23:24:26,612] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1569 as synthetic (perf=-5092.566318052211)
+[INFO] [2025-10-20 23:24:26,613] [HistoryContainer] Updated synthetic flag for observation 1570: False -> True
+[INFO] [2025-10-20 23:24:26,613] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1570 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,613] [HistoryContainer] Updated synthetic flag for observation 1592: False -> True
+[INFO] [2025-10-20 23:24:26,613] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1592 as synthetic (perf=-7544.043960481572)
+[INFO] [2025-10-20 23:24:26,613] [HistoryContainer] Updated synthetic flag for observation 1593: False -> True
+[INFO] [2025-10-20 23:24:26,613] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1593 as synthetic (perf=-4115.401701298956)
+[INFO] [2025-10-20 23:24:26,613] [HistoryContainer] Updated synthetic flag for observation 1594: False -> True
+[INFO] [2025-10-20 23:24:26,613] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1594 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,613] [HistoryContainer] Updated synthetic flag for observation 1616: False -> True
+[INFO] [2025-10-20 23:24:26,614] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1616 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,614] [HistoryContainer] Updated synthetic flag for observation 1618: False -> True
+[INFO] [2025-10-20 23:24:26,614] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1618 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,614] [HistoryContainer] Updated synthetic flag for observation 1619: False -> True
+[INFO] [2025-10-20 23:24:26,614] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1619 as synthetic (perf=-9464.85308712187)
+[INFO] [2025-10-20 23:24:26,614] [HistoryContainer] Updated synthetic flag for observation 1640: False -> True
+[INFO] [2025-10-20 23:24:26,614] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1640 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,614] [HistoryContainer] Updated synthetic flag for observation 1641: False -> True
+[INFO] [2025-10-20 23:24:26,614] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1641 as synthetic (perf=-9395.935471273779)
+[INFO] [2025-10-20 23:24:26,614] [HistoryContainer] Updated synthetic flag for observation 1642: False -> True
+[INFO] [2025-10-20 23:24:26,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1642 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,615] [HistoryContainer] Updated synthetic flag for observation 1664: False -> True
+[INFO] [2025-10-20 23:24:26,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1664 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,615] [HistoryContainer] Updated synthetic flag for observation 1665: False -> True
+[INFO] [2025-10-20 23:24:26,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1665 as synthetic (perf=-12124.181575243794)
+[INFO] [2025-10-20 23:24:26,615] [HistoryContainer] Updated synthetic flag for observation 1666: False -> True
+[INFO] [2025-10-20 23:24:26,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1666 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,615] [HistoryContainer] Updated synthetic flag for observation 1688: False -> True
+[INFO] [2025-10-20 23:24:26,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1688 as synthetic (perf=-10596.153221743467)
+[INFO] [2025-10-20 23:24:26,616] [HistoryContainer] Updated synthetic flag for observation 1689: False -> True
+[INFO] [2025-10-20 23:24:26,616] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1689 as synthetic (perf=-11343.213460063576)
+[INFO] [2025-10-20 23:24:26,616] [HistoryContainer] Updated synthetic flag for observation 1690: False -> True
+[INFO] [2025-10-20 23:24:26,616] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1690 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,616] [HistoryContainer] Updated synthetic flag for observation 1712: False -> True
+[INFO] [2025-10-20 23:24:26,616] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1712 as synthetic (perf=-10639.619858550328)
+[INFO] [2025-10-20 23:24:26,616] [HistoryContainer] Updated synthetic flag for observation 1713: False -> True
+[INFO] [2025-10-20 23:24:26,616] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1713 as synthetic (perf=-14765.47952595721)
+[INFO] [2025-10-20 23:24:26,616] [HistoryContainer] Updated synthetic flag for observation 1714: False -> True
+[INFO] [2025-10-20 23:24:26,616] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1714 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,617] [HistoryContainer] Updated synthetic flag for observation 1736: False -> True
+[INFO] [2025-10-20 23:24:26,617] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1736 as synthetic (perf=-4935.686385486737)
+[INFO] [2025-10-20 23:24:26,617] [HistoryContainer] Updated synthetic flag for observation 1737: False -> True
+[INFO] [2025-10-20 23:24:26,617] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1737 as synthetic (perf=-4692.342561155575)
+[INFO] [2025-10-20 23:24:26,617] [HistoryContainer] Updated synthetic flag for observation 1738: False -> True
+[INFO] [2025-10-20 23:24:26,617] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1738 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,617] [HistoryContainer] Updated synthetic flag for observation 1760: False -> True
+[INFO] [2025-10-20 23:24:26,617] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1760 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,617] [HistoryContainer] Updated synthetic flag for observation 1761: False -> True
+[INFO] [2025-10-20 23:24:26,617] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1761 as synthetic (perf=-9015.143785045964)
+[INFO] [2025-10-20 23:24:26,618] [HistoryContainer] Updated synthetic flag for observation 1762: False -> True
+[INFO] [2025-10-20 23:24:26,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1762 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,618] [HistoryContainer] Updated synthetic flag for observation 1784: False -> True
+[INFO] [2025-10-20 23:24:26,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1784 as synthetic (perf=-5263.859340136075)
+[INFO] [2025-10-20 23:24:26,618] [HistoryContainer] Updated synthetic flag for observation 1785: False -> True
+[INFO] [2025-10-20 23:24:26,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1785 as synthetic (perf=-5277.211738835878)
+[INFO] [2025-10-20 23:24:26,618] [HistoryContainer] Updated synthetic flag for observation 1786: False -> True
+[INFO] [2025-10-20 23:24:26,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1786 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,618] [HistoryContainer] Updated synthetic flag for observation 1808: False -> True
+[INFO] [2025-10-20 23:24:26,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1808 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,619] [HistoryContainer] Updated synthetic flag for observation 1809: False -> True
+[INFO] [2025-10-20 23:24:26,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1809 as synthetic (perf=-9017.977007287906)
+[INFO] [2025-10-20 23:24:26,619] [HistoryContainer] Updated synthetic flag for observation 1810: False -> True
+[INFO] [2025-10-20 23:24:26,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1810 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,619] [HistoryContainer] Updated synthetic flag for observation 1832: False -> True
+[INFO] [2025-10-20 23:24:26,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1832 as synthetic (perf=-10674.521502166444)
+[INFO] [2025-10-20 23:24:26,619] [HistoryContainer] Updated synthetic flag for observation 1833: False -> True
+[INFO] [2025-10-20 23:24:26,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1833 as synthetic (perf=-5078.32930714922)
+[INFO] [2025-10-20 23:24:26,620] [HistoryContainer] Updated synthetic flag for observation 1834: False -> True
+[INFO] [2025-10-20 23:24:26,620] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1834 as synthetic (perf=-4625.9947766906835)
+[INFO] [2025-10-20 23:24:26,620] [HistoryContainer] Updated synthetic flag for observation 1856: False -> True
+[INFO] [2025-10-20 23:24:26,620] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1856 as synthetic (perf=-4943.962146704207)
+[INFO] [2025-10-20 23:24:26,620] [HistoryContainer] Updated synthetic flag for observation 1857: False -> True
+[INFO] [2025-10-20 23:24:26,620] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1857 as synthetic (perf=-15196.962738831568)
+[INFO] [2025-10-20 23:24:26,620] [HistoryContainer] Updated synthetic flag for observation 1858: False -> True
+[INFO] [2025-10-20 23:24:26,620] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1858 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,620] [HistoryContainer] Updated synthetic flag for observation 1880: False -> True
+[INFO] [2025-10-20 23:24:26,621] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1880 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,621] [HistoryContainer] Updated synthetic flag for observation 1881: False -> True
+[INFO] [2025-10-20 23:24:26,621] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1881 as synthetic (perf=-4980.637127626354)
+[INFO] [2025-10-20 23:24:26,621] [HistoryContainer] Updated synthetic flag for observation 1882: False -> True
+[INFO] [2025-10-20 23:24:26,621] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1882 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,621] [HistoryContainer] Updated synthetic flag for observation 1904: False -> True
+[INFO] [2025-10-20 23:24:26,621] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1904 as synthetic (perf=-16714.27004971026)
+[INFO] [2025-10-20 23:24:26,621] [HistoryContainer] Updated synthetic flag for observation 1906: False -> True
+[INFO] [2025-10-20 23:24:26,621] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1906 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,621] [HistoryContainer] Updated synthetic flag for observation 1907: False -> True
+[INFO] [2025-10-20 23:24:26,622] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1907 as synthetic (perf=-14132.49001825297)
+[INFO] [2025-10-20 23:24:26,622] [HistoryContainer] Updated synthetic flag for observation 1928: False -> True
+[INFO] [2025-10-20 23:24:26,622] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1928 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,622] [HistoryContainer] Updated synthetic flag for observation 1929: False -> True
+[INFO] [2025-10-20 23:24:26,622] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1929 as synthetic (perf=-4664.049431655611)
+[INFO] [2025-10-20 23:24:26,622] [HistoryContainer] Updated synthetic flag for observation 1930: False -> True
+[INFO] [2025-10-20 23:24:26,622] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1930 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,622] [HistoryContainer] Updated synthetic flag for observation 1952: False -> True
+[INFO] [2025-10-20 23:24:26,622] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1952 as synthetic (perf=-10877.222747122687)
+[INFO] [2025-10-20 23:24:26,623] [HistoryContainer] Updated synthetic flag for observation 1953: False -> True
+[INFO] [2025-10-20 23:24:26,623] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1953 as synthetic (perf=-4998.618634312067)
+[INFO] [2025-10-20 23:24:26,623] [HistoryContainer] Updated synthetic flag for observation 1954: False -> True
+[INFO] [2025-10-20 23:24:26,623] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1954 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,623] [HistoryContainer] Updated synthetic flag for observation 1976: False -> True
+[INFO] [2025-10-20 23:24:26,623] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1976 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,623] [HistoryContainer] Updated synthetic flag for observation 1977: False -> True
+[INFO] [2025-10-20 23:24:26,623] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1977 as synthetic (perf=-3693.056936667499)
+[INFO] [2025-10-20 23:24:26,623] [HistoryContainer] Updated synthetic flag for observation 1978: False -> True
+[INFO] [2025-10-20 23:24:26,624] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 1978 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,624] [HistoryContainer] Updated synthetic flag for observation 2000: False -> True
+[INFO] [2025-10-20 23:24:26,624] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2000 as synthetic (perf=-5053.806829684363)
+[INFO] [2025-10-20 23:24:26,624] [HistoryContainer] Updated synthetic flag for observation 2001: False -> True
+[INFO] [2025-10-20 23:24:26,624] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2001 as synthetic (perf=-4819.341347696339)
+[INFO] [2025-10-20 23:24:26,624] [HistoryContainer] Updated synthetic flag for observation 2002: False -> True
+[INFO] [2025-10-20 23:24:26,624] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2002 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,624] [HistoryContainer] Updated synthetic flag for observation 2024: False -> True
+[INFO] [2025-10-20 23:24:26,624] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2024 as synthetic (perf=-8716.034783515088)
+[INFO] [2025-10-20 23:24:26,625] [HistoryContainer] Updated synthetic flag for observation 2025: False -> True
+[INFO] [2025-10-20 23:24:26,625] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2025 as synthetic (perf=-5404.945400946671)
+[INFO] [2025-10-20 23:24:26,625] [HistoryContainer] Updated synthetic flag for observation 2026: False -> True
+[INFO] [2025-10-20 23:24:26,625] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2026 as synthetic (perf=-3487.6437641407765)
+[INFO] [2025-10-20 23:24:26,625] [HistoryContainer] Updated synthetic flag for observation 2048: False -> True
+[INFO] [2025-10-20 23:24:26,625] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2048 as synthetic (perf=-15962.15494057012)
+[INFO] [2025-10-20 23:24:26,625] [HistoryContainer] Updated synthetic flag for observation 2049: False -> True
+[INFO] [2025-10-20 23:24:26,625] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2049 as synthetic (perf=-12278.697965255993)
+[INFO] [2025-10-20 23:24:26,625] [HistoryContainer] Updated synthetic flag for observation 2050: False -> True
+[INFO] [2025-10-20 23:24:26,625] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2050 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,626] [HistoryContainer] Updated synthetic flag for observation 2072: False -> True
+[INFO] [2025-10-20 23:24:26,626] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2072 as synthetic (perf=-13817.837960722429)
+[INFO] [2025-10-20 23:24:26,626] [HistoryContainer] Updated synthetic flag for observation 2073: False -> True
+[INFO] [2025-10-20 23:24:26,626] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2073 as synthetic (perf=-10411.510012349754)
+[INFO] [2025-10-20 23:24:26,626] [HistoryContainer] Updated synthetic flag for observation 2074: False -> True
+[INFO] [2025-10-20 23:24:26,626] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2074 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,626] [HistoryContainer] Updated synthetic flag for observation 2096: False -> True
+[INFO] [2025-10-20 23:24:26,626] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2096 as synthetic (perf=-3509.0264957154354)
+[INFO] [2025-10-20 23:24:26,626] [HistoryContainer] Updated synthetic flag for observation 2097: False -> True
+[INFO] [2025-10-20 23:24:26,627] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2097 as synthetic (perf=-12018.145719406677)
+[INFO] [2025-10-20 23:24:26,627] [HistoryContainer] Updated synthetic flag for observation 2098: False -> True
+[INFO] [2025-10-20 23:24:26,627] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2098 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,627] [HistoryContainer] Updated synthetic flag for observation 2120: False -> True
+[INFO] [2025-10-20 23:24:26,627] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2120 as synthetic (perf=-4193.898064957992)
+[INFO] [2025-10-20 23:24:26,627] [HistoryContainer] Updated synthetic flag for observation 2121: False -> True
+[INFO] [2025-10-20 23:24:26,627] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2121 as synthetic (perf=-10757.261037734334)
+[INFO] [2025-10-20 23:24:26,627] [HistoryContainer] Updated synthetic flag for observation 2122: False -> True
+[INFO] [2025-10-20 23:24:26,627] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2122 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,628] [HistoryContainer] Updated synthetic flag for observation 2144: False -> True
+[INFO] [2025-10-20 23:24:26,628] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2144 as synthetic (perf=-4759.780626604751)
+[INFO] [2025-10-20 23:24:26,628] [HistoryContainer] Updated synthetic flag for observation 2145: False -> True
+[INFO] [2025-10-20 23:24:26,628] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2145 as synthetic (perf=-11824.053954136005)
+[INFO] [2025-10-20 23:24:26,628] [HistoryContainer] Updated synthetic flag for observation 2146: False -> True
+[INFO] [2025-10-20 23:24:26,628] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2146 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,628] [HistoryContainer] Updated synthetic flag for observation 2168: False -> True
+[INFO] [2025-10-20 23:24:26,628] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2168 as synthetic (perf=-9863.89725028675)
+[INFO] [2025-10-20 23:24:26,628] [HistoryContainer] Updated synthetic flag for observation 2169: False -> True
+[INFO] [2025-10-20 23:24:26,628] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2169 as synthetic (perf=-12549.34991109519)
+[INFO] [2025-10-20 23:24:26,629] [HistoryContainer] Updated synthetic flag for observation 2170: False -> True
+[INFO] [2025-10-20 23:24:26,629] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2170 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,629] [HistoryContainer] Updated synthetic flag for observation 2192: False -> True
+[INFO] [2025-10-20 23:24:26,629] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2192 as synthetic (perf=-7693.8066902791725)
+[INFO] [2025-10-20 23:24:26,629] [HistoryContainer] Updated synthetic flag for observation 2193: False -> True
+[INFO] [2025-10-20 23:24:26,629] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2193 as synthetic (perf=-8891.955610626439)
+[INFO] [2025-10-20 23:24:26,629] [HistoryContainer] Updated synthetic flag for observation 2194: False -> True
+[INFO] [2025-10-20 23:24:26,629] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2194 as synthetic (perf=-4964.971084719763)
+[INFO] [2025-10-20 23:24:26,629] [HistoryContainer] Updated synthetic flag for observation 2216: False -> True
+[INFO] [2025-10-20 23:24:26,630] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2216 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,630] [HistoryContainer] Updated synthetic flag for observation 2217: False -> True
+[INFO] [2025-10-20 23:24:26,630] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2217 as synthetic (perf=-13064.586459267271)
+[INFO] [2025-10-20 23:24:26,630] [HistoryContainer] Updated synthetic flag for observation 2218: False -> True
+[INFO] [2025-10-20 23:24:26,630] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2218 as synthetic (perf=-10298.16532584554)
+[INFO] [2025-10-20 23:24:26,630] [HistoryContainer] Updated synthetic flag for observation 2240: False -> True
+[INFO] [2025-10-20 23:24:26,630] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2240 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,630] [HistoryContainer] Updated synthetic flag for observation 2241: False -> True
+[INFO] [2025-10-20 23:24:26,630] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2241 as synthetic (perf=-9927.825028486022)
+[INFO] [2025-10-20 23:24:26,630] [HistoryContainer] Updated synthetic flag for observation 2242: False -> True
+[INFO] [2025-10-20 23:24:26,631] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2242 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,631] [HistoryContainer] Updated synthetic flag for observation 2264: False -> True
+[INFO] [2025-10-20 23:24:26,631] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2264 as synthetic (perf=-16239.09524368476)
+[INFO] [2025-10-20 23:24:26,631] [HistoryContainer] Updated synthetic flag for observation 2265: False -> True
+[INFO] [2025-10-20 23:24:26,631] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2265 as synthetic (perf=-7238.188273039704)
+[INFO] [2025-10-20 23:24:26,631] [HistoryContainer] Updated synthetic flag for observation 2266: False -> True
+[INFO] [2025-10-20 23:24:26,631] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2266 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,631] [HistoryContainer] Updated synthetic flag for observation 2288: False -> True
+[INFO] [2025-10-20 23:24:26,631] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2288 as synthetic (perf=-9418.320555611297)
+[INFO] [2025-10-20 23:24:26,632] [HistoryContainer] Updated synthetic flag for observation 2289: False -> True
+[INFO] [2025-10-20 23:24:26,632] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2289 as synthetic (perf=-5254.1503866525045)
+[INFO] [2025-10-20 23:24:26,632] [HistoryContainer] Updated synthetic flag for observation 2290: False -> True
+[INFO] [2025-10-20 23:24:26,632] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2290 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,632] [HistoryContainer] Updated synthetic flag for observation 2312: False -> True
+[INFO] [2025-10-20 23:24:26,632] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2312 as synthetic (perf=-4928.502148301388)
+[INFO] [2025-10-20 23:24:26,632] [HistoryContainer] Updated synthetic flag for observation 2313: False -> True
+[INFO] [2025-10-20 23:24:26,632] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2313 as synthetic (perf=-10354.64957309453)
+[INFO] [2025-10-20 23:24:26,632] [HistoryContainer] Updated synthetic flag for observation 2314: False -> True
+[INFO] [2025-10-20 23:24:26,632] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2314 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,633] [HistoryContainer] Updated synthetic flag for observation 2336: False -> True
+[INFO] [2025-10-20 23:24:26,633] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2336 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,633] [HistoryContainer] Updated synthetic flag for observation 2337: False -> True
+[INFO] [2025-10-20 23:24:26,633] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2337 as synthetic (perf=-10050.838292459057)
+[INFO] [2025-10-20 23:24:26,633] [HistoryContainer] Updated synthetic flag for observation 2338: False -> True
+[INFO] [2025-10-20 23:24:26,633] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2338 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,633] [HistoryContainer] Updated synthetic flag for observation 2360: False -> True
+[INFO] [2025-10-20 23:24:26,633] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2360 as synthetic (perf=-4724.82230744897)
+[INFO] [2025-10-20 23:24:26,633] [HistoryContainer] Updated synthetic flag for observation 2361: False -> True
+[INFO] [2025-10-20 23:24:26,634] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2361 as synthetic (perf=-5096.871294659075)
+[INFO] [2025-10-20 23:24:26,634] [HistoryContainer] Updated synthetic flag for observation 2362: False -> True
+[INFO] [2025-10-20 23:24:26,634] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2362 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,634] [HistoryContainer] Updated synthetic flag for observation 2384: False -> True
+[INFO] [2025-10-20 23:24:26,634] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2384 as synthetic (perf=-9661.704700281016)
+[INFO] [2025-10-20 23:24:26,634] [HistoryContainer] Updated synthetic flag for observation 2385: False -> True
+[INFO] [2025-10-20 23:24:26,634] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2385 as synthetic (perf=-11870.029080392638)
+[INFO] [2025-10-20 23:24:26,634] [HistoryContainer] Updated synthetic flag for observation 2386: False -> True
+[INFO] [2025-10-20 23:24:26,634] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2386 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,634] [HistoryContainer] Updated synthetic flag for observation 2408: False -> True
+[INFO] [2025-10-20 23:24:26,635] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2408 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,635] [HistoryContainer] Updated synthetic flag for observation 2409: False -> True
+[INFO] [2025-10-20 23:24:26,635] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2409 as synthetic (perf=-14828.35583750855)
+[INFO] [2025-10-20 23:24:26,635] [HistoryContainer] Updated synthetic flag for observation 2410: False -> True
+[INFO] [2025-10-20 23:24:26,635] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2410 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,635] [HistoryContainer] Updated synthetic flag for observation 2432: False -> True
+[INFO] [2025-10-20 23:24:26,635] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2432 as synthetic (perf=-4482.932474928656)
+[INFO] [2025-10-20 23:24:26,635] [HistoryContainer] Updated synthetic flag for observation 2433: False -> True
+[INFO] [2025-10-20 23:24:26,635] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2433 as synthetic (perf=-3719.387625040974)
+[INFO] [2025-10-20 23:24:26,636] [HistoryContainer] Updated synthetic flag for observation 2434: False -> True
+[INFO] [2025-10-20 23:24:26,636] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2434 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,636] [HistoryContainer] Updated synthetic flag for observation 2456: False -> True
+[INFO] [2025-10-20 23:24:26,636] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2456 as synthetic (perf=-5073.28954493019)
+[INFO] [2025-10-20 23:24:26,636] [HistoryContainer] Updated synthetic flag for observation 2457: False -> True
+[INFO] [2025-10-20 23:24:26,636] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2457 as synthetic (perf=-5155.652155972456)
+[INFO] [2025-10-20 23:24:26,636] [HistoryContainer] Updated synthetic flag for observation 2458: False -> True
+[INFO] [2025-10-20 23:24:26,636] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2458 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,636] [HistoryContainer] Updated synthetic flag for observation 2480: False -> True
+[INFO] [2025-10-20 23:24:26,637] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2480 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,637] [HistoryContainer] Updated synthetic flag for observation 2481: False -> True
+[INFO] [2025-10-20 23:24:26,637] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2481 as synthetic (perf=-3893.4038688318496)
+[INFO] [2025-10-20 23:24:26,637] [HistoryContainer] Updated synthetic flag for observation 2482: False -> True
+[INFO] [2025-10-20 23:24:26,637] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2482 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,637] [HistoryContainer] Updated synthetic flag for observation 2504: False -> True
+[INFO] [2025-10-20 23:24:26,637] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2504 as synthetic (perf=-9920.750334842372)
+[INFO] [2025-10-20 23:24:26,637] [HistoryContainer] Updated synthetic flag for observation 2505: False -> True
+[INFO] [2025-10-20 23:24:26,637] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2505 as synthetic (perf=-12970.164266125907)
+[INFO] [2025-10-20 23:24:26,637] [HistoryContainer] Updated synthetic flag for observation 2506: False -> True
+[INFO] [2025-10-20 23:24:26,638] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2506 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,638] [HistoryContainer] Updated synthetic flag for observation 2528: False -> True
+[INFO] [2025-10-20 23:24:26,638] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2528 as synthetic (perf=-15892.11183959546)
+[INFO] [2025-10-20 23:24:26,638] [HistoryContainer] Updated synthetic flag for observation 2529: False -> True
+[INFO] [2025-10-20 23:24:26,638] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2529 as synthetic (perf=-7571.059530797848)
+[INFO] [2025-10-20 23:24:26,638] [HistoryContainer] Updated synthetic flag for observation 2530: False -> True
+[INFO] [2025-10-20 23:24:26,638] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2530 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,638] [HistoryContainer] Updated synthetic flag for observation 2552: False -> True
+[INFO] [2025-10-20 23:24:26,638] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2552 as synthetic (perf=-10598.698034949279)
+[INFO] [2025-10-20 23:24:26,638] [HistoryContainer] Updated synthetic flag for observation 2553: False -> True
+[INFO] [2025-10-20 23:24:26,639] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2553 as synthetic (perf=-9552.728142077021)
+[INFO] [2025-10-20 23:24:26,639] [HistoryContainer] Updated synthetic flag for observation 2554: False -> True
+[INFO] [2025-10-20 23:24:26,639] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2554 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,639] [HistoryContainer] Updated synthetic flag for observation 2576: False -> True
+[INFO] [2025-10-20 23:24:26,639] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2576 as synthetic (perf=-3798.273076582225)
+[INFO] [2025-10-20 23:24:26,639] [HistoryContainer] Updated synthetic flag for observation 2577: False -> True
+[INFO] [2025-10-20 23:24:26,639] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2577 as synthetic (perf=-5134.5282341397815)
+[INFO] [2025-10-20 23:24:26,639] [HistoryContainer] Updated synthetic flag for observation 2578: False -> True
+[INFO] [2025-10-20 23:24:26,639] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2578 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,640] [HistoryContainer] Updated synthetic flag for observation 2600: False -> True
+[INFO] [2025-10-20 23:24:26,640] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2600 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,640] [HistoryContainer] Updated synthetic flag for observation 2602: False -> True
+[INFO] [2025-10-20 23:24:26,640] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2602 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,640] [HistoryContainer] Updated synthetic flag for observation 2603: False -> True
+[INFO] [2025-10-20 23:24:26,640] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2603 as synthetic (perf=0)
+[INFO] [2025-10-20 23:24:26,640] [HistoryContainer] Updated synthetic flag for observation 2624: False -> True
+[INFO] [2025-10-20 23:24:26,640] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2624 as synthetic (perf=-12865.953290940459)
+[INFO] [2025-10-20 23:24:26,640] [HistoryContainer] Updated synthetic flag for observation 2625: False -> True
+[INFO] [2025-10-20 23:24:26,640] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2625 as synthetic (perf=-12707.109741829083)
+[INFO] [2025-10-20 23:24:26,641] [HistoryContainer] Updated synthetic flag for observation 2626: False -> True
+[INFO] [2025-10-20 23:24:26,641] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2626 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,641] [HistoryContainer] Updated synthetic flag for observation 2648: False -> True
+[INFO] [2025-10-20 23:24:26,641] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2648 as synthetic (perf=-7886.20117066801)
+[INFO] [2025-10-20 23:24:26,641] [HistoryContainer] Updated synthetic flag for observation 2649: False -> True
+[INFO] [2025-10-20 23:24:26,641] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2649 as synthetic (perf=-3810.8068368889917)
+[INFO] [2025-10-20 23:24:26,641] [HistoryContainer] Updated synthetic flag for observation 2650: False -> True
+[INFO] [2025-10-20 23:24:26,641] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2650 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,641] [HistoryContainer] Updated synthetic flag for observation 2672: False -> True
+[INFO] [2025-10-20 23:24:26,642] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2672 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,642] [HistoryContainer] Updated synthetic flag for observation 2673: False -> True
+[INFO] [2025-10-20 23:24:26,642] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2673 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,642] [HistoryContainer] Updated synthetic flag for observation 2674: False -> True
+[INFO] [2025-10-20 23:24:26,642] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2674 as synthetic (perf=-14038.518922358033)
+[INFO] [2025-10-20 23:24:26,642] [HistoryContainer] Updated synthetic flag for observation 2696: False -> True
+[INFO] [2025-10-20 23:24:26,642] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2696 as synthetic (perf=-9656.746594158029)
+[INFO] [2025-10-20 23:24:26,642] [HistoryContainer] Updated synthetic flag for observation 2697: False -> True
+[INFO] [2025-10-20 23:24:26,642] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2697 as synthetic (perf=-9852.527054428205)
+[INFO] [2025-10-20 23:24:26,642] [HistoryContainer] Updated synthetic flag for observation 2698: False -> True
+[INFO] [2025-10-20 23:24:26,643] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2698 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,643] [HistoryContainer] Updated synthetic flag for observation 2720: False -> True
+[INFO] [2025-10-20 23:24:26,643] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2720 as synthetic (perf=-10645.4751836231)
+[INFO] [2025-10-20 23:24:26,643] [HistoryContainer] Updated synthetic flag for observation 2721: False -> True
+[INFO] [2025-10-20 23:24:26,643] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2721 as synthetic (perf=-8022.382029263154)
+[INFO] [2025-10-20 23:24:26,643] [HistoryContainer] Updated synthetic flag for observation 2722: False -> True
+[INFO] [2025-10-20 23:24:26,643] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2722 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,643] [HistoryContainer] Updated synthetic flag for observation 2744: False -> True
+[INFO] [2025-10-20 23:24:26,643] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2744 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,644] [HistoryContainer] Updated synthetic flag for observation 2745: False -> True
+[INFO] [2025-10-20 23:24:26,644] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2745 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,644] [HistoryContainer] Updated synthetic flag for observation 2746: False -> True
+[INFO] [2025-10-20 23:24:26,644] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2746 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,644] [HistoryContainer] Updated synthetic flag for observation 2768: False -> True
+[INFO] [2025-10-20 23:24:26,644] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2768 as synthetic (perf=-14634.667042037912)
+[INFO] [2025-10-20 23:24:26,644] [HistoryContainer] Updated synthetic flag for observation 2769: False -> True
+[INFO] [2025-10-20 23:24:26,644] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2769 as synthetic (perf=-8214.710537496505)
+[INFO] [2025-10-20 23:24:26,644] [HistoryContainer] Updated synthetic flag for observation 2770: False -> True
+[INFO] [2025-10-20 23:24:26,644] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2770 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,645] [HistoryContainer] Updated synthetic flag for observation 2792: False -> True
+[INFO] [2025-10-20 23:24:26,645] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2792 as synthetic (perf=-10151.041112421595)
+[INFO] [2025-10-20 23:24:26,645] [HistoryContainer] Updated synthetic flag for observation 2793: False -> True
+[INFO] [2025-10-20 23:24:26,645] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2793 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,645] [HistoryContainer] Updated synthetic flag for observation 2794: False -> True
+[INFO] [2025-10-20 23:24:26,645] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2794 as synthetic (perf=-9204.67917558952)
+[INFO] [2025-10-20 23:24:26,645] [HistoryContainer] Updated synthetic flag for observation 2816: False -> True
+[INFO] [2025-10-20 23:24:26,645] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2816 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,645] [HistoryContainer] Updated synthetic flag for observation 2817: False -> True
+[INFO] [2025-10-20 23:24:26,646] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2817 as synthetic (perf=-10943.155477895836)
+[INFO] [2025-10-20 23:24:26,646] [HistoryContainer] Updated synthetic flag for observation 2818: False -> True
+[INFO] [2025-10-20 23:24:26,646] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2818 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,646] [HistoryContainer] Updated synthetic flag for observation 2840: False -> True
+[INFO] [2025-10-20 23:24:26,646] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2840 as synthetic (perf=-11127.366258923195)
+[INFO] [2025-10-20 23:24:26,646] [HistoryContainer] Updated synthetic flag for observation 2841: False -> True
+[INFO] [2025-10-20 23:24:26,646] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2841 as synthetic (perf=-16528.856986703944)
+[INFO] [2025-10-20 23:24:26,646] [HistoryContainer] Updated synthetic flag for observation 2842: False -> True
+[INFO] [2025-10-20 23:24:26,646] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2842 as synthetic (perf=-9870.938730293019)
+[INFO] [2025-10-20 23:24:26,646] [HistoryContainer] Updated synthetic flag for observation 2864: False -> True
+[INFO] [2025-10-20 23:24:26,647] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2864 as synthetic (perf=-12256.635192088128)
+[INFO] [2025-10-20 23:24:26,647] [HistoryContainer] Updated synthetic flag for observation 2865: False -> True
+[INFO] [2025-10-20 23:24:26,647] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2865 as synthetic (perf=-11385.55571410469)
+[INFO] [2025-10-20 23:24:26,647] [HistoryContainer] Updated synthetic flag for observation 2866: False -> True
+[INFO] [2025-10-20 23:24:26,647] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2866 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,647] [HistoryContainer] Updated synthetic flag for observation 2888: False -> True
+[INFO] [2025-10-20 23:24:26,647] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2888 as synthetic (perf=2147483647)
+[INFO] [2025-10-20 23:24:26,647] [HistoryContainer] Updated synthetic flag for observation 2889: False -> True
+[INFO] [2025-10-20 23:24:26,647] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2889 as synthetic (perf=-5433.910251847419)
+[INFO] [2025-10-20 23:24:26,648] [HistoryContainer] Updated synthetic flag for observation 2890: False -> True
+[INFO] [2025-10-20 23:24:26,648] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Retroactively marked observation 2890 as synthetic (perf=-8604.480411424463)
+[INFO] [2025-10-20 23:24:26,648] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Completed synthetic flag verification for 2892 observations
+[INFO] [2025-10-20 23:24:27,953] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 23:24:29,265] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 23:24:36,188] [DDPG_Optimizer] Load state mean and var.
+[INFO] [2025-10-20 23:24:36,891] [DDPG] Finish Initializing Networks
+[INFO] [2025-10-20 23:24:36,892] [DDPG] DDPG Initialzed!
+[INFO] [2025-10-20 23:25:24,984] [DDPG_Optimizer] New Episode-1, initialize
+[INFO] [2025-10-20 23:25:25,205] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_5
+[INFO] [2025-10-20 23:25:25,395] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_10
+[INFO] [2025-10-20 23:25:25,536] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_15
+[INFO] [2025-10-20 23:25:30,639] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_20
+[INFO] [2025-10-20 23:25:35,611] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_25
+[INFO] [2025-10-20 23:25:40,828] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_30
+[INFO] [2025-10-20 23:25:45,887] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_35
+[INFO] [2025-10-20 23:25:51,192] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_40
+[INFO] [2025-10-20 23:25:56,412] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_45
+[INFO] [2025-10-20 23:26:01,156] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_50
+[INFO] [2025-10-20 23:26:05,901] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_55
+[INFO] [2025-10-20 23:26:11,040] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_60
+[INFO] [2025-10-20 23:26:16,153] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_65
+[INFO] [2025-10-20 23:26:20,736] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_70
+[INFO] [2025-10-20 23:26:25,664] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_75
+[INFO] [2025-10-20 23:26:30,766] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_80
+[INFO] [2025-10-20 23:26:35,878] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_85
+[INFO] [2025-10-20 23:26:40,835] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_90
+[INFO] [2025-10-20 23:26:45,683] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_95
+[INFO] [2025-10-20 23:26:50,759] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_100
+[INFO] [2025-10-20 23:26:50,760] [DDPG_Optimizer] New Episode-2, initialize
+[INFO] [2025-10-20 23:26:55,478] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_105
+[INFO] [2025-10-20 23:27:00,474] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_110
+[INFO] [2025-10-20 23:27:05,571] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_115
+[INFO] [2025-10-20 23:27:10,538] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_120
+[INFO] [2025-10-20 23:27:13,235] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Added 20 synthetic observations to history
+[INFO] [2025-10-20 23:27:13,235] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total synthetic observations in history: 2789
+[INFO] [2025-10-20 23:27:13,235] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total configs in history.data (for incumbent tracking): 335
+[INFO] [2025-10-20 23:27:13,293] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Verify synthetics excluded from acquisition: 335 configs available
+[INFO] [2025-10-20 23:27:13,293] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestions from 4 optimizers
+[INFO] [2025-10-20 23:27:13,294] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from SMAC
+[INFO] [2025-10-20 23:27:13,294] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 23:27:13,294] [BO_Optimizer] [BO] Non-GP model (prf) - will use all observations including synthetic
+[INFO] [2025-10-20 23:27:13,310] [BO_Optimizer] [BO] Using all 2912 samples (real + synthetic)
+[INFO] [2025-10-20 23:27:13,311] [BO_Optimizer] [BO] Convert configs to array: 0.02s, X.shape=(2912, 197)
+[INFO] [2025-10-20 23:27:13,312] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(2912, 1)
+[INFO] [2025-10-20 23:27:13,312] [BO_Optimizer] [BO] Starting surrogate model training (type=prf, samples=2912)
+[INFO] [2025-10-20 23:27:14,696] [BO_Optimizer] [BO] Surrogate model training completed in 1.38s
+[INFO] [2025-10-20 23:27:14,696] [BO_Optimizer] [BO] get_surrogate took 1.40s, X shape: (2912, 197)
+[INFO] [2025-10-20 23:27:14,696] [BO_Optimizer] [BO] alter_model took 0.00s
+[INFO] [2025-10-20 23:27:14,697] [BO_Optimizer] [BO] Updating acquisition function, incumbent value: -22061.517766964298
+[INFO] [2025-10-20 23:27:14,697] [BO_Optimizer] [BO] Acquisition function update took 0.00s
+[INFO] [2025-10-20 23:27:14,708] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting acquisition optimization: 10 local searches, max_steps=50, neighbor_cap=150
+[INFO] [2025-10-20 23:27:14,708] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] History contains 2912 configs: 123 real, 2789 synthetic
+[INFO] [2025-10-20 23:27:14,771] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] get_all_configs() returned 335 configs (should be 123 real only)
+[INFO] [2025-10-20 23:27:14,908] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Real evals: total=123, successful=123, failed=0, duplicates=0, data_size=335
+[INFO] [2025-10-20 23:27:14,908] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 1/10
+[INFO] [2025-10-20 23:27:14,920] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=1.192429 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:15,892] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=5.293340, impr=4, plateau=0, neighbors=163, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.0s
+[INFO] [2025-10-20 23:27:17,596] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=7.295889
+[INFO] [2025-10-20 23:27:17,596] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.68s, acq_eval=2.60s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:17,596] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 1/10 in 2.69s
+[INFO] [2025-10-20 23:27:17,597] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 2/10
+[INFO] [2025-10-20 23:27:17,607] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000001 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:19,328] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=0.208617, impr=4, plateau=0, neighbors=291, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.7s
+[INFO] [2025-10-20 23:27:20,214] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=0.208617
+[INFO] [2025-10-20 23:27:20,214] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.61s, acq_eval=2.54s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:20,215] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 2/10 in 2.62s
+[INFO] [2025-10-20 23:27:20,215] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 3/10
+[INFO] [2025-10-20 23:27:20,225] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000248 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:21,218] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=0.001765, impr=4, plateau=0, neighbors=167, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.0s
+[INFO] [2025-10-20 23:27:23,686] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 10/50: acq=0.688076, impr=9, plateau=0, neighbors=583, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=3.5s
+[INFO] [2025-10-20 23:27:25,349] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=12, improvements=11, final_acq=7.630646
+[INFO] [2025-10-20 23:27:25,349] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=5.13s, acq_eval=4.98s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:25,349] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 3/10 in 5.13s
+[INFO] [2025-10-20 23:27:25,349] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 4/10
+[INFO] [2025-10-20 23:27:25,360] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=16.525677 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:27,042] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=23.317719
+[INFO] [2025-10-20 23:27:27,042] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.69s, acq_eval=1.64s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:27,042] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 4/10 in 1.69s
+[INFO] [2025-10-20 23:27:27,042] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 5/10
+[INFO] [2025-10-20 23:27:27,053] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.001688 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:28,096] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=0.309875
+[INFO] [2025-10-20 23:27:28,097] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.05s, acq_eval=1.01s (96.6%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:28,097] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 5/10 in 1.05s
+[INFO] [2025-10-20 23:27:28,097] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 6/10
+[INFO] [2025-10-20 23:27:28,107] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=8.004395 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:29,342] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=47.585127
+[INFO] [2025-10-20 23:27:29,342] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.24s, acq_eval=1.20s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:29,342] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 6/10 in 1.25s
+[INFO] [2025-10-20 23:27:29,343] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 7/10
+[INFO] [2025-10-20 23:27:29,353] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.054432 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:30,591] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=3.027484
+[INFO] [2025-10-20 23:27:30,591] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.24s, acq_eval=1.20s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:30,591] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 7/10 in 1.25s
+[INFO] [2025-10-20 23:27:30,591] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 8/10
+[INFO] [2025-10-20 23:27:30,601] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000000 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:31,240] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=0.000291, impr=4, plateau=0, neighbors=106, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=0.6s
+[INFO] [2025-10-20 23:27:33,275] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=7, improvements=6, final_acq=0.381423
+[INFO] [2025-10-20 23:27:33,275] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.68s, acq_eval=2.59s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:33,276] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 8/10 in 2.68s
+[INFO] [2025-10-20 23:27:33,276] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 9/10
+[INFO] [2025-10-20 23:27:33,286] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=5.637745 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:35,643] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=31.756154
+[INFO] [2025-10-20 23:27:35,643] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.36s, acq_eval=2.29s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:35,643] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 9/10 in 2.37s
+[INFO] [2025-10-20 23:27:35,644] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 10/10
+[INFO] [2025-10-20 23:27:35,654] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000000 (eval took 0.004s)
+[INFO] [2025-10-20 23:27:36,748] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=2, improvements=1, final_acq=0.000000
+[INFO] [2025-10-20 23:27:36,748] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.10s, acq_eval=1.06s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:27:36,748] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 10/10 in 1.10s
+[INFO] [2025-10-20 23:27:36,749] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Acquisition optimization completed in 22.05s (2.21s per search)
+[INFO] [2025-10-20 23:27:55,571] [BO_Optimizer] [BO] Acquisition optimization took 40.87s, got 5000 candidates
+[INFO] [2025-10-20 23:27:56,109] [BO_Optimizer] [BO] Checking 5000 candidates against 2903 history configs
+[INFO] [2025-10-20 23:27:56,110] [BO_Optimizer] [BO] Duplicate check took 0.54s, found=config
+[INFO] [2025-10-20 23:27:56,137] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from SMAC
+[INFO] [2025-10-20 23:27:56,137] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from MBO
+[INFO] [2025-10-20 23:27:56,138] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 23:27:56,138] [BO_Optimizer] [BO] GP model detected - will filter out synthetic observations for training
+[INFO] [2025-10-20 23:27:56,141] [BO_Optimizer] [BO] Filtered 123 real samples from 2912 total (excluded 2789 synthetic)
+[INFO] [2025-10-20 23:27:56,141] [BO_Optimizer] [BO] Convert configs to array: 0.00s, X.shape=(123, 197)
+[INFO] [2025-10-20 23:27:56,142] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(123, 1)
+[INFO] [2025-10-20 23:27:56,142] [BO_Optimizer] [BO] Starting surrogate model training (type=gp, samples=123)
+[INFO] [2025-10-20 23:29:22,552] [BO_Optimizer] [BO] Surrogate model training completed in 86.41s
+[INFO] [2025-10-20 23:29:22,553] [BO_Optimizer] [BO] get_surrogate took 86.42s, X shape: (123, 197)
+[INFO] [2025-10-20 23:29:22,554] [BO_Optimizer] [BO] alter_model took 0.00s
+[INFO] [2025-10-20 23:29:22,554] [BO_Optimizer] [BO] Updating acquisition function, incumbent value: -22061.517766964298
+[INFO] [2025-10-20 23:29:22,555] [BO_Optimizer] [BO] Acquisition function update took 0.00s
+[INFO] [2025-10-20 23:29:22,566] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting acquisition optimization: 10 local searches, max_steps=50, neighbor_cap=150
+[INFO] [2025-10-20 23:29:22,567] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] History contains 2912 configs: 123 real, 2789 synthetic
+[INFO] [2025-10-20 23:29:22,635] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] get_all_configs() returned 335 configs (should be 123 real only)
+[INFO] [2025-10-20 23:29:22,770] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Real evals: total=123, successful=123, failed=0, duplicates=0, data_size=335
+[INFO] [2025-10-20 23:29:22,770] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 1/10
+[INFO] [2025-10-20 23:29:22,783] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:23,783] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:23,783] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.98s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.007s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:23,784] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 1/10 in 1.01s
+[INFO] [2025-10-20 23:29:23,784] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 2/10
+[INFO] [2025-10-20 23:29:23,795] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:24,793] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:24,793] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:24,793] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 2/10 in 1.01s
+[INFO] [2025-10-20 23:29:24,794] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 3/10
+[INFO] [2025-10-20 23:29:24,805] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:25,799] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:25,800] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:25,800] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 3/10 in 1.01s
+[INFO] [2025-10-20 23:29:25,800] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 4/10
+[INFO] [2025-10-20 23:29:25,812] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:26,805] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:26,805] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:26,805] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 4/10 in 1.01s
+[INFO] [2025-10-20 23:29:26,805] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 5/10
+[INFO] [2025-10-20 23:29:26,817] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:27,811] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:27,811] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:27,811] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 5/10 in 1.01s
+[INFO] [2025-10-20 23:29:27,812] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 6/10
+[INFO] [2025-10-20 23:29:27,823] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:28,816] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:28,817] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:28,817] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 6/10 in 1.01s
+[INFO] [2025-10-20 23:29:28,817] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 7/10
+[INFO] [2025-10-20 23:29:28,829] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:29,823] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:29,823] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:29,824] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 7/10 in 1.01s
+[INFO] [2025-10-20 23:29:29,824] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 8/10
+[INFO] [2025-10-20 23:29:29,835] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:30,831] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:30,831] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.97s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:30,831] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 8/10 in 1.01s
+[INFO] [2025-10-20 23:29:30,831] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 9/10
+[INFO] [2025-10-20 23:29:30,843] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:31,844] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:31,844] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.01s, acq_eval=0.98s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.007s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:31,844] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 9/10 in 1.01s
+[INFO] [2025-10-20 23:29:31,844] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 10/10
+[INFO] [2025-10-20 23:29:31,856] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=315.216990 (eval took 0.005s)
+[INFO] [2025-10-20 23:29:32,855] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=315.216990
+[INFO] [2025-10-20 23:29:32,856] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.00s, acq_eval=0.98s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.007s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:29:32,856] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 10/10 in 1.01s
+[INFO] [2025-10-20 23:29:32,856] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Acquisition optimization completed in 10.30s (1.03s per search)
+[INFO] [2025-10-20 23:29:52,023] [BO_Optimizer] [BO] Acquisition optimization took 29.47s, got 5000 candidates
+[INFO] [2025-10-20 23:29:52,532] [BO_Optimizer] [BO] Checking 5000 candidates against 2903 history configs
+[INFO] [2025-10-20 23:29:52,533] [BO_Optimizer] [BO] Duplicate check took 0.51s, found=config
+[INFO] [2025-10-20 23:29:52,559] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from MBO
+[INFO] [2025-10-20 23:29:52,559] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from DDPG
+[INFO] [2025-10-20 23:29:52,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from DDPG
+[INFO] [2025-10-20 23:29:52,594] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from GA
+[INFO] [2025-10-20 23:29:52,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from GA
+[INFO] [2025-10-20 23:29:52,618] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Starting evaluation of 4 configurations
+[INFO] [2025-10-20 23:29:52,619] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Evaluating configuration 1/4 from SMAC
+[INFO] [2025-10-20 23:29:52,619] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Starting benchmark execution for config: {'autocommit': 'OFF', 'automatic_sp_privileges': 'ON', 'back_log': 30475, 'binlog_cache_size': 1371947924, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'IGNORE_ERROR', 'binlog_format': 'STATEMENT', 'binlog_group_commit_sync_delay': 402134, 'binlog_group_commit_sync_no_delay_count': 90807, 'binlog_order_commits': 'OFF', 'binlog_row_image': 'minimal', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 620492881, 'bulk_insert_buffer_size': 25347225, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'ALWAYS', 'connect_timeout': 28207275, 'default_week_format': 2, 'delay_key_write': 'OFF', 'div_precision_increment': 23, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 2740248473, 'expire_logs_days': 15, 'explicit_defaults_for_timestamp': 'ON', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 8, 'ft_query_expansion_limit': 514, 'general_log': 'ON', 'group_concat_max_len': 11693083374720920, 'host_cache_size': 25482, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 65, 'innodb_adaptive_hash_index_parts': 37, 'innodb_adaptive_max_sleep_delay': 392383, 'innodb_api_bk_commit_interval': 628356668, 'innodb_api_disable_rowlock': 'ON', 'innodb_api_enable_binlog': 'ON', 'innodb_api_enable_mdl': 'ON', 'innodb_autoextend_increment': 396, 'innodb_buffer_pool_size': 31680583965, 'innodb_change_buffer_max_size': 4, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 707, 'innodb_compression_failure_threshold_pct': 86, 'innodb_compression_level': 4, 'innodb_compression_pad_pct_max': 65, 'innodb_concurrency_tickets': 1461888680, 'innodb_deadlock_detect': 'OFF', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'ON', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 26, 'innodb_flush_log_at_timeout': 2048, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 150, 'innodb_ft_cache_size': 69773526, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 83, 'innodb_ft_min_token_size': 6, 'innodb_ft_num_word_optimize': 3727, 'innodb_ft_result_cache_limit': 1110461395, 'innodb_ft_sort_pll_degree': 3, 'innodb_ft_total_cache_size': 573261865, 'innodb_io_capacity': 1942741, 'innodb_io_capacity_max': 462, 'innodb_log_buffer_size': 3588524728, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 613597311, 'innodb_log_files_in_group': 4, 'innodb_log_write_ahead_size': 694, 'innodb_lru_scan_depth': 8693, 'innodb_max_dirty_pages_pct': 79, 'innodb_max_dirty_pages_pct_lwm': 33, 'innodb_max_purge_lag': 1219910118, 'innodb_max_purge_lag_delay': 6490695, 'innodb_max_undo_log_size': 73427010981244, 'innodb_old_blocks_time': 3985928089, 'innodb_online_alter_log_max_size': 9538974511426260, 'innodb_open_files': 468257, 'innodb_optimize_fulltext_only': 'ON', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'ON', 'innodb_purge_batch_size': 3935, 'innodb_purge_rseg_truncate_frequency': 96, 'innodb_purge_threads': 10, 'innodb_random_read_ahead': 'ON', 'innodb_read_ahead_threshold': 59, 'innodb_read_io_threads': 37, 'innodb_replication_delay': 4736, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 40, 'innodb_sort_buffer_size': 1881268, 'innodb_spin_wait_delay': 3487, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'ON', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 10, 'innodb_strict_mode': 'OFF', 'innodb_sync_array_size': 178, 'innodb_sync_spin_loops': 550, 'innodb_table_locks': 'OFF', 'innodb_thread_concurrency': 760, 'innodb_thread_sleep_delay': 770131, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'OFF', 'innodb_write_io_threads': 23, 'join_buffer_size': 286263656, 'keep_files_on_create': 'ON', 'key_buffer_size': 14842057473, 'key_cache_age_threshold': 14159, 'key_cache_block_size': 10141, 'key_cache_division_limit': 71, 'local_infile': 'OFF', 'log_bin_trust_function_creators': 'ON', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'NONE', 'log_queries_not_using_indexes': 'ON', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'SYSTEM', 'long_query_time': 7, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 891670300, 'max_binlog_cache_size': 14940594598017164, 'max_binlog_size': 251326399, 'max_binlog_stmt_cache_size': 1238585493367427, 'max_connections': 74024, 'max_delayed_threads': 1161, 'max_digest_length': 581635, 'max_error_count': 12185, 'max_heap_table_size': 710441800, 'max_join_size': 9580516666257492, 'max_length_for_sort_data': 922033, 'max_points_in_geometry': 870877, 'max_prepared_stmt_count': 869170, 'max_seeks_for_key': 10713113646921508, 'max_sort_length': 4533650, 'max_user_connections': 3484405115, 'max_write_lock_count': 11628076702321048, 'multi_range_count': 1605371098, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 396845, 'net_read_timeout': 10, 'net_write_timeout': 42, 'ngram_token_size': 10, 'offline_mode': 'ON', 'old_alter_table': 'ON', 'old_passwords': '2', 'open_files_limit': 167410, 'optimizer_prune_level': 0, 'optimizer_search_depth': 58, 'preload_buffer_size': 110673478, 'query_alloc_block_size': 19748838, 'query_cache_limit': 76579060, 'query_cache_min_res_unit': 42289, 'query_cache_size': 1584245383, 'query_cache_wlock_invalidate': 'ON', 'query_prealloc_size': 9159487, 'range_alloc_block_size': 44115, 'read_buffer_size': 1639870164, 'read_rnd_buffer_size': 28397002, 'require_secure_transport': 'ON', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'STATE', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'OFF', 'sort_buffer_size': 26892605, 'stored_program_cache': 183271, 'sync_binlog': 4097427028, 'sync_frm': 'OFF', 'table_definition_cache': 229790, 'table_open_cache': 106807, 'table_open_cache_instances': 2, 'thread_cache_size': 393, 'tmp_table_size': 436156959, 'transaction_alloc_block_size': 5814, 'transaction_prealloc_size': 114563, 'updatable_views_with_limit': 'YES'}
+[INFO] [2025-10-20 23:29:52,619] [autotune] [step 1] generate knobs: {'autocommit': 'OFF', 'automatic_sp_privileges': 'ON', 'back_log': 30475, 'binlog_cache_size': 1371947924, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'IGNORE_ERROR', 'binlog_format': 'STATEMENT', 'binlog_group_commit_sync_delay': 402134, 'binlog_group_commit_sync_no_delay_count': 90807, 'binlog_order_commits': 'OFF', 'binlog_row_image': 'minimal', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 620492881, 'bulk_insert_buffer_size': 25347225, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'ALWAYS', 'connect_timeout': 28207275, 'default_week_format': 2, 'delay_key_write': 'OFF', 'div_precision_increment': 23, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 2740248473, 'expire_logs_days': 15, 'explicit_defaults_for_timestamp': 'ON', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 8, 'ft_query_expansion_limit': 514, 'general_log': 'ON', 'group_concat_max_len': 11693083374720920000, 'host_cache_size': 25482, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 65, 'innodb_adaptive_hash_index_parts': 37, 'innodb_adaptive_max_sleep_delay': 392383, 'innodb_api_bk_commit_interval': 628356668, 'innodb_api_disable_rowlock': 'ON', 'innodb_api_enable_binlog': 'ON', 'innodb_api_enable_mdl': 'ON', 'innodb_autoextend_increment': 396, 'innodb_buffer_pool_size': 31680583965, 'innodb_change_buffer_max_size': 4, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 707, 'innodb_compression_failure_threshold_pct': 86, 'innodb_compression_level': 4, 'innodb_compression_pad_pct_max': 65, 'innodb_concurrency_tickets': 1461888680, 'innodb_deadlock_detect': 'OFF', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'ON', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 26, 'innodb_flush_log_at_timeout': 2048, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 150, 'innodb_ft_cache_size': 69773526, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 83, 'innodb_ft_min_token_size': 6, 'innodb_ft_num_word_optimize': 3727, 'innodb_ft_result_cache_limit': 1110461395, 'innodb_ft_sort_pll_degree': 3, 'innodb_ft_total_cache_size': 573261865, 'innodb_io_capacity': 1942741, 'innodb_io_capacity_max': 462, 'innodb_log_buffer_size': 3588524728, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 613597311, 'innodb_log_files_in_group': 4, 'innodb_log_write_ahead_size': 694, 'innodb_lru_scan_depth': 8693, 'innodb_max_dirty_pages_pct': 79, 'innodb_max_dirty_pages_pct_lwm': 33, 'innodb_max_purge_lag': 1219910118, 'innodb_max_purge_lag_delay': 6490695, 'innodb_max_undo_log_size': 73427010981244000, 'innodb_old_blocks_time': 3985928089, 'innodb_online_alter_log_max_size': 9538974511426260000, 'innodb_open_files': 468257, 'innodb_optimize_fulltext_only': 'ON', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'ON', 'innodb_purge_batch_size': 3935, 'innodb_purge_rseg_truncate_frequency': 96, 'innodb_purge_threads': 10, 'innodb_random_read_ahead': 'ON', 'innodb_read_ahead_threshold': 59, 'innodb_read_io_threads': 37, 'innodb_replication_delay': 4736, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 40, 'innodb_sort_buffer_size': 1881268, 'innodb_spin_wait_delay': 3487, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'ON', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 10, 'innodb_strict_mode': 'OFF', 'innodb_sync_array_size': 178, 'innodb_sync_spin_loops': 550, 'innodb_table_locks': 'OFF', 'innodb_thread_concurrency': 760, 'innodb_thread_sleep_delay': 770131, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'OFF', 'innodb_write_io_threads': 23, 'join_buffer_size': 286263656, 'keep_files_on_create': 'ON', 'key_buffer_size': 14842057473, 'key_cache_age_threshold': 14159, 'key_cache_block_size': 10141, 'key_cache_division_limit': 71, 'local_infile': 'OFF', 'log_bin_trust_function_creators': 'ON', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'NONE', 'log_queries_not_using_indexes': 'ON', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'SYSTEM', 'long_query_time': 7, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 891670300, 'max_binlog_cache_size': 14940594598017164000, 'max_binlog_size': 251326399, 'max_binlog_stmt_cache_size': 1238585493367427000, 'max_connections': 74024, 'max_delayed_threads': 1161, 'max_digest_length': 581635, 'max_error_count': 12185, 'max_heap_table_size': 710441800, 'max_join_size': 9580516666257492000, 'max_length_for_sort_data': 922033, 'max_points_in_geometry': 870877, 'max_prepared_stmt_count': 869170, 'max_seeks_for_key': 10713113646921508000, 'max_sort_length': 4533650, 'max_user_connections': 3484405115, 'max_write_lock_count': 11628076702321048000, 'multi_range_count': 1605371098, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 396845, 'net_read_timeout': 10, 'net_write_timeout': 42, 'ngram_token_size': 10, 'offline_mode': 'ON', 'old_alter_table': 'ON', 'old_passwords': '2', 'open_files_limit': 167410, 'optimizer_prune_level': 0, 'optimizer_search_depth': 58, 'preload_buffer_size': 110673478, 'query_alloc_block_size': 19748838, 'query_cache_limit': 76579060, 'query_cache_min_res_unit': 42289, 'query_cache_size': 1584245383, 'query_cache_wlock_invalidate': 'ON', 'query_prealloc_size': 9159487, 'range_alloc_block_size': 44115, 'read_buffer_size': 1639870164, 'read_rnd_buffer_size': 28397002, 'require_secure_transport': 'ON', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'STATE', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'OFF', 'sort_buffer_size': 26892605, 'stored_program_cache': 183271, 'sync_binlog': 4097427028, 'sync_frm': 'OFF', 'table_definition_cache': 229790, 'table_open_cache': 106807, 'table_open_cache_instances': 2, 'thread_cache_size': 393, 'tmp_table_size': 436156959, 'transaction_alloc_block_size': 5814, 'transaction_prealloc_size': 114563, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-20 23:29:52,720] [autotune] Close db successfully
+[INFO] [2025-10-20 23:29:52,721] [autotune] mysql is shut down
+[INFO] [2025-10-20 23:29:52,721] [autotune] modify innodb_thread_concurrency
+[INFO] [2025-10-20 23:29:52,726] [autotune] generated config file done
+[INFO] [2025-10-20 23:29:52,789] [autotune] wait for connection
+[INFO] [2025-10-20 23:30:08,831] [autotune] Connected to MySQL db
+[INFO] [2025-10-20 23:30:08,832] [autotune] finish 16 seconds waiting for connection
+[INFO] [2025-10-20 23:30:08,832] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-20 23:30:08,833] [autotune] mysql is up
+[INFO] [2025-10-20 23:30:08,833] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-20 23:30:13,869] [autotune] [2025-10-20 23:30:13] Knobs applied online!
+[INFO] [2025-10-20 23:30:13,977] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_oltpbench.sh tatp /oltpbench/config/sample_tatp_config.xml 1761003013
+[INFO] [2025-10-20 23:33:49,529] [autotune] internal metrics: [459386, 4059369, 10061763072, 877797888, 132, 614169, 27110, 10064707584, 1951973376, 614301, 119139, 1336621, 15038, 1965960, 613800, 0, 0, 18910854, 32212254720, 0, 4164405, 12507, 18530, 433561, 26, 704, 0, 0, 0, 0, 0, 709, 1, 710218, 0, 0, 16384, 0, 501, 260, 0, 11759, 0, 0, 91566, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 382882, 472847, 383552, 613778, 412379, 433788928, 382922, 0, 0, 61].
+[INFO] [2025-10-20 23:33:49,530] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Benchmark completed in 236.91s, trial_state=0, objs=[-13930.96104035677]
+[INFO] [2025-10-20 23:33:49,531] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Completed evaluation 1/4 from SMAC, objs=[-13930.96104035677]
+[INFO] [2025-10-20 23:33:49,531] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Evaluating configuration 2/4 from MBO
+[INFO] [2025-10-20 23:33:49,531] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Starting benchmark execution for config: {'autocommit': 'ON', 'automatic_sp_privileges': 'OFF', 'back_log': 46698, 'binlog_cache_size': 2106004666, 'binlog_direct_non_transactional_updates': 'ON', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'STATEMENT', 'binlog_group_commit_sync_delay': 116594, 'binlog_group_commit_sync_no_delay_count': 94544, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'ON', 'binlog_stmt_cache_size': 178354796, 'bulk_insert_buffer_size': 79742513, 'check_proxy_users': 'ON', 'completion_type': 'RELEASE', 'concurrent_insert': 'NEVER', 'connect_timeout': 18940571, 'default_week_format': 1, 'delay_key_write': 'ON', 'div_precision_increment': 29, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 2321826412, 'expire_logs_days': 41, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 3, 'ft_query_expansion_limit': 563, 'general_log': 'ON', 'group_concat_max_len': 9993336381865416, 'host_cache_size': 31658, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 65, 'innodb_adaptive_hash_index_parts': 28, 'innodb_adaptive_max_sleep_delay': 757259, 'innodb_api_bk_commit_interval': 499770188, 'innodb_api_disable_rowlock': 'ON', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 450, 'innodb_buffer_pool_size': 32374423384, 'innodb_change_buffer_max_size': 5, 'innodb_change_buffering': 'deletes', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 865, 'innodb_compression_failure_threshold_pct': 82, 'innodb_compression_level': 3, 'innodb_compression_pad_pct_max': 47, 'innodb_concurrency_tickets': 3092003946, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'ON', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 61, 'innodb_flush_log_at_timeout': 534, 'innodb_flush_log_at_trx_commit': '2', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 18, 'innodb_ft_cache_size': 61403026, 'innodb_ft_enable_diag_print': 'ON', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 26, 'innodb_ft_min_token_size': 6, 'innodb_ft_num_word_optimize': 3512, 'innodb_ft_result_cache_limit': 1677854752, 'innodb_ft_sort_pll_degree': 14, 'innodb_ft_total_cache_size': 503629635, 'innodb_io_capacity': 1538233, 'innodb_io_capacity_max': 26322, 'innodb_log_buffer_size': 3689569154, 'innodb_log_compressed_pages': 'OFF', 'innodb_log_file_size': 892048036, 'innodb_log_files_in_group': 3, 'innodb_log_write_ahead_size': 3927, 'innodb_lru_scan_depth': 4212, 'innodb_max_dirty_pages_pct': 98, 'innodb_max_dirty_pages_pct_lwm': 4, 'innodb_max_purge_lag': 3027639735, 'innodb_max_purge_lag_delay': 9059124, 'innodb_max_undo_log_size': 488649676885720, 'innodb_old_blocks_time': 942330572, 'innodb_online_alter_log_max_size': 12458800628208502, 'innodb_open_files': 212311, 'innodb_optimize_fulltext_only': 'ON', 'innodb_page_cleaners': 8, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 3079, 'innodb_purge_rseg_truncate_frequency': 52, 'innodb_purge_threads': 3, 'innodb_random_read_ahead': 'ON', 'innodb_read_ahead_threshold': 19, 'innodb_read_io_threads': 50, 'innodb_replication_delay': 120, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 36, 'innodb_sort_buffer_size': 21626245, 'innodb_spin_wait_delay': 149, 'innodb_stats_auto_recalc': 'OFF', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 18, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 576, 'innodb_sync_spin_loops': 7858, 'innodb_table_locks': 'OFF', 'innodb_thread_concurrency': 34, 'innodb_thread_sleep_delay': 965212, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 47, 'join_buffer_size': 988643999, 'keep_files_on_create': 'ON', 'key_buffer_size': 449260314, 'key_cache_age_threshold': 11519, 'key_cache_block_size': 3540, 'key_cache_division_limit': 22, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'ON', 'log_output': 'NONE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'OFF', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 2, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 696083115, 'max_binlog_cache_size': 17728746028240298, 'max_binlog_size': 672294909, 'max_binlog_stmt_cache_size': 10539826384833134, 'max_connections': 80141, 'max_delayed_threads': 7006, 'max_digest_length': 1024547, 'max_error_count': 24088, 'max_heap_table_size': 329434618, 'max_join_size': 16921658669192934, 'max_length_for_sort_data': 1796606, 'max_points_in_geometry': 1029070, 'max_prepared_stmt_count': 121239, 'max_seeks_for_key': 15380746691368576, 'max_sort_length': 2909847, 'max_user_connections': 238041845, 'max_write_lock_count': 12554234971577580, 'multi_range_count': 486953419, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 945917, 'net_read_timeout': 17, 'net_write_timeout': 101, 'ngram_token_size': 5, 'offline_mode': 'ON', 'old_alter_table': 'ON', 'old_passwords': '2', 'open_files_limit': 521961, 'optimizer_prune_level': 0, 'optimizer_search_depth': 17, 'preload_buffer_size': 627612255, 'query_alloc_block_size': 54375858, 'query_cache_limit': 94607349, 'query_cache_min_res_unit': 21096, 'query_cache_size': 1621393285, 'query_cache_wlock_invalidate': 'ON', 'query_prealloc_size': 76962487, 'range_alloc_block_size': 42595, 'read_buffer_size': 334537357, 'read_rnd_buffer_size': 96419930, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OWN_GTID', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'CHARACTERISTICS', 'show_compatibility_56': 'ON', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 87072908, 'stored_program_cache': 507799, 'sync_binlog': 1434529539, 'sync_frm': 'ON', 'table_definition_cache': 134792, 'table_open_cache': 233042, 'table_open_cache_instances': 22, 'thread_cache_size': 6691, 'tmp_table_size': 835525684, 'transaction_alloc_block_size': 64135, 'transaction_prealloc_size': 34960, 'updatable_views_with_limit': 'NO'}
+[INFO] [2025-10-20 23:33:49,532] [autotune] [step 2] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'OFF', 'back_log': 46698, 'binlog_cache_size': 2106004666, 'binlog_direct_non_transactional_updates': 'ON', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'STATEMENT', 'binlog_group_commit_sync_delay': 116594, 'binlog_group_commit_sync_no_delay_count': 94544, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'ON', 'binlog_stmt_cache_size': 178354796, 'bulk_insert_buffer_size': 79742513, 'check_proxy_users': 'ON', 'completion_type': 'RELEASE', 'concurrent_insert': 'NEVER', 'connect_timeout': 18940571, 'default_week_format': 1, 'delay_key_write': 'ON', 'div_precision_increment': 29, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 2321826412, 'expire_logs_days': 41, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 3, 'ft_query_expansion_limit': 563, 'general_log': 'ON', 'group_concat_max_len': 9993336381865416000, 'host_cache_size': 31658, 'innodb_adaptive_flushing': 'OFF', 'innodb_adaptive_flushing_lwm': 65, 'innodb_adaptive_hash_index_parts': 28, 'innodb_adaptive_max_sleep_delay': 757259, 'innodb_api_bk_commit_interval': 499770188, 'innodb_api_disable_rowlock': 'ON', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 450, 'innodb_buffer_pool_size': 32374423384, 'innodb_change_buffer_max_size': 5, 'innodb_change_buffering': 'deletes', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 865, 'innodb_compression_failure_threshold_pct': 82, 'innodb_compression_level': 3, 'innodb_compression_pad_pct_max': 47, 'innodb_concurrency_tickets': 3092003946, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'ON', 'innodb_doublewrite': 'ON', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 61, 'innodb_flush_log_at_timeout': 534, 'innodb_flush_log_at_trx_commit': '2', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 18, 'innodb_ft_cache_size': 61403026, 'innodb_ft_enable_diag_print': 'ON', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 26, 'innodb_ft_min_token_size': 6, 'innodb_ft_num_word_optimize': 3512, 'innodb_ft_result_cache_limit': 1677854752, 'innodb_ft_sort_pll_degree': 14, 'innodb_ft_total_cache_size': 503629635, 'innodb_io_capacity': 1538233, 'innodb_io_capacity_max': 26322, 'innodb_log_buffer_size': 3689569154, 'innodb_log_compressed_pages': 'OFF', 'innodb_log_file_size': 892048036, 'innodb_log_files_in_group': 3, 'innodb_log_write_ahead_size': 3927, 'innodb_lru_scan_depth': 4212, 'innodb_max_dirty_pages_pct': 98, 'innodb_max_dirty_pages_pct_lwm': 4, 'innodb_max_purge_lag': 3027639735, 'innodb_max_purge_lag_delay': 9059124, 'innodb_max_undo_log_size': 488649676885720000, 'innodb_old_blocks_time': 942330572, 'innodb_online_alter_log_max_size': 12458800628208502000, 'innodb_open_files': 212311, 'innodb_optimize_fulltext_only': 'ON', 'innodb_page_cleaners': 8, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 3079, 'innodb_purge_rseg_truncate_frequency': 52, 'innodb_purge_threads': 3, 'innodb_random_read_ahead': 'ON', 'innodb_read_ahead_threshold': 19, 'innodb_read_io_threads': 50, 'innodb_replication_delay': 120, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 36, 'innodb_sort_buffer_size': 21626245, 'innodb_spin_wait_delay': 149, 'innodb_stats_auto_recalc': 'OFF', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_equal', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 18, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 576, 'innodb_sync_spin_loops': 7858, 'innodb_table_locks': 'OFF', 'innodb_thread_concurrency': 34, 'innodb_thread_sleep_delay': 965212, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 47, 'join_buffer_size': 988643999, 'keep_files_on_create': 'ON', 'key_buffer_size': 449260314, 'key_cache_age_threshold': 11519, 'key_cache_block_size': 3540, 'key_cache_division_limit': 22, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'ON', 'log_builtin_as_identified_by_password': 'ON', 'log_output': 'NONE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'OFF', 'log_syslog_include_pid': 'OFF', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 2, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 696083115, 'max_binlog_cache_size': 17728746028240298000, 'max_binlog_size': 672294909, 'max_binlog_stmt_cache_size': 10539826384833134000, 'max_connections': 80141, 'max_delayed_threads': 7006, 'max_digest_length': 1024547, 'max_error_count': 24088, 'max_heap_table_size': 329434618, 'max_join_size': 16921658669192934000, 'max_length_for_sort_data': 1796606, 'max_points_in_geometry': 1029070, 'max_prepared_stmt_count': 121239, 'max_seeks_for_key': 15380746691368576000, 'max_sort_length': 2909847, 'max_user_connections': 238041845, 'max_write_lock_count': 12554234971577580000, 'multi_range_count': 486953419, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 945917, 'net_read_timeout': 17, 'net_write_timeout': 101, 'ngram_token_size': 5, 'offline_mode': 'ON', 'old_alter_table': 'ON', 'old_passwords': '2', 'open_files_limit': 521961, 'optimizer_prune_level': 0, 'optimizer_search_depth': 17, 'preload_buffer_size': 627612255, 'query_alloc_block_size': 54375858, 'query_cache_limit': 94607349, 'query_cache_min_res_unit': 21096, 'query_cache_size': 1621393285, 'query_cache_wlock_invalidate': 'ON', 'query_prealloc_size': 76962487, 'range_alloc_block_size': 42595, 'read_buffer_size': 334537357, 'read_rnd_buffer_size': 96419930, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OWN_GTID', 'session_track_schema': 'ON', 'session_track_state_change': 'ON', 'session_track_transaction_info': 'CHARACTERISTICS', 'show_compatibility_56': 'ON', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 87072908, 'stored_program_cache': 507799, 'sync_binlog': 1434529539, 'sync_frm': 'ON', 'table_definition_cache': 134792, 'table_open_cache': 233042, 'table_open_cache_instances': 22, 'thread_cache_size': 6691, 'tmp_table_size': 835525684, 'transaction_alloc_block_size': 64135, 'transaction_prealloc_size': 34960, 'updatable_views_with_limit': 'NO'}
+
+[INFO] [2025-10-20 23:33:49,628] [autotune] Close db successfully
+[INFO] [2025-10-20 23:33:49,629] [autotune] mysql is shut down
+[INFO] [2025-10-20 23:33:49,634] [autotune] generated config file done
+[INFO] [2025-10-20 23:33:49,706] [autotune] wait for connection
+[INFO] [2025-10-20 23:34:20,767] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:21,769] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:22,772] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:23,775] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:24,777] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:26,542] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:27,545] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:28,547] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:29,550] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:30,552] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:31,554] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:32,557] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:33,560] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:34,562] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:35,564] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:36,567] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:37,569] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:38,571] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:39,573] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:40,576] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:41,578] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:42,580] [autotune] 2002: Can't connect to local MySQL server through socket '/var/run/mysqld/mysqld.sock' (2 No such file or directory)
+[INFO] [2025-10-20 23:34:43,593] [autotune] Connected to MySQL db
+[INFO] [2025-10-20 23:34:43,594] [autotune] finish 53 seconds waiting for connection
+[INFO] [2025-10-20 23:34:43,594] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-20 23:34:43,594] [autotune] mysql is up
+[INFO] [2025-10-20 23:34:43,594] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-20 23:34:48,714] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_oltpbench.sh tatp /oltpbench/config/sample_tatp_config.xml 1761003288
+[ERROR] [2025-10-20 23:38:52,092] [autotune] Exception occurred during step execution:
+Traceback (most recent call last):
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 472, in step
+    timeout, metrics, internal_metrics, resource,latL = self.step_GP(knobs, collect_resource=False)
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 397, in step_GP
+    s = self.get_states(collect_resource=collect_resource)
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 322, in get_states
+    external_metrics,latL = self.get_external_metrics(filename)
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 182, in get_external_metrics
+    result = parse_oltpbench('results/{}.summary'.format(filename))
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/utils/parser.py", line 160, in parse_oltpbench
+    with open(file_path) as f:
+FileNotFoundError: [Errno 2] No such file or directory: 'results/1761003288.summary'
+[INFO] [2025-10-20 23:38:52,097] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Benchmark completed in 302.57s, trial_state=1, objs=None
+[INFO] [2025-10-20 23:38:52,097] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Completed evaluation 2/4 from MBO, objs=[2147483647]
+[INFO] [2025-10-20 23:38:52,098] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Evaluating configuration 3/4 from DDPG
+[INFO] [2025-10-20 23:38:52,098] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Starting benchmark execution for config: {'autocommit': 'OFF', 'automatic_sp_privileges': 'ON', 'back_log': 63498, 'binlog_cache_size': 1850897307, 'binlog_direct_non_transactional_updates': 'ON', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 220162, 'binlog_group_commit_sync_no_delay_count': 23902, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'ON', 'binlog_stmt_cache_size': 3966607418, 'bulk_insert_buffer_size': 40703065, 'check_proxy_users': 'ON', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 1614124, 'default_week_format': 0, 'delay_key_write': 'OFF', 'div_precision_increment': 1, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 310604288, 'expire_logs_days': 2, 'explicit_defaults_for_timestamp': 'ON', 'flush': 'OFF', 'flush_time': 1, 'ft_min_word_len': 3, 'ft_query_expansion_limit': 57, 'general_log': 'OFF', 'group_concat_max_len': 3316342071796953, 'host_cache_size': 57735, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 35, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 813150, 'innodb_api_bk_commit_interval': 36154885, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'ON', 'innodb_api_enable_mdl': 'ON', 'innodb_autoextend_increment': 34, 'innodb_buffer_pool_size': 11337081535, 'innodb_change_buffer_max_size': 45, 'innodb_change_buffering': 'purges', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 933, 'innodb_compression_failure_threshold_pct': 8, 'innodb_compression_level': 0, 'innodb_compression_pad_pct_max': 31, 'innodb_concurrency_tickets': 174129584, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'OFF', 'innodb_fill_factor': 78, 'innodb_flush_log_at_timeout': 2513, 'innodb_flush_log_at_trx_commit': '0', 'innodb_flush_neighbors': '2', 'innodb_flush_sync': 'OFF', 'innodb_flushing_avg_loops': 131, 'innodb_ft_cache_size': 76231433, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 54, 'innodb_ft_min_token_size': 0, 'innodb_ft_num_word_optimize': 1306, 'innodb_ft_result_cache_limit': 4155292944, 'innodb_ft_sort_pll_degree': 6, 'innodb_ft_total_cache_size': 272488214, 'innodb_io_capacity': 776085, 'innodb_io_capacity_max': 1482, 'innodb_log_buffer_size': 2659444470, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 91583337, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 1371, 'innodb_lru_scan_depth': 9351, 'innodb_max_dirty_pages_pct': 67, 'innodb_max_dirty_pages_pct_lwm': 88, 'innodb_max_purge_lag': 4187483903, 'innodb_max_purge_lag_delay': 8715330, 'innodb_max_undo_log_size': 1662194001903239, 'innodb_old_blocks_time': 1549668992, 'innodb_online_alter_log_max_size': 4665171060678412, 'innodb_open_files': 548236, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 8, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 4900, 'innodb_purge_rseg_truncate_frequency': 126, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 57, 'innodb_read_io_threads': 3, 'innodb_replication_delay': 190, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 115, 'innodb_sort_buffer_size': 11376479, 'innodb_spin_wait_delay': 203, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'ON', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 6, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 29, 'innodb_sync_spin_loops': 28874, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 958, 'innodb_thread_sleep_delay': 934627, 'innodb_undo_log_truncate': 'ON', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 54, 'join_buffer_size': 121903625, 'keep_files_on_create': 'OFF', 'key_buffer_size': 3575652358, 'key_cache_age_threshold': 14472, 'key_cache_block_size': 9701, 'key_cache_division_limit': 71, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'TABLE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 7, 'low_priority_updates': 'OFF', 'lower_case_table_names': 2, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 15737220, 'max_binlog_cache_size': 11604376561431612, 'max_binlog_size': 33739083, 'max_binlog_stmt_cache_size': 494011536432433, 'max_connections': 96209, 'max_delayed_threads': 15981, 'max_digest_length': 19260, 'max_error_count': 62324, 'max_heap_table_size': 1050838622, 'max_join_size': 16943901894051366, 'max_length_for_sort_data': 8105124, 'max_points_in_geometry': 378529, 'max_prepared_stmt_count': 859809, 'max_seeks_for_key': 1084846341684723, 'max_sort_length': 7983757, 'max_user_connections': 3511178495, 'max_write_lock_count': 3815273462545514, 'multi_range_count': 203524704, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 63526, 'net_read_timeout': 24, 'net_write_timeout': 39, 'ngram_token_size': 1, 'offline_mode': 'OFF', 'old_alter_table': 'ON', 'old_passwords': '0', 'open_files_limit': 79551, 'optimizer_prune_level': 1, 'optimizer_search_depth': 60, 'preload_buffer_size': 818678388, 'query_alloc_block_size': 127477796, 'query_cache_limit': 66723460, 'query_cache_min_res_unit': 1558, 'query_cache_size': 1750576896, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 117827537, 'range_alloc_block_size': 12724, 'read_buffer_size': 327198223, 'read_rnd_buffer_size': 89050392, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'ON', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 113442898, 'stored_program_cache': 22439, 'sync_binlog': 1251895296, 'sync_frm': 'OFF', 'table_definition_cache': 388519, 'table_open_cache': 245148, 'table_open_cache_instances': 64, 'thread_cache_size': 11732, 'tmp_table_size': 70721628, 'transaction_alloc_block_size': 9117, 'transaction_prealloc_size': 10951, 'updatable_views_with_limit': 'YES'}
+[INFO] [2025-10-20 23:38:52,099] [autotune] [step 3] generate knobs: {'autocommit': 'OFF', 'automatic_sp_privileges': 'ON', 'back_log': 63498, 'binlog_cache_size': 1850897307, 'binlog_direct_non_transactional_updates': 'ON', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 220162, 'binlog_group_commit_sync_no_delay_count': 23902, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'ON', 'binlog_stmt_cache_size': 3966607418, 'bulk_insert_buffer_size': 40703065, 'check_proxy_users': 'ON', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 1614124, 'default_week_format': 0, 'delay_key_write': 'OFF', 'div_precision_increment': 1, 'end_markers_in_json': 'ON', 'eq_range_index_dive_limit': 310604288, 'expire_logs_days': 2, 'explicit_defaults_for_timestamp': 'ON', 'flush': 'OFF', 'flush_time': 1, 'ft_min_word_len': 3, 'ft_query_expansion_limit': 57, 'general_log': 'OFF', 'group_concat_max_len': 3316342071796953000, 'host_cache_size': 57735, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 35, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 813150, 'innodb_api_bk_commit_interval': 36154885, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'ON', 'innodb_api_enable_mdl': 'ON', 'innodb_autoextend_increment': 34, 'innodb_buffer_pool_size': 11337081535, 'innodb_change_buffer_max_size': 45, 'innodb_change_buffering': 'purges', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 933, 'innodb_compression_failure_threshold_pct': 8, 'innodb_compression_level': 0, 'innodb_compression_pad_pct_max': 31, 'innodb_concurrency_tickets': 174129584, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'REDUNDANT', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'OFF', 'innodb_fill_factor': 78, 'innodb_flush_log_at_timeout': 2513, 'innodb_flush_log_at_trx_commit': '0', 'innodb_flush_neighbors': '2', 'innodb_flush_sync': 'OFF', 'innodb_flushing_avg_loops': 131, 'innodb_ft_cache_size': 76231433, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'OFF', 'innodb_ft_max_token_size': 54, 'innodb_ft_min_token_size': 0, 'innodb_ft_num_word_optimize': 1306, 'innodb_ft_result_cache_limit': 4155292944, 'innodb_ft_sort_pll_degree': 6, 'innodb_ft_total_cache_size': 272488214, 'innodb_io_capacity': 776085, 'innodb_io_capacity_max': 1482, 'innodb_log_buffer_size': 2659444470, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 91583337, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 1371, 'innodb_lru_scan_depth': 9351, 'innodb_max_dirty_pages_pct': 67, 'innodb_max_dirty_pages_pct_lwm': 88, 'innodb_max_purge_lag': 4187483903, 'innodb_max_purge_lag_delay': 8715330, 'innodb_max_undo_log_size': 1662194001903239000, 'innodb_old_blocks_time': 1549668992, 'innodb_online_alter_log_max_size': 4665171060678412000, 'innodb_open_files': 548236, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 8, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 4900, 'innodb_purge_rseg_truncate_frequency': 126, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 57, 'innodb_read_io_threads': 3, 'innodb_replication_delay': 190, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 115, 'innodb_sort_buffer_size': 11376479, 'innodb_spin_wait_delay': 203, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'ON', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'OFF', 'innodb_stats_transient_sample_pages': 6, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 29, 'innodb_sync_spin_loops': 28874, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 958, 'innodb_thread_sleep_delay': 934627, 'innodb_undo_log_truncate': 'ON', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 54, 'join_buffer_size': 121903625, 'keep_files_on_create': 'OFF', 'key_buffer_size': 3575652358, 'key_cache_age_threshold': 14472, 'key_cache_block_size': 9701, 'key_cache_division_limit': 71, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'TABLE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 7, 'low_priority_updates': 'OFF', 'lower_case_table_names': 2, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 15737220, 'max_binlog_cache_size': 11604376561431612000, 'max_binlog_size': 33739083, 'max_binlog_stmt_cache_size': 494011536432433000, 'max_connections': 96209, 'max_delayed_threads': 15981, 'max_digest_length': 19260, 'max_error_count': 62324, 'max_heap_table_size': 1050838622, 'max_join_size': 16943901894051366000, 'max_length_for_sort_data': 8105124, 'max_points_in_geometry': 378529, 'max_prepared_stmt_count': 859809, 'max_seeks_for_key': 1084846341684723000, 'max_sort_length': 7983757, 'max_user_connections': 3511178495, 'max_write_lock_count': 3815273462545514000, 'multi_range_count': 203524704, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 63526, 'net_read_timeout': 24, 'net_write_timeout': 39, 'ngram_token_size': 1, 'offline_mode': 'OFF', 'old_alter_table': 'ON', 'old_passwords': '0', 'open_files_limit': 79551, 'optimizer_prune_level': 1, 'optimizer_search_depth': 60, 'preload_buffer_size': 818678388, 'query_alloc_block_size': 127477796, 'query_cache_limit': 66723460, 'query_cache_min_res_unit': 1558, 'query_cache_size': 1750576896, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 117827537, 'range_alloc_block_size': 12724, 'read_buffer_size': 327198223, 'read_rnd_buffer_size': 89050392, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'ON', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'ON', 'slow_query_log': 'OFF', 'sort_buffer_size': 113442898, 'stored_program_cache': 22439, 'sync_binlog': 1251895296, 'sync_frm': 'OFF', 'table_definition_cache': 388519, 'table_open_cache': 245148, 'table_open_cache_instances': 64, 'thread_cache_size': 11732, 'tmp_table_size': 70721628, 'transaction_alloc_block_size': 9117, 'transaction_prealloc_size': 10951, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-20 23:38:52,198] [autotune] Close db successfully
+[INFO] [2025-10-20 23:38:52,199] [autotune] mysql is shut down
+[INFO] [2025-10-20 23:38:52,199] [autotune] innodb_thread_concurrency is set too large
+[ERROR] [2025-10-20 23:38:52,199] [autotune] Exception occurred during step execution:
+Traceback (most recent call last):
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 472, in step
+    timeout, metrics, internal_metrics, resource,latL = self.step_GP(knobs, collect_resource=False)
+  File "/workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/dbenv.py", line 395, in step_GP
+    raise Exception('Apply knobs failed!')
+Exception: Apply knobs failed!
+[INFO] [2025-10-20 23:38:52,200] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Benchmark completed in 0.10s, trial_state=1, objs=None
+[INFO] [2025-10-20 23:38:52,201] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Completed evaluation 3/4 from DDPG, objs=[2147483647]
+[INFO] [2025-10-20 23:38:52,201] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Evaluating configuration 4/4 from GA
+[INFO] [2025-10-20 23:38:52,201] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Starting benchmark execution for config: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 900, 'binlog_cache_size': 32768, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 0, 'binlog_group_commit_sync_no_delay_count': 0, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 32768, 'bulk_insert_buffer_size': 8388608, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 10, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 4, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 200, 'expire_logs_days': 0, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 4, 'ft_query_expansion_limit': 20, 'general_log': 'OFF', 'group_concat_max_len': 1, 'host_cache_size': 0, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 10, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 150000, 'innodb_api_bk_commit_interval': 5, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 64, 'innodb_buffer_pool_size': 20615843020, 'innodb_change_buffer_max_size': 25, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 0, 'innodb_compression_failure_threshold_pct': 5, 'innodb_compression_level': 6, 'innodb_compression_pad_pct_max': 50, 'innodb_concurrency_tickets': 5000, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 100, 'innodb_flush_log_at_timeout': 1, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 30, 'innodb_ft_cache_size': 8000000, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 84, 'innodb_ft_min_token_size': 3, 'innodb_ft_num_word_optimize': 2000, 'innodb_ft_result_cache_limit': 2000000000, 'innodb_ft_sort_pll_degree': 2, 'innodb_ft_total_cache_size': 640000000, 'innodb_io_capacity': 200, 'innodb_io_capacity_max': 400, 'innodb_log_buffer_size': 16777216, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 50331648, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 8192, 'innodb_lru_scan_depth': 1024, 'innodb_max_dirty_pages_pct': 75, 'innodb_max_dirty_pages_pct_lwm': 0, 'innodb_max_purge_lag': 0, 'innodb_max_purge_lag_delay': 0, 'innodb_max_undo_log_size': 1073741, 'innodb_old_blocks_time': 1000, 'innodb_online_alter_log_max_size': 134217, 'innodb_open_files': 2000, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 300, 'innodb_purge_rseg_truncate_frequency': 128, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 56, 'innodb_read_io_threads': 4, 'innodb_replication_delay': 0, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 128, 'innodb_sort_buffer_size': 1048576, 'innodb_spin_wait_delay': 6, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 8, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 1, 'innodb_sync_spin_loops': 30, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 0, 'innodb_thread_sleep_delay': 10000, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 4, 'join_buffer_size': 262144, 'keep_files_on_create': 'OFF', 'key_buffer_size': 8388608, 'key_cache_age_threshold': 300, 'key_cache_block_size': 1024, 'key_cache_division_limit': 100, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'FILE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 4194304, 'max_binlog_cache_size': 18446744073709500, 'max_binlog_size': 1073741824, 'max_binlog_stmt_cache_size': 18446744073709500, 'max_connections': 1000, 'max_delayed_threads': 20, 'max_digest_length': 1024, 'max_error_count': 64, 'max_heap_table_size': 16777216, 'max_join_size': 18446744073709552, 'max_length_for_sort_data': 1024, 'max_points_in_geometry': 65536, 'max_prepared_stmt_count': 16382, 'max_seeks_for_key': 18446744073709500, 'max_sort_length': 1024, 'max_user_connections': 0, 'max_write_lock_count': 18446744073709500, 'multi_range_count': 256, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 16384, 'net_read_timeout': 30, 'net_write_timeout': 60, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 50000, 'optimizer_prune_level': 1, 'optimizer_search_depth': 62, 'preload_buffer_size': 32768, 'query_alloc_block_size': 8192, 'query_cache_limit': 1048576, 'query_cache_min_res_unit': 4096, 'query_cache_size': 1048576, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 48645195, 'range_alloc_block_size': 4096, 'read_buffer_size': 131072, 'read_rnd_buffer_size': 262144, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'ON', 'sort_buffer_size': 262144, 'stored_program_cache': 256, 'sync_binlog': 1, 'sync_frm': 'ON', 'table_definition_cache': 1400, 'table_open_cache': 2000, 'table_open_cache_instances': 16, 'thread_cache_size': 0, 'tmp_table_size': 16777216, 'transaction_alloc_block_size': 8192, 'transaction_prealloc_size': 4096, 'updatable_views_with_limit': 'YES'}
+[INFO] [2025-10-20 23:38:52,202] [autotune] max_join_size with value of is larger than max, adjusted
+[INFO] [2025-10-20 23:38:52,203] [autotune] [step 4] generate knobs: {'autocommit': 'ON', 'automatic_sp_privileges': 'ON', 'back_log': 900, 'binlog_cache_size': 32768, 'binlog_direct_non_transactional_updates': 'OFF', 'binlog_error_action': 'ABORT_SERVER', 'binlog_format': 'ROW', 'binlog_group_commit_sync_delay': 0, 'binlog_group_commit_sync_no_delay_count': 0, 'binlog_order_commits': 'ON', 'binlog_row_image': 'full', 'binlog_rows_query_log_events': 'OFF', 'binlog_stmt_cache_size': 32768, 'bulk_insert_buffer_size': 8388608, 'check_proxy_users': 'OFF', 'completion_type': 'NO_CHAIN', 'concurrent_insert': 'AUTO', 'connect_timeout': 10, 'default_week_format': 0, 'delay_key_write': 'ON', 'div_precision_increment': 4, 'end_markers_in_json': 'OFF', 'eq_range_index_dive_limit': 200, 'expire_logs_days': 0, 'explicit_defaults_for_timestamp': 'OFF', 'flush': 'OFF', 'flush_time': 0, 'ft_min_word_len': 4, 'ft_query_expansion_limit': 20, 'general_log': 'OFF', 'group_concat_max_len': 1000, 'host_cache_size': 0, 'innodb_adaptive_flushing': 'ON', 'innodb_adaptive_flushing_lwm': 10, 'innodb_adaptive_hash_index_parts': 8, 'innodb_adaptive_max_sleep_delay': 150000, 'innodb_api_bk_commit_interval': 5, 'innodb_api_disable_rowlock': 'OFF', 'innodb_api_enable_binlog': 'OFF', 'innodb_api_enable_mdl': 'OFF', 'innodb_autoextend_increment': 64, 'innodb_buffer_pool_size': 20615843020, 'innodb_change_buffer_max_size': 25, 'innodb_change_buffering': 'all', 'innodb_cmp_per_index_enabled': 'OFF', 'innodb_commit_concurrency': 0, 'innodb_compression_failure_threshold_pct': 5, 'innodb_compression_level': 6, 'innodb_compression_pad_pct_max': 50, 'innodb_concurrency_tickets': 5000, 'innodb_deadlock_detect': 'ON', 'innodb_default_row_format': 'DYNAMIC', 'innodb_disable_sort_file_cache': 'OFF', 'innodb_doublewrite': 'OFF', 'innodb_file_per_table': 'ON', 'innodb_fill_factor': 100, 'innodb_flush_log_at_timeout': 1, 'innodb_flush_log_at_trx_commit': '1', 'innodb_flush_neighbors': '1', 'innodb_flush_sync': 'ON', 'innodb_flushing_avg_loops': 30, 'innodb_ft_cache_size': 8000000, 'innodb_ft_enable_diag_print': 'OFF', 'innodb_ft_enable_stopword': 'ON', 'innodb_ft_max_token_size': 84, 'innodb_ft_min_token_size': 3, 'innodb_ft_num_word_optimize': 2000, 'innodb_ft_result_cache_limit': 2000000000, 'innodb_ft_sort_pll_degree': 2, 'innodb_ft_total_cache_size': 640000000, 'innodb_io_capacity': 200, 'innodb_io_capacity_max': 400, 'innodb_log_buffer_size': 16777216, 'innodb_log_compressed_pages': 'ON', 'innodb_log_file_size': 50331648, 'innodb_log_files_in_group': 2, 'innodb_log_write_ahead_size': 8192, 'innodb_lru_scan_depth': 1024, 'innodb_max_dirty_pages_pct': 75, 'innodb_max_dirty_pages_pct_lwm': 0, 'innodb_max_purge_lag': 0, 'innodb_max_purge_lag_delay': 0, 'innodb_max_undo_log_size': 1073741000, 'innodb_old_blocks_time': 1000, 'innodb_online_alter_log_max_size': 134217000, 'innodb_open_files': 2000, 'innodb_optimize_fulltext_only': 'OFF', 'innodb_page_cleaners': 4, 'innodb_print_all_deadlocks': 'OFF', 'innodb_purge_batch_size': 300, 'innodb_purge_rseg_truncate_frequency': 128, 'innodb_purge_threads': 4, 'innodb_random_read_ahead': 'OFF', 'innodb_read_ahead_threshold': 56, 'innodb_read_io_threads': 4, 'innodb_replication_delay': 0, 'innodb_rollback_on_timeout': 'OFF', 'innodb_rollback_segments': 128, 'innodb_sort_buffer_size': 1048576, 'innodb_spin_wait_delay': 6, 'innodb_stats_auto_recalc': 'ON', 'innodb_stats_include_delete_marked': 'OFF', 'innodb_stats_method': 'nulls_ignored', 'innodb_stats_on_metadata': 'OFF', 'innodb_stats_persistent': 'ON', 'innodb_stats_transient_sample_pages': 8, 'innodb_strict_mode': 'ON', 'innodb_sync_array_size': 1, 'innodb_sync_spin_loops': 30, 'innodb_table_locks': 'ON', 'innodb_thread_concurrency': 0, 'innodb_thread_sleep_delay': 10000, 'innodb_undo_log_truncate': 'OFF', 'innodb_use_native_aio': 'ON', 'innodb_write_io_threads': 4, 'join_buffer_size': 262144, 'keep_files_on_create': 'OFF', 'key_buffer_size': 8388608, 'key_cache_age_threshold': 300, 'key_cache_block_size': 1024, 'key_cache_division_limit': 100, 'local_infile': 'ON', 'log_bin_trust_function_creators': 'OFF', 'log_bin_use_v1_row_events': 'OFF', 'log_builtin_as_identified_by_password': 'OFF', 'log_output': 'FILE', 'log_queries_not_using_indexes': 'OFF', 'log_slave_updates': 'OFF', 'log_slow_admin_statements': 'OFF', 'log_statements_unsafe_for_binlog': 'ON', 'log_syslog_include_pid': 'ON', 'log_timestamps': 'UTC', 'long_query_time': 10, 'low_priority_updates': 'OFF', 'lower_case_table_names': 0, 'master_verify_checksum': 'OFF', 'max_allowed_packet': 4194304, 'max_binlog_cache_size': 18446744073709500000, 'max_binlog_size': 1073741824, 'max_binlog_stmt_cache_size': 18446744073709500000, 'max_connections': 1000, 'max_delayed_threads': 20, 'max_digest_length': 1024, 'max_error_count': 64, 'max_heap_table_size': 16777216, 'max_join_size': 18446744073709551615, 'max_length_for_sort_data': 1024, 'max_points_in_geometry': 65536, 'max_prepared_stmt_count': 16382, 'max_seeks_for_key': 18446744073709500000, 'max_sort_length': 1024, 'max_user_connections': 0, 'max_write_lock_count': 18446744073709500000, 'multi_range_count': 256, 'mysql_native_password_proxy_users': 'OFF', 'net_buffer_length': 16384, 'net_read_timeout': 30, 'net_write_timeout': 60, 'ngram_token_size': 2, 'offline_mode': 'OFF', 'old_alter_table': 'OFF', 'old_passwords': '0', 'open_files_limit': 50000, 'optimizer_prune_level': 1, 'optimizer_search_depth': 62, 'preload_buffer_size': 32768, 'query_alloc_block_size': 8192, 'query_cache_limit': 1048576, 'query_cache_min_res_unit': 4096, 'query_cache_size': 1048576, 'query_cache_wlock_invalidate': 'OFF', 'query_prealloc_size': 48645195, 'range_alloc_block_size': 4096, 'read_buffer_size': 131072, 'read_rnd_buffer_size': 262144, 'require_secure_transport': 'OFF', 'session_track_gtids': 'OFF', 'session_track_schema': 'ON', 'session_track_state_change': 'OFF', 'session_track_transaction_info': 'OFF', 'show_compatibility_56': 'OFF', 'skip_external_locking': 'ON', 'skip_name_resolve': 'OFF', 'skip_networking': 'OFF', 'slow_query_log': 'ON', 'sort_buffer_size': 262144, 'stored_program_cache': 256, 'sync_binlog': 1, 'sync_frm': 'ON', 'table_definition_cache': 1400, 'table_open_cache': 2000, 'table_open_cache_instances': 16, 'thread_cache_size': 0, 'tmp_table_size': 16777216, 'transaction_alloc_block_size': 8192, 'transaction_prealloc_size': 4096, 'updatable_views_with_limit': 'YES'}
+
+[INFO] [2025-10-20 23:38:52,280] [autotune] mysql is shut down
+[INFO] [2025-10-20 23:38:52,285] [autotune] generated config file done
+[INFO] [2025-10-20 23:38:52,364] [autotune] wait for connection
+[INFO] [2025-10-20 23:38:57,381] [autotune] Connected to MySQL db
+[INFO] [2025-10-20 23:38:57,382] [autotune] finish 5 seconds waiting for connection
+[INFO] [2025-10-20 23:38:57,382] [autotune] /usr/sbin/mysqld --defaults-file=scripts/template/experiment_normandy.cnf
+[INFO] [2025-10-20 23:38:57,383] [autotune] mysql is up
+[INFO] [2025-10-20 23:38:57,383] [autotune] sleeping for 5 seconds after restarting mysql
+[INFO] [2025-10-20 23:39:02,538] [autotune] [DBG]. bash /workspaces/Conversational-Self-tunning-DBMS/source/tuning/OpAdviserPrivate/autotune/cli/run_oltpbench.sh tatp /oltpbench/config/sample_tatp_config.xml 1761003542
+[INFO] [2025-10-20 23:42:54,788] [autotune] internal metrics: [1201684, 5746933, 7351800320, 6619687424, 400, 448834, 346700, 7360249856, 928923648, 449234, 56697, 835516, 25930, 1310680, 447800, 0, 0, 27584846, 21474836480, 0, 6191108, 19752, 28979, 628650, 23, 3264, 0, 0, 0, 0, 0, 3390, 1, 1050371, 0, 0, 16384, 106, 4788, 197, 5027, 15316, 0, 15748, 550912, 0, 0, 0, 0, 0, 0, 0, 0, 303992320, 0, 577035, 694203, 581504, 448860, 923738, 948416512, 577174, 0, 0, 487].
+[INFO] [2025-10-20 23:42:54,790] [DBTune-oltpbench_tatp_ensemble] [Evaluate] Benchmark completed in 242.59s, trial_state=0, objs=[-21513.53351075141]
+[INFO] [2025-10-20 23:42:54,790] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Completed evaluation 4/4 from GA, objs=[-21513.53351075141]
+[INFO] [2025-10-20 23:42:54,790] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Best result from GA with objective value -21513.53351075141
+[INFO] [2025-10-20 23:42:54,791] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Adding SMAC result as SYNTHETIC (obj=-13930.96104035677)

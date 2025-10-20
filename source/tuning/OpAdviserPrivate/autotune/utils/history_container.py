@@ -148,7 +148,16 @@ class HistoryContainer(object):
         if not self.info:
             self.info = info
 
-        assert self.info == info
+        # For synthetic observations, allow additional fields in info but ensure core fields match
+        if isinstance(info, dict) and isinstance(self.info, dict):
+            # Check that core info fields match (excluding synthetic-specific fields)
+            synthetic_fields = {'synthetic', 'optimizer_name'}
+            core_info = {k: v for k, v in info.items() if k not in synthetic_fields}
+            core_self_info = {k: v for k, v in self.info.items() if k not in synthetic_fields}
+            assert core_self_info == core_info, f"Core info fields don't match: {core_self_info} != {core_info}"
+        else:
+            # For non-dict info, require exact equality
+            assert self.info == info
 
         self.configurations.append(config)
         self.configurations_all.append((self.fill_default_value(config)))
