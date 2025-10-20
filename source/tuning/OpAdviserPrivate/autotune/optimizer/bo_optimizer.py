@@ -444,14 +444,22 @@ class BO_Optimizer(object, metaclass=abc.ABCMeta):
             # update acquisition function
             acq_update_start = time_module.time()
             if self.num_objs == 1:
-                incumbent_value = history_container.get_incumbents()[0][1]
+                # Check if there are any successful runs before accessing incumbents
+                incumbents = history_container.get_incumbents()
+                if not incumbents:
+                    self.logger.error('[BO] No successful runs recorded. All benchmarks have failed.')
+                    self.logger.error('[BO] This likely means the database is not initialized or benchmarks are failing.')
+                    self.logger.error('[BO] Falling back to random sampling.')
+                    return self.sample_random_configs(num_configs=1, excluded_configs=history_container.configurations)[0]
+                
+                incumbent_value = incumbents[0][1]
                 self.logger.info(f"[BO] Updating acquisition function, incumbent value: {incumbent_value}")
                 self.acquisition_function.update(model=self.surrogate_model,
                                                  constraint_models=self.constraint_models,
                                                  eta=incumbent_value,
                                                  num_data=num_config_evaluated,
                                                  compact_space=compact_space,
-                                                 incumbent = history_container.get_incumbents()[0][0]
+                                                 incumbent = incumbents[0][0]
                                                  )
                 acq_update_time = time_module.time() - acq_update_start
                 self.logger.info(f"[BO] Acquisition function update took {acq_update_time:.2f}s")
