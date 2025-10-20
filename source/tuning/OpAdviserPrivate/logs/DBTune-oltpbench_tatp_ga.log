@@ -4534,3 +4534,5 @@ Exception: Apply knobs failed!
 [INFO] [2025-10-16 19:09:32,313] [DBTune-oltpbench_tatp_ga] [Evaluate] Benchmark completed in 254.44s, trial_state=0, objs=[-17062.537277427033]
 [INFO] [2025-10-16 19:09:32,323] [DBTune-oltpbench_tatp_ga] Iteration 200, objective value: [-17062.537277427033].
 [INFO] [2025-10-19 22:35:22,875] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json
+[INFO] [2025-10-20 22:34:10,577] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 23:11:26,454] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)

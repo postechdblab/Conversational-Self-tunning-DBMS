@@ -41541,3 +41541,350 @@ FileNotFoundError: [Errno 2] No such file or directory: 'results/1760910877.summ
 [INFO] [2025-10-19 22:39:03,091] [DDPG_Optimizer] New Episode-1366, initialize
 [INFO] [2025-10-19 22:39:03,100] [DDPG_Optimizer] New Episode-1367, initialize
 [INFO] [2025-10-19 22:39:04,403] [DDPG_Optimizer] New Episode-1368, initialize
+[WARNING] [2025-10-20 22:34:23,183] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:23,190] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:23,556] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:23,832] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:25,099] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:28,536] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 22:34:39,163] [HistoryContainer] Repeated configuration detected!
+[INFO] [2025-10-20 22:34:40,444] [DBTune-oltpbench_tatp_ensemble] Load 123 iterations from repo/history_oltpbench_tatp_ensemble.json (492 non-synthetic configs, 2892 total configs)
+[INFO] [2025-10-20 22:34:41,759] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 22:34:43,074] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 22:34:50,094] [DDPG_Optimizer] Load state mean and var.
+[INFO] [2025-10-20 22:34:50,801] [DDPG] Finish Initializing Networks
+[INFO] [2025-10-20 22:34:50,802] [DDPG] DDPG Initialzed!
+[INFO] [2025-10-20 22:35:39,184] [DDPG_Optimizer] New Episode-1, initialize
+[INFO] [2025-10-20 22:35:39,352] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_5
+[INFO] [2025-10-20 22:35:39,504] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_10
+[INFO] [2025-10-20 22:35:39,654] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_15
+[INFO] [2025-10-20 22:35:45,000] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_20
+[INFO] [2025-10-20 22:35:50,102] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_25
+[INFO] [2025-10-20 22:35:55,231] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_30
+[INFO] [2025-10-20 22:36:00,067] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_35
+[INFO] [2025-10-20 22:36:04,831] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_40
+[INFO] [2025-10-20 22:36:09,898] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_45
+[INFO] [2025-10-20 22:36:11,961] [DDPG_Optimizer] New Episode-2, initialize
+[INFO] [2025-10-20 22:36:14,142] [DDPG_Optimizer] New Episode-3, initialize
+[INFO] [2025-10-20 22:36:15,255] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_50
+[INFO] [2025-10-20 22:36:20,258] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_55
+[INFO] [2025-10-20 22:36:25,097] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_60
+[INFO] [2025-10-20 22:36:29,945] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_65
+[INFO] [2025-10-20 22:36:34,965] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_70
+[INFO] [2025-10-20 22:36:39,852] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_75
+[INFO] [2025-10-20 22:36:44,386] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_80
+[INFO] [2025-10-20 22:36:49,561] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_85
+[INFO] [2025-10-20 22:36:54,847] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_90
+[INFO] [2025-10-20 22:36:59,757] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_95
+[INFO] [2025-10-20 22:37:04,720] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_100
+[INFO] [2025-10-20 22:37:09,834] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_105
+[INFO] [2025-10-20 22:37:14,643] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_110
+[INFO] [2025-10-20 22:37:19,906] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_115
+[INFO] [2025-10-20 22:37:24,786] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_120
+[INFO] [2025-10-20 22:37:29,676] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_125
+[INFO] [2025-10-20 22:37:34,936] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_130
+[INFO] [2025-10-20 22:37:39,699] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_135
+[INFO] [2025-10-20 22:37:45,109] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_140
+[INFO] [2025-10-20 22:37:49,761] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_145
+[INFO] [2025-10-20 22:37:53,512] [DDPG_Optimizer] New Episode-4, initialize
+[INFO] [2025-10-20 22:37:54,551] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_150
+[INFO] [2025-10-20 22:37:59,474] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_155
+[INFO] [2025-10-20 22:38:04,075] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_160
+[INFO] [2025-10-20 22:38:09,128] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_165
+[INFO] [2025-10-20 22:38:13,790] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_170
+[INFO] [2025-10-20 22:38:18,972] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_175
+[INFO] [2025-10-20 22:38:24,050] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_180
+[INFO] [2025-10-20 22:38:29,146] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_185
+[INFO] [2025-10-20 22:38:33,989] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_190
+[INFO] [2025-10-20 22:38:38,819] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_195
+[INFO] [2025-10-20 22:38:43,591] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_200
+[INFO] [2025-10-20 22:38:48,228] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_205
+[INFO] [2025-10-20 22:38:53,211] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_210
+[INFO] [2025-10-20 22:38:57,768] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_215
+[INFO] [2025-10-20 22:39:02,255] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_220
+[INFO] [2025-10-20 22:39:07,139] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_225
+[INFO] [2025-10-20 22:39:12,160] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_230
+[INFO] [2025-10-20 22:39:17,210] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_235
+[INFO] [2025-10-20 22:39:22,049] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_240
+[INFO] [2025-10-20 22:39:26,681] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_245
+[INFO] [2025-10-20 22:39:30,270] [DDPG_Optimizer] New Episode-5, initialize
+[INFO] [2025-10-20 22:39:31,366] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_250
+[INFO] [2025-10-20 22:39:36,183] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_255
+[INFO] [2025-10-20 22:39:41,475] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_260
+[INFO] [2025-10-20 22:39:46,221] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_265
+[INFO] [2025-10-20 22:39:51,216] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_270
+[INFO] [2025-10-20 22:39:56,340] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_275
+[INFO] [2025-10-20 22:40:00,946] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_280
+[INFO] [2025-10-20 22:40:05,689] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_285
+[INFO] [2025-10-20 22:40:10,294] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_290
+[INFO] [2025-10-20 22:40:15,366] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_295
+[INFO] [2025-10-20 22:40:20,211] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_300
+[INFO] [2025-10-20 22:40:25,058] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_305
+[INFO] [2025-10-20 22:40:29,810] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_310
+[INFO] [2025-10-20 22:40:34,859] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_315
+[INFO] [2025-10-20 22:40:39,750] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_320
+[INFO] [2025-10-20 22:40:44,666] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_325
+[INFO] [2025-10-20 22:40:49,665] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_330
+[INFO] [2025-10-20 22:40:54,279] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_335
+[INFO] [2025-10-20 22:40:58,440] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Added 20 synthetic observations to history
+[INFO] [2025-10-20 22:40:58,440] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total synthetic observations in history: 2420
+[INFO] [2025-10-20 22:40:58,440] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total configs in history.data (for incumbent tracking): 335
+[INFO] [2025-10-20 22:40:58,501] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Verify synthetics excluded from acquisition: 335 configs available
+[INFO] [2025-10-20 22:40:58,502] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestions from 4 optimizers
+[INFO] [2025-10-20 22:40:58,502] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from SMAC
+[INFO] [2025-10-20 22:40:58,502] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 22:40:58,502] [BO_Optimizer] [BO] Non-GP model (prf) - will use all observations including synthetic
+[INFO] [2025-10-20 22:40:58,514] [BO_Optimizer] [BO] Using all 2912 samples (real + synthetic)
+[INFO] [2025-10-20 22:40:58,514] [BO_Optimizer] [BO] Convert configs to array: 0.01s, X.shape=(2912, 197)
+[INFO] [2025-10-20 22:40:58,515] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(2912, 1)
+[INFO] [2025-10-20 22:40:58,516] [BO_Optimizer] [BO] Starting surrogate model training (type=prf, samples=2912)
+[INFO] [2025-10-20 22:40:59,845] [BO_Optimizer] [BO] Surrogate model training completed in 1.33s
+[INFO] [2025-10-20 22:40:59,845] [BO_Optimizer] [BO] get_surrogate took 1.34s, X shape: (2912, 197)
+[INFO] [2025-10-20 22:40:59,845] [BO_Optimizer] [BO] alter_model took 0.00s
+[INFO] [2025-10-20 22:40:59,846] [BO_Optimizer] [BO] Updating acquisition function, incumbent value: -22061.517766964298
+[INFO] [2025-10-20 22:40:59,846] [BO_Optimizer] [BO] Acquisition function update took 0.00s
+[INFO] [2025-10-20 22:40:59,856] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting acquisition optimization: 10 local searches, max_steps=50, neighbor_cap=150
+[INFO] [2025-10-20 22:40:59,857] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] History contains 2912 configs: 492 real, 2420 synthetic
+[INFO] [2025-10-20 22:40:59,917] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] get_all_configs() returned 335 configs (should be 492 real only)
+[INFO] [2025-10-20 22:41:00,081] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Real evals: total=492, successful=342, failed=150, duplicates=0, data_size=335
+[INFO] [2025-10-20 22:41:00,081] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Excluded real configs (index -> reason): 4->failed, 5->failed, 8->failed, 9->failed, 35->failed, 59->failed, 80->failed, 104->failed, 128->failed, 176->failed
+[INFO] [2025-10-20 22:41:00,082] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 1/10
+[INFO] [2025-10-20 22:41:00,093] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000007 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:02,101] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=0.007501, impr=4, plateau=0, neighbors=336, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=2.0s
+[INFO] [2025-10-20 22:41:03,004] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=0.007501
+[INFO] [2025-10-20 22:41:03,005] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.92s, acq_eval=2.83s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:03,005] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 1/10 in 2.92s
+[INFO] [2025-10-20 22:41:03,005] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 2/10
+[INFO] [2025-10-20 22:41:03,015] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.019605 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:04,872] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=3.504244, impr=4, plateau=0, neighbors=311, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.9s
+[INFO] [2025-10-20 22:41:05,764] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=3.504244
+[INFO] [2025-10-20 22:41:05,765] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.75s, acq_eval=2.67s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:05,765] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 2/10 in 2.76s
+[INFO] [2025-10-20 22:41:05,765] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 3/10
+[INFO] [2025-10-20 22:41:05,775] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.560145 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:07,176] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=12.412716, impr=4, plateau=0, neighbors=235, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.4s
+[INFO] [2025-10-20 22:41:08,727] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=17.268642
+[INFO] [2025-10-20 22:41:08,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.96s, acq_eval=2.87s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:08,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 3/10 in 2.96s
+[INFO] [2025-10-20 22:41:08,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 4/10
+[INFO] [2025-10-20 22:41:08,738] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.527723 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:10,342] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=1.241562
+[INFO] [2025-10-20 22:41:10,343] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.61s, acq_eval=1.56s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:10,343] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 4/10 in 1.61s
+[INFO] [2025-10-20 22:41:10,343] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 5/10
+[INFO] [2025-10-20 22:41:10,353] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=4.204379 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:12,564] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=21.966413
+[INFO] [2025-10-20 22:41:12,564] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.21s, acq_eval=2.15s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:12,564] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 5/10 in 2.22s
+[INFO] [2025-10-20 22:41:12,565] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 6/10
+[INFO] [2025-10-20 22:41:12,575] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=6.627933 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:13,353] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=53.253754, impr=4, plateau=0, neighbors=130, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=0.8s
+[INFO] [2025-10-20 22:41:14,727] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=7, improvements=6, final_acq=121.629597
+[INFO] [2025-10-20 22:41:14,727] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.16s, acq_eval=2.08s (96.7%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:14,727] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 6/10 in 2.16s
+[INFO] [2025-10-20 22:41:14,728] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 7/10
+[INFO] [2025-10-20 22:41:14,738] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.003021 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:16,356] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=0.085130
+[INFO] [2025-10-20 22:41:16,356] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.62s, acq_eval=1.57s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:16,356] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 7/10 in 1.63s
+[INFO] [2025-10-20 22:41:16,357] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 8/10
+[INFO] [2025-10-20 22:41:16,367] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.611219 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:18,032] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=3.953213, impr=4, plateau=0, neighbors=280, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.7s
+[INFO] [2025-10-20 22:41:18,921] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=3.953213
+[INFO] [2025-10-20 22:41:18,921] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.56s, acq_eval=2.48s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:18,921] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 8/10 in 2.56s
+[INFO] [2025-10-20 22:41:18,922] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 9/10
+[INFO] [2025-10-20 22:41:18,932] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=5.071133 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:21,624] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=87.830681
+[INFO] [2025-10-20 22:41:21,625] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.70s, acq_eval=2.62s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:21,625] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 9/10 in 2.70s
+[INFO] [2025-10-20 22:41:21,625] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 10/10
+[INFO] [2025-10-20 22:41:21,635] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000000 (eval took 0.004s)
+[INFO] [2025-10-20 22:41:24,283] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=4, improvements=3, final_acq=0.000000
+[INFO] [2025-10-20 22:41:24,284] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.65s, acq_eval=2.58s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 22:41:24,284] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 10/10 in 2.66s
+[INFO] [2025-10-20 22:41:24,284] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Acquisition optimization completed in 24.44s (2.44s per search)
+[INFO] [2025-10-20 22:41:43,141] [BO_Optimizer] [BO] Acquisition optimization took 43.30s, got 5000 candidates
+[INFO] [2025-10-20 22:41:43,660] [BO_Optimizer] [BO] Checking 5000 candidates against 2903 history configs
+[INFO] [2025-10-20 22:41:43,660] [BO_Optimizer] [BO] Duplicate check took 0.52s, found=config
+[INFO] [2025-10-20 22:41:43,690] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from SMAC
+[INFO] [2025-10-20 22:41:43,691] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from MBO
+[INFO] [2025-10-20 22:41:43,691] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 22:41:43,691] [BO_Optimizer] [BO] GP model detected - will filter out synthetic observations for training
+[INFO] [2025-10-20 22:41:43,696] [BO_Optimizer] [BO] Filtered 492 real samples from 2912 total (excluded 2420 synthetic)
+[INFO] [2025-10-20 22:41:43,696] [BO_Optimizer] [BO] Convert configs to array: 0.00s, X.shape=(492, 197)
+[INFO] [2025-10-20 22:41:43,697] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(492, 1)
+[INFO] [2025-10-20 22:41:43,697] [BO_Optimizer] [BO] Starting surrogate model training (type=gp, samples=492)
+[WARNING] [2025-10-20 23:11:40,301] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:40,308] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:40,673] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:40,963] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:42,285] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:45,816] [HistoryContainer] Repeated configuration detected!
+[WARNING] [2025-10-20 23:11:56,696] [HistoryContainer] Repeated configuration detected!
+[INFO] [2025-10-20 23:11:58,042] [DBTune-oltpbench_tatp_ensemble] Load 123 iterations from repo/history_oltpbench_tatp_ensemble.json (492 non-synthetic configs, 2892 total configs)
+[INFO] [2025-10-20 23:11:59,376] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 23:12:00,709] [BO_Optimizer] === [BO auto selection] === acq_type: ei.
+[INFO] [2025-10-20 23:12:07,778] [DDPG_Optimizer] Load state mean and var.
+[INFO] [2025-10-20 23:12:08,604] [DDPG] Finish Initializing Networks
+[INFO] [2025-10-20 23:12:08,605] [DDPG] DDPG Initialzed!
+[INFO] [2025-10-20 23:12:56,588] [DDPG_Optimizer] New Episode-1, initialize
+[INFO] [2025-10-20 23:12:56,770] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_5
+[INFO] [2025-10-20 23:12:56,945] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_10
+[INFO] [2025-10-20 23:12:57,127] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_15
+[INFO] [2025-10-20 23:13:02,427] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_20
+[INFO] [2025-10-20 23:13:07,229] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_25
+[INFO] [2025-10-20 23:13:12,395] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_30
+[INFO] [2025-10-20 23:13:18,031] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_35
+[INFO] [2025-10-20 23:13:22,732] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_40
+[INFO] [2025-10-20 23:13:27,625] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_45
+[INFO] [2025-10-20 23:13:29,649] [DDPG_Optimizer] New Episode-2, initialize
+[INFO] [2025-10-20 23:13:31,697] [DDPG_Optimizer] New Episode-3, initialize
+[INFO] [2025-10-20 23:13:32,908] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_50
+[INFO] [2025-10-20 23:13:37,852] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_55
+[INFO] [2025-10-20 23:13:43,018] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_60
+[INFO] [2025-10-20 23:13:47,697] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_65
+[INFO] [2025-10-20 23:13:52,906] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_70
+[INFO] [2025-10-20 23:13:58,194] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_75
+[INFO] [2025-10-20 23:14:03,354] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_80
+[INFO] [2025-10-20 23:14:08,347] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_85
+[INFO] [2025-10-20 23:14:13,819] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_90
+[INFO] [2025-10-20 23:14:18,527] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_95
+[INFO] [2025-10-20 23:14:23,608] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_100
+[INFO] [2025-10-20 23:14:28,255] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_105
+[INFO] [2025-10-20 23:14:32,949] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_110
+[INFO] [2025-10-20 23:14:37,830] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_115
+[INFO] [2025-10-20 23:14:42,778] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_120
+[INFO] [2025-10-20 23:14:47,868] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_125
+[INFO] [2025-10-20 23:14:53,050] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_130
+[INFO] [2025-10-20 23:14:57,750] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_135
+[INFO] [2025-10-20 23:15:02,178] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_140
+[INFO] [2025-10-20 23:15:07,152] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_145
+[INFO] [2025-10-20 23:15:10,920] [DDPG_Optimizer] New Episode-4, initialize
+[INFO] [2025-10-20 23:15:11,973] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_150
+[INFO] [2025-10-20 23:15:17,381] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_155
+[INFO] [2025-10-20 23:15:22,178] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_160
+[INFO] [2025-10-20 23:15:27,523] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_165
+[INFO] [2025-10-20 23:15:32,062] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_170
+[INFO] [2025-10-20 23:15:37,450] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_175
+[INFO] [2025-10-20 23:15:42,281] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_180
+[INFO] [2025-10-20 23:15:46,926] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_185
+[INFO] [2025-10-20 23:15:51,812] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_190
+[INFO] [2025-10-20 23:15:56,266] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_195
+[INFO] [2025-10-20 23:16:01,603] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_200
+[INFO] [2025-10-20 23:16:06,463] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_205
+[INFO] [2025-10-20 23:16:13,097] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_210
+[INFO] [2025-10-20 23:16:21,894] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_215
+[INFO] [2025-10-20 23:16:30,028] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_220
+[INFO] [2025-10-20 23:16:35,370] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_225
+[INFO] [2025-10-20 23:16:40,084] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_230
+[INFO] [2025-10-20 23:16:45,304] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_235
+[INFO] [2025-10-20 23:16:50,307] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_240
+[INFO] [2025-10-20 23:16:55,713] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_245
+[INFO] [2025-10-20 23:17:00,066] [DDPG_Optimizer] New Episode-5, initialize
+[INFO] [2025-10-20 23:17:01,165] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_250
+[INFO] [2025-10-20 23:17:06,072] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_255
+[INFO] [2025-10-20 23:17:10,950] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_260
+[INFO] [2025-10-20 23:17:16,101] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_265
+[INFO] [2025-10-20 23:17:20,972] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_270
+[INFO] [2025-10-20 23:17:26,599] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_275
+[INFO] [2025-10-20 23:17:32,449] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_280
+[INFO] [2025-10-20 23:17:37,074] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_285
+[INFO] [2025-10-20 23:17:43,013] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_290
+[INFO] [2025-10-20 23:17:48,499] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_295
+[INFO] [2025-10-20 23:17:54,075] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_300
+[INFO] [2025-10-20 23:17:59,660] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_305
+[INFO] [2025-10-20 23:18:04,540] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_310
+[INFO] [2025-10-20 23:18:09,458] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_315
+[INFO] [2025-10-20 23:18:16,128] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_320
+[INFO] [2025-10-20 23:18:24,028] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_325
+[INFO] [2025-10-20 23:18:28,811] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_330
+[INFO] [2025-10-20 23:18:34,283] [DDPG_Optimizer] Save model_params to oltpbench_tatp_ensemble_335
+[INFO] [2025-10-20 23:18:39,558] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Added 20 synthetic observations to history
+[INFO] [2025-10-20 23:18:39,559] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total synthetic observations in history: 2420
+[INFO] [2025-10-20 23:18:39,559] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Total configs in history.data (for incumbent tracking): 335
+[INFO] [2025-10-20 23:18:39,615] [DBTune-oltpbench_tatp_ensemble] [Augmentation] Verify synthetics excluded from acquisition: 335 configs available
+[INFO] [2025-10-20 23:18:39,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestions from 4 optimizers
+[INFO] [2025-10-20 23:18:39,615] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from SMAC
+[INFO] [2025-10-20 23:18:39,616] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 23:18:39,616] [BO_Optimizer] [BO] Non-GP model (prf) - will use all observations including synthetic
+[INFO] [2025-10-20 23:18:39,633] [BO_Optimizer] [BO] Using all 2912 samples (real + synthetic)
+[INFO] [2025-10-20 23:18:39,633] [BO_Optimizer] [BO] Convert configs to array: 0.02s, X.shape=(2912, 197)
+[INFO] [2025-10-20 23:18:39,634] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(2912, 1)
+[INFO] [2025-10-20 23:18:39,634] [BO_Optimizer] [BO] Starting surrogate model training (type=prf, samples=2912)
+[INFO] [2025-10-20 23:18:41,038] [BO_Optimizer] [BO] Surrogate model training completed in 1.40s
+[INFO] [2025-10-20 23:18:41,038] [BO_Optimizer] [BO] get_surrogate took 1.42s, X shape: (2912, 197)
+[INFO] [2025-10-20 23:18:41,039] [BO_Optimizer] [BO] alter_model took 0.00s
+[INFO] [2025-10-20 23:18:41,039] [BO_Optimizer] [BO] Updating acquisition function, incumbent value: -22061.517766964298
+[INFO] [2025-10-20 23:18:41,039] [BO_Optimizer] [BO] Acquisition function update took 0.00s
+[INFO] [2025-10-20 23:18:41,050] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting acquisition optimization: 10 local searches, max_steps=50, neighbor_cap=150
+[INFO] [2025-10-20 23:18:41,050] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] History contains 2912 configs: 492 real, 2420 synthetic
+[INFO] [2025-10-20 23:18:41,108] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] get_all_configs() returned 335 configs (should be 492 real only)
+[INFO] [2025-10-20 23:18:41,269] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Real evals: total=492, successful=342, failed=150, duplicates=0, data_size=335
+[INFO] [2025-10-20 23:18:41,269] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Excluded real configs (index -> reason): 4->failed, 5->failed, 8->failed, 9->failed, 35->failed, 59->failed, 80->failed, 104->failed, 128->failed, 176->failed
+[INFO] [2025-10-20 23:18:41,270] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 1/10
+[INFO] [2025-10-20 23:18:41,281] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=1.010676 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:42,138] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=14.507785, impr=4, plateau=0, neighbors=138, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=0.9s
+[INFO] [2025-10-20 23:18:43,079] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=5, improvements=4, final_acq=14.507785
+[INFO] [2025-10-20 23:18:43,079] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.80s, acq_eval=1.74s (96.8%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:43,079] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 1/10 in 1.81s
+[INFO] [2025-10-20 23:18:43,080] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 2/10
+[INFO] [2025-10-20 23:18:43,090] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.009744 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:44,986] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=0.595770
+[INFO] [2025-10-20 23:18:44,986] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=1.90s, acq_eval=1.84s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:44,986] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 2/10 in 1.91s
+[INFO] [2025-10-20 23:18:44,986] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 3/10
+[INFO] [2025-10-20 23:18:44,997] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.145087 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:47,069] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=1.088728
+[INFO] [2025-10-20 23:18:47,070] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.08s, acq_eval=2.02s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:47,070] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 3/10 in 2.08s
+[INFO] [2025-10-20 23:18:47,070] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 4/10
+[INFO] [2025-10-20 23:18:47,081] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.004616 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:48,018] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=0.004616
+[INFO] [2025-10-20 23:18:48,018] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=0.94s, acq_eval=0.91s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:48,018] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 4/10 in 0.95s
+[INFO] [2025-10-20 23:18:48,018] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 5/10
+[INFO] [2025-10-20 23:18:48,029] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.004694 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:48,492] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=0.583919, impr=4, plateau=0, neighbors=72, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=0.5s
+[INFO] [2025-10-20 23:18:51,165] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=8, improvements=7, final_acq=5.352957
+[INFO] [2025-10-20 23:18:51,165] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=3.14s, acq_eval=3.05s (97.0%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:51,165] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 5/10 in 3.15s
+[INFO] [2025-10-20 23:18:51,166] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 6/10
+[INFO] [2025-10-20 23:18:51,176] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.358573 (eval took 0.005s)
+[INFO] [2025-10-20 23:18:52,519] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=34.249076, impr=4, plateau=0, neighbors=217, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.3s
+[INFO] [2025-10-20 23:18:54,274] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=40.157037
+[INFO] [2025-10-20 23:18:54,274] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=3.10s, acq_eval=3.02s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:54,274] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 6/10 in 3.11s
+[INFO] [2025-10-20 23:18:54,275] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 7/10
+[INFO] [2025-10-20 23:18:54,285] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=1.192774 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:56,411] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=3, improvements=2, final_acq=3.662523
+[INFO] [2025-10-20 23:18:56,412] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=2.13s, acq_eval=2.07s (97.2%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:56,412] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 7/10 in 2.14s
+[INFO] [2025-10-20 23:18:56,412] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 8/10
+[INFO] [2025-10-20 23:18:56,423] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.019480 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:57,348] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=0.019480
+[INFO] [2025-10-20 23:18:57,348] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=0.93s, acq_eval=0.90s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:18:57,348] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 8/10 in 0.94s
+[INFO] [2025-10-20 23:18:57,348] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 9/10
+[INFO] [2025-10-20 23:18:57,359] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.018697 (eval took 0.004s)
+[INFO] [2025-10-20 23:18:58,745] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Step 5/50: acq=4.355622, impr=4, plateau=0, neighbors=223, avg_acq=0.006s, avg_neighgen=0.000s, elapsed=1.4s
+[INFO] [2025-10-20 23:19:00,500] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=6, improvements=5, final_acq=11.706870
+[INFO] [2025-10-20 23:19:00,500] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=3.15s, acq_eval=3.05s (97.1%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:19:00,501] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 9/10 in 3.15s
+[INFO] [2025-10-20 23:19:00,501] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search 10/10
+[INFO] [2025-10-20 23:19:00,511] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Starting local search from init_acq=0.000000 (eval took 0.005s)
+[INFO] [2025-10-20 23:19:01,440] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Local search completed: steps=1, improvements=0, final_acq=0.000000
+[INFO] [2025-10-20 23:19:01,440] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Time breakdown: total=0.93s, acq_eval=0.90s (96.9%), neighbor_gen=0.00s (0.0%), avg_per_acq=0.006s, avg_per_neighgen=0.000s
+[INFO] [2025-10-20 23:19:01,441] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Completed local search 10/10 in 0.94s
+[INFO] [2025-10-20 23:19:01,441] [autotune.optimizer.acq_maximizer.ei_optimization.LocalSearch] [AcqOpt] Acquisition optimization completed in 20.40s (2.04s per search)
+[INFO] [2025-10-20 23:19:21,115] [BO_Optimizer] [BO] Acquisition optimization took 40.08s, got 5000 candidates
+[INFO] [2025-10-20 23:19:21,638] [BO_Optimizer] [BO] Checking 5000 candidates against 2903 history configs
+[INFO] [2025-10-20 23:19:21,638] [BO_Optimizer] [BO] Duplicate check took 0.52s, found=config
+[INFO] [2025-10-20 23:19:21,680] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Got suggestion from SMAC
+[INFO] [2025-10-20 23:19:21,681] [DBTune-oltpbench_tatp_ensemble] [Ensemble] Getting suggestion from MBO
+[INFO] [2025-10-20 23:19:21,681] [BO_Optimizer] [BO] get_suggestion called: 2912 configs evaluated, 362 successful
+[INFO] [2025-10-20 23:19:21,681] [BO_Optimizer] [BO] GP model detected - will filter out synthetic observations for training
+[INFO] [2025-10-20 23:19:21,686] [BO_Optimizer] [BO] Filtered 492 real samples from 2912 total (excluded 2420 synthetic)
+[INFO] [2025-10-20 23:19:21,686] [BO_Optimizer] [BO] Convert configs to array: 0.00s, X.shape=(492, 197)
+[INFO] [2025-10-20 23:19:21,687] [BO_Optimizer] [BO] Transform perfs: 0.00s, Y.shape=(492, 1)
+[INFO] [2025-10-20 23:19:21,687] [BO_Optimizer] [BO] Starting surrogate model training (type=gp, samples=492)

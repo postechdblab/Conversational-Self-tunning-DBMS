@@ -631,14 +631,38 @@ class PipleLine(BOBase):
             self.logger.info(f"[Ensemble] Best result from {optimizer_names[best_idx]} with objective value {best_obj_value}")
             
             # Update history: best observation as real, others as synthetic
+            # Create new observations with synthetic flag set appropriately
+            from autotune.utils.history_container import Observation
             for idx, observation in enumerate(observations):
                 is_synthetic = (idx != best_idx)  # Only best is real (not synthetic)
                 obj_str = f"{observation.objs[0]}" if self.num_objs == 1 else f"{observation.objs}"
+                
+                # Create new observation with synthetic flag in info
+                synthetic_info = observation.info.copy() if isinstance(observation.info, dict) else {}
+                synthetic_info['synthetic'] = is_synthetic
+                synthetic_info['optimizer_name'] = optimizer_names[idx]
+                
+                synthetic_observation = Observation(
+                    config=observation.config,
+                    trial_state=observation.trial_state,
+                    constraints=observation.constraints,
+                    objs=observation.objs,
+                    elapsed_time=observation.elapsed_time,
+                    iter_time=observation.iter_time,
+                    EM=observation.EM,
+                    IM=observation.IM,
+                    resource=observation.resource,
+                    info=synthetic_info,
+                    context=observation.context
+                )
+                
                 if is_synthetic:
                     self.logger.info(f"[Ensemble] Adding {optimizer_names[idx]} result as SYNTHETIC (obj={obj_str})")
                 else:
                     self.logger.info(f"[Ensemble] Adding {optimizer_names[idx]} result as REAL (obj={obj_str})")
-                self.history_container.update_observation(observation, is_synthetic=is_synthetic)
+                
+                # Update with the modified observation that has synthetic info embedded
+                self.history_container.update_observation(synthetic_observation, is_synthetic=is_synthetic)
             
             self.logger.info("[Ensemble] All 4 evaluations completed and added to history")
             return results
@@ -715,13 +739,36 @@ class PipleLine(BOBase):
             non_synthetic_count = sum(1 for flag in self.history_container.synthetic_flags if not flag)
             if self.ensemble_mode:
                 # In ensemble mode, each iteration evaluates 4 configs
+                # But we need to account for the fact that some may be marked as synthetic
                 self.iteration_id = non_synthetic_count // 4
+                # Also ensure we have the right number of total configs for ensemble mode
+                total_configs = len(self.history_container.configurations)
+                if total_configs > 0:
+                    # Check if we have ensemble data by looking for optimizer_name in info
+                    ensemble_configs = 0
+                    for i, config in enumerate(self.history_container.configurations):
+                        if i < len(self.history_container.synthetic_flags):
+                            # Check if this config has optimizer info (indicating ensemble mode)
+                            if hasattr(self, 'history_container') and i < len(self.history_container.external_metrics):
+                                # Look for optimizer_name in the info or synthetic flag
+                                if (i < len(self.history_container.synthetic_flags) and 
+                                    self.history_container.synthetic_flags[i] is not None):
+                                    ensemble_configs += 1
+                    
+                    # If we have ensemble data, adjust iteration_id accordingly
+                    if ensemble_configs > 0:
+                        self.logger.info(f"[Ensemble] Resuming with {total_configs} total configs, {non_synthetic_count} non-synthetic")
+                        self.logger.info(f"[Ensemble] Ensemble configs detected: {ensemble_configs}")
             else:
                 self.iteration_id = non_synthetic_count
             if self.space_transfer:
                 self.space_step = self.space_step_limit
-            self.logger.info('Load {} iterations from {} ({} non-synthetic configs, {} total configs)'.format(
-                self.iteration_id, fn, non_synthetic_count, len(self.history_container.configurations)))
+        self.logger.info('Load {} iterations from {} ({} non-synthetic configs, {} total configs)'.format(
+            self.iteration_id, fn, non_synthetic_count, len(self.history_container.configurations)))
+        
+        # If in ensemble mode and we have loaded history, ensure synthetic flags are properly set
+        if self.ensemble_mode and len(self.history_container.configurations) > 0:
+            self._ensure_ensemble_synthetic_flags()
         #2024-11-11: code for experiment
         # fn = os.path.join('repo', 'history_%s_ground_truth2.json' % self.task_id)
         # if not os.path.exists(fn):
@@ -730,6 +777,56 @@ class PipleLine(BOBase):
         #     self.history_container2.load_history_from_json(fn)
         #2024-11-11: code for experiment
 
+    def _ensure_ensemble_synthetic_flags(self):
+        """
+        Ensure that synthetic flags are properly set for ensemble mode when loading from saved history.
+        This method retroactively marks non-best optimizer results as synthetic based on their performance.
+        """
+        if not self.ensemble_mode:
+            return
+            
+        # Group observations by iteration (assuming 4 configs per iteration in ensemble mode)
+        total_configs = len(self.history_container.configurations)
+        if total_configs < 4:
+            return  # Not enough configs for ensemble mode
+            
+        # Process in groups of 4 (ensemble iterations)
+        for iteration_start in range(0, total_configs, 4):
+            iteration_end = min(iteration_start + 4, total_configs)
+            if iteration_end - iteration_start != 4:
+                break  # Incomplete iteration, skip
+                
+            # Get the 4 observations for this iteration
+            iteration_observations = []
+            for i in range(iteration_start, iteration_end):
+                if i < len(self.history_container.perfs):
+                    iteration_observations.append({
+                        'index': i,
+                        'perf': self.history_container.perfs[i],
+                        'synthetic_flag': self.history_container.synthetic_flags[i] if i < len(self.history_container.synthetic_flags) else False,
+                        'trial_state': self.history_container.trial_states[i] if i < len(self.history_container.trial_states) else None
+                    })
+            
+            if len(iteration_observations) != 4:
+                continue
+                
+            # Find the best (non-synthetic) observation
+            valid_observations = [obs for obs in iteration_observations if obs['trial_state'] == 0]  # SUCCESS = 0
+            if not valid_observations:
+                continue
+                
+            best_obs = min(valid_observations, key=lambda x: x['perf'])
+            
+            # Mark all others as synthetic if they aren't already
+            for obs in iteration_observations:
+                if obs['index'] != best_obs['index']:
+                    # Mark as synthetic if not already marked
+                    if not obs['synthetic_flag']:
+                        success = self.history_container.update_synthetic_flag(obs['index'], True)
+                        if success:
+                            self.logger.info(f"[Ensemble] Retroactively marked observation {obs['index']} as synthetic (perf={obs['perf']})")
+        
+        self.logger.info(f"[Ensemble] Completed synthetic flag verification for {total_configs} observations")
 
     def reset_context(self, context):
         self.current_context = context

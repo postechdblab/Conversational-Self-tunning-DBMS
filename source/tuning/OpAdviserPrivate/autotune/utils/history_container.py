@@ -179,9 +179,10 @@ class HistoryContainer(object):
                     self.successful_perfs.append(objs[0])
                 else:
                     self.successful_perfs.append(objs)
-                self.perc = np.percentile(self.successful_perfs, self.scale_perc, axis=0)
-                self.min_y = np.min(self.successful_perfs, axis=0).tolist()
-                self.max_y = np.max(self.successful_perfs, axis=0).tolist()
+                if len(self.successful_perfs) > 1:  # Only update if we have more than one perf
+                    self.perc = np.percentile(self.successful_perfs, self.scale_perc, axis=0)
+                    self.min_y = np.min(self.successful_perfs, axis=0).tolist()
+                    self.max_y = np.max(self.successful_perfs, axis=0).tolist()
         elif trial_state == SUCCESS and all(perf < MAXINT for perf in objs):
             if self.num_constraints > 0 and constraints is None:
                 self.logger.error('Constraint is None in a SUCCESS trial!')
@@ -715,6 +716,18 @@ class HistoryContainer(object):
             return self.get_transformed_perfs()[0]
         else:
             return  sum(default_list)/len(default_list)
+
+    def update_synthetic_flag(self, index, is_synthetic):
+        """
+        Update the synthetic flag for a specific observation index.
+        This is useful for retroactively marking observations as synthetic.
+        """
+        if 0 <= index < len(self.synthetic_flags):
+            old_flag = self.synthetic_flags[index]
+            self.synthetic_flags[index] = is_synthetic
+            self.logger.info(f"Updated synthetic flag for observation {index}: {old_flag} -> {is_synthetic}")
+            return True
+        return False
 
     def get_promising_space(self, quantile_threshold=0, respect=False):
         y = - self.get_transformed_perfs()
