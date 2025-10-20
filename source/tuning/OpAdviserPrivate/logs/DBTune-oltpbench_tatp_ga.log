@@ -4533,3 +4533,4 @@ Exception: Apply knobs failed!
 [INFO] [2025-10-16 19:09:32,311] [autotune] internal metrics: [683531, 4848645, 7534187008, 6089892352, 301, 459922, 322902, 7540293632, 0, 460223, 0, 1290942, 18091, 1769256, 448260, 11649, 0, 22704291, 28991029248, 0, 5081640, 14709, 23838, 529582, 29, 0, 0, 0, 0, 0, 0, 0, 1, 862808, 0, 0, 16384, 0, 4109, 498, 0, 18302, 0, 0, 187672, 0, 0, 0, 0, 0, 0, 0, 0, 254270464, 0, 499788, 604940, 1221, 459919, 825838, 803540992, 366, 0, 0, 0].
 [INFO] [2025-10-16 19:09:32,313] [DBTune-oltpbench_tatp_ga] [Evaluate] Benchmark completed in 254.44s, trial_state=0, objs=[-17062.537277427033]
 [INFO] [2025-10-16 19:09:32,323] [DBTune-oltpbench_tatp_ga] Iteration 200, objective value: [-17062.537277427033].
+[INFO] [2025-10-19 22:35:22,875] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json
