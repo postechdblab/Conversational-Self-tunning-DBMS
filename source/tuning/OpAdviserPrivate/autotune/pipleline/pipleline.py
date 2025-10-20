@@ -604,17 +604,43 @@ class PipleLine(BOBase):
                 self.logger.info(f"[Ensemble] Got suggestion from {optimizer_name}")
                 configs.append(config)
             
-            # Evaluate all 4 configurations
+            # Evaluate all 4 configurations (without updating history yet)
             self.logger.info("[Ensemble] Starting evaluation of 4 configurations")
             results = []
+            observations = []
             for idx, config in enumerate(configs):
                 optimizer_name = ['SMAC', 'MBO', 'DDPG', 'GA'][idx]
                 self.logger.info(f"[Ensemble] Evaluating configuration {idx+1}/4 from {optimizer_name}")
-                _, trial_state, constraints, objs, latL = self.evaluate(config)
-                self.logger.info(f"[Ensemble] Completed evaluation {idx+1}/4 from {optimizer_name}")
+                _, trial_state, constraints, objs, latL, observation = self.evaluate(config, update_history=False)
+                self.logger.info(f"[Ensemble] Completed evaluation {idx+1}/4 from {optimizer_name}, objs={objs}")
                 results.append((config, trial_state, constraints, objs, latL))
+                observations.append(observation)
             
-            self.logger.info("[Ensemble] All 4 evaluations completed")
+            # Find the best result (minimum objective value)
+            # For single objective: use the only objective
+            # For multi-objective: use the first objective as primary for selection
+            best_idx = 0
+            best_obj_value = observations[0].objs[0]
+            for idx in range(1, len(observations)):
+                current_obj_value = observations[idx].objs[0]
+                if current_obj_value < best_obj_value:
+                    best_obj_value = current_obj_value
+                    best_idx = idx
+            
+            optimizer_names = ['SMAC', 'MBO', 'DDPG', 'GA']
+            self.logger.info(f"[Ensemble] Best result from {optimizer_names[best_idx]} with objective value {best_obj_value}")
+            
+            # Update history: best observation as real, others as synthetic
+            for idx, observation in enumerate(observations):
+                is_synthetic = (idx != best_idx)  # Only best is real (not synthetic)
+                obj_str = f"{observation.objs[0]}" if self.num_objs == 1 else f"{observation.objs}"
+                if is_synthetic:
+                    self.logger.info(f"[Ensemble] Adding {optimizer_names[idx]} result as SYNTHETIC (obj={obj_str})")
+                else:
+                    self.logger.info(f"[Ensemble] Adding {optimizer_names[idx]} result as REAL (obj={obj_str})")
+                self.history_container.update_observation(observation, is_synthetic=is_synthetic)
+            
+            self.logger.info("[Ensemble] All 4 evaluations completed and added to history")
             return results
         
         #get configuration suggestion
@@ -654,7 +680,7 @@ class PipleLine(BOBase):
                                                 ,transformer=self.transformer,
                                                 #2024-12-06 softmax transformer
                                                 )
-        _, trial_state, constraints, objs,latL = self.evaluate(config)
+        _, trial_state, constraints, objs, latL, _ = self.evaluate(config)
         #2024-11-11: code for experiment
         # _, trial_state, constraints, objs,_, trial_state2, constraints2, objs2 = self.evaluate(config,config2)
         #2024-11-11: code for experiment
@@ -711,7 +737,7 @@ class PipleLine(BOBase):
         if self.optimizer.surrogate_model:
             self.optimizer.surrogate_model.current_context =  context
 
-    def evaluate(self, config
+    def evaluate(self, config, update_history=True
         #2024-11-11: code for experiment
         # ,config2,
         #2024-11-11: code for experiment   
@@ -737,7 +763,10 @@ class PipleLine(BOBase):
             config=config, objs=objs, constraints=constraints,
             trial_state=trial_state, elapsed_time=elapsed_time, iter_time=iter_time, EM=em, resource=resource, IM=im, info=info, context=self.current_context
         )
-        self.history_container.update_observation(observation)
+        
+        # Only update history immediately if requested (default True for backward compatibility)
+        if update_history:
+            self.history_container.update_observation(observation)
         #2024-11-11: code for experiment   
         # iter_time2 = time.time() - self.iter_begin_time
         # objs2, constraints2, em2, resource2, im2, info2, trial_state2 = self.objective_function(config2)
@@ -775,7 +804,7 @@ class PipleLine(BOBase):
                 #self.logger.info('Iteration %d, objective value: %s ,improvement,: :.2%' % (self.iteration_id, objs, (objs-self.default_obj))/self.default_obj)
                 self.logger.info('Iteration %d, objective value: %s.' % (self.iteration_id, objs))
         
-        return config, trial_state, constraints, objs,latL
+        return config, trial_state, constraints, objs, latL, observation
         #2024-11-11: code for experiment   
         # return config, trial_state, constraints, objs,config2, trial_state2, constraints2, objs2
         #2024-11-11: code for experiment   
