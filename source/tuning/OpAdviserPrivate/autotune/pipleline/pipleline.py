@@ -450,6 +450,7 @@ class PipleLine(BOBase):
                 # Debug logging for ensemble mode
                 total_evals = len(self.history_container.configurations)
                 # Ensemble mode evaluates 4 configs per iteration from the start
+                # Note: This doesn't account for augmented synthetic observations
                 expected_evals = self.iteration_id * 4
                 self.logger.info(f"[Ensemble] Total evaluations: {total_evals}, Expected: {expected_evals}, Iteration: {self.iteration_id}")
                 
@@ -745,10 +746,8 @@ class PipleLine(BOBase):
             self.history_container.load_history_from_json(fn)
             # Count only non-synthetic configurations for resume (augment_history creates synthetic ones)
             non_synthetic_count = sum(1 for flag in self.history_container.synthetic_flags if not flag)
+            self.iteration_id = non_synthetic_count
             if self.ensemble_mode:
-                # In ensemble mode, each iteration evaluates 4 configs
-                # But we need to account for the fact that some may be marked as synthetic
-                self.iteration_id = non_synthetic_count // 4
                 # Also ensure we have the right number of total configs for ensemble mode
                 total_configs = len(self.history_container.configurations)
                 if total_configs > 0:
@@ -767,8 +766,6 @@ class PipleLine(BOBase):
                     if ensemble_configs > 0:
                         self.logger.info(f"[Ensemble] Resuming with {total_configs} total configs, {non_synthetic_count} non-synthetic")
                         self.logger.info(f"[Ensemble] Ensemble configs detected: {ensemble_configs}")
-            else:
-                self.iteration_id = non_synthetic_count
             if self.space_transfer:
                 self.space_step = self.space_step_limit
         self.logger.info('Load {} iterations from {} ({} non-synthetic configs, {} total configs)'.format(
