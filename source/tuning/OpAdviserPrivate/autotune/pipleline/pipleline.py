@@ -341,7 +341,8 @@ class PipleLine(BOBase):
         #2024-11-11: code for experiment
         # compact_space2=  None
         #2024-11-11: code for experiment
-        for _ in tqdm(range(self.iteration_id, self.max_iterations)):
+        pbar = tqdm(range(self.iteration_id, self.max_iterations))
+        for _ in pbar:
             if self.budget_left < 0:
                 self.logger.info('Time %f elapsed!' % self.runtime_limit)
                 break
@@ -477,6 +478,12 @@ class PipleLine(BOBase):
             # recode the step in the space
             if self.space_transfer or self.auto_optimizer or self.ensemble_mode:
                 self.space_step += 1
+        # Ensure progress bar is properly closed
+        pbar.close()
+        # Force flush stdout to ensure all output is written
+        import sys
+        sys.stdout.flush()
+        sys.stderr.flush()
 
         return self.get_history()
 

@@ -97,4 +97,10 @@ if __name__ == '__main__':
     #code for error case analysis
     # tuner.f()
     #code for error case analysis
+    
+    # Ensure clean exit
+    import sys
+    sys.stdout.flush()
+    sys.stderr.flush()
+    print("Experiment completed successfully")
 
