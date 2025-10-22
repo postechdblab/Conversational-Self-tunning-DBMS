@@ -156,12 +156,51 @@ class DDPG_Optimizer:
 
     def gen_mean_var(self):
         r = list()
+        dimension_counts = {}
+        
+        # Count dimensions of all internal metrics
         for im in self.internal_metrics:
-            if len(im) == 65:
+            dim = len(im)
+            dimension_counts[dim] = dimension_counts.get(dim, 0) + 1
+            if dim == 65:
                 r.append(im)
-        r = np.array(r)
+        
+        # Log dimension statistics
+        self.logger.info(f"Internal metrics dimension distribution: {dimension_counts}")
+        
+        if len(r) == 0:
+            # If no 65-dim metrics found, use the most common dimension
+            if dimension_counts:
+                most_common_dim = max(dimension_counts, key=dimension_counts.get)
+                self.logger.warning(f"No 65-dimensional internal metrics found. Most common dimension is {most_common_dim}.")
+                
+                # Use metrics with the most common dimension
+                for im in self.internal_metrics:
+                    if len(im) == most_common_dim:
+                        r.append(im)
+                
+                if len(r) == 0:
+                    raise ValueError(f"No valid internal metrics found. Available dimensions: {list(dimension_counts.keys())}")
+            else:
+                raise ValueError("No internal metrics available for mean/variance calculation")
+        
+        # Convert to numpy array with explicit dtype to avoid ragged array warning
+        try:
+            r = np.array(r, dtype=np.float64)
+        except ValueError as e:
+            if "ragged nested sequences" in str(e):
+                # Handle ragged arrays by using object dtype
+                self.logger.warning("Converting ragged internal metrics array with dtype=object")
+                r = np.array(r, dtype=object)
+                # Convert each element to float array
+                r = np.array([np.array(x, dtype=np.float64) for x in r])
+            else:
+                raise e
+        
         self.state_mean = r.mean(axis=0)
         self.state_var = r.var(axis=0)
+        
+        self.logger.info(f"Calculated state mean and variance for {len(r)} samples with dimension {len(self.state_mean)}")
 
         if self.mean_var_file == '':
             self.mean_var_file = '{}_mean_var.pkl'.format(self.task_id)
@@ -193,6 +232,8 @@ class DDPG_Optimizer:
     def update(self, observation: Observation):
         if self.model is None:
             self.internal_metrics.append(observation.IM)
+            # Log dimension of new internal metrics
+            self.logger.debug(f"Added internal metrics with dimension {len(observation.IM)}")
             if len(self.internal_metrics) >= self.init_num:
                 self.gen_mean_var()
                 self.create_model()
@@ -201,6 +242,8 @@ class DDPG_Optimizer:
 
         if self.episode_init:
             self.state = observation.IM
+            # Log state dimension for debugging
+            self.logger.debug(f"Episode init - state dimension: {len(observation.IM)}")
             self.default_external_metrics = observation.objs[0]
             self.last_external_metrics = observation.objs[0]
 
@@ -213,6 +256,8 @@ class DDPG_Optimizer:
         reward = self.get_reward(observation.objs[0])
         self.last_external_metrics = observation.objs[0]
         next_state = observation.IM
+        # Log state dimension for debugging
+        self.logger.debug(f"Update - next_state dimension: {len(next_state)}")
         self.t += 1
         self.global_t += 1
 

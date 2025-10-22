@@ -10677,3 +10677,5 @@ Exception: Apply knobs failed!
 [INFO] [2025-10-20 13:28:42,041] [autotune] internal metrics: [1732772, 5226514, 8923632128, 9571966976, 3902, 544762, 520120, 8989310976, 2369486848, 548664, 144622, 106609, 7, 655280, 544669, 0, 0, 29259961, 10737418240, 0, 7006055, 0, 992433, 0, 23, 0, 0, 0, 0, 0, 0, 0, 1, 1023451, 0, 0, 16384, 0, 27859, 1183, 27, 5224, 0, 0, 416093, 0, 0, 0, 0, 0, 0, 0, 0, 333100032, 0, 686754, 733914, 687439, 544729, 1206953, 1050790912, 686814, 0, 0, 0].
 [INFO] [2025-10-20 13:28:42,043] [DBTune-oltpbench_voter_ga] [Evaluate] Benchmark completed in 280.74s, trial_state=0, objs=[-5568.7063473205]
 [INFO] [2025-10-20 13:28:42,057] [DBTune-oltpbench_voter_ga] Iteration 200, objective value: [-5568.7063473205].
+[INFO] [2025-10-22 03:59:16,162] [DBTune-oltpbench_voter_ga] Load 200 iterations from repo/history_oltpbench_voter_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-22 07:14:02,513] [DBTune-oltpbench_voter_ga] Load 200 iterations from repo/history_oltpbench_voter_ga.json (200 non-synthetic configs, 200 total configs)

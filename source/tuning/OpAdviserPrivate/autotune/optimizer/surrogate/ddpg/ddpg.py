@@ -58,6 +58,7 @@ class Normalizer(object):
             variance = np.array(variance)
         self.mean = mean
         self.std = np.sqrt(variance+0.00001)
+        self.expected_dim = len(self.mean)
 
     def normalize(self, x):
         if isinstance(x, list):
@@ -70,6 +71,13 @@ class Normalizer(object):
             # build a zero row matching mean's shape
             z = np.zeros_like(self.mean).reshape(1, -1)
             return Variable(torch.FloatTensor(z))
+        
+        # Validate input dimensions
+        if x.shape[1] != self.expected_dim:
+            raise ValueError(f"Input state dimension mismatch: expected {self.expected_dim} features, got {x.shape[1]}. "
+                           f"This usually indicates inconsistent internal metrics collection. "
+                           f"Expected shape: (batch, {self.expected_dim}), got: {x.shape}")
+        
         x = x - self.mean
         x = x / self.std
         return Variable(torch.FloatTensor(x))

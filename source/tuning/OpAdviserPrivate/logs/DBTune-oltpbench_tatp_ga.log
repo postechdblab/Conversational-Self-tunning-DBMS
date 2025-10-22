@@ -4537,3 +4537,6 @@ Exception: Apply knobs failed!
 [INFO] [2025-10-20 22:34:10,577] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
 [INFO] [2025-10-20 23:11:26,454] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
 [INFO] [2025-10-20 23:23:57,050] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-20 23:51:43,491] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-22 03:53:17,642] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-22 07:08:04,977] [DBTune-oltpbench_tatp_ga] Load 200 iterations from repo/history_oltpbench_tatp_ga.json (200 non-synthetic configs, 200 total configs)
