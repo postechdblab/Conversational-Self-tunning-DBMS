@@ -5930,3 +5930,7 @@ mysql.connector.errors.InterfaceError: 2002: Can't connect to local MySQL server
 [INFO] [2025-10-20 12:37:24,058] [autotune] internal metrics: [90826, 12647831, 32485904896, 42557171200, 35692, 1984831, 2505487, 30805999616, 12026773504, 1880249, 734056, 35931, 49749, 1965930, 1946963, 0, 0, 67056561, 32212254720, 0, 27132809, 990013, 990018, 1980034, 172, 59454, 0, 58142, 0, 0, 0, 57952, 44, 1113616, 0, 0, 16384, 0, 72818, 25489, 0, 133286, 0, 0, 703374, 0, 0, 0, 0, 0, 0, 1, 0, 7858688, 0, 2130, 3281936, 35841, 1984378, 2497807, 1594458112, 2191, 0, 0, 4511272].
 [INFO] [2025-10-20 12:37:24,059] [DBTune-sbwrite_ga] [Evaluate] Benchmark completed in 263.57s, trial_state=0, objs=[-4777.762222222222]
 [INFO] [2025-10-20 12:37:24,066] [DBTune-sbwrite_ga] Iteration 200, objective value: [-4777.762222222222].
+[INFO] [2025-10-21 23:44:09,897] [DBTune-sbwrite_ga] Load 200 iterations from repo/history_sbwrite_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-26 22:28:03,720] [DBTune-sbwrite_ga] Load 200 iterations from repo/history_sbwrite_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-27 22:28:50,158] [DBTune-sbwrite_ga] Load 200 iterations from repo/history_sbwrite_ga.json (200 non-synthetic configs, 200 total configs)
+[INFO] [2025-10-29 22:27:35,918] [DBTune-sbwrite_ga] Load 200 iterations from repo/history_sbwrite_ga.json (200 non-synthetic configs, 200 total configs)
