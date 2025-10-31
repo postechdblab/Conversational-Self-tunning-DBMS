@@ -1,7 +1,9 @@
 #!/bin/bash
 ################################################################################
 # Machine 2 Experiment Runner
-# Workloads: tatp, voter, tpch, job (both single and ensemble modes)
+# Workloads: tatp, voter, tpch, job
+# Configs per workload: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA
+# Total: 4 workloads × 7 configs = 28 experiments
 ################################################################################
 
 # set -e  # Removed to allow experiments to continue even if one fails
@@ -64,74 +66,95 @@ log "=========================================="
 log "MACHINE 2 EXPERIMENT SUITE"
 log "=========================================="
 log "Workloads: tatp, voter, tpch, job"
-log "Modes: Single-optimizer + Ensemble"
-log "Total experiments: 8"
+log "Configs: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA"
+log "Total experiments: 28 (4 workloads × 7 configs each)"
 log "Start time: $(date)"
 log "=========================================="
 log ""
 
-# Experiment 1: TATP (Single Optimizer)
-if run_experiment "tatp.ini" "TATP (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TATP (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("TATP (Single-Optimizer)")
-fi
+exp_num=1
+
+# TATP experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "TATP WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "tatp_smac.ini" "Experiment $exp_num: TATP (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (SMAC)"); else FAILED_EXPERIMENTS+=("TATP (SMAC)"); fi
+((exp_num++))
+if run_experiment "tatp_ddpg.ini" "Experiment $exp_num: TATP (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (DDPG)"); else FAILED_EXPERIMENTS+=("TATP (DDPG)"); fi
+((exp_num++))
+if run_experiment "tatp_ga.ini" "Experiment $exp_num: TATP (GA)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (GA)"); else FAILED_EXPERIMENTS+=("TATP (GA)"); fi
+((exp_num++))
+if run_experiment "tatp_ensemble.ini" "Experiment $exp_num: TATP (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (Ensemble)"); else FAILED_EXPERIMENTS+=("TATP (Ensemble)"); fi
+((exp_num++))
+if run_experiment "tatp_augment_smac.ini" "Experiment $exp_num: TATP (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("TATP (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "tatp_augment_ddpg.ini" "Experiment $exp_num: TATP (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("TATP (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "tatp_augment_ga.ini" "Experiment $exp_num: TATP (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("TATP (Augment+GA)"); else FAILED_EXPERIMENTS+=("TATP (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 2: TATP (Ensemble)
-if run_experiment "tatp_ensemble.ini" "TATP (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TATP (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("TATP (Ensemble)")
-fi
+# Voter experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "VOTER WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "voter_smac.ini" "Experiment $exp_num: Voter (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (SMAC)"); else FAILED_EXPERIMENTS+=("Voter (SMAC)"); fi
+((exp_num++))
+if run_experiment "voter_ddpg.ini" "Experiment $exp_num: Voter (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (DDPG)"); else FAILED_EXPERIMENTS+=("Voter (DDPG)"); fi
+((exp_num++))
+if run_experiment "voter_ga.ini" "Experiment $exp_num: Voter (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (GA)"); else FAILED_EXPERIMENTS+=("Voter (GA)"); fi
+((exp_num++))
+if run_experiment "voter_ensemble.ini" "Experiment $exp_num: Voter (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (Ensemble)"); else FAILED_EXPERIMENTS+=("Voter (Ensemble)"); fi
+((exp_num++))
+if run_experiment "voter_augment_smac.ini" "Experiment $exp_num: Voter (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Voter (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "voter_augment_ddpg.ini" "Experiment $exp_num: Voter (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Voter (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "voter_augment_ga.ini" "Experiment $exp_num: Voter (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Voter (Augment+GA)"); else FAILED_EXPERIMENTS+=("Voter (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 3: Voter (Single Optimizer)
-if run_experiment "voter.ini" "Voter (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Voter (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("Voter (Single-Optimizer)")
-fi
+# TPC-H experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "TPC-H WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "tpch_smac.ini" "Experiment $exp_num: TPC-H (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (SMAC)"); else FAILED_EXPERIMENTS+=("TPC-H (SMAC)"); fi
+((exp_num++))
+if run_experiment "tpch_ddpg.ini" "Experiment $exp_num: TPC-H (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (DDPG)"); else FAILED_EXPERIMENTS+=("TPC-H (DDPG)"); fi
+((exp_num++))
+if run_experiment "tpch_ga.ini" "Experiment $exp_num: TPC-H (GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (GA)"); else FAILED_EXPERIMENTS+=("TPC-H (GA)"); fi
+((exp_num++))
+if run_experiment "tpch_ensemble.ini" "Experiment $exp_num: TPC-H (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (Ensemble)"); else FAILED_EXPERIMENTS+=("TPC-H (Ensemble)"); fi
+((exp_num++))
+if run_experiment "tpch_augment_smac.ini" "Experiment $exp_num: TPC-H (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("TPC-H (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "tpch_augment_ddpg.ini" "Experiment $exp_num: TPC-H (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("TPC-H (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "tpch_augment_ga.ini" "Experiment $exp_num: TPC-H (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-H (Augment+GA)"); else FAILED_EXPERIMENTS+=("TPC-H (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 4: Voter (Ensemble)
-if run_experiment "voter_ensemble.ini" "Voter (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Voter (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("Voter (Ensemble)")
-fi
-log ""
+# JOB experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "JOB WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-# Experiment 5: TPC-H (Single Optimizer)
-if run_experiment "tpch.ini" "TPC-H (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TPC-H (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("TPC-H (Single-Optimizer)")
-fi
-log ""
-
-# Experiment 6: TPC-H (Ensemble)
-if run_experiment "tpch_ensemble.ini" "TPC-H (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TPC-H (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("TPC-H (Ensemble)")
-fi
-log ""
-
-# Experiment 7: JOB (Single Optimizer)
-if run_experiment "job.ini" "JOB (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("JOB (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("JOB (Single-Optimizer)")
-fi
-log ""
-
-# Experiment 8: JOB (Ensemble)
-if run_experiment "job_ensemble.ini" "JOB (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("JOB (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("JOB (Ensemble)")
-fi
+if run_experiment "job_smac.ini" "Experiment $exp_num: JOB (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (SMAC)"); else FAILED_EXPERIMENTS+=("JOB (SMAC)"); fi
+((exp_num++))
+if run_experiment "job_ddpg.ini" "Experiment $exp_num: JOB (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (DDPG)"); else FAILED_EXPERIMENTS+=("JOB (DDPG)"); fi
+((exp_num++))
+if run_experiment "job_ga.ini" "Experiment $exp_num: JOB (GA)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (GA)"); else FAILED_EXPERIMENTS+=("JOB (GA)"); fi
+((exp_num++))
+if run_experiment "job_ensemble.ini" "Experiment $exp_num: JOB (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (Ensemble)"); else FAILED_EXPERIMENTS+=("JOB (Ensemble)"); fi
+((exp_num++))
+if run_experiment "job_augment_smac.ini" "Experiment $exp_num: JOB (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("JOB (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "job_augment_ddpg.ini" "Experiment $exp_num: JOB (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("JOB (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "job_augment_ga.ini" "Experiment $exp_num: JOB (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (Augment+GA)"); else FAILED_EXPERIMENTS+=("JOB (Augment+GA)"); fi
 log ""
 
 # Calculate total time
@@ -150,8 +173,8 @@ log "End time: $(date)"
 log "Total duration: ${TOTAL_HOURS}h ${TOTAL_MINUTES}m ${TOTAL_SECONDS}s"
 log ""
 log "Results:"
-log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/8"
-log "  Failed: ${#FAILED_EXPERIMENTS[@]}/8"
+log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/28"
+log "  Failed: ${#FAILED_EXPERIMENTS[@]}/28"
 log ""
 
 if [ ${#SUCCESSFUL_EXPERIMENTS[@]} -gt 0 ]; then
@@ -179,4 +202,3 @@ if [ ${#FAILED_EXPERIMENTS[@]} -eq 0 ]; then
 else
     exit 1
 fi
-

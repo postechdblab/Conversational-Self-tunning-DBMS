@@ -247,7 +247,9 @@ class PipleLine(BOBase):
                                                 task_id=task_id,
                                                 params=kwargs['params'],
                                                 batch_size=kwargs['batch_size'],
-                                                mean_var_file=kwargs['mean_var_file']
+                                                mean_var_file=kwargs['mean_var_file'],
+                                                augment_history=self.augment_history,
+                                                augment_samples=self.augment_samples
                                                 #2024-12-06 softmax transformer
                                                 ,transformer=transformer,
                                                 #2024-12-06 softmax transformer
@@ -1317,11 +1319,115 @@ class PipleLine(BOBase):
         if len(self.history_container.configurations) < self.init_num:
             return
         
-        # Get surrogate model from first optimizer (SMAC or current optimizer)
+        # If current optimizer is DDPG, augment its replay memory natively and return
+        try:
+            from autotune.optimizer.ddpg_optimizer import DDPG_Optimizer as _DDPG_OPT
+            if isinstance(self.optimizer, _DDPG_OPT):
+                try:
+                    self.optimizer.augment_replay_memory(self.augment_samples)
+                except Exception:
+                    pass
+                return
+        except Exception:
+            pass
+
+        # In ensemble mode, augment using every model
         if self.ensemble_mode:
-            surrogate = self.optimizer_list[0].surrogate_model
-        else:
-            surrogate = self.optimizer.surrogate_model
+            # Handle DDPG optimizers by augmenting their replay buffers
+            try:
+                from autotune.optimizer.ddpg_optimizer import DDPG_Optimizer as _DDPG_OPT
+            except Exception:
+                _DDPG_OPT = None
+
+            surrogate_list = []
+            for opt in self.optimizer_list:
+                try:
+                    if _DDPG_OPT is not None and isinstance(opt, _DDPG_OPT):
+                        try:
+                            opt.augment_replay_memory(self.augment_samples)
+                        except Exception:
+                            pass
+                        continue
+                except Exception:
+                    pass
+
+                if hasattr(opt, 'surrogate_model') and getattr(opt, 'surrogate_model') is not None:
+                    surrogate_list.append(opt.surrogate_model)
+
+            # If we have surrogate models, use all of them to predict and average their outputs
+            if len(surrogate_list) == 0:
+                return
+
+            from autotune.utils.config_space.util import convert_configurations_to_array
+            X = convert_configurations_to_array(self.history_container.configurations)
+            Y = self.history_container.get_transformed_perfs()
+
+            # Train all surrogates
+            trained_surrogates = []
+            for s in surrogate_list:
+                try:
+                    s.train(X, Y)
+                    trained_surrogates.append(s)
+                except Exception:
+                    continue
+
+            if len(trained_surrogates) == 0:
+                return
+
+            # Generate configs near good regions
+            incumbent_configs = [inc[0] for inc in self.history_container.get_incumbents()[:5]]
+            augmented_configs = []
+            for _ in range(self.augment_samples):
+                if len(incumbent_configs) > 0:
+                    base_config = incumbent_configs[np.random.randint(len(incumbent_configs))]
+                    config = self._perturb_config(base_config)
+                else:
+                    config = self.config_space.sample_configuration()
+                augmented_configs.append(config)
+
+            # Predict with all surrogates and average means
+            X_aug = convert_configurations_to_array(augmented_configs)
+            pred_means = []
+            for s in trained_surrogates:
+                try:
+                    m, _ = s.predict(X_aug)
+                    pred_means.append(m.reshape(-1, 1))
+                except Exception:
+                    continue
+
+            if len(pred_means) == 0:
+                return
+
+            # Average across models
+            Y_pred_mean = np.mean(np.hstack(pred_means), axis=1).reshape(-1, 1)
+
+            # Add synthetic observations once using averaged predictions
+            from autotune.utils.history_container import Observation
+            from autotune.utils.constants import SUCCESS
+            for i, config in enumerate(augmented_configs):
+                synthetic_obs = Observation(
+                    config=config,
+                    trial_state=SUCCESS,
+                    constraints=None,
+                    objs=[Y_pred_mean[i][0]],
+                    elapsed_time=0,
+                    iter_time=0,
+                    EM={},
+                    IM={},
+                    resource={},
+                    info=self.history_container.info,
+                    context=None
+                )
+                self.history_container.update_observation(synthetic_obs, is_synthetic=True)
+
+            synthetic_count = sum(1 for is_synthetic in self.history_container.synthetic_flags if is_synthetic)
+            self.logger.info(f"[Augmentation-Ensemble] Added {len(augmented_configs)} synthetic observations (avg of {len(trained_surrogates)} surrogates)")
+            self.logger.info(f"[Augmentation-Ensemble] Total synthetic observations in history: {synthetic_count}")
+            self.logger.info(f"[Augmentation-Ensemble] Total configs in history.data: {len(self.history_container.data)}")
+            return
+
+        # Non-ensemble: use current optimizer's surrogate
+        surrogate = self.optimizer.surrogate_model
         
         if surrogate is None:
             return

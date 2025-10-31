@@ -512,18 +512,28 @@ class DDPG(object):
         return loss.item(), policy_loss.item()
 
     def choose_action(self, x, coff=1):
-        """ Select Action according to the current state
-        Args:
-            x: np.array, current state
+        """Select an action according to the current state.
+        x: np.array state; coff scales OU noise.
         """
         self.actor.eval()
         act = self.actor(self.normalizer([x])).squeeze(0)
         self.actor.train()
         action = act.data.numpy()
-        # self.logger.info('Action before OUProcess: {}'.format(action))
         if self.ouprocess:
-            action += self.noise.noise()  * coff
+            action += self.noise.noise() * coff
         return action.clip(0, 1)
+
+    def predict_q_value(self, state, action):
+        """Predict Q(s,a) using the critic network without training side effects."""
+        try:
+            self.critic.eval()
+            s = self.normalizer([state])
+            a = DDPG.totensor([action.tolist() if hasattr(action, 'tolist') else list(action)])
+            q = self.critic(s, a)
+            q_val = float(q.detach().cpu().numpy().squeeze())
+        finally:
+            self.critic.train()
+        return q_val
 
     def sample_noise(self):
         self.actor.sample_noise()

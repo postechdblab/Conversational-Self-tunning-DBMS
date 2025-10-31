@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """
 Analyze experiment results from run_experiments_machine*.sh scripts.
-Compare single-optimizer mode vs ensemble mode performance.
+Compare performance across all optimizer variants (SMAC, DDPG, GA), ensemble, and augment modes.
 """
 
 import json
@@ -11,26 +11,38 @@ from pathlib import Path
 from collections import defaultdict
 
 # Define experiments run by each machine based on the runner scripts
-# Format: (display_name, single_task_id_pattern, ensemble_task_id_pattern)
+# Format: (display_name, workload_base)
 MACHINE_EXPERIMENTS = {
     'machine1': [
-        ('Twitter', 'oltpbench_twitter_ga', 'oltpbench_twitter_ensemble'),
-        ('TPC-C', 'oltpbench_tpcc_ga', 'oltpbench_tpcc_ensemble'),
-        ('YCSB', 'oltpbench_ycsb_ga', 'oltpbench_ycsb_ensemble'),
-        ('Wikipedia', 'oltpbench_wikipedia_ga', 'oltpbench_wikipedia_ensemble'),
+        ('Twitter', 'oltpbench_twitter'),
+        ('TPC-C', 'oltpbench_tpcc'),
+        ('YCSB', 'oltpbench_ycsb'),
+        ('Wikipedia', 'oltpbench_wikipedia'),
     ],
     'machine2': [
-        ('TATP', 'oltpbench_tatp_ga', 'oltpbench_tatp_ensemble'),
-        ('Voter', 'oltpbench_voter_ga', 'oltpbench_voter_ensemble'),
-        ('TPC-H', 'tpch_ga', 'tpch_ensemble'),
-        ('JOB', 'job_ga', 'job_ensemble'),
+        ('TATP', 'oltpbench_tatp'),
+        ('Voter', 'oltpbench_voter'),
+        ('TPC-H', 'tpch'),
+        ('JOB', 'job'),
     ],
     'machine3': [
-        ('Sysbench-RW', 'sbrw_ga', 'sbrw_ensemble'),
-        ('Sysbench-WO', 'sbwrite_ga', 'sbwrite_ensemble'),
-        ('Sysbench-RO', 'sbread_ga', 'sbread_ensemble'),
+        ('Sysbench-RW', 'sbrw'),
+        ('Sysbench-WO', 'sbwrite'),
+        ('Sysbench-RO', 'sbread'),
     ],
 }
+
+# Define all experiment types
+EXPERIMENT_TYPES = {
+    'single_smac': {'display': 'SMAC', 'pattern': '_smac'},
+    'single_ddpg': {'display': 'DDPG', 'pattern': '_ddpg'},
+    'single_ga': {'display': 'GA', 'pattern': '_ga'},
+    'ensemble': {'display': 'Ensemble', 'pattern': '_ensemble'},
+    'augment_smac': {'display': 'Augment+SMAC', 'pattern': '_augment_smac'},
+    'augment_ddpg': {'display': 'Augment+DDPG', 'pattern': '_augment_ddpg'},
+    'augment_ga': {'display': 'Augment+GA', 'pattern': '_augment_ga'},
+}
+
 
 def extract_max_tps(json_file_path):
     """
@@ -111,16 +123,16 @@ def main():
     project_root = script_dir.parent
     repo_dir = project_root / "repo"
     
-    print("=" * 100)
-    print("Machine Experiment Results Analysis: Single-Optimizer vs Ensemble Mode")
-    print("=" * 100)
+    print("=" * 150)
+    print("Machine Experiment Results Analysis: All Optimizers Comparison (SMAC, DDPG, GA, Ensemble, Augment)")
+    print("=" * 150)
     print()
     
     if not repo_dir.exists():
         print(f"Error: Repository directory '{repo_dir}' does not exist!")
         return
     
-    # Store results by machine
+    # Store results by machine and workload
     results_by_machine = defaultdict(list)
     
     # Process each machine
@@ -128,144 +140,195 @@ def main():
         if machine_num not in MACHINE_EXPERIMENTS:
             continue
         
-        for display_name, single_pattern, ensemble_pattern in MACHINE_EXPERIMENTS[machine_num]:
-            single_file = find_history_file(repo_dir, single_pattern)
-            ensemble_file = find_history_file(repo_dir, ensemble_pattern)
+        for display_name, workload_base in MACHINE_EXPERIMENTS[machine_num]:
+            workload_results = {'name': display_name, 'workload_base': workload_base}
             
-            single_tps = None
-            single_lat = None
-            single_configs = 0
-            ensemble_tps = None
-            ensemble_lat = None
-            ensemble_configs = 0
+            # Process each experiment type
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                pattern = workload_base + exp_info['pattern']
+                file_path = find_history_file(repo_dir, pattern)
+                
+                if file_path:
+                    tps, lat, qps, total_configs = extract_max_tps(file_path)
+                    workload_results[exp_type] = {
+                        'tps': tps,
+                        'latency': lat,
+                        'qps': qps,
+                        'total_configs': total_configs,
+                        'file': os.path.basename(file_path),
+                        'exists': True
+                    }
+                else:
+                    workload_results[exp_type] = {
+                        'tps': None,
+                        'latency': None,
+                        'qps': None,
+                        'total_configs': 0,
+                        'file': None,
+                        'exists': False
+                    }
             
-            if single_file:
-                single_tps, single_lat, single_qps, single_configs = extract_max_tps(single_file)
-            
-            if ensemble_file:
-                ensemble_tps, ensemble_lat, ensemble_qps, ensemble_configs = extract_max_tps(ensemble_file)
-            
-            # Calculate improvement
-            improvement = None
-            if single_tps and ensemble_tps:
-                improvement = ((ensemble_tps - single_tps) / single_tps) * 100
-            
-            results_by_machine[machine_num].append({
-                'name': display_name,
-                'single_file': os.path.basename(single_file) if single_file else None,
-                'ensemble_file': os.path.basename(ensemble_file) if ensemble_file else None,
-                'single_tps': single_tps,
-                'single_lat': single_lat,
-                'single_configs': single_configs,
-                'ensemble_tps': ensemble_tps,
-                'ensemble_lat': ensemble_lat,
-                'ensemble_configs': ensemble_configs,
-                'improvement': improvement,
-            })
+            results_by_machine[machine_num].append(workload_results)
     
-    # Print results by machine
+    # Print detailed results by machine
     for machine_num in ['machine1', 'machine2', 'machine3']:
         if machine_num not in results_by_machine or not results_by_machine[machine_num]:
             continue
-            
-        print(f"\n{'=' * 100}")
-        print(f"MACHINE {machine_num[-1].upper()}: {', '.join([exp[0] for exp in MACHINE_EXPERIMENTS[machine_num]])}")
-        print(f"{'=' * 100}")
-        print()
-        print(f"{'Workload':<15} {'Single-Opt TPS':>18} {'Ensemble TPS':>18} {'Improvement':>15} {'Status':>15}")
-        print("-" * 100)
+        
+        print(f"\n{'=' * 150}")
+        print(f"MACHINE {machine_num[-1].upper()}: {', '.join([exp['name'] for exp in results_by_machine[machine_num]])}")
+        print(f"{'=' * 150}")
         
         for result in results_by_machine[machine_num]:
-            name = result['name']
-            single_tps = result['single_tps']
-            ensemble_tps = result['ensemble_tps']
-            improvement = result['improvement']
+            workload_name = result['name']
+            print(f"\n📊 {workload_name}")
+            print("-" * 150)
             
-            # Format values
-            single_str = f"{single_tps:,.2f}" if single_tps else "N/A"
-            ensemble_str = f"{ensemble_tps:,.2f}" if ensemble_tps else "N/A"
+            # Print header
+            header = f"{'Type':<20}"
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                header += f"{exp_info['display']:>18}"
+            header += f"{'Best':>18}"
+            print(header)
+            print("-" * 150)
             
-            if improvement is not None:
-                improvement_str = f"{improvement:+.2f}%"
-                if improvement > 0:
-                    status = "✅ Better"
-                elif improvement < -1:  # More than 1% worse
-                    status = "⚠️  Worse"
+            # Get TPS values for all types
+            tps_values = {}
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                tps_values[exp_type] = result[exp_type]['tps']
+            
+            # Find best TPS
+            best_tps = max([v for v in tps_values.values() if v is not None], default=None)
+            
+            # Print TPS row
+            row = f"{'TPS':<20}"
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                tps = tps_values[exp_type]
+                if tps is not None:
+                    if tps == best_tps:
+                        row += f"{tps:>17,.2f}★"
+                    else:
+                        row += f"{tps:>18,.2f}"
                 else:
-                    status = "≈ Similar"
+                    row += f"{'N/A':>18}"
+            
+            best_type = None
+            if best_tps:
+                best_type = [k for k, v in tps_values.items() if v == best_tps][0]
+                best_display = EXPERIMENT_TYPES[best_type]['display']
+                row += f"{best_display:>18}"
             else:
-                improvement_str = "N/A"
-                if single_tps is None and ensemble_tps is None:
-                    status = "❌ Missing"
+                row += f"{'N/A':>18}"
+            
+            print(row)
+            
+            # Print latency row
+            row = f"{'Latency (ms)':<20}"
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                lat = result[exp_type]['latency']
+                if lat is not None:
+                    row += f"{lat:>18,.2f}"
                 else:
-                    status = "⚠️  Incomplete"
+                    row += f"{'N/A':>18}"
+            row += " " * 18  # Skip best column
+            print(row)
             
-            print(f"{name:<15} {single_str:>18} {ensemble_str:>18} {improvement_str:>15} {status:>15}")
+            # Print config count row
+            row = f"{'Configs':<20}"
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                count = result[exp_type]['total_configs']
+                row += f"{count:>18d}"
+            row += " " * 18  # Skip best column
+            print(row)
             
-            # Print latency info if both available
-            if result['single_lat'] is not None and result['ensemble_lat'] is not None:
-                single_lat_str = f"{result['single_lat']:.2f}ms"
-                ensemble_lat_str = f"{result['ensemble_lat']:.2f}ms"
-                lat_change = ((result['ensemble_lat'] - result['single_lat']) / result['single_lat']) * 100
-                lat_change_str = f"({lat_change:+.1f}%)"
-                print(f"  {'└─ Latency:':<13} {single_lat_str:>18} {ensemble_lat_str:>18} {lat_change_str:>15}")
+            # Print file status
+            row = f"{'Status':<20}"
+            for exp_type, exp_info in EXPERIMENT_TYPES.items():
+                exists = result[exp_type]['exists']
+                if exists:
+                    row += f"{'✅':>18}"
+                else:
+                    row += f"{'❌':>18}"
+            row += " " * 18  # Skip best column
+            print(row)
     
     # Overall summary
-    print(f"\n{'=' * 100}")
+    print(f"\n{'=' * 150}")
     print("OVERALL SUMMARY")
-    print(f"{'=' * 100}")
+    print(f"{'=' * 150}")
     print()
     
+    # Collect all results
     all_results = []
     for machine_results in results_by_machine.values():
         all_results.extend(machine_results)
     
-    # Filter complete comparisons
-    complete = [r for r in all_results if r['improvement'] is not None]
+    # Calculate statistics for each experiment type
+    print("Win Counts (Best TPS per workload):")
+    print("-" * 150)
     
-    if complete:
-        better = [r for r in complete if r['improvement'] > 0]
-        worse = [r for r in complete if r['improvement'] < -1]
-        similar = [r for r in complete if -1 <= r['improvement'] <= 0]
+    wins = defaultdict(int)
+    for result in all_results:
+        best_tps = None
+        best_type = None
         
-        print(f"Total workloads compared: {len(complete)}")
-        print(f"  ✅ Ensemble better:     {len(better):2d} ({len(better)/len(complete)*100:.1f}%)")
-        print(f"  ⚠️  Ensemble worse:      {len(worse):2d} ({len(worse)/len(complete)*100:.1f}%)")
-        print(f"  ≈  Similar performance: {len(similar):2d} ({len(similar)/len(complete)*100:.1f}%)")
-        print()
+        for exp_type in EXPERIMENT_TYPES.keys():
+            tps = result[exp_type]['tps']
+            if tps is not None:
+                if best_tps is None or tps > best_tps:
+                    best_tps = tps
+                    best_type = exp_type
         
-        if better:
-            avg_improvement = sum(r['improvement'] for r in better) / len(better)
-            print(f"Average improvement when ensemble is better: {avg_improvement:+.2f}%")
-            
-            best = max(better, key=lambda r: r['improvement'])
-            print(f"  Best improvement: {best['name']} ({best['improvement']:+.2f}%)")
-            print(f"    Single: {best['single_tps']:,.2f} TPS → Ensemble: {best['ensemble_tps']:,.2f} TPS")
-        
-        if worse:
-            print()
-            avg_degradation = sum(r['improvement'] for r in worse) / len(worse)
-            print(f"Average degradation when ensemble is worse: {avg_degradation:.2f}%")
-            
-            worst = min(worse, key=lambda r: r['improvement'])
-            print(f"  Worst degradation: {worst['name']} ({worst['improvement']:+.2f}%)")
-            print(f"    Single: {worst['single_tps']:,.2f} TPS → Ensemble: {worst['ensemble_tps']:,.2f} TPS")
-        
-        print()
-        print("-" * 100)
-        
-    else:
-        print("⚠️  No complete comparisons available.")
-        print("\nAvailable data:")
-        for result in all_results:
-            if result['single_tps'] or result['ensemble_tps']:
-                status = []
-                if result['single_tps']:
-                    status.append(f"Single: {result['single_tps']:,.2f} TPS")
-                if result['ensemble_tps']:
-                    status.append(f"Ensemble: {result['ensemble_tps']:,.2f} TPS")
-                print(f"  {result['name']}: {', '.join(status)}")
+        if best_type:
+            wins[best_type] += 1
     
+    # Print win counts
+    for exp_type, exp_info in EXPERIMENT_TYPES.items():
+        count = wins[exp_type]
+        percentage = (count / len(all_results)) * 100 if all_results else 0
+        bar = "█" * int(percentage / 2)
+        print(f"{exp_info['display']:<20} {count:>3d} wins ({percentage:>5.1f}%) {bar}")
+    
+    print()
+    print("-" * 150)
+    
+    # Calculate average TPS by type
+    print("\nAverage TPS by Experiment Type:")
+    print("-" * 150)
+    
+    avg_tps_by_type = defaultdict(list)
+    for result in all_results:
+        for exp_type in EXPERIMENT_TYPES.keys():
+            tps = result[exp_type]['tps']
+            if tps is not None:
+                avg_tps_by_type[exp_type].append(tps)
+    
+    for exp_type, exp_info in EXPERIMENT_TYPES.items():
+        tps_list = avg_tps_by_type[exp_type]
+        if tps_list:
+            avg_tps = sum(tps_list) / len(tps_list)
+            print(f"{exp_info['display']:<20} {avg_tps:>18,.2f} TPS (from {len(tps_list)} workloads)")
+        else:
+            print(f"{exp_info['display']:<20} {'N/A':>18}")
+    
+    print()
+    print("-" * 150)
+    
+    # Count missing data
+    print("\nData Availability:")
+    print("-" * 150)
+    
+    for exp_type, exp_info in EXPERIMENT_TYPES.items():
+        total_workloads = len(all_results)
+        existing = sum(1 for r in all_results if r[exp_type]['exists'])
+        missing = total_workloads - existing
+        percentage = (existing / total_workloads) * 100 if total_workloads > 0 else 0
+        print(f"{exp_info['display']:<20} {existing:>3d}/{total_workloads} available ({percentage:>5.1f}%)")
+    
+    print()
+    print("=" * 150)
+    print("Analysis complete!")
+    print("=" * 150)
     print()
 
 

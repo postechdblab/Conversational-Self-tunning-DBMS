@@ -56,10 +56,12 @@ class DDPG_Optimizer:
                  init_strategy="random_explore_first",
                  mean_var_file='',
                  batch_size=16,
-                 params=''
-                 #2024-12-06 softmax transformer
-                 ,transformer=True,
-                 #2024-12-06 softmax transformer
+                 params='',
+                 augment_history=False,
+                 augment_samples=10,
+                 # 2024-12-06 softmax transformer
+                 transformer=True,
+                 # 2024-12-06 softmax transformer
                  ):
 
         self.task_id = task_id
@@ -82,6 +84,9 @@ class DDPG_Optimizer:
         self.t = 0
         self.score = 0
         self.episode_init = True
+        # augmentation flags
+        self.augment_history = augment_history
+        self.augment_samples = augment_samples
         create_output_folders()
         #2024-12-06 softmax transformer
         self.transformer=transformer
@@ -267,8 +272,22 @@ class DDPG_Optimizer:
         if done or self.score < -50:
             self.episode_init = True
 
+        # Log update/termination signals
+        try:
+            self.logger.info(f"[DDPG Update] t={self.t} global_t={self.global_t} reward={reward:.6f} score={self.score:.6f} done={done}")
+        except Exception:
+            pass
+
         self.model.add_sample(self.state, config2action(observation.config, self.config_space), reward, next_state, done)
         self.state = next_state
+
+        # Augment replay memory with synthetic experiences to improve sample efficiency
+        if self.augment_history:
+            try:
+                self.augment_replay_memory(self.augment_samples)
+            except Exception:
+                # Be conservative: augmentation is best-effort and should not break training
+                pass
 
         # Ensure we have enough samples for batch normalization (need at least 2 samples)
         if len(self.model.replay_memory) >= max(self.batch_size, 2):
@@ -280,6 +299,71 @@ class DDPG_Optimizer:
         if self.global_t % 5 == 0:
             self.model.save_model('ddpg/model_params', title='{}_{}'.format(self.task_id, self.global_t))
             self.logger.info('Save model_params to %s_%s' % (self.task_id, self.global_t))
+
+    def augment_replay_memory(self, num_samples=10):
+        """
+        Augments the replay memory with high-quality synthetic experiences using the
+        actor and critic networks (a simple form of model-based RL).
+        """
+        try:
+            buffer_len = len(self.model.replay_memory)
+        except Exception:
+            return
+        
+        if buffer_len < max(self.batch_size, 2):
+            return
+
+        # 1. Sample a batch of real experiences to use as a base
+        k = min(num_samples, buffer_len)
+        try:
+            self.logger.info(f"[DDPG Augmentation] Start: buffer_len={buffer_len}, k={k}, batch_size={self.batch_size}")
+        except Exception:
+            pass
+        try:
+            batch, _ = self.model.replay_memory.sample(k)
+        except Exception:
+            # Catch potential errors if buffer is smaller than expected
+            return
+
+        sampled_count = 0
+        terminal_count = 0
+        synthetic_count = 0
+        for sample in batch:
+            try:
+                state, _, _, next_state, done = sample
+                sampled_count += 1
+                if done:
+                    terminal_count += 1
+                    # Don't augment terminal states
+                    continue
+
+                # 2. Generate a new, high-potential action from the real state using the Actor
+                # We add a small amount of OU noise for exploration via coff
+                synthetic_action = self.model.choose_action(state, coff=0.1)
+
+                # 3. Predict the reward (Q-value) for this new state-action pair using the Critic
+                predicted_reward = self.model.predict_q_value(state, synthetic_action)
+
+                # 4. Add the new, fully synthetic experience to the buffer
+                # Use original state and next_state with new action and predicted reward
+                self.model.add_sample(state, synthetic_action, predicted_reward, next_state, done)
+                synthetic_count += 1
+            except Exception as e:
+                # Augmentation is best-effort; don't break training
+                try:
+                    self.logger.debug(f"[DDPG Augmentation] Error during single sample augmentation: {e}")
+                except Exception:
+                    pass
+                continue
+
+        # Summary logs
+        try:
+            end_len = len(self.model.replay_memory)
+            self.logger.info(f"[DDPG Augmentation] Sampled={sampled_count}, terminals={terminal_count}, added={synthetic_count}, buffer_len_now={end_len}")
+            if synthetic_count == 0 and terminal_count == sampled_count and sampled_count > 0:
+                self.logger.warning("[DDPG Augmentation] All sampled experiences were terminal; no synthetic samples added.")
+        except Exception:
+            pass
 
     def get_reward(self, external_metrics):
 

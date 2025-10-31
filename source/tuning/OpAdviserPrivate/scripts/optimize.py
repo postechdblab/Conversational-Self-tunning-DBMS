@@ -9,7 +9,7 @@ import os
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser()
-    parser.add_argument('--config', type=str, default='scripts/twitter_ensemble.ini', help='config file')
+    parser.add_argument('--config', type=str, default='scripts/twitter_augment_ddpg.ini', help='config file')
     parser.add_argument('run',nargs='?',default=None)
     parser.add_argument('--no-debugger', action='store_true')
     parser.add_argument('--no-reload', action='store_true')

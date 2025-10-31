@@ -1,7 +1,9 @@
 #!/bin/bash
 ################################################################################
 # Machine 1 Experiment Runner
-# Workloads: twitter, tpcc, ycsb, wikipedia (both single and ensemble modes)
+# Workloads: twitter, tpcc, ycsb, wikipedia
+# Configs per workload: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA
+# Total: 4 workloads × 7 configs = 28 experiments
 ################################################################################
 
 # set -e  # Removed to allow experiments to continue even if one fails
@@ -64,74 +66,95 @@ log "=========================================="
 log "MACHINE 1 EXPERIMENT SUITE"
 log "=========================================="
 log "Workloads: twitter, tpcc, ycsb, wikipedia"
-log "Modes: Single-optimizer + Ensemble"
-log "Total experiments: 8"
+log "Configs: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA"
+log "Total experiments: 28 (4 workloads × 7 configs each)"
 log "Start time: $(date)"
 log "=========================================="
 log ""
 
-# Experiment 1: Twitter (Single Optimizer)
-if run_experiment "twitter.ini" "Twitter (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Twitter (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("Twitter (Single-Optimizer)")
-fi
+exp_num=1
+
+# Twitter experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "TWITTER WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "twitter_smac.ini" "Experiment $exp_num: Twitter (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (SMAC)"); else FAILED_EXPERIMENTS+=("Twitter (SMAC)"); fi
+((exp_num++))
+if run_experiment "twitter_ddpg.ini" "Experiment $exp_num: Twitter (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (DDPG)"); else FAILED_EXPERIMENTS+=("Twitter (DDPG)"); fi
+((exp_num++))
+if run_experiment "twitter_ga.ini" "Experiment $exp_num: Twitter (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (GA)"); else FAILED_EXPERIMENTS+=("Twitter (GA)"); fi
+((exp_num++))
+if run_experiment "twitter_ensemble.ini" "Experiment $exp_num: Twitter (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Ensemble)"); else FAILED_EXPERIMENTS+=("Twitter (Ensemble)"); fi
+((exp_num++))
+if run_experiment "twitter_augment_smac.ini" "Experiment $exp_num: Twitter (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Twitter (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "twitter_augment_ddpg.ini" "Experiment $exp_num: Twitter (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Twitter (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "twitter_augment_ga.ini" "Experiment $exp_num: Twitter (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Augment+GA)"); else FAILED_EXPERIMENTS+=("Twitter (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 2: Twitter (Ensemble)
-if run_experiment "twitter_ensemble.ini" "Twitter (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Twitter (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("Twitter (Ensemble)")
-fi
+# TPC-C experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "TPC-C WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "tpcc_smac.ini" "Experiment $exp_num: TPC-C (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (SMAC)"); fi
+((exp_num++))
+if run_experiment "tpcc_ddpg.ini" "Experiment $exp_num: TPC-C (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (DDPG)"); fi
+((exp_num++))
+if run_experiment "tpcc_ga.ini" "Experiment $exp_num: TPC-C (GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (GA)"); else FAILED_EXPERIMENTS+=("TPC-C (GA)"); fi
+((exp_num++))
+if run_experiment "tpcc_ensemble.ini" "Experiment $exp_num: TPC-C (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Ensemble)"); else FAILED_EXPERIMENTS+=("TPC-C (Ensemble)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_smac.ini" "Experiment $exp_num: TPC-C (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_ddpg.ini" "Experiment $exp_num: TPC-C (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_ga.ini" "Experiment $exp_num: TPC-C (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+GA)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 3: TPC-C (Single Optimizer)
-if run_experiment "tpcc.ini" "TPC-C (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TPC-C (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("TPC-C (Single-Optimizer)")
-fi
+# YCSB experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "YCSB WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "ycsb_smac.ini" "Experiment $exp_num: YCSB (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (SMAC)"); else FAILED_EXPERIMENTS+=("YCSB (SMAC)"); fi
+((exp_num++))
+if run_experiment "ycsb_ddpg.ini" "Experiment $exp_num: YCSB (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (DDPG)"); else FAILED_EXPERIMENTS+=("YCSB (DDPG)"); fi
+((exp_num++))
+if run_experiment "ycsb_ga.ini" "Experiment $exp_num: YCSB (GA)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (GA)"); else FAILED_EXPERIMENTS+=("YCSB (GA)"); fi
+((exp_num++))
+if run_experiment "ycsb_ensemble.ini" "Experiment $exp_num: YCSB (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (Ensemble)"); else FAILED_EXPERIMENTS+=("YCSB (Ensemble)"); fi
+((exp_num++))
+if run_experiment "ycsb_augment_smac.ini" "Experiment $exp_num: YCSB (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("YCSB (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "ycsb_augment_ddpg.ini" "Experiment $exp_num: YCSB (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("YCSB (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "ycsb_augment_ga.ini" "Experiment $exp_num: YCSB (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("YCSB (Augment+GA)"); else FAILED_EXPERIMENTS+=("YCSB (Augment+GA)"); fi
+((exp_num++))
 log ""
 
-# Experiment 4: TPC-C (Ensemble)
-if run_experiment "tpcc_ensemble.ini" "TPC-C (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("TPC-C (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("TPC-C (Ensemble)")
-fi
-log ""
+# Wikipedia experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "WIKIPEDIA WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
 
-# Experiment 5: YCSB (Single Optimizer)
-if run_experiment "ycsb.ini" "YCSB (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("YCSB (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("YCSB (Single-Optimizer)")
-fi
-log ""
-
-# Experiment 6: YCSB (Ensemble)
-if run_experiment "ycsb_ensemble.ini" "YCSB (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("YCSB (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("YCSB (Ensemble)")
-fi
-log ""
-
-# Experiment 7: Wikipedia (Single Optimizer)
-if run_experiment "wikipedia.ini" "Wikipedia (Single-Optimizer)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Single-Optimizer)")
-else
-    FAILED_EXPERIMENTS+=("Wikipedia (Single-Optimizer)")
-fi
-log ""
-
-# Experiment 8: Wikipedia (Ensemble)
-if run_experiment "wikipedia_ensemble.ini" "Wikipedia (Ensemble)"; then
-    SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Ensemble)")
-else
-    FAILED_EXPERIMENTS+=("Wikipedia (Ensemble)")
-fi
+if run_experiment "wikipedia_smac.ini" "Experiment $exp_num: Wikipedia (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (SMAC)"); else FAILED_EXPERIMENTS+=("Wikipedia (SMAC)"); fi
+((exp_num++))
+if run_experiment "wikipedia_ddpg.ini" "Experiment $exp_num: Wikipedia (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (DDPG)"); else FAILED_EXPERIMENTS+=("Wikipedia (DDPG)"); fi
+((exp_num++))
+if run_experiment "wikipedia_ga.ini" "Experiment $exp_num: Wikipedia (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (GA)"); else FAILED_EXPERIMENTS+=("Wikipedia (GA)"); fi
+((exp_num++))
+if run_experiment "wikipedia_ensemble.ini" "Experiment $exp_num: Wikipedia (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Ensemble)"); else FAILED_EXPERIMENTS+=("Wikipedia (Ensemble)"); fi
+((exp_num++))
+if run_experiment "wikipedia_augment_smac.ini" "Experiment $exp_num: Wikipedia (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Wikipedia (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "wikipedia_augment_ddpg.ini" "Experiment $exp_num: Wikipedia (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Wikipedia (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "wikipedia_augment_ga.ini" "Experiment $exp_num: Wikipedia (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Augment+GA)"); else FAILED_EXPERIMENTS+=("Wikipedia (Augment+GA)"); fi
 log ""
 
 # Calculate total time
@@ -150,8 +173,8 @@ log "End time: $(date)"
 log "Total duration: ${TOTAL_HOURS}h ${TOTAL_MINUTES}m ${TOTAL_SECONDS}s"
 log ""
 log "Results:"
-log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/8"
-log "  Failed: ${#FAILED_EXPERIMENTS[@]}/8"
+log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/28"
+log "  Failed: ${#FAILED_EXPERIMENTS[@]}/28"
 log ""
 
 if [ ${#SUCCESSFUL_EXPERIMENTS[@]} -gt 0 ]; then
@@ -179,4 +202,3 @@ if [ ${#FAILED_EXPERIMENTS[@]} -eq 0 ]; then
 else
     exit 1
 fi
-
