@@ -838,7 +838,7 @@ class PipleLine(BOBase):
     def reset_context(self, context):
         self.current_context = context
         self.optimizer.current_context = context
-        if self.optimizer.surrogate_model:
+        if hasattr(self.optimizer, 'surrogate_model') and self.optimizer.surrogate_model:
             self.optimizer.surrogate_model.current_context =  context
 
     def evaluate(self, config, update_history=True
@@ -1427,6 +1427,10 @@ class PipleLine(BOBase):
             return
 
         # Non-ensemble: use current optimizer's surrogate
+        # Check if optimizer has surrogate_model attribute (e.g., GA_Optimizer doesn't have one)
+        if not hasattr(self.optimizer, 'surrogate_model'):
+            return
+        
         surrogate = self.optimizer.surrogate_model
         
         if surrogate is None:
