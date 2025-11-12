@@ -1,0 +1,61 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "Python: Train DBSherlock",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--anormly_ratio=4",
+                "--num_epochs=10",
+                "--batch_size=1024",
+                "--mode=train",
+                "--dataset=DBS",
+                "--win_size=25",
+                "--step_size=25",
+                // "--data_path=dataset/dbsherlock/converted/tpcc_500w_test.json",
+                "--data_path=dataset/dbsherlock/converted/tpcc_500w_test.json",
+            ]
+        },
+        {
+            "name": "Python: Test DBSherlock",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/main.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--anormly_ratio=1",
+                "--num_epochs=100",
+                "--batch_size=1024",
+                "--mode=test",
+                "--dataset=DBS",
+                // "--data_path=dataset/dbsherlock/converted/tpcc_500w_test.json",
+                "--data_path=dataset/dbsherlock/converted/tpcc_500w_test.json",
+                "--input_c=200",
+                "--output_c=200",
+                "--win_size=25",
+                "--step_size=25",
+            ]
+        },
+        {
+            "name": "Python: preprocess",
+            "type": "python",
+            "request": "launch",
+            "program": "${workspaceFolder}/src/data_factory/dbsherlock/convert.py",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            "args": [
+                "--input=dataset/dbsherlock/tpce_3000.mat",
+                "--out_dir=dataset/dbsherlock/converted/",
+                "--prefix=tpce_3000",
+            ]
+        }
+    ]
+}
