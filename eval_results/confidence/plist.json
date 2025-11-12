@@ -1,0 +1,4138 @@
+[
+  [
+    "SELECT COUNT(*) FROM singer",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM singer",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, singer.country, singer.age FROM singer ORDER BY singer.age ASC",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, singer.country, singer.age FROM singer ORDER BY singer.age DESC",
+    "concert_singer"
+  ],
+  [
+    "SELECT AVG(singer.age), MAX(singer.age), MIN(singer.age) FROM singer WHERE singer.country = 'france'",
+    "concert_singer"
+  ],
+  [
+    "SELECT AVG(singer.age), MAX(singer.age), MIN(singer.age) FROM singer WHERE singer.country = 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.song_name, singer.song_release_year FROM singer ORDER BY singer.age ASC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.song_name, singer.song_release_year FROM singer ORDER BY singer.age ASC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.country FROM singer WHERE singer.age > 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.country FROM singer WHERE singer.age > 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.country, COUNT(*) FROM singer GROUP BY singer.country",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.country, COUNT(*) FROM singer GROUP BY singer.country",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.song_name FROM singer WHERE singer.age > (SELECT AVG(singer.age) FROM singer)",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.song_name FROM singer WHERE singer.age > (SELECT AVG(singer.age) FROM singer)",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.location, stadium.name FROM stadium WHERE stadium.capacity >= 'terminal' AND stadium.capacity = 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.location, stadium.name FROM stadium WHERE stadium.capacity >= 'terminal' AND stadium.capacity <= 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT MAX(stadium.capacity), AVG(stadium.average) FROM stadium",
+    "concert_singer"
+  ],
+  [
+    "SELECT AVG(stadium.capacity), MAX(stadium.average) FROM stadium",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.capacity FROM stadium GROUP BY stadium.highest ORDER BY AVG(stadium.average) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.capacity FROM stadium GROUP BY stadium.name ORDER BY AVG(stadium.average) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM concert WHERE concert.year = '2014' OR concert.year = '2015'",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM concert WHERE concert.year = '2014' OR concert.year = '2015'",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, COUNT(*) FROM stadium GROUP BY stadium.stadium_id",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, COUNT(*) FROM stadium NATURAL JOIN concert GROUP BY concert.stadium_id",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.capacity FROM stadium NATURAL JOIN concert WHERE concert.year <= '2014' GROUP BY concert.stadium_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.capacity FROM stadium NATURAL JOIN concert WHERE concert.year > 'terminal' GROUP BY concert.stadium_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT concert.year FROM concert GROUP BY concert.year ORDER BY COUNT(*) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT concert.year FROM concert GROUP BY concert.year ORDER BY COUNT(*) DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name FROM stadium WHERE NOT stadium.stadium_id IN (SELECT concert.stadium_id FROM concert)",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name FROM stadium WHERE NOT stadium.stadium_id IN (SELECT concert.stadium_id FROM concert)",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.country FROM singer WHERE singer.age > 'terminal' INTERSECT SELECT singer.country FROM singer WHERE singer.age < 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT concert.concert_name FROM concert WHERE concert.year <> '2014'",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name FROM stadium WHERE NOT stadium.stadium_id IN (SELECT concert.stadium_id FROM stadium NATURAL JOIN concert WHERE stadium.stadium_id LIKE '1')",
+    "concert_singer"
+  ],
+  [
+    "SELECT concert.concert_name, concert.theme, COUNT(*) FROM concert GROUP BY concert.concert_id",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, concert.theme, COUNT(*) FROM singer NATURAL JOIN concert NATURAL JOIN singer_in_concert GROUP BY singer.name",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, COUNT(*) FROM singer NATURAL JOIN singer_in_concert GROUP BY singer_in_concert.singer_id",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, COUNT(*) FROM singer NATURAL JOIN singer_in_concert GROUP BY singer_in_concert.singer_id",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN concert NATURAL JOIN singer_in_concert WHERE concert.year = '2014'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN concert NATURAL JOIN singer_in_concert WHERE concert.year = '2014'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, singer.country FROM singer WHERE singer.song_name LIKE 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT singer.name, singer.country FROM singer WHERE singer.song_name LIKE 'terminal'",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.location FROM stadium NATURAL JOIN concert WHERE concert.year = '2014' INTERSECT SELECT stadium.name, stadium.location FROM stadium NATURAL JOIN concert WHERE concert.year = '2015'",
+    "concert_singer"
+  ],
+  [
+    "SELECT stadium.name, stadium.location FROM stadium NATURAL JOIN concert WHERE concert.year = '2014' INTERSECT SELECT stadium.name, stadium.location FROM stadium NATURAL JOIN concert WHERE concert.year = '2015'",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM stadium ORDER BY stadium.capacity DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM stadium ORDER BY stadium.capacity DESC LIMIT 1",
+    "concert_singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM pets WHERE pets.weight > 'terminal'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM pets WHERE pets.weight > 'terminal'",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.weight FROM pets WHERE pets.pettype = 'dog' ORDER BY pets.pet_age ASC LIMIT 1",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.weight FROM pets ORDER BY pets.pet_age ASC LIMIT 1",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, MAX(pets.weight) FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, MAX(pets.weight), MAX(pets.weight) FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM student WHERE student.age > '20'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM student WHERE student.age > '20'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM student WHERE student.sex = 'f'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM student WHERE student.sex = 'f'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(pets.pettype) FROM pets",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(pets.pettype) FROM pets",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' OR pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' OR pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' INTERSECT SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' INTERSECT SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.major, student.age FROM student WHERE NOT student.stuid IN (SELECT has_pet.stuid FROM has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat')",
+    "pets_1"
+  ],
+  [
+    "SELECT student.major, student.age FROM student WHERE NOT student.stuid IN (SELECT has_pet.stuid FROM has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat')",
+    "pets_1"
+  ],
+  [
+    "SELECT has_pet.stuid FROM has_pet EXCEPT SELECT has_pet.stuid FROM has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat'",
+    "pets_1"
+  ],
+  [
+    "SELECT has_pet.stuid FROM has_pet WHERE NOT has_pet.stuid IN (SELECT has_pet.stuid FROM has_pet)",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname, student.age FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' EXCEPT SELECT student.fname, student.age FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat' EXCEPT SELECT student.fname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'dog'",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, pets.weight FROM pets ORDER BY pets.pet_age ASC LIMIT 1",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, pets.weight FROM pets ORDER BY pets.pet_age ASC LIMIT 1",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.petid, pets.weight FROM pets WHERE pets.pet_age > '1'",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.petid, pets.weight FROM pets WHERE pets.pet_age > '1'",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, AVG(pets.pet_age), MAX(pets.pet_age) FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT AVG(pets.pet_age), MAX(pets.pet_age), pets.pettype FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, AVG(pets.weight) FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT pets.pettype, AVG(pets.weight) FROM pets GROUP BY pets.pettype",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname, student.age FROM student",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname, student.age FROM student",
+    "pets_1"
+  ],
+  [
+    "SELECT has_pet.petid FROM student NATURAL JOIN has_pet WHERE student.lname = 'smith'",
+    "pets_1"
+  ],
+  [
+    "SELECT has_pet.petid FROM student NATURAL JOIN has_pet WHERE student.lname = 'smith'",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*), has_pet.stuid FROM has_pet GROUP BY has_pet.stuid",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM has_pet NATURAL JOIN pets",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname, student.sex FROM student GROUP BY student.fname HAVING COUNT(*) > 'terminal'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.fname, student.sex FROM student GROUP BY student.fname HAVING COUNT(*) > 'terminal'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.lname FROM student NATURAL JOIN has_pet NATURAL JOIN pets WHERE pets.pettype = 'cat'",
+    "pets_1"
+  ],
+  [
+    "SELECT student.lname FROM student WHERE student.age = 'terminal'",
+    "pets_1"
+  ],
+  [
+    "SELECT AVG(student.age) FROM student WHERE NOT student.stuid IN (SELECT has_pet.stuid FROM has_pet)",
+    "pets_1"
+  ],
+  [
+    "SELECT AVG(student.age) FROM student WHERE NOT student.stuid IN (SELECT has_pet.stuid FROM has_pet)",
+    "pets_1"
+  ],
+  [
+    "SELECT COUNT(continents.continent) FROM continents",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(continents.continent) FROM continents",
+    "car_1"
+  ],
+  [
+    "SELECT continents.contid, continents.continent, COUNT(*) FROM continents GROUP BY continents.contid",
+    "car_1"
+  ],
+  [
+    "SELECT continents.contid, continents.continent, COUNT(*) FROM continents GROUP BY continents.continent",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(countries.countryname) FROM countries",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM countries",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, car_makers.fullname, COUNT(*) FROM car_makers GROUP BY car_makers.id",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, car_makers.fullname, COUNT(*) FROM car_makers GROUP BY car_makers.id",
+    "car_1"
+  ],
+  [
+    "SELECT * FROM cars_data ORDER BY cars_data.horsepower ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT * FROM cars_data ORDER BY cars_data.horsepower ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT * FROM cars_data WHERE cars_data.weight < (SELECT AVG(cars_data.weight) FROM cars_data)",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names NATURAL JOIN cars_data WHERE cars_data.weight < (SELECT AVG(cars_data.weight) FROM cars_data)",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE cars_data.year = '1970'",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE cars_data.year = '1970'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.year, cars_data.year FROM cars_data ORDER BY cars_data.year ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, cars_data.year FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data ORDER BY cars_data.year ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE cars_data.year > '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE cars_data.year > '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT continents.continent, COUNT(*) FROM continents GROUP BY continents.continent",
+    "car_1"
+  ],
+  [
+    "SELECT continents.continent, COUNT(*) FROM continents GROUP BY continents.continent",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country ORDER BY COUNT(*) DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country ORDER BY COUNT(*) DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(car_makers.maker), car_makers.fullname, COUNT(*) FROM car_makers NATURAL JOIN model_list GROUP BY model_list.maker",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*), car_makers.fullname, car_makers.id FROM car_makers GROUP BY car_makers.id",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.accelerate FROM car_names NATURAL JOIN cars_data WHERE car_names.make = 'amc hornet'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.accelerate FROM car_names NATURAL JOIN cars_data WHERE car_names.make = 'amc hornet'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(car_makers.maker) FROM countries NATURAL JOIN car_makers WHERE countries.countryname = 'france'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(car_makers.maker) FROM countries NATURAL JOIN car_makers WHERE countries.countryname = 'france'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM countries WHERE countries.countryname = 'usa'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM car_makers WHERE car_makers.country = 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.mpg) FROM cars_data WHERE cars_data.cylinders = '4'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.mpg) FROM cars_data WHERE cars_data.cylinders = '4'",
+    "car_1"
+  ],
+  [
+    "SELECT MIN(cars_data.weight) FROM cars_data WHERE cars_data.year = '1974'",
+    "car_1"
+  ],
+  [
+    "SELECT MIN(cars_data.weight) FROM cars_data WHERE cars_data.year = '1974'",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, model_list.model FROM car_makers NATURAL JOIN model_list",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, model_list.model FROM car_makers NATURAL JOIN model_list",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname, car_makers.id FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname, countries.countryid FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.horsepower > '150'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.horsepower > '150'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.weight), cars_data.year FROM cars_data GROUP BY cars_data.year",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.weight), AVG(cars_data.year) FROM cars_data GROUP BY cars_data.year",
+    "car_1"
+  ],
+  [
+    "SELECT * FROM continents NATURAL JOIN countries WHERE continents.continent = 'europe' GROUP BY countries.countryid HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname FROM countries GROUP BY countries.countryid HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT MAX(cars_data.horsepower), MAX(cars_data.edispl) FROM cars_data WHERE cars_data.cylinders = '3'",
+    "car_1"
+  ],
+  [
+    "SELECT MAX(cars_data.horsepower), MAX(cars_data.horsepower) FROM cars_data WHERE cars_data.cylinders = '3'",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names NATURAL JOIN cars_data ORDER BY cars_data.mpg DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names NATURAL JOIN cars_data ORDER BY cars_data.mpg DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.horsepower) FROM cars_data WHERE cars_data.year < '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.horsepower) FROM cars_data WHERE cars_data.year < '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.edispl) FROM car_names NATURAL JOIN cars_data WHERE car_names.model = 'volvo'",
+    "car_1"
+  ],
+  [
+    "SELECT AVG(cars_data.edispl) FROM car_names NATURAL JOIN cars_data WHERE car_names.make = 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.cylinders, MAX(cars_data.accelerate) FROM cars_data GROUP BY cars_data.cylinders",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.cylinders, MAX(cars_data.accelerate) FROM cars_data GROUP BY cars_data.cylinders",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names GROUP BY car_names.model ORDER BY COUNT(*) DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM model_list NATURAL JOIN car_names GROUP BY car_names.model ORDER BY COUNT(*) DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.cylinders > '4'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.cylinders > '4'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.year = '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.year = '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM car_makers WHERE car_makers.fullname = 'american motor company'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM car_makers WHERE car_makers.fullname = 'american motor company'",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.fullname, model_list.modelid FROM car_makers NATURAL JOIN model_list GROUP BY model_list.maker HAVING COUNT(*) > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.maker, car_makers.maker FROM car_makers NATURAL JOIN model_list GROUP BY model_list.maker HAVING COUNT(*) > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE car_makers.fullname = 'general motors' AND cars_data.weight > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE car_makers.fullname = 'general motors' AND cars_data.weight > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.year FROM cars_data WHERE cars_data.weight >= 'terminal' AND cars_data.weight > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.year FROM cars_data WHERE cars_data.weight < 'terminal' INTERSECT SELECT cars_data.year FROM cars_data WHERE cars_data.weight < 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.horsepower FROM cars_data ORDER BY cars_data.accelerate DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.horsepower FROM cars_data ORDER BY cars_data.accelerate DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.cylinders FROM car_names NATURAL JOIN cars_data WHERE car_names.make = 'terminal' ORDER BY cars_data.accelerate ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT cars_data.cylinders FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE car_makers.fullname = 'volvo' ORDER BY cars_data.accelerate ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.accelerate > (SELECT MAX(cars_data.horsepower) FROM cars_data)",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.accelerate > (SELECT MAX(cars_data.horsepower) FROM cars_data)",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM (SELECT countries.countryname FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country HAVING COUNT(*) > 'terminal')",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(car_makers.country) FROM car_makers GROUP BY car_makers.country HAVING COUNT(*) > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.cylinders > '6'",
+    "car_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM cars_data WHERE cars_data.cylinders > '6'",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names NATURAL JOIN cars_data WHERE cars_data.cylinders = '4' ORDER BY cars_data.horsepower DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_names NATURAL JOIN cars_data WHERE cars_data.cylinders = '4' ORDER BY cars_data.horsepower DESC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.make, car_names.make FROM car_names NATURAL JOIN cars_data WHERE cars_data.horsepower > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.makeid, car_names.make FROM car_names NATURAL JOIN cars_data WHERE cars_data.cylinders < '4' ORDER BY cars_data.horsepower ASC LIMIT 1",
+    "car_1"
+  ],
+  [
+    "SELECT MAX(cars_data.mpg) FROM cars_data WHERE cars_data.cylinders = '8' OR cars_data.year < '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT MAX(cars_data.mpg) FROM cars_data WHERE cars_data.cylinders = '8' OR cars_data.year < '1980'",
+    "car_1"
+  ],
+  [
+    "SELECT car_names.model FROM car_makers NATURAL JOIN model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE car_makers.fullname <> 'ford motor company' AND cars_data.weight <> 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT model_list.model FROM model_list NATURAL JOIN car_names NATURAL JOIN cars_data WHERE cars_data.weight < 'terminal' EXCEPT SELECT model_list.model FROM model_list NATURAL JOIN car_names WHERE car_names.make = 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname FROM countries WHERE NOT countries.countryid IN (SELECT car_makers.country FROM car_makers)",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryname FROM countries WHERE NOT countries.countryid IN (SELECT car_makers.country FROM car_makers)",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.id, car_makers.maker FROM car_makers GROUP BY car_makers.id HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT car_makers.id, car_makers.maker FROM car_makers GROUP BY car_makers.id HAVING COUNT(*) >= 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryid, countries.countryname FROM countries NATURAL JOIN car_makers WHERE car_makers.fullname = 'fiat'",
+    "car_1"
+  ],
+  [
+    "SELECT countries.countryid, countries.countryname FROM countries NATURAL JOIN car_makers GROUP BY car_makers.country HAVING COUNT(*) > 'terminal'",
+    "car_1"
+  ],
+  [
+    "SELECT airlines.country FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.country FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.abbreviation FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.abbreviation FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline, airlines.abbreviation FROM airlines WHERE airlines.country = 'usa'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline, airlines.abbreviation FROM airlines WHERE airlines.country = 'usa'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode, airports.airportname FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode, airports.airportname FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines WHERE airlines.abbreviation = 'ual'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines WHERE airlines.abbreviation = 'ual'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.country = 'usa'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.country = 'usa'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city, airports.country FROM airports WHERE airports.airportname = 'alton '",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city, airports.country FROM airports WHERE airports.airportname = 'alton '",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE airports.airportcode = 'ako'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE airports.airportcode = 'ako'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE airports.city = 'ames '",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE airports.city = 'ames '",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights WHERE flights.destairport = ' ato'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM flights WHERE flights.destairport = ' ato'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'aberdeen '",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'aberdeen '",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.airline = 'jetblue airways'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines NATURAL JOIN flights WHERE airlines.airline = 'united airlines' AND flights.destairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.airline = 'united airlines'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.airline = 'united airlines'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines NATURAL JOIN flights WHERE airlines.airline = 'united airlines' AND flights.sourceairport = ' ahd'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines NATURAL JOIN airports WHERE airports.city = 'terminal' AND airlines.airline = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airlines WHERE airlines.airline = 'united airlines'",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city FROM airports GROUP BY airports.city ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city FROM airports GROUP BY airports.city ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city FROM airports GROUP BY airports.city ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.city FROM airports GROUP BY airports.city ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode FROM airports NATURAL JOIN flights GROUP BY flights.sourceairport ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode FROM airports NATURAL JOIN flights GROUP BY flights.sourceairport ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode FROM airports NATURAL JOIN flights GROUP BY flights.sourceairport ORDER BY COUNT(*) ASC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportcode FROM airports NATURAL JOIN flights GROUP BY flights.destairport ORDER BY COUNT(*) ASC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights GROUP BY flights.airline ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights GROUP BY flights.airline ORDER BY COUNT(*) DESC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.abbreviation, airlines.country FROM airlines NATURAL JOIN flights GROUP BY flights.airline ORDER BY COUNT(*) ASC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.abbreviation, airlines.country FROM airlines NATURAL JOIN flights GROUP BY flights.airline ORDER BY COUNT(*) ASC LIMIT 1",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = ' ahd'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.destairport = ' ahd'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = ' and' INTERSECT SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = ' and'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = ' apg' INTERSECT SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = ' cvo'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = 'terminal' EXCEPT SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.destairport = ' apg' EXCEPT SELECT airlines.airline FROM airlines NATURAL JOIN flights WHERE flights.destairport = ' cvo'",
+    "flight_2"
+  ],
+  [
+    "SELECT * FROM airlines GROUP BY airlines.airline HAVING COUNT(*) >= 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT * FROM flights GROUP BY flights.airline HAVING COUNT(*) >= 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT * FROM flights GROUP BY flights.airline HAVING COUNT(*) < 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT * FROM flights GROUP BY flights.airline HAVING COUNT(*) < 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airlines NATURAL JOIN flights WHERE airlines.airline = 'united airlines'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airlines NATURAL JOIN flights WHERE airlines.airline = 'united airlines'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM flights WHERE flights.sourceairport = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM flights WHERE flights.sourceairport = ' apg'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airports NATURAL JOIN flights WHERE airports.airportcode = 'apg'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM flights WHERE flights.sourceairport = ' apg'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airports NATURAL JOIN flights WHERE airports.city = 'aberdeen '",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airports NATURAL JOIN flights WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airports NATURAL JOIN flights WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT flights.flightno FROM airports NATURAL JOIN flights WHERE airports.city = 'terminal'",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'aberdeen ' OR airports.city = 'aberdeen '",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM airports WHERE airports.city = 'aberdeen ' OR airports.city = 'aberdeen '",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE NOT airports.airportcode IN (SELECT flights.destairport FROM flights)",
+    "flight_2"
+  ],
+  [
+    "SELECT airports.airportname FROM airports WHERE NOT airports.airportcode IN (SELECT flights.destairport FROM flights)",
+    "flight_2"
+  ],
+  [
+    "SELECT COUNT(*) FROM employee",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT COUNT(*) FROM employee",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee ORDER BY employee.age ASC",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee ORDER BY employee.age ASC",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.city, COUNT(*) FROM employee GROUP BY employee.city",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.city, COUNT(*) FROM employee GROUP BY employee.city",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.city FROM employee WHERE employee.age < '30'",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.city FROM employee WHERE employee.age < '30'",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.location, COUNT(*) FROM shop GROUP BY shop.location",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.location, COUNT(*) FROM shop GROUP BY shop.location",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.manager_name, shop.district FROM shop ORDER BY shop.number_products DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.manager_name, shop.district FROM shop ORDER BY shop.number_products DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT MIN(shop.number_products), MAX(shop.number_products) FROM shop",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT MIN(shop.number_products), MAX(shop.number_products) FROM shop",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name, shop.location, shop.district FROM shop ORDER BY shop.number_products DESC",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name, shop.location, shop.district FROM shop ORDER BY shop.number_products DESC",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop WHERE shop.number_products > (SELECT AVG(shop.number_products) FROM shop)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop WHERE shop.number_products > (SELECT AVG(shop.number_products) FROM shop)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee NATURAL JOIN evaluation GROUP BY evaluation.employee_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee NATURAL JOIN evaluation GROUP BY evaluation.employee_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee NATURAL JOIN evaluation ORDER BY evaluation.bonus DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee NATURAL JOIN evaluation ORDER BY evaluation.bonus DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee WHERE NOT employee.employee_id IN (SELECT evaluation.employee_id FROM evaluation)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT employee.name FROM employee WHERE NOT employee.employee_id IN (SELECT evaluation.employee_id FROM evaluation)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop NATURAL JOIN hiring GROUP BY hiring.shop_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop ORDER BY shop.name DESC LIMIT 1",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop WHERE NOT shop.shop_id IN (SELECT hiring.shop_id FROM hiring)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name FROM shop WHERE NOT shop.shop_id IN (SELECT hiring.shop_id FROM hiring)",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT hiring.shop_id, COUNT(*) FROM hiring GROUP BY hiring.shop_id",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.name, COUNT(*) FROM shop GROUP BY shop.shop_id",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT SUM(evaluation.bonus) FROM evaluation",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT SUM(evaluation.bonus) FROM evaluation",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT * FROM hiring",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT * FROM hiring",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.district FROM shop WHERE shop.number_products > '10000' INTERSECT SELECT shop.district FROM shop WHERE shop.number_products < '10000'",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT shop.district FROM shop WHERE shop.number_products > '10000' INTERSECT SELECT shop.district FROM shop WHERE shop.number_products < '10000'",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT COUNT(shop.location) FROM shop",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT COUNT(shop.location) FROM shop",
+    "employee_hire_evaluation"
+  ],
+  [
+    "SELECT COUNT(*) FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name, documents.document_description FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name, documents.document_description FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_name, documents.template_id FROM documents WHERE documents.document_description LIKE 'n'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_name, documents.template_id FROM documents WHERE documents.document_description LIKE 'n'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.template_id, documents.document_description FROM documents WHERE documents.document_name = 'robbin cv'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.template_id, documents.document_description FROM documents WHERE documents.document_name = 'robbin cv'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates WHERE templates.template_type_code = 'pp'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates WHERE templates.template_type_code = 'pp'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id, COUNT(*) FROM templates NATURAL JOIN documents GROUP BY documents.template_id",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.template_id, COUNT(*) FROM documents GROUP BY documents.template_id",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id, templates.template_type_code FROM templates NATURAL JOIN documents GROUP BY documents.template_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id, templates.template_type_code FROM templates NATURAL JOIN documents GROUP BY documents.template_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.template_id FROM documents GROUP BY documents.template_id HAVING COUNT(*) > 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.template_id FROM documents GROUP BY documents.template_id HAVING COUNT(*) > 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM templates EXCEPT SELECT documents.template_id FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM templates EXCEPT SELECT documents.template_id FROM documents",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id, templates.version_number, templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id, templates.version_number, templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM templates WHERE templates.template_type_code = 'pp' OR templates.template_type_code = 'pp'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM templates WHERE templates.template_type_code = 'pp' OR templates.template_type_code = 'pp'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates WHERE templates.template_type_code = 'cv'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM templates WHERE templates.template_type_code = 'cv'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.version_number, templates.template_type_code FROM templates WHERE templates.version_number > '5'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.version_number, templates.template_type_code FROM templates WHERE templates.version_number > '5'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code, COUNT(*) FROM templates GROUP BY templates.template_type_code",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code, COUNT(*) FROM templates GROUP BY templates.template_type_code",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code HAVING COUNT(*) < 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code HAVING COUNT(*) < 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.version_number, templates.template_type_code FROM templates ORDER BY templates.version_number ASC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.version_number, templates.template_type_code FROM templates ORDER BY templates.version_number ASC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates NATURAL JOIN documents WHERE documents.document_name = 'data base'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates NATURAL JOIN documents WHERE documents.document_name = 'data base'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_name FROM templates NATURAL JOIN documents WHERE templates.template_type_code = 'bk'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_name FROM templates NATURAL JOIN documents WHERE templates.template_type_code LIKE 'bk'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code, COUNT(*) FROM templates GROUP BY templates.template_type_code",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code, COUNT(*) FROM templates GROUP BY templates.template_type_code",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates GROUP BY templates.template_type_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_code FROM ref_template_types EXCEPT SELECT templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_type_code FROM templates EXCEPT SELECT templates.template_type_code FROM templates",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_code, ref_template_types.template_type_description FROM ref_template_types",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_code, ref_template_types.template_type_description FROM ref_template_types",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_description FROM ref_template_types WHERE ref_template_types.template_type_code = 'ad'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_description FROM ref_template_types WHERE ref_template_types.template_type_code = 'ad'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_code FROM ref_template_types WHERE ref_template_types.template_type_description = 'book'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_code FROM ref_template_types WHERE ref_template_types.template_type_description LIKE 'book'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT ref_template_types.template_type_description FROM ref_template_types",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.date_effective_to FROM templates WHERE templates.template_id IN (SELECT documents.template_id FROM documents)",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM ref_template_types NATURAL JOIN templates WHERE ref_template_types.template_type_description = 'presentation'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT templates.template_id FROM ref_template_types NATURAL JOIN templates WHERE ref_template_types.template_type_description LIKE 'presentation'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM paragraphs",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM paragraphs",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM documents WHERE documents.document_name = 'summer show'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM documents WHERE documents.document_name = 'summer show'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT * FROM paragraphs WHERE paragraphs.paragraph_text = 'korea'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.other_details FROM paragraphs WHERE paragraphs.paragraph_text LIKE 'korea'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.paragraph_id, paragraphs.paragraph_text FROM documents NATURAL JOIN paragraphs WHERE documents.document_name = 'welcome to ny'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.paragraph_id, paragraphs.paragraph_text FROM documents NATURAL JOIN paragraphs WHERE documents.document_name = 'welcome to ny'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.paragraph_text FROM documents NATURAL JOIN paragraphs WHERE documents.document_name = 'customer reviews'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.paragraph_text FROM documents NATURAL JOIN paragraphs WHERE documents.document_name = 'customer reviews'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id, COUNT(*) FROM documents NATURAL JOIN paragraphs GROUP BY documents.document_id ORDER BY COUNT(*) ASC",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, COUNT(*) FROM documents GROUP BY documents.document_id ORDER BY COUNT(*) ASC",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name, COUNT(*) FROM documents GROUP BY documents.document_id",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name, COUNT(*) FROM documents GROUP BY documents.document_id",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id HAVING COUNT(*) >= 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id HAVING COUNT(*) >= 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name FROM documents NATURAL JOIN paragraphs GROUP BY paragraphs.document_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT documents.document_id, documents.document_name FROM documents NATURAL JOIN paragraphs GROUP BY paragraphs.document_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id ORDER BY COUNT(*) ASC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id ORDER BY COUNT(*) ASC LIMIT 1",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id HAVING COUNT(*) >= 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs GROUP BY paragraphs.document_id HAVING COUNT(*) >= 'terminal'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs WHERE paragraphs.paragraph_text = 'brazil' OR paragraphs.paragraph_text = 'ireland'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT paragraphs.document_id FROM paragraphs WHERE paragraphs.paragraph_text = 'brazil' OR paragraphs.paragraph_text = 'ireland'",
+    "cre_Doc_Template_Mgt"
+  ],
+  [
+    "SELECT COUNT(*) FROM teacher",
+    "course_teach"
+  ],
+  [
+    "SELECT COUNT(*) FROM teacher",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher ORDER BY teacher.age ASC",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher ORDER BY teacher.age ASC",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.age, teacher.hometown FROM teacher",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.age, teacher.hometown FROM teacher",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE teacher.hometown <> 'little lever urban district'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE teacher.hometown <> 'little lever urban district'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE teacher.age = '32' OR teacher.age = '33'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE teacher.age = '32' OR teacher.age = '33'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher ORDER BY teacher.age ASC LIMIT 1",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher WHERE teacher.age = (SELECT MIN(teacher.age) FROM teacher)",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown, COUNT(*) FROM teacher GROUP BY teacher.hometown",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown, COUNT(*) FROM teacher GROUP BY teacher.hometown",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher GROUP BY teacher.hometown ORDER BY COUNT(*) DESC LIMIT 1",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher GROUP BY teacher.hometown ORDER BY COUNT(*) DESC LIMIT 1",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher GROUP BY teacher.hometown HAVING COUNT(*) >= 'terminal'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.hometown FROM teacher GROUP BY teacher.hometown HAVING COUNT(*) >= 'terminal'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, course.course FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, course.course FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, course.course FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange ORDER BY teacher.name ASC",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, course.course FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange ORDER BY teacher.name ASC",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange WHERE course.course = 'math'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM course NATURAL JOIN teacher NATURAL JOIN course_arrange WHERE course.course = 'math'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, COUNT(*) FROM teacher GROUP BY teacher.name",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name, COUNT(*) FROM teacher GROUP BY teacher.name",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher GROUP BY teacher.name HAVING COUNT(*) >= 'terminal'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher NATURAL JOIN course_arrange GROUP BY course_arrange.teacher_id HAVING COUNT(*) >= 'terminal'",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE NOT teacher.teacher_id IN (SELECT course_arrange.teacher_id FROM course_arrange)",
+    "course_teach"
+  ],
+  [
+    "SELECT teacher.name FROM teacher WHERE NOT teacher.teacher_id IN (SELECT course_arrange.teacher_id FROM course_arrange)",
+    "course_teach"
+  ],
+  [
+    "SELECT COUNT(*) FROM visitor WHERE visitor.age < 'terminal'",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.name FROM visitor WHERE visitor.level_of_membership > 'terminal' ORDER BY visitor.name ASC",
+    "museum_visit"
+  ],
+  [
+    "SELECT AVG(visitor.age) FROM visitor WHERE visitor.level_of_membership <> 'terminal'",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.name, visitor.level_of_membership FROM visitor WHERE visitor.level_of_membership > 'terminal' ORDER BY visitor.level_of_membership ASC",
+    "museum_visit"
+  ],
+  [
+    "SELECT museum.museum_id, museum.name FROM museum ORDER BY museum.num_of_staff DESC LIMIT 1",
+    "museum_visit"
+  ],
+  [
+    "SELECT AVG(museum.num_of_staff) FROM museum WHERE museum.open_year < '2009'",
+    "museum_visit"
+  ],
+  [
+    "SELECT museum.open_year, museum.num_of_staff FROM museum WHERE museum.name = 'plaza museum'",
+    "museum_visit"
+  ],
+  [
+    "SELECT museum.name FROM museum WHERE museum.open_year > '2010'",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.id, visitor.name, visitor.age FROM visitor NATURAL JOIN visit GROUP BY visit.visitor_id HAVING COUNT(*) > 'terminal'",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.id, visitor.name, visitor.level_of_membership FROM visitor NATURAL JOIN visit GROUP BY visit.visitor_id ORDER BY SUM(visit.total_spent) DESC LIMIT 1",
+    "museum_visit"
+  ],
+  [
+    "SELECT museum.museum_id, museum.name FROM museum NATURAL JOIN visit GROUP BY visit.museum_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "museum_visit"
+  ],
+  [
+    "SELECT museum.name FROM museum WHERE NOT museum.museum_id IN (SELECT visit.museum_id FROM visit)",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.name, visitor.age FROM visitor NATURAL JOIN visit GROUP BY visit.visitor_id ORDER BY SUM(visit.total_spent) DESC LIMIT 1",
+    "museum_visit"
+  ],
+  [
+    "SELECT AVG(visit.num_of_ticket), MAX(visit.num_of_ticket) FROM visit",
+    "museum_visit"
+  ],
+  [
+    "SELECT SUM(visit.total_spent) FROM visitor NATURAL JOIN visit WHERE visitor.level_of_membership = '1'",
+    "museum_visit"
+  ],
+  [
+    "SELECT visitor.name FROM museum NATURAL JOIN visitor NATURAL JOIN visit WHERE museum.open_year < '2011' INTERSECT SELECT visitor.name FROM museum NATURAL JOIN visitor NATURAL JOIN visit WHERE museum.open_year < '2009'",
+    "museum_visit"
+  ],
+  [
+    "SELECT COUNT(*) FROM visitor WHERE NOT visitor.id IN (SELECT visit.visitor_id FROM museum NATURAL JOIN visit WHERE museum.open_year > '2010')",
+    "museum_visit"
+  ],
+  [
+    "SELECT COUNT(*) FROM museum WHERE museum.open_year > '2008' OR museum.open_year < '2008'",
+    "museum_visit"
+  ],
+  [
+    "SELECT COUNT(*) FROM players",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM players",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.birth_date FROM players WHERE players.country_code = 'usa'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.birth_date FROM players WHERE players.country_code = 'usa'",
+    "wta_1"
+  ],
+  [
+    "SELECT AVG(matches.loser_age), AVG(matches.winner_age) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT AVG(matches.loser_age), AVG(matches.winner_age) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT AVG(matches.winner_rank) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT AVG(matches.winner_rank) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT MAX(matches.loser_rank) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.loser_rank FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(players.country_code) FROM players",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(players.country_code) FROM players",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(matches.loser_name) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(matches.loser_name) FROM matches",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.tourney_name FROM matches GROUP BY matches.tourney_name HAVING COUNT(*) > 'terminal'",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.tourney_name FROM matches GROUP BY matches.tourney_name HAVING COUNT(*) > 'terminal'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players NATURAL JOIN matches WHERE matches.year = '2013' INTERSECT SELECT matches.winner_name, players.last_name FROM players NATURAL JOIN matches WHERE matches.year = '2016'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players NATURAL JOIN matches WHERE matches.year = '2013' INTERSECT SELECT players.first_name, players.last_name FROM players NATURAL JOIN matches WHERE matches.year = '2016'",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches WHERE matches.year = '2013' OR matches.year = '2016'",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches WHERE matches.year = '2013' OR matches.year = '2016'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code, players.first_name FROM players NATURAL JOIN matches WHERE matches.tourney_name = 'wta championships' INTERSECT SELECT players.country_code, players.first_name FROM players NATURAL JOIN matches WHERE matches.tourney_name = 'australian open'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code FROM players NATURAL JOIN matches WHERE matches.tourney_name = 'wta championships' INTERSECT SELECT players.first_name, players.country_code FROM players NATURAL JOIN matches WHERE matches.tourney_name = 'australian open'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code FROM players ORDER BY players.birth_date DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code FROM players ORDER BY players.birth_date DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players ORDER BY players.birth_date ASC",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players ORDER BY players.birth_date ASC",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players WHERE players.hand = 'r' ORDER BY players.birth_date ASC",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players WHERE players.hand = 'r' ORDER BY players.birth_date ASC",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code FROM players NATURAL JOIN rankings GROUP BY rankings.player_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name, players.country_code FROM players NATURAL JOIN rankings GROUP BY rankings.player_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.year FROM matches GROUP BY matches.year ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.year FROM matches GROUP BY matches.year ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name, matches.winner_rank_points FROM players NATURAL JOIN matches GROUP BY matches.winner_rank_points ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name, rankings.ranking_points FROM players NATURAL JOIN matches NATURAL JOIN rankings GROUP BY matches.winner_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players NATURAL JOIN matches NATURAL JOIN rankings WHERE matches.tourney_name = 'australian open' ORDER BY rankings.ranking_points DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.last_name FROM players NATURAL JOIN matches WHERE matches.tourney_name = 'australian open' ORDER BY matches.winner_rank_points DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.loser_name, matches.winner_name FROM matches ORDER BY matches.minutes DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.winner_name, matches.loser_name, players.last_name FROM players NATURAL JOIN matches ORDER BY matches.match_num DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, AVG(rankings.ranking_points) FROM players NATURAL JOIN rankings GROUP BY players.first_name",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, AVG(rankings.ranking) FROM players NATURAL JOIN rankings GROUP BY rankings.player_id",
+    "wta_1"
+  ],
+  [
+    "SELECT SUM(rankings.ranking_points), players.first_name FROM players NATURAL JOIN rankings GROUP BY players.first_name",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, SUM(rankings.ranking_points) FROM players NATURAL JOIN rankings GROUP BY players.first_name",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code, COUNT(*) FROM players GROUP BY players.country_code",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code, COUNT(*) FROM players GROUP BY players.country_code",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code FROM players GROUP BY players.country_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code FROM players GROUP BY players.country_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code FROM players GROUP BY players.country_code HAVING COUNT(*) > 'terminal'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.country_code FROM players GROUP BY players.country_code HAVING COUNT(*) > 'terminal'",
+    "wta_1"
+  ],
+  [
+    "SELECT rankings.ranking_date, COUNT(*) FROM rankings GROUP BY rankings.ranking_date",
+    "wta_1"
+  ],
+  [
+    "SELECT rankings.ranking_date, COUNT(*) FROM rankings GROUP BY rankings.ranking_date",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*), matches.year FROM matches GROUP BY matches.year",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*), matches.year FROM matches GROUP BY matches.year",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.winner_name, players.last_name, matches.winner_rank FROM players NATURAL JOIN matches ORDER BY matches.winner_age ASC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT matches.winner_name, players.last_name, matches.winner_rank FROM players NATURAL JOIN matches ORDER BY matches.winner_age ASC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches WHERE matches.tourney_name = 'wta championships'",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM matches WHERE matches.tourney_name = 'wta championships' AND matches.winner_hand = 'r'",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code, players.birth_date FROM players NATURAL JOIN matches ORDER BY matches.winner_rank_points DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.first_name, players.country_code, players.birth_date FROM players NATURAL JOIN matches ORDER BY matches.winner_rank_points DESC LIMIT 1",
+    "wta_1"
+  ],
+  [
+    "SELECT players.hand, COUNT(*) FROM players GROUP BY players.hand",
+    "wta_1"
+  ],
+  [
+    "SELECT players.hand, COUNT(*) FROM players GROUP BY players.hand",
+    "wta_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM ship WHERE ship.disposition_of_ship = 'captured'",
+    "battle_death"
+  ],
+  [
+    "SELECT ship.name, ship.tonnage FROM ship ORDER BY ship.name DESC",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.name, battle.date, battle.result FROM battle",
+    "battle_death"
+  ],
+  [
+    "SELECT MAX(death.killed), MIN(death.killed) FROM death GROUP BY death.caused_by_ship_id",
+    "battle_death"
+  ],
+  [
+    "SELECT AVG(death.injured), battle.id FROM battle NATURAL JOIN ship NATURAL JOIN death GROUP BY battle.id",
+    "battle_death"
+  ],
+  [
+    "SELECT death.killed, death.injured FROM ship NATURAL JOIN death WHERE ship.tonnage = 't'",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.name, battle.result FROM battle WHERE battle.bulgarian_commander <> 'boril'",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.id, battle.name FROM battle NATURAL JOIN ship WHERE ship.ship_type = 'brig'",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.id, battle.name FROM battle NATURAL JOIN ship NATURAL JOIN death GROUP BY battle.id HAVING SUM(death.killed) > 'terminal'",
+    "battle_death"
+  ],
+  [
+    "SELECT ship.id, ship.name FROM ship NATURAL JOIN death GROUP BY death.caused_by_ship_id ORDER BY SUM(death.injured) DESC LIMIT 1",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.name FROM battle WHERE battle.latin_commander = 'baldwin i' AND battle.latin_commander = 'baldwin i'",
+    "battle_death"
+  ],
+  [
+    "SELECT COUNT(battle.result) FROM battle",
+    "battle_death"
+  ],
+  [
+    "SELECT COUNT(*) FROM battle WHERE NOT battle.id IN (SELECT ship.lost_in_battle FROM ship WHERE ship.tonnage = 't')",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.name, battle.date FROM battle NATURAL JOIN ship WHERE ship.name = 'lettice' INTERSECT SELECT battle.name, battle.date FROM battle NATURAL JOIN ship WHERE ship.name = 'hms atalanta'",
+    "battle_death"
+  ],
+  [
+    "SELECT battle.name, battle.bulgarian_commander, battle.bulgarian_commander FROM battle WHERE NOT battle.id IN (SELECT ship.lost_in_battle FROM ship WHERE ship.location = 'english channel')",
+    "battle_death"
+  ],
+  [
+    "SELECT death.note FROM death WHERE death.note LIKE 'terminal'",
+    "battle_death"
+  ],
+  [
+    "SELECT addresses.line_1, addresses.line_2 FROM addresses",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.line_1, addresses.line_2 FROM addresses",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM courses",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM courses",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_description FROM courses WHERE courses.course_name = 'math'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_description FROM courses WHERE courses.course_name = 'math'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.zip_postcode FROM addresses WHERE addresses.city = 'port chelsea'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.zip_postcode FROM addresses WHERE addresses.city = 'port chelsea'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT departments.department_name, departments.department_id FROM departments GROUP BY departments.department_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT departments.department_id, departments.department_name FROM departments NATURAL JOIN degree_programs ORDER BY degree_programs.degree_program_id DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM departments WHERE departments.department_id IN (SELECT degree_programs.department_id FROM degree_programs)",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(degree_programs.degree_program_id) FROM degree_programs",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(degree_programs.degree_summary_name) FROM degree_programs",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(degree_programs.degree_program_id) FROM degree_programs",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(degree_programs.degree_program_id) FROM departments NATURAL JOIN degree_programs WHERE departments.department_name = 'art'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM departments WHERE departments.department_name = 'art'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_name, sections.section_description FROM sections",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_name, sections.section_description FROM sections",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name, courses.course_id FROM courses NATURAL JOIN sections GROUP BY sections.course_id HAVING COUNT(*) <= 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name, sections.section_name FROM courses NATURAL JOIN sections GROUP BY sections.course_id HAVING COUNT(*) < 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_name FROM sections ORDER BY sections.section_name ASC",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_name FROM sections ORDER BY sections.section_name ASC",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT semesters.semester_name, semesters.semester_name FROM semesters GROUP BY semesters.semester_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students NATURAL JOIN student_enrolment GROUP BY student_enrolment.semester_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT departments.department_description FROM departments WHERE departments.department_name LIKE 'art'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT departments.department_description FROM departments WHERE departments.department_name LIKE 'art'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students WHERE students.first_name = 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students NATURAL JOIN student_enrolment GROUP BY student_enrolment.degree_program_id HAVING COUNT(*) = 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM degree_programs NATURAL JOIN students NATURAL JOIN student_enrolment WHERE degree_programs.degree_summary_name = 'bachelor'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students NATURAL JOIN student_enrolment WHERE student_enrolment.degree_program_id = 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT student_enrolment.degree_program_id FROM student_enrolment GROUP BY student_enrolment.degree_program_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT degree_programs.degree_summary_name FROM degree_programs GROUP BY degree_programs.degree_summary_name ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT degree_programs.degree_program_id, student_enrolment.student_enrolment_id FROM degree_programs NATURAL JOIN student_enrolment GROUP BY degree_programs.degree_program_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT degree_programs.degree_program_id, degree_programs.degree_summary_description FROM degree_programs NATURAL JOIN student_enrolment GROUP BY student_enrolment.degree_program_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.last_name, COUNT(*) FROM students NATURAL JOIN student_enrolment GROUP BY student_enrolment.student_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, COUNT(*) FROM students NATURAL JOIN student_enrolment GROUP BY student_enrolment.student_enrolment_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT semesters.semester_name FROM semesters WHERE NOT semesters.semester_id IN (SELECT student_enrolment.semester_id FROM student_enrolment)",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT semesters.semester_name FROM semesters WHERE NOT semesters.semester_id IN (SELECT student_enrolment.semester_id FROM student_enrolment)",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name FROM courses",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name FROM courses NATURAL JOIN student_enrolment_courses GROUP BY student_enrolment_courses.course_id HAVING COUNT(*) = 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name FROM courses NATURAL JOIN student_enrolment_courses GROUP BY student_enrolment_courses.course_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT courses.course_name FROM courses NATURAL JOIN student_enrolment_courses GROUP BY student_enrolment_courses.course_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.last_name FROM addresses NATURAL JOIN students WHERE addresses.state_province_county <> 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.last_name FROM addresses NATURAL JOIN students WHERE addresses.state_province_county <> 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date, transcripts.transcript_date FROM transcripts GROUP BY transcripts.transcript_id HAVING COUNT(*) >= 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date, transcripts.transcript_date FROM transcripts GROUP BY transcripts.transcript_id HAVING COUNT(*) >= 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.cell_mobile_number FROM students WHERE students.first_name = 'timmothy' AND students.last_name = 'ward'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.cell_mobile_number FROM students WHERE students.first_name = 'timmothy' AND students.last_name = 'ward'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students ORDER BY students.date_first_registered ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students ORDER BY students.date_first_registered ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students ORDER BY students.date_left ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name, students.middle_name, students.last_name FROM students ORDER BY students.date_left ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name FROM students WHERE students.permanent_address_id < students.permanent_address_id",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name FROM students WHERE students.permanent_address_id <> students.permanent_address_id",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.address_id, addresses.line_1, addresses.line_2 FROM addresses NATURAL JOIN students GROUP BY students.current_address_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.address_id, addresses.line_1, addresses.line_2 FROM addresses NATURAL JOIN students GROUP BY students.current_address_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT AVG(transcripts.transcript_date) FROM transcripts",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT AVG(transcripts.transcript_date) FROM transcripts",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date, transcripts.other_details FROM transcripts ORDER BY transcripts.transcript_date ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.other_details, transcripts.other_details FROM transcripts ORDER BY transcripts.transcript_date ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM transcripts",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM transcripts",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date FROM transcripts ORDER BY transcripts.transcript_date DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date FROM transcripts ORDER BY transcripts.transcript_date DESC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM (SELECT * FROM transcript_contents GROUP BY transcript_contents.transcript_id ORDER BY COUNT(*) DESC LIMIT 1)",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*), student_enrolment_courses.course_id FROM student_enrolment_courses GROUP BY student_enrolment_courses.course_id",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date, transcripts.transcript_id FROM transcripts GROUP BY transcripts.transcript_date ORDER BY COUNT(*) ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT transcripts.transcript_date, transcripts.transcript_id FROM transcripts GROUP BY transcripts.transcript_id ORDER BY COUNT(*) ASC LIMIT 1",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT semesters.semester_name FROM degree_programs NATURAL JOIN semesters NATURAL JOIN student_enrolment WHERE degree_programs.degree_summary_name = 'master' INTERSECT SELECT semesters.semester_name FROM degree_programs NATURAL JOIN semesters NATURAL JOIN student_enrolment WHERE degree_programs.degree_summary_name = 'bachelor'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT semesters.semester_id FROM semesters NATURAL JOIN student_enrolment WHERE student_enrolment.degree_program_id = 'terminal' INTERSECT SELECT semesters.semester_id FROM semesters NATURAL JOIN student_enrolment WHERE student_enrolment.degree_program_id = 'terminal'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT COUNT(*) FROM students",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT addresses.line_1 FROM addresses NATURAL JOIN students WHERE students.student_id IN (SELECT students.permanent_address_id FROM students)",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.other_student_details FROM students ORDER BY students.other_student_details ASC",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.other_student_details FROM students ORDER BY students.other_student_details ASC",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_description FROM sections WHERE sections.section_name = 'b'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT sections.section_description FROM sections WHERE sections.section_name = 'a'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name FROM addresses NATURAL JOIN students WHERE addresses.country = 'haiti'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT students.first_name FROM students WHERE students.cell_mobile_number = '09700166582'",
+    "student_transcripts_tracking"
+  ],
+  [
+    "SELECT cartoon.title FROM cartoon ORDER BY cartoon.title ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM cartoon ORDER BY cartoon.title ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT * FROM cartoon WHERE cartoon.directed_by = 'ben jones'",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM cartoon WHERE cartoon.directed_by = 'ben jones'",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*) FROM cartoon WHERE cartoon.written_by = 'joseph kuhr'",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*) FROM cartoon WHERE cartoon.written_by = 'joseph kuhr'",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title, cartoon.directed_by FROM tv_channel NATURAL JOIN tv_series NATURAL JOIN cartoon WHERE cartoon.original_air_date = 'terminal' ORDER BY tv_series.air_date ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title, cartoon.directed_by FROM cartoon ORDER BY cartoon.original_air_date ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM cartoon WHERE cartoon.directed_by = 'ben jones' OR cartoon.directed_by = 'brandon vietti'",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM cartoon WHERE cartoon.directed_by = 'ben jones' OR cartoon.directed_by = 'brandon vietti'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country, COUNT(*) FROM tv_channel GROUP BY tv_channel.country ORDER BY COUNT(*) DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country, COUNT(*) FROM tv_channel GROUP BY tv_channel.country ORDER BY COUNT(*) DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(tv_channel.series_name), tv_channel.content FROM tv_channel",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(tv_channel.content), tv_channel.content FROM tv_channel",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.content FROM tv_channel WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.content FROM tv_channel WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option FROM tv_channel WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option FROM tv_channel WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*) FROM tv_channel WHERE tv_channel.language = 'english'",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*) FROM tv_channel WHERE tv_channel.language = 'english'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.language, COUNT(*) FROM tv_channel GROUP BY tv_channel.language ORDER BY COUNT(*) ASC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.language, COUNT(*) FROM tv_channel GROUP BY tv_channel.language ORDER BY COUNT(*) ASC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.language, COUNT(*) FROM tv_channel GROUP BY tv_channel.language",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.language, COUNT(*) FROM tv_channel GROUP BY tv_channel.language",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.series_name FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.title = 'the rise of the blue beetle!'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.series_name FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.title = 'terminal'",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM tv_channel NATURAL JOIN cartoon WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.title FROM tv_channel NATURAL JOIN cartoon WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode FROM tv_series ORDER BY tv_series.rating ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode FROM tv_series ORDER BY tv_series.rating ASC",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode, tv_series.rating FROM tv_series ORDER BY tv_series.rating DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode, tv_series.rating FROM tv_series ORDER BY tv_series.rating DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT MIN(tv_series.share), MAX(tv_series.share) FROM tv_series",
+    "tvshow"
+  ],
+  [
+    "SELECT MAX(tv_series.share), MIN(tv_series.share) FROM tv_series",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.air_date FROM tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.air_date FROM tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.weekly_rank FROM tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.weekly_rank FROM tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT * FROM tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.series_name FROM tv_channel NATURAL JOIN tv_series WHERE tv_series.episode = 'a love of a lifetime'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode FROM tv_channel NATURAL JOIN tv_series WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_series.episode FROM tv_channel NATURAL JOIN tv_series WHERE tv_channel.series_name = 'sky radio'",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*), cartoon.directed_by FROM cartoon GROUP BY cartoon.directed_by",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.directed_by, COUNT(*) FROM cartoon GROUP BY cartoon.directed_by",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.production_code, cartoon.channel FROM tv_channel NATURAL JOIN tv_series NATURAL JOIN cartoon ORDER BY tv_series.air_date DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT cartoon.production_code, cartoon.channel FROM cartoon ORDER BY cartoon.original_air_date DESC LIMIT 1",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option, tv_channel.series_name FROM tv_channel WHERE tv_channel.hight_definition_tv = 'terminal'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option, tv_channel.series_name FROM tv_channel WHERE tv_channel.hight_definition_tv = 'terminal'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.written_by = 'todd casey'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.written_by = 'todd casey'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country FROM tv_channel EXCEPT SELECT cartoon.channel FROM cartoon WHERE cartoon.written_by = 'todd casey'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country FROM tv_channel EXCEPT SELECT tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.written_by = 'todd casey'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.series_name, tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.directed_by = 'ben jones' INTERSECT SELECT tv_channel.series_name, tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.directed_by = 'michael chang'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.series_name, tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.directed_by = 'ben jones' INTERSECT SELECT tv_channel.series_name, tv_channel.country FROM tv_channel NATURAL JOIN cartoon WHERE cartoon.directed_by = 'michael chang'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.country, tv_channel.country FROM tv_channel WHERE NOT tv_channel.country IN (SELECT tv_channel.pixel_aspect_ratio_par FROM tv_channel WHERE tv_channel.language = 'english')",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.pixel_aspect_ratio_par, tv_channel.country FROM tv_channel WHERE tv_channel.language <> 'english'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.id FROM tv_channel GROUP BY tv_channel.country HAVING COUNT(*) > 'terminal'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.id FROM tv_channel GROUP BY tv_channel.id HAVING COUNT(*) > 'terminal'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.id FROM tv_channel EXCEPT SELECT cartoon.channel FROM cartoon WHERE cartoon.directed_by = 'ben jones'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.id FROM tv_channel EXCEPT SELECT cartoon.channel FROM cartoon WHERE cartoon.directed_by = 'ben jones'",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option FROM tv_channel WHERE NOT tv_channel.id IN (SELECT cartoon.channel FROM cartoon WHERE cartoon.directed_by = 'ben jones')",
+    "tvshow"
+  ],
+  [
+    "SELECT tv_channel.package_option FROM tv_channel WHERE NOT tv_channel.id IN (SELECT cartoon.channel FROM cartoon WHERE cartoon.directed_by = 'ben jones')",
+    "tvshow"
+  ],
+  [
+    "SELECT COUNT(*) FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT COUNT(*) FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.earnings FROM poker_player ORDER BY poker_player.earnings DESC",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.earnings FROM poker_player ORDER BY poker_player.earnings ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.final_table_made, poker_player.best_finish FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.final_table_made, poker_player.best_finish FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT AVG(poker_player.earnings) FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT AVG(poker_player.earnings) FROM poker_player",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.money_rank FROM poker_player ORDER BY poker_player.earnings DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.money_rank FROM poker_player ORDER BY poker_player.earnings DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT MAX(poker_player.final_table_made) FROM poker_player WHERE poker_player.earnings < 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT MAX(poker_player.final_table_made) FROM poker_player WHERE poker_player.earnings < 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people WHERE poker_player.earnings > 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people WHERE poker_player.earnings > 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people ORDER BY poker_player.final_table_made ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people GROUP BY poker_player.final_table_made ORDER BY SUM(poker_player.final_table_made) ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.birth_date FROM poker_player NATURAL JOIN people ORDER BY poker_player.earnings ASC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT people.birth_date FROM poker_player NATURAL JOIN people ORDER BY poker_player.earnings ASC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.money_rank FROM poker_player NATURAL JOIN people ORDER BY people.height DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT poker_player.money_rank FROM poker_player NATURAL JOIN people ORDER BY people.height DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT AVG(poker_player.earnings) FROM poker_player NATURAL JOIN people WHERE people.height > 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT AVG(poker_player.earnings) FROM poker_player NATURAL JOIN people WHERE people.height > 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people ORDER BY poker_player.earnings DESC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM poker_player NATURAL JOIN people ORDER BY poker_player.earnings ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality, COUNT(*) FROM people GROUP BY people.nationality",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality, COUNT(*) FROM people GROUP BY people.nationality",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality FROM people GROUP BY people.nationality ORDER BY COUNT(*) DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality FROM people GROUP BY people.nationality ORDER BY COUNT(*) DESC LIMIT 1",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality FROM people GROUP BY people.nationality HAVING COUNT(*) >= 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.nationality FROM people GROUP BY people.nationality HAVING COUNT(*) >= 'terminal'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name, people.birth_date FROM people ORDER BY people.name ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name, people.birth_date FROM people ORDER BY people.name ASC",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people WHERE people.nationality <> 'russia'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people WHERE people.nationality <> 'russia'",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people WHERE NOT people.people_id IN (SELECT poker_player.people_id FROM poker_player)",
+    "poker_player"
+  ],
+  [
+    "SELECT people.name FROM people WHERE NOT people.people_id IN (SELECT poker_player.people_id FROM poker_player)",
+    "poker_player"
+  ],
+  [
+    "SELECT COUNT(people.nationality) FROM people",
+    "poker_player"
+  ],
+  [
+    "SELECT COUNT(people.nationality) FROM people",
+    "poker_player"
+  ],
+  [
+    "SELECT COUNT(area_code_state.state) FROM area_code_state",
+    "voter_1"
+  ],
+  [
+    "SELECT contestants.contestant_number, contestants.contestant_name FROM contestants ORDER BY contestants.contestant_number DESC",
+    "voter_1"
+  ],
+  [
+    "SELECT votes.vote_id, votes.phone_number, votes.state FROM votes",
+    "voter_1"
+  ],
+  [
+    "SELECT MAX(area_code_state.area_code), MIN(area_code_state.area_code) FROM area_code_state",
+    "voter_1"
+  ],
+  [
+    "SELECT votes.created FROM votes WHERE votes.state = 'ca'",
+    "voter_1"
+  ],
+  [
+    "SELECT contestants.contestant_name FROM contestants WHERE contestants.contestant_name <> 'jessie alloway'",
+    "voter_1"
+  ],
+  [
+    "SELECT votes.state, COUNT(*) FROM votes",
+    "voter_1"
+  ],
+  [
+    "SELECT contestants.contestant_number, contestants.contestant_name FROM contestants NATURAL JOIN votes GROUP BY votes.contestant_number HAVING COUNT(*) >= 'terminal'",
+    "voter_1"
+  ],
+  [
+    "SELECT contestants.contestant_number, contestants.contestant_name FROM contestants NATURAL JOIN votes ORDER BY votes.vote_id ASC LIMIT 1",
+    "voter_1"
+  ],
+  [
+    "SELECT votes.state FROM votes WHERE votes.state = 'ny' OR votes.state = 'ca'",
+    "voter_1"
+  ],
+  [
+    "SELECT * FROM contestants WHERE NOT contestants.contestant_number IN (SELECT votes.contestant_number FROM votes)",
+    "voter_1"
+  ],
+  [
+    "SELECT area_code_state.area_code FROM area_code_state NATURAL JOIN votes GROUP BY votes.state ORDER BY COUNT(*) DESC LIMIT 1",
+    "voter_1"
+  ],
+  [
+    "SELECT votes.created, votes.phone_number, votes.phone_number FROM contestants NATURAL JOIN votes WHERE contestants.contestant_name = 'tabatha gehling'",
+    "voter_1"
+  ],
+  [
+    "SELECT area_code_state.area_code FROM area_code_state NATURAL JOIN contestants NATURAL JOIN votes WHERE contestants.contestant_name = 'tabatha gehling' INTERSECT SELECT area_code_state.area_code FROM area_code_state NATURAL JOIN contestants NATURAL JOIN votes WHERE contestants.contestant_name = 'kelly clauss'",
+    "voter_1"
+  ],
+  [
+    "SELECT contestants.contestant_name FROM contestants WHERE contestants.contestant_name LIKE 'terminal'",
+    "voter_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.indepyear > 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.name > 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country WHERE country.governmentform = 'republic'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country WHERE country.governmentform = 'republic'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.surfacearea) FROM country WHERE country.region = 'caribbean'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.surfacearea) FROM country WHERE country.continent = 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent FROM country WHERE country.name = 'anguilla'",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent FROM country WHERE country.localname = 'anguilla'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region FROM city NATURAL JOIN country WHERE city.name = 'kabul'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region FROM city NATURAL JOIN country WHERE city.name = 'kabul'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.name = 'aruba' GROUP BY countrylanguage.language ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.name = 'aruba'",
+    "world_1"
+  ],
+  [
+    "SELECT country.population, country.lifeexpectancy FROM country WHERE country.name = 'brazil'",
+    "world_1"
+  ],
+  [
+    "SELECT country.population, country.lifeexpectancy FROM country WHERE country.name = 'brazil'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region, country.population FROM country WHERE country.name = 'angola'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region, country.population FROM country WHERE country.name = 'angola'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country WHERE country.region = 'central africa'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country WHERE country.region = 'central africa'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.continent = 'asia' ORDER BY country.lifeexpectancy ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.continent = 'asia' ORDER BY country.lifeexpectancy ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.population, MAX(country.gnp) FROM country WHERE country.continent = 'asia'",
+    "world_1"
+  ],
+  [
+    "SELECT country.gnp FROM country WHERE country.continent = 'asia' ORDER BY country.gnp DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country WHERE country.name = 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country WHERE country.continent = 'africa' AND country.governmentform = 'republic'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.surfacearea) FROM country WHERE country.continent = 'asia' OR country.continent = 'europe'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.surfacearea) FROM country WHERE country.continent = 'asia' OR country.continent = 'europe'",
+    "world_1"
+  ],
+  [
+    "SELECT city.population FROM city WHERE city.district = 'gelderland'",
+    "world_1"
+  ],
+  [
+    "SELECT city.population FROM city WHERE city.district = 'gelderland'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.gnp), AVG(country.population) FROM country WHERE country.governmentform = 'us territory'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.gnp), AVG(country.population) FROM country WHERE country.code2 = 'al'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM countrylanguage",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM countrylanguage",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(country.governmentform) FROM country WHERE country.continent = 'africa'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(country.governmentform) FROM country WHERE country.continent = 'africa'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM country NATURAL JOIN countrylanguage WHERE country.name = 'aruba'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM country NATURAL JOIN countrylanguage WHERE country.name = 'aruba'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM country NATURAL JOIN countrylanguage WHERE country.name = 'afghanistan'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM country NATURAL JOIN countrylanguage WHERE country.name = 'afghanistan'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage GROUP BY countrylanguage.countrycode ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage GROUP BY countrylanguage.countrycode ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent FROM country GROUP BY country.continent ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent FROM country GROUP BY country.continent ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM countrylanguage WHERE countrylanguage.language = 'dutch' OR countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' INTERSECT SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'french'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' INTERSECT SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'french'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' INTERSECT SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'french'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' OR countrylanguage.language = 'french'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(country.continent) FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'chinese'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(country.continent) FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'chinese'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'dutch' OR countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.region FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'dutch' OR countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'dutch' OR countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'dutch' OR countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.continent = 'asia' GROUP BY countrylanguage.language ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM countrylanguage WHERE countrylanguage.countrycode = 'arg' GROUP BY countrylanguage.language ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.governmentform = 'republic'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.governmentform = 'republic'",
+    "world_1"
+  ],
+  [
+    "SELECT * FROM city NATURAL JOIN country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' ORDER BY city.population DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT * FROM city NATURAL JOIN country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'english' ORDER BY city.population DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.population, country.lifeexpectancy FROM country WHERE country.continent = 'asia' ORDER BY country.surfacearea DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.population, country.lifeexpectancy FROM country WHERE country.continent = 'asia' ORDER BY country.surfacearea DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language <> 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT AVG(country.lifeexpectancy) FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language <> 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.population) FROM country WHERE NOT country.code IN (SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english')",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country WHERE NOT country.code IN (SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english')",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.headofstate = 'beatrix'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM country NATURAL JOIN countrylanguage WHERE country.headofstate = 'beatrix'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM country NATURAL JOIN countrylanguage WHERE country.indepyear < 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(countrylanguage.language) FROM countrylanguage WHERE countrylanguage.isofficial < 't'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.surfacearea > (SELECT MIN(country.surfacearea) FROM country WHERE country.continent = 'europe')",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.surfacearea > (SELECT MIN(country.surfacearea) FROM country WHERE country.continent = 'europe')",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.population < (SELECT MIN(country.population) FROM country WHERE country.continent = 'asia')",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.population < (SELECT MIN(country.population) FROM country WHERE country.name = 'terminal')",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.population > (SELECT MIN(country.population) FROM country WHERE country.continent = 'asia')",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city NATURAL JOIN country WHERE country.population > (SELECT MIN(country.population) FROM country WHERE country.continent = 'asia')",
+    "world_1"
+  ],
+  [
+    "SELECT country.code FROM country WHERE NOT country.code IN (SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english')",
+    "world_1"
+  ],
+  [
+    "SELECT country.code FROM country WHERE NOT country.code IN (SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english')",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language <> 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language <> 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.code2 FROM country WHERE NOT country.code IN (SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english' EXCEPT SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'ha')",
+    "world_1"
+  ],
+  [
+    "SELECT country.code FROM country EXCEPT SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT country.localname FROM country NATURAL JOIN countrylanguage WHERE countrylanguage.language <> 'english'",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city NATURAL JOIN country WHERE country.continent <> 'europe'",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city NATURAL JOIN country NATURAL JOIN countrylanguage WHERE countrylanguage.language = 'chinese'",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city NATURAL JOIN country NATURAL JOIN countrylanguage WHERE country.continent = 'asia' AND countrylanguage.language = 'chinese'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.indepyear, country.surfacearea FROM country ORDER BY country.population ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.indepyear, country.surfacearea FROM country ORDER BY country.population ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.population, country.localname, country.headofstate FROM country ORDER BY country.surfacearea DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.population, country.headofstate FROM country ORDER BY country.surfacearea DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, COUNT(*) FROM country NATURAL JOIN countrylanguage GROUP BY countrylanguage.countrycode HAVING COUNT(*) >= 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, COUNT(*) FROM country NATURAL JOIN countrylanguage GROUP BY countrylanguage.countrycode HAVING COUNT(*) > 'terminal'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*), city.district FROM city WHERE city.population > (SELECT AVG(city.population) FROM city)",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*), city.district FROM city WHERE city.population > (SELECT AVG(city.population) FROM city)",
+    "world_1"
+  ],
+  [
+    "SELECT country.governmentform, SUM(country.population) FROM country WHERE country.lifeexpectancy > (SELECT AVG(country.lifeexpectancy) FROM country)",
+    "world_1"
+  ],
+  [
+    "SELECT country.governmentform, SUM(country.population) FROM country WHERE country.lifeexpectancy > (SELECT AVG(country.lifeexpectancy) FROM country WHERE country.lifeexpectancy > 'terminal' GROUP BY country.governmentform)",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent, AVG(country.lifeexpectancy) FROM country WHERE country.lifeexpectancy < (SELECT AVG(country.lifeexpectancy) FROM country)",
+    "world_1"
+  ],
+  [
+    "SELECT country.continent, SUM(country.population), AVG(country.lifeexpectancy) FROM country WHERE country.lifeexpectancy < (SELECT AVG(country.lifeexpectancy) FROM country)",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.surfacearea FROM country ORDER BY country.surfacearea DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, country.surfacearea FROM country ORDER BY country.population DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM city NATURAL JOIN country ORDER BY city.population DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM city NATURAL JOIN country ORDER BY city.population DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM city NATURAL JOIN country ORDER BY city.population ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM city NATURAL JOIN country ORDER BY city.population ASC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country WHERE country.continent = 'asia'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM country WHERE country.continent = 'asia'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.continent = 'europe' AND country.population > '8000'",
+    "world_1"
+  ],
+  [
+    "SELECT country.name FROM country WHERE country.continent = 'europe' AND country.population > '8000'",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.population) FROM country WHERE country.continent = 'north america' AND country.surfacearea > (SELECT AVG(country.surfacearea) FROM country WHERE country.continent = 'north america')",
+    "world_1"
+  ],
+  [
+    "SELECT SUM(country.population), AVG(country.surfacearea) FROM country WHERE country.surfacearea > (SELECT AVG(country.surfacearea) FROM country WHERE country.continent = 'north america')",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city WHERE city.population >= '90000' AND city.population <= '90000'",
+    "world_1"
+  ],
+  [
+    "SELECT city.name FROM city WHERE city.population >= '90000' AND city.population <= '90000'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM countrylanguage GROUP BY countrylanguage.language ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language FROM countrylanguage GROUP BY countrylanguage.language ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.language, COUNT(*) FROM country NATURAL JOIN countrylanguage GROUP BY country.name ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT country.name, countrylanguage.language, COUNT(*) FROM country NATURAL JOIN countrylanguage GROUP BY countrylanguage.countrycode ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM countrylanguage WHERE countrylanguage.language = 'spanish' GROUP BY countrylanguage.countrycode ORDER BY COUNT(*) DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM countrylanguage WHERE countrylanguage.language = 'spanish'",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'spanish' ORDER BY countrylanguage.percentage DESC LIMIT 1",
+    "world_1"
+  ],
+  [
+    "SELECT countrylanguage.countrycode FROM countrylanguage WHERE countrylanguage.language = 'spanish'",
+    "world_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM conductor",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(*) FROM conductor",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.age ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.age ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor WHERE conductor.nationality <> 'usa'",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor WHERE conductor.nationality <> 'usa'",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra ORDER BY orchestra.year_of_founded DESC",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra ORDER BY orchestra.year_of_founded ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT AVG(show.attendance) FROM show",
+    "orchestra"
+  ],
+  [
+    "SELECT AVG(show.attendance) FROM show",
+    "orchestra"
+  ],
+  [
+    "SELECT MAX(performance.share), MIN(performance.share) FROM performance WHERE performance.type <> 'live final'",
+    "orchestra"
+  ],
+  [
+    "SELECT MAX(performance.share), MIN(performance.share) FROM performance WHERE performance.type <> 'live final'",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(conductor.nationality) FROM conductor",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(conductor.nationality) FROM conductor",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.year_of_work DESC",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.year_of_work ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.year_of_work DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor ORDER BY conductor.year_of_work DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name, orchestra.orchestra FROM conductor NATURAL JOIN orchestra",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name, orchestra.orchestra FROM conductor NATURAL JOIN orchestra",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor GROUP BY conductor.name HAVING COUNT(*) > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor NATURAL JOIN orchestra GROUP BY orchestra.orchestra HAVING COUNT(*) > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor NATURAL JOIN orchestra GROUP BY orchestra.conductor_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor NATURAL JOIN orchestra GROUP BY orchestra.conductor_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor NATURAL JOIN orchestra WHERE orchestra.year_of_founded > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT conductor.name FROM conductor NATURAL JOIN orchestra WHERE orchestra.year_of_founded > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company, COUNT(*) FROM orchestra GROUP BY orchestra.record_company",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company, COUNT(*) FROM orchestra GROUP BY orchestra.record_company",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.major_record_format FROM orchestra GROUP BY orchestra.major_record_format ORDER BY orchestra.major_record_format ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.major_record_format FROM orchestra ORDER BY orchestra.major_record_format ASC",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra GROUP BY orchestra.record_company ORDER BY COUNT(*) DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra GROUP BY orchestra.record_company ORDER BY COUNT(*) DESC LIMIT 1",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.orchestra FROM orchestra WHERE NOT orchestra.orchestra_id IN (SELECT performance.orchestra_id FROM performance)",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.orchestra FROM orchestra WHERE NOT orchestra.orchestra_id IN (SELECT performance.orchestra_id FROM performance)",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra WHERE orchestra.year_of_founded < 'terminal' INTERSECT SELECT orchestra.record_company FROM orchestra WHERE orchestra.year_of_founded > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.record_company FROM orchestra WHERE orchestra.year_of_founded < 'terminal' INTERSECT SELECT orchestra.record_company FROM orchestra WHERE orchestra.year_of_founded < 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(*) FROM orchestra WHERE orchestra.major_record_format = 'cd' OR orchestra.major_record_format = 'dvd'",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(*) FROM orchestra WHERE orchestra.major_record_format = 'cd' OR orchestra.major_record_format = 'dvd'",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.year_of_founded FROM orchestra NATURAL JOIN performance GROUP BY performance.orchestra_id HAVING COUNT(*) > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT orchestra.year_of_founded FROM orchestra NATURAL JOIN performance GROUP BY performance.orchestra_id HAVING COUNT(*) > 'terminal'",
+    "orchestra"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, highschooler.grade FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, highschooler.grade FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler WHERE highschooler.grade = '10'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler WHERE highschooler.grade = '10'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.id FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.id FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler WHERE highschooler.grade = '9' OR highschooler.grade = '10'",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler WHERE highschooler.grade = '9' OR highschooler.grade = '10'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade, COUNT(*) FROM highschooler GROUP BY highschooler.grade",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*), highschooler.grade FROM highschooler GROUP BY highschooler.grade",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler GROUP BY highschooler.grade ORDER BY COUNT(*) DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler GROUP BY highschooler.grade ORDER BY COUNT(*) DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler GROUP BY highschooler.grade HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.grade FROM highschooler GROUP BY highschooler.grade HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT friend.student_id, COUNT(*) FROM friend GROUP BY friend.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT friend.student_id, COUNT(*) FROM friend GROUP BY friend.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, COUNT(*) FROM highschooler NATURAL JOIN friend WHERE highschooler.grade = 'terminal' GROUP BY friend.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, COUNT(*) FROM highschooler GROUP BY highschooler.name",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend GROUP BY friend.student_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend GROUP BY friend.friend_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend GROUP BY friend.student_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend GROUP BY friend.friend_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT friend.friend_id FROM highschooler NATURAL JOIN friend WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT friend.friend_id FROM highschooler NATURAL JOIN friend WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.id FROM highschooler EXCEPT SELECT friend.student_id FROM friend",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.id FROM highschooler EXCEPT SELECT friend.student_id FROM friend",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler WHERE NOT highschooler.id IN (SELECT friend.student_id FROM friend)",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler WHERE NOT highschooler.id IN (SELECT friend.student_id FROM friend)",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.id FROM highschooler EXCEPT SELECT friend.friend_id FROM friend",
+    "network_1"
+  ],
+  [
+    "SELECT likes.student_id, friend.friend_id FROM highschooler NATURAL JOIN friend NATURAL JOIN likes INTERSECT SELECT friend.student_id, friend.friend_id FROM friend",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler INTERSECT SELECT highschooler.name FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler WHERE highschooler.grade = 'terminal' INTERSECT SELECT highschooler.name, likes.liked_id FROM highschooler NATURAL JOIN likes",
+    "network_1"
+  ],
+  [
+    "SELECT likes.student_id, COUNT(*) FROM likes GROUP BY likes.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT likes.student_id, COUNT(*) FROM likes GROUP BY likes.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, COUNT(*) FROM highschooler GROUP BY highschooler.name",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name, COUNT(*) FROM highschooler GROUP BY highschooler.name",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler ORDER BY highschooler.grade DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN likes ORDER BY likes.liked_id DESC LIMIT 1",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN likes GROUP BY likes.student_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN likes GROUP BY likes.student_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend WHERE highschooler.grade > 'terminal' GROUP BY friend.friend_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT highschooler.name FROM highschooler NATURAL JOIN friend WHERE highschooler.grade > 'terminal' GROUP BY friend.friend_id HAVING COUNT(*) >= 'terminal'",
+    "network_1"
+  ],
+  [
+    "SELECT COUNT(*) FROM highschooler WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT likes.student_id FROM highschooler NATURAL JOIN likes WHERE highschooler.name = 'kyle'",
+    "network_1"
+  ],
+  [
+    "SELECT AVG(highschooler.grade) FROM highschooler NATURAL JOIN friend GROUP BY friend.student_id",
+    "network_1"
+  ],
+  [
+    "SELECT AVG(highschooler.grade) FROM highschooler",
+    "network_1"
+  ],
+  [
+    "SELECT MIN(highschooler.grade) FROM highschooler WHERE NOT highschooler.id IN (SELECT friend.student_id FROM friend)",
+    "network_1"
+  ],
+  [
+    "SELECT MIN(highschooler.grade) FROM highschooler WHERE NOT highschooler.id IN (SELECT friend.student_id FROM friend)",
+    "network_1"
+  ],
+  [
+    "SELECT owners.state FROM owners INTERSECT SELECT professionals.state FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.state FROM owners INTERSECT SELECT professionals.state FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT AVG(dogs.age) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT AVG(dogs.age) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.last_name, professionals.cell_number FROM professionals WHERE professionals.state = 'indiana' GROUP BY professionals.professional_id HAVING COUNT(*) > 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.last_name, professionals.cell_number FROM professionals WHERE professionals.state = 'indiana' GROUP BY professionals.professional_id HAVING COUNT(*) > 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name FROM dogs WHERE NOT dogs.dog_id IN (SELECT treatments.dog_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name FROM dogs EXCEPT SELECT dogs.name FROM dogs NATURAL JOIN treatments GROUP BY treatments.dog_id HAVING SUM(treatments.cost_of_treatment) > 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name FROM owners EXCEPT SELECT professionals.first_name FROM owners NATURAL JOIN dogs NATURAL JOIN professionals NATURAL JOIN treatments WHERE owners.first_name = 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name FROM owners EXCEPT SELECT professionals.first_name FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.email_address, professionals.email_address FROM professionals WHERE NOT professionals.professional_id IN (SELECT treatments.professional_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.email_address, professionals.email_address FROM professionals WHERE NOT professionals.professional_id IN (SELECT treatments.professional_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.first_name, owners.last_name FROM owners NATURAL JOIN dogs GROUP BY dogs.owner_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.first_name, owners.last_name FROM owners NATURAL JOIN dogs GROUP BY dogs.owner_id ORDER BY COUNT(*) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.first_name, professionals.first_name FROM professionals NATURAL JOIN treatments GROUP BY treatments.professional_id HAVING COUNT(*) >= 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.first_name, professionals.first_name FROM professionals NATURAL JOIN treatments GROUP BY treatments.professional_id HAVING COUNT(*) >= 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT breeds.breed_name FROM breeds NATURAL JOIN dogs GROUP BY dogs.breed_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT breeds.breed_name FROM breeds NATURAL JOIN dogs GROUP BY dogs.breed_code ORDER BY COUNT(*) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.last_name FROM owners NATURAL JOIN dogs NATURAL JOIN treatments GROUP BY owners.owner_id ORDER BY SUM(treatments.cost_of_treatment) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.last_name FROM owners NATURAL JOIN dogs NATURAL JOIN treatments GROUP BY owners.owner_id ORDER BY SUM(treatments.cost_of_treatment) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatment_types.treatment_type_description FROM treatment_types NATURAL JOIN treatments GROUP BY treatments.treatment_type_code ORDER BY SUM(treatments.cost_of_treatment) ASC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatment_types.treatment_type_description FROM treatment_types NATURAL JOIN treatments GROUP BY treatments.treatment_type_code ORDER BY SUM(treatments.cost_of_treatment) ASC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.zip_code FROM charges NATURAL JOIN owners NATURAL JOIN dogs GROUP BY dogs.owner_id ORDER BY SUM(charges.charge_amount) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.owner_id, owners.zip_code FROM owners NATURAL JOIN dogs NATURAL JOIN treatments GROUP BY owners.owner_id ORDER BY SUM(treatments.cost_of_treatment) DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.professional_id, professionals.cell_number FROM professionals NATURAL JOIN treatments GROUP BY treatments.professional_id HAVING COUNT(*) >= 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.professional_id, professionals.cell_number FROM professionals NATURAL JOIN treatments GROUP BY treatments.professional_id HAVING COUNT(*) >= 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.first_name, professionals.last_name FROM professionals NATURAL JOIN treatments WHERE treatments.cost_of_treatment < (SELECT AVG(treatments.cost_of_treatment) FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.first_name, professionals.last_name FROM professionals NATURAL JOIN treatments WHERE treatments.cost_of_treatment < (SELECT AVG(treatments.cost_of_treatment) FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.date_of_treatment, professionals.first_name FROM professionals NATURAL JOIN treatments",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.date_of_treatment, professionals.first_name FROM professionals NATURAL JOIN treatments",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.cost_of_treatment, treatment_types.treatment_type_description FROM treatment_types NATURAL JOIN treatments",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.cost_of_treatment, treatment_types.treatment_type_description FROM treatment_types NATURAL JOIN treatments",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name, dogs.size_code FROM owners NATURAL JOIN dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name, dogs.size_code FROM owners NATURAL JOIN dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name FROM owners",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name, dogs.name FROM owners NATURAL JOIN dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name, treatments.date_of_treatment FROM breeds NATURAL JOIN dogs NATURAL JOIN treatments ORDER BY breeds.breed_name DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name, treatments.date_of_treatment FROM dogs NATURAL JOIN treatments ORDER BY dogs.breed_code ASC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name, dogs.name FROM owners NATURAL JOIN dogs WHERE owners.state = 'virginia'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, dogs.name FROM owners NATURAL JOIN dogs WHERE owners.state = 'virginia'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.date_arrived, dogs.date_departed FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.date_arrived, dogs.date_departed FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.last_name FROM owners NATURAL JOIN dogs ORDER BY dogs.age ASC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.last_name FROM owners NATURAL JOIN dogs ORDER BY dogs.age ASC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.email_address FROM professionals WHERE professionals.state = 'wisconsin' OR professionals.state = 'hawaii'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.email_address FROM professionals WHERE professionals.state = 'wisconsin' OR professionals.state = 'hawaii'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.date_arrived, dogs.date_departed FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.date_arrived, dogs.date_departed FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.professional_id, professionals.street, professionals.street, professionals.state FROM professionals WHERE professionals.city LIKE 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.role_code, professionals.street, professionals.city, professionals.state FROM professionals WHERE professionals.city LIKE 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name, owners.email_address FROM owners WHERE owners.first_name LIKE 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT owners.first_name, owners.last_name, owners.email_address FROM owners WHERE owners.state LIKE 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs WHERE dogs.age < (SELECT AVG(dogs.age) FROM dogs)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs WHERE dogs.age < (SELECT AVG(dogs.age) FROM dogs)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.cost_of_treatment FROM treatments ORDER BY treatments.date_of_treatment DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT treatments.cost_of_treatment FROM treatments ORDER BY treatments.date_of_treatment DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs WHERE NOT dogs.dog_id IN (SELECT treatments.dog_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM dogs WHERE NOT dogs.dog_id IN (SELECT treatments.dog_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM owners WHERE NOT owners.owner_id IN (SELECT dogs.owner_id FROM dogs)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM owners WHERE NOT owners.owner_id IN (SELECT dogs.owner_id FROM dogs)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM professionals WHERE NOT professionals.professional_id IN (SELECT treatments.professional_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM professionals WHERE NOT professionals.professional_id IN (SELECT treatments.professional_id FROM treatments)",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name, dogs.age, dogs.weight FROM dogs WHERE dogs.abandoned_yn LIKE '1'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.name, dogs.age, dogs.weight FROM dogs WHERE dogs.abandoned_yn = '1'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT AVG(dogs.age) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT AVG(dogs.age) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT MAX(dogs.age) FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.age FROM dogs ORDER BY dogs.age DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT charges.charge_type, charges.charge_amount FROM charges GROUP BY charges.charge_type",
+    "dog_kennels"
+  ],
+  [
+    "SELECT charges.charge_type, charges.charge_amount FROM charges",
+    "dog_kennels"
+  ],
+  [
+    "SELECT charges.charge_amount FROM charges ORDER BY charges.charge_amount DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT charges.charge_amount FROM charges ORDER BY charges.charge_type DESC LIMIT 1",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.email_address, professionals.home_phone FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.email_address, professionals.home_phone, professionals.home_phone FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.breed_code, dogs.size_code FROM dogs",
+    "dog_kennels"
+  ],
+  [
+    "SELECT dogs.breed_code, dogs.size_code FROM dogs WHERE dogs.breed_code = 'terminal'",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.first_name, treatment_types.treatment_type_description FROM treatment_types NATURAL JOIN professionals NATURAL JOIN treatments",
+    "dog_kennels"
+  ],
+  [
+    "SELECT professionals.first_name, professionals.professional_id FROM professionals",
+    "dog_kennels"
+  ],
+  [
+    "SELECT COUNT(*) FROM singer",
+    "singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM singer",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer ORDER BY singer.net_worth_millions ASC",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer ORDER BY singer.net_worth_millions ASC",
+    "singer"
+  ],
+  [
+    "SELECT singer.birth_year, singer.citizenship FROM singer",
+    "singer"
+  ],
+  [
+    "SELECT singer.birth_year, singer.citizenship FROM singer",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE singer.citizenship <> 'france'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE singer.citizenship <> 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE singer.birth_year = 'terminal' OR singer.birth_year = 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE singer.birth_year = 'terminal' OR singer.birth_year = 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer ORDER BY singer.net_worth_millions DESC LIMIT 1",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer ORDER BY singer.net_worth_millions DESC LIMIT 1",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship, COUNT(*) FROM singer GROUP BY singer.citizenship",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship, COUNT(*) FROM singer GROUP BY singer.citizenship",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship FROM singer GROUP BY singer.citizenship ORDER BY COUNT(*) DESC LIMIT 1",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship FROM singer GROUP BY singer.citizenship ORDER BY COUNT(*) DESC LIMIT 1",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship, MAX(singer.net_worth_millions) FROM singer GROUP BY singer.citizenship",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship, MAX(singer.net_worth_millions) FROM singer GROUP BY singer.citizenship",
+    "singer"
+  ],
+  [
+    "SELECT song.title, singer.name FROM singer NATURAL JOIN song",
+    "singer"
+  ],
+  [
+    "SELECT song.title, singer.name FROM singer NATURAL JOIN song",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN song WHERE song.sales > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN song WHERE song.sales > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN song GROUP BY song.singer_id HAVING COUNT(*) > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer NATURAL JOIN song GROUP BY song.singer_id HAVING COUNT(*) > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.name, SUM(song.sales) FROM singer NATURAL JOIN song GROUP BY singer.name",
+    "singer"
+  ],
+  [
+    "SELECT SUM(song.sales), singer.name FROM singer NATURAL JOIN song GROUP BY singer.name",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE NOT singer.singer_id IN (SELECT song.singer_id FROM song)",
+    "singer"
+  ],
+  [
+    "SELECT singer.name FROM singer WHERE NOT singer.singer_id IN (SELECT song.singer_id FROM song)",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship FROM singer WHERE singer.birth_year < 'terminal' INTERSECT SELECT singer.citizenship FROM singer WHERE singer.birth_year > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT singer.citizenship FROM singer WHERE singer.birth_year < 'terminal' INTERSECT SELECT singer.citizenship FROM singer WHERE singer.birth_year > 'terminal'",
+    "singer"
+  ],
+  [
+    "SELECT COUNT(*) FROM other_available_features",
+    "real_estate_properties"
+  ],
+  [
+    "SELECT other_available_features.feature_type_code FROM other_available_features WHERE other_available_features.feature_name = 'aircon'",
+    "real_estate_properties"
+  ],
+  [
+    "SELECT ref_property_types.property_type_description FROM ref_property_types WHERE ref_property_types.property_type_code = 'terminal'",
+    "real_estate_properties"
+  ],
+  [
+    "SELECT properties.property_name FROM properties WHERE properties.room_count > '1' OR properties.room_count = '1'",
+    "real_estate_properties"
+  ]
+]
