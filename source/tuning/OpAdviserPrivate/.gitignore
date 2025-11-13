@@ -13,8 +13,4 @@ autotune.egg-info
 build/lib/autotune
 results
 /ddpg/model_params/
-
-# Ignore specific machine-generated experiment logs
-logs/machine1_experiments.log
-logs/machine2_experiments.log
-logs/machine3_experiments.log
+logs/
