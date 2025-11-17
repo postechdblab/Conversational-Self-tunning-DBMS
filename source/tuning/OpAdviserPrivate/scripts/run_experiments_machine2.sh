@@ -1,9 +1,9 @@
 #!/bin/bash
 ################################################################################
 # Machine 2 Experiment Runner
-# Workloads: tatp, voter, tpch, job
+# Workloads: tatp, voter, tpch, job, sysbench_wo, sysbench_rw
 # Configs per workload: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA
-# Total: 4 workloads × 7 configs = 28 experiments
+# Total: 6 workloads × 7 configs = 42 experiments
 ################################################################################
 
 # set -e  # Removed to allow experiments to continue even if one fails
@@ -65,9 +65,9 @@ TOTAL_START_TIME=$(date +%s)
 log "=========================================="
 log "MACHINE 2 EXPERIMENT SUITE"
 log "=========================================="
-log "Workloads: tatp, voter, tpch, job"
+log "Workloads: tatp, voter, tpch, job, sysbench_wo, sysbench_rw"
 log "Configs: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA"
-log "Total experiments: 28 (4 workloads × 7 configs each)"
+log "Total experiments: 42 (6 workloads × 7 configs each)"
 log "Start time: $(date)"
 log "=========================================="
 log ""
@@ -157,6 +157,46 @@ if run_experiment "job_augment_ddpg.ini" "Experiment $exp_num: JOB (Augment+DDPG
 if run_experiment "job_augment_ga.ini" "Experiment $exp_num: JOB (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("JOB (Augment+GA)"); else FAILED_EXPERIMENTS+=("JOB (Augment+GA)"); fi
 log ""
 
+# Sysbench Write-Only experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "SYSBENCH WRITE-ONLY WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "sysbench_wo_smac.ini" "Experiment $exp_num: Sysbench-WO (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_ddpg.ini" "Experiment $exp_num: Sysbench-WO (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_ga.ini" "Experiment $exp_num: Sysbench-WO (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (GA)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (GA)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_ensemble.ini" "Experiment $exp_num: Sysbench-WO (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (Ensemble)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (Ensemble)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_augment_smac.ini" "Experiment $exp_num: Sysbench-WO (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_augment_ddpg.ini" "Experiment $exp_num: Sysbench-WO (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_wo_augment_ga.ini" "Experiment $exp_num: Sysbench-WO (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-WO (Augment+GA)"); else FAILED_EXPERIMENTS+=("Sysbench-WO (Augment+GA)"); fi
+log ""
+
+# Sysbench Read-Write experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "SYSBENCH READ-WRITE WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "sysbench_rw_smac.ini" "Experiment $exp_num: Sysbench-RW (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_ddpg.ini" "Experiment $exp_num: Sysbench-RW (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_ga.ini" "Experiment $exp_num: Sysbench-RW (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (GA)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (GA)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_ensemble.ini" "Experiment $exp_num: Sysbench-RW (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (Ensemble)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (Ensemble)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_augment_smac.ini" "Experiment $exp_num: Sysbench-RW (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_augment_ddpg.ini" "Experiment $exp_num: Sysbench-RW (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_rw_augment_ga.ini" "Experiment $exp_num: Sysbench-RW (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RW (Augment+GA)"); else FAILED_EXPERIMENTS+=("Sysbench-RW (Augment+GA)"); fi
+log ""
+
 # Calculate total time
 TOTAL_END_TIME=$(date +%s)
 TOTAL_DURATION=$((TOTAL_END_TIME - TOTAL_START_TIME))
@@ -173,8 +213,8 @@ log "End time: $(date)"
 log "Total duration: ${TOTAL_HOURS}h ${TOTAL_MINUTES}m ${TOTAL_SECONDS}s"
 log ""
 log "Results:"
-log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/28"
-log "  Failed: ${#FAILED_EXPERIMENTS[@]}/28"
+log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/42"
+log "  Failed: ${#FAILED_EXPERIMENTS[@]}/42"
 log ""
 
 if [ ${#SUCCESSFUL_EXPERIMENTS[@]} -gt 0 ]; then

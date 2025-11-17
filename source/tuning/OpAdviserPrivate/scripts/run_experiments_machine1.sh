@@ -1,9 +1,9 @@
 #!/bin/bash
 ################################################################################
 # Machine 1 Experiment Runner
-# Workloads: twitter, tpcc, ycsb, wikipedia
+# Workloads: twitter, ycsb, wikipedia, tpcc, sysbench_ro
 # Configs per workload: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA
-# Total: 4 workloads × 7 configs = 28 experiments
+# Total: 5 workloads × 7 configs = 35 experiments
 ################################################################################
 
 # set -e  # Removed to allow experiments to continue even if one fails
@@ -65,9 +65,9 @@ TOTAL_START_TIME=$(date +%s)
 log "=========================================="
 log "MACHINE 1 EXPERIMENT SUITE"
 log "=========================================="
-log "Workloads: twitter, tpcc, ycsb, wikipedia"
+log "Workloads: twitter, ycsb, wikipedia, tpcc, sysbench_ro"
 log "Configs: SMAC, DDPG, GA, Ensemble, Augment+SMAC, Augment+DDPG, Augment+GA"
-log "Total experiments: 28 (4 workloads × 7 configs each)"
+log "Total experiments: 35 (5 workloads × 7 configs each)"
 log "Start time: $(date)"
 log "=========================================="
 log ""
@@ -92,27 +92,6 @@ if run_experiment "twitter_augment_smac.ini" "Experiment $exp_num: Twitter (Augm
 if run_experiment "twitter_augment_ddpg.ini" "Experiment $exp_num: Twitter (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Twitter (Augment+DDPG)"); fi
 ((exp_num++))
 if run_experiment "twitter_augment_ga.ini" "Experiment $exp_num: Twitter (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Twitter (Augment+GA)"); else FAILED_EXPERIMENTS+=("Twitter (Augment+GA)"); fi
-((exp_num++))
-log ""
-
-# TPC-C experiments (7 configs)
-log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-log "TPC-C WORKLOAD"
-log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
-
-if run_experiment "tpcc_smac.ini" "Experiment $exp_num: TPC-C (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (SMAC)"); fi
-((exp_num++))
-if run_experiment "tpcc_ddpg.ini" "Experiment $exp_num: TPC-C (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (DDPG)"); fi
-((exp_num++))
-if run_experiment "tpcc_ga.ini" "Experiment $exp_num: TPC-C (GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (GA)"); else FAILED_EXPERIMENTS+=("TPC-C (GA)"); fi
-((exp_num++))
-if run_experiment "tpcc_ensemble.ini" "Experiment $exp_num: TPC-C (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Ensemble)"); else FAILED_EXPERIMENTS+=("TPC-C (Ensemble)"); fi
-((exp_num++))
-if run_experiment "tpcc_augment_smac.ini" "Experiment $exp_num: TPC-C (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); fi
-((exp_num++))
-if run_experiment "tpcc_augment_ddpg.ini" "Experiment $exp_num: TPC-C (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); fi
-((exp_num++))
-if run_experiment "tpcc_augment_ga.ini" "Experiment $exp_num: TPC-C (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+GA)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+GA)"); fi
 ((exp_num++))
 log ""
 
@@ -155,6 +134,48 @@ if run_experiment "wikipedia_augment_smac.ini" "Experiment $exp_num: Wikipedia (
 if run_experiment "wikipedia_augment_ddpg.ini" "Experiment $exp_num: Wikipedia (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Wikipedia (Augment+DDPG)"); fi
 ((exp_num++))
 if run_experiment "wikipedia_augment_ga.ini" "Experiment $exp_num: Wikipedia (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Wikipedia (Augment+GA)"); else FAILED_EXPERIMENTS+=("Wikipedia (Augment+GA)"); fi
+((exp_num++))
+log ""
+
+# TPC-C experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "TPC-C WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "tpcc_smac.ini" "Experiment $exp_num: TPC-C (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (SMAC)"); fi
+((exp_num++))
+if run_experiment "tpcc_ddpg.ini" "Experiment $exp_num: TPC-C (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (DDPG)"); fi
+((exp_num++))
+if run_experiment "tpcc_ga.ini" "Experiment $exp_num: TPC-C (GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (GA)"); else FAILED_EXPERIMENTS+=("TPC-C (GA)"); fi
+((exp_num++))
+if run_experiment "tpcc_ensemble.ini" "Experiment $exp_num: TPC-C (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Ensemble)"); else FAILED_EXPERIMENTS+=("TPC-C (Ensemble)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_smac.ini" "Experiment $exp_num: TPC-C (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_ddpg.ini" "Experiment $exp_num: TPC-C (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "tpcc_augment_ga.ini" "Experiment $exp_num: TPC-C (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("TPC-C (Augment+GA)"); else FAILED_EXPERIMENTS+=("TPC-C (Augment+GA)"); fi
+((exp_num++))
+log ""
+
+# Sysbench Read-Only experiments (7 configs)
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+log "SYSBENCH READ-ONLY WORKLOAD"
+log "━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━"
+
+if run_experiment "sysbench_ro_smac.ini" "Experiment $exp_num: Sysbench-RO (SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_ddpg.ini" "Experiment $exp_num: Sysbench-RO (DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_ga.ini" "Experiment $exp_num: Sysbench-RO (GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (GA)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (GA)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_ensemble.ini" "Experiment $exp_num: Sysbench-RO (Ensemble)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (Ensemble)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (Ensemble)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_augment_smac.ini" "Experiment $exp_num: Sysbench-RO (Augment+SMAC)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (Augment+SMAC)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (Augment+SMAC)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_augment_ddpg.ini" "Experiment $exp_num: Sysbench-RO (Augment+DDPG)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (Augment+DDPG)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (Augment+DDPG)"); fi
+((exp_num++))
+if run_experiment "sysbench_ro_augment_ga.ini" "Experiment $exp_num: Sysbench-RO (Augment+GA)"; then SUCCESSFUL_EXPERIMENTS+=("Sysbench-RO (Augment+GA)"); else FAILED_EXPERIMENTS+=("Sysbench-RO (Augment+GA)"); fi
 log ""
 
 # Calculate total time
@@ -173,8 +194,8 @@ log "End time: $(date)"
 log "Total duration: ${TOTAL_HOURS}h ${TOTAL_MINUTES}m ${TOTAL_SECONDS}s"
 log ""
 log "Results:"
-log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/28"
-log "  Failed: ${#FAILED_EXPERIMENTS[@]}/28"
+log "  Successful: ${#SUCCESSFUL_EXPERIMENTS[@]}/35"
+log "  Failed: ${#FAILED_EXPERIMENTS[@]}/35"
 log ""
 
 if [ ${#SUCCESSFUL_EXPERIMENTS[@]} -gt 0 ]; then
