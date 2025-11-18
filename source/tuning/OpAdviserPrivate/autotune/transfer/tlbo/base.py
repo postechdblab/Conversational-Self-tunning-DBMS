@@ -69,6 +69,14 @@ class BaseTLSurrogate(object):
         self.source_surrogates = list()
         for history_container in self.source_hpo_data:
             print('.', end='')
+            task_id = getattr(history_container, 'task_id', 'unknown')
+            configurations = getattr(history_container, 'configurations', None)
+            if not configurations:
+                self.logger.warning(
+                    "History container '%s' has no configurations; skipping RGPE surrogate for this source.",
+                    task_id
+                )
+                continue
             model = build_surrogate(self.surrogate_type, self.config_space,
                                     np.random.RandomState(42))
             X = convert_configurations_to_array(history_container.configurations)
