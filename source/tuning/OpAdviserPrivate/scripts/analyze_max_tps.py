@@ -175,10 +175,6 @@ def main():
         if machine_num not in results_by_machine or not results_by_machine[machine_num]:
             continue
         
-        print(f"\n{'=' * 150}")
-        print(f"MACHINE {machine_num[-1].upper()}: {', '.join([exp['name'] for exp in results_by_machine[machine_num]])}")
-        print(f"{'=' * 150}")
-        
         for result in results_by_machine[machine_num]:
             workload_name = result['name']
             print(f"\n📊 {workload_name}")
