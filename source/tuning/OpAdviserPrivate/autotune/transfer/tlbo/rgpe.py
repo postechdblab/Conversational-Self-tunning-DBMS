@@ -20,13 +20,20 @@ class RGPE(BaseTLSurrogate):
         # self.num_sample = 100
         self.num_sample = 50
 
-        if source_hpo_data is not None:
-            # Weights for base surrogates and the target surrogate.
-            self.w = [1. / self.K] * self.K + [0.]
-            # Preventing weight dilution.
-            self.ignored_flag = [False] * self.K
+        self._init_weights()
         self.hist_ws = list()
         self.iteration_id = 0
+
+    def _init_weights(self):
+        if self.K and self.K > 0:
+            self.w = [1. / self.K] * self.K + [0.]
+            self.ignored_flag = [False] * self.K
+        else:
+            # Target-only mode (no valid history data).
+            self.w = [1.]
+            self.ignored_flag = list()
+            if self.source_hpo_data:
+                self.logger.warning('No valid source configurations found; RGPE will fall back to target-only mode.')
 
     def train(self, target_hpo_data: HistoryContainer, weight_dilution=True):
         X = convert_configurations_to_array(target_hpo_data.configurations)
@@ -34,8 +41,6 @@ class RGPE(BaseTLSurrogate):
 
         # Build the target surrogate.
         self.target_surrogate = self.build_single_surrogate(X, y, normalize='standardize')
-        if self.source_hpo_data is None:
-            return
 
         # Train the target surrogate and update the weight w.
         mu_list, var_list = list(), list()
@@ -134,11 +139,15 @@ class RGPE(BaseTLSurrogate):
             self.ignored_flag[id] = median > threshold
 
         if self.only_source:
-            self.w[-1] = 0.
-            if np.sum(self.w) == 0:
-                self.w = [1. / self.K] * self.K + [0.]
+            if self.K == 0:
+                self.logger.warning('only_source flag is ignored because there are no valid source surrogates.')
+                self.w = [1.]
             else:
-                self.w[:-1] = np.array(self.w[:-1])/np.sum(self.w[:-1])
+                self.w[-1] = 0.
+                if np.sum(self.w) == 0:
+                    self.w = [1. / self.K] * self.K + [0.]
+                else:
+                    self.w[:-1] = np.array(self.w[:-1])/np.sum(self.w[:-1])
 
         self.logger.info('=' * 20)
         w = self.w.copy()
@@ -160,8 +169,6 @@ class RGPE(BaseTLSurrogate):
 
         # Build the target surrogate.
         self.target_surrogate = self.build_single_surrogate(X, y, normalize='standardize')
-        if self.source_hpo_data is None:
-            return
 
         # Train the target surrogate and update the weight w.
         mu_list, var_list = list(), list()
@@ -246,7 +253,7 @@ class RGPE(BaseTLSurrogate):
 
     def predict(self, X: np.array):
         mu, var = self.target_surrogate.predict(X)
-        if self.source_hpo_data is None:
+        if self.K == 0:
             return mu, var
 
         # Target surrogate predictions with weight.

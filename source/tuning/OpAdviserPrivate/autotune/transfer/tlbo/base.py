@@ -32,10 +32,9 @@ class BaseTLSurrogate(object):
         self.target_surrogate = None
         self.history_dataset_features = history_dataset_features
         # The number of en problems.
-        if source_hpo_data is not None:
-            self.K = len(source_hpo_data)
-            if history_dataset_features is not None:
-                assert len(history_dataset_features) == self.K
+        self.K = len(source_hpo_data) if source_hpo_data is not None else 0
+        if source_hpo_data is not None and history_dataset_features is not None:
+            assert len(history_dataset_features) == self.K
         self.surrogate_type = surrogate_type
 
         self.types, self.bounds = get_types(config_space)
@@ -43,6 +42,7 @@ class BaseTLSurrogate(object):
         self.var_threshold = VERY_SMALL_NUMBER
         self.w = None
         self.eta_list = list()
+        self.valid_source_indices = list()
 
         # meta features.
         self.meta_feature_scaler = None
@@ -60,14 +60,25 @@ class BaseTLSurrogate(object):
         pass
 
     def build_source_surrogates(self, normalize):
-        if self.source_hpo_data is None:
+        self.source_surrogates = list()
+        self.valid_source_indices = list()
+
+        if not self.source_hpo_data:
             self.logger.warning('No history BO data provided, resort to naive BO optimizer without TL.')
+            self.K = 0
+            # Ensure downstream consumers see an empty list rather than None.
+            if isinstance(self.source_hpo_data, list):
+                self.source_hpo_data[:] = []
+            else:
+                self.source_hpo_data = []
             return
 
         self.logger.info('Start to train base surrogates.')
         start_time = time.time()
-        self.source_surrogates = list()
-        for history_container in self.source_hpo_data:
+        filtered_history = list()
+        filtered_features = list() if self.history_dataset_features is not None else None
+
+        for idx, history_container in enumerate(list(self.source_hpo_data)):
             print('.', end='')
             task_id = getattr(history_container, 'task_id', 'unknown')
             configurations = getattr(history_container, 'configurations', None)
@@ -101,6 +112,27 @@ class BaseTLSurrogate(object):
             self.eta_list.append(np.min(y))
             model.train(X, y)
             self.source_surrogates.append(model)
+            self.valid_source_indices.append(idx)
+            filtered_history.append(history_container)
+            if filtered_features is not None:
+                filtered_features.append(self.history_dataset_features[idx])
+
+        if isinstance(self.source_hpo_data, list):
+            self.source_hpo_data[:] = filtered_history
+        else:
+            self.source_hpo_data = filtered_history
+
+        if filtered_features is not None:
+            if isinstance(self.history_dataset_features, list):
+                self.history_dataset_features[:] = filtered_features
+            else:
+                self.history_dataset_features = filtered_features
+
+        skipped_sources = self.K - len(self.source_surrogates)
+        self.K = len(self.source_surrogates)
+        if skipped_sources and self.K == 0:
+            self.logger.warning('All history containers were empty; no base surrogates were built.')
+
         self.logger.info('Building base surrogates took %.3fs.' % (time.time() - start_time))
 
     def build_single_surrogate(self, X: np.ndarray, y: np.array, normalize):
