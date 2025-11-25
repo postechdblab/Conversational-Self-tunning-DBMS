@@ -9,6 +9,7 @@ from config.path import ABS_CONFIG_DIR
 from omegaconf import DictConfig
 from source.utils import One_time_Preprocesser
 from source.text2sql.ratsql.commands.infer import Inferer
+from openai import OpenAI
 
 
 class IntentInferer:
@@ -36,7 +37,10 @@ class IntentInferer:
         db_path = global_cfg.data.database_path
         table_path = global_cfg.data.table_path
         self.tune_check_example_num = cfg.tune_check_example_num
-        self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        # self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        self.client = OpenAI(
+            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+        )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
 
@@ -151,18 +155,15 @@ class IntentInferer:
             prompt = self.tune_check_prompt_generate(input_text)
 
             # send request to llm
-            response_list = requests.post(
-                self.llm_address,
-                json={
-                    "text": [prompt],
-                    "sampling_params": {
-                        "max_new_tokens": self.max_new_tokens,
-                        "temperature": self.temperature,
-                    },
-                },
-                timeout=None,
-            ).json()
-            tune_check_result = response_list[0]["text"]
+            response = self.client.responses.create(
+                model="openai/gpt-oss-120b",
+                instructions="You are a helpful assistant.",
+                temperature=self.temperature,
+                input=prompt,
+            )
+            completion = response.output_text
+
+            tune_check_result = completion
             is_tune = self.tune_check_preprocess(tune_check_result)
             return [is_tune]
 

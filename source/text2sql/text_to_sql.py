@@ -18,6 +18,7 @@ from source.text2sql.M_Schema.schema_engine import (
     SchemaEngine,
 )
 from sqlalchemy import create_engine
+from openai import OpenAI
 
 
 # abstract class
@@ -42,7 +43,10 @@ class BaseText2SQL(abc.ABC):
 class LLMBasedText2SQL(BaseText2SQL):
     def __init__(self, global_cfg, cfg):
         self.database_path = global_cfg.data.database_path
-        self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        # self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        self.client = OpenAI(
+            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+        )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
         if cfg.model_type == "llama":
@@ -94,18 +98,14 @@ class LLMBasedText2SQL(BaseText2SQL):
         )
 
         # send request to llm
-        response_list = requests.post(
-            self.llm_address,
-            json={
-                "text": [prompt],
-                "sampling_params": {
-                    "max_new_tokens": self.max_new_tokens,
-                    "temperature": self.temperature,
-                },
-            },
-            timeout=None,
-        ).json()
-        inferred_code = self.postprocess(response_list[0]["text"])
+        response = self.client.responses.create(
+            model="openai/gpt-oss-120b",
+            instructions="You are a helpful assistant.",
+            temperature=self.temperature,
+            input=prompt,
+        )
+        completion = response.output_text
+        inferred_code = self.postprocess(completion)
 
         return beams, inferred_code
 
@@ -137,7 +137,8 @@ class LLMBasedText2SQL(BaseText2SQL):
         # extract sql from response_text
         if "```" in response_text:
             inferred_code = (
-                response_text.split("```")[0]
+                response_text.split("```sql")[1]
+                .split("```")[0]
                 .strip()
                 .replace("\n", " ")
                 .replace("  ", " ")
