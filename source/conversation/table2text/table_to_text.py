@@ -6,6 +6,7 @@ from omegaconf import DictConfig
 from typing import Dict, List, Optional
 
 logger = logging.getLogger(__name__)
+from openai import OpenAI
 
 
 class Table2Text:
@@ -17,7 +18,10 @@ class Table2Text:
         Args:
             cfg: Configuration object with host, port, max_new_tokens, and temperature
         """
-        self.api_address = f"http://{cfg.host}:{cfg.port}"
+        # self.api_address = f"http://{cfg.host}:{cfg.port}"
+        self.client = OpenAI(
+            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+        )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
 
@@ -225,26 +229,15 @@ class Table2Text:
 
         try:
             # Call LLM API
-            response = requests.post(
-                f"{self.api_address}/generate",
-                json={
-                    "text": [formatted_prompt],
-                    "sampling_params": {
-                        "max_new_tokens": self.max_new_tokens,
-                        "temperature": self.temperature,
-                    },
-                },
-                timeout=30,
+            response = self.client.responses.create(
+                model="openai/gpt-oss-120b",
+                instructions="You are a helpful assistant.",
+                temperature=self.temperature,
+                input=formatted_prompt,
             )
-            response.raise_for_status()
+            completion = response.output_text
 
-            response_data = response.json()
-
-            if not response_data or not isinstance(response_data, list):
-                logger.error(f"Unexpected API response format: {response_data}")
-                return None
-
-            generated_text = response_data[0].get("text", "")
+            generated_text = completion
             summary = self.parse_response(generated_text)
 
             return summary

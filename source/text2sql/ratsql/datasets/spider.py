@@ -189,7 +189,10 @@ def create_schema(schema_dict, use_column_description=False):
 
     for column_id in schema_dict["primary_keys"]:
         # Register primary keys
-        column = columns[column_id]
+        if column_id >= len(columns):
+            column = columns[1]
+        else:
+            column = columns[column_id]
         column.table.primary_keys.append(column)
 
     foreign_key_graph = nx.DiGraph()

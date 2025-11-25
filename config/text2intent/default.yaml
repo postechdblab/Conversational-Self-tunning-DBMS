@@ -20,3 +20,7 @@ possible_outputs:
   - Negate
   - Thank you
   - Inform SQL
+
+glist_output_path: /root/dbadminbot/eval_results/intent/glist_cosql.json
+plist_output_path: /root/dbadminbot/eval_results/intent/plist_cosql.json
+load_existing_results: false

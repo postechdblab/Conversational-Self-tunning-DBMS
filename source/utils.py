@@ -205,14 +205,35 @@ def token_score_to_word_score(
     return final_words, final_scores
 
 
-def all_values_from_db(db_name: str, table_name: str, column_name: str) -> List[str]:
-    # Connect to DB
-    pg_config = (
-        f"host=localhost port=5434 user=sqlbot password=sqlbot_pw dbname={db_name}"
-    )
-    # Find value from DB (For string values)
-    with psycopg2.connect(pg_config) as conn:
-        with conn.cursor() as cursor:
+def all_values_from_db(
+    db_name: str,
+    table_name: str,
+    column_name: str,
+    is_postgresql: bool,
+    database_path: str,
+) -> List[str]:
+    if is_postgresql:
+        # Connect to DB
+        pg_config = (
+            f"host=localhost port=5434 user=sqlbot password=sqlbot_pw dbname={db_name}"
+        )
+        # Find value from DB (For string values)
+        with psycopg2.connect(pg_config) as conn:
+            with conn.cursor() as cursor:
+                search_query = f"SELECT {column_name} FROM {table_name}"
+                cursor.execute(search_query)
+                results = cursor.fetchall()
+                if not results:
+                    return []
+                return [str(result[0]) for result in results]
+    else:
+        # Connect to SQLite DB
+        sqlite_path = f"{database_path}/{db_name}/{db_name}.sqlite"
+        if not os.path.isfile(sqlite_path):
+            return []
+        with sqlite3.connect(str(sqlite_path), check_same_thread=False) as conn:
+            conn.row_factory = sqlite3.Row
+            cursor = conn.cursor()
             search_query = f"SELECT {column_name} FROM {table_name}"
             cursor.execute(search_query)
             results = cursor.fetchall()
@@ -221,7 +242,14 @@ def all_values_from_db(db_name: str, table_name: str, column_name: str) -> List[
             return [str(result[0]) for result in results]
 
 
-def add_value_one_sql(question: str, db_name: str, sql: str, history: str) -> str:
+def add_value_one_sql(
+    question: str,
+    db_name: str,
+    sql: str,
+    history: str,
+    is_postgresql: bool,
+    database_path: str,
+) -> str:
     """Assumption: There are no repeated values in the question."""
     # Parse history
     history_list = history.lower().split("<s>")
@@ -242,9 +270,21 @@ def add_value_one_sql(question: str, db_name: str, sql: str, history: str) -> st
         found_flag = False
         # Find table and column name
         tab_col = sql[:terminal_start_idx].strip().split(" ")[-2]
+        try:
+            table, column = tab_col.split(".")
+        except:
+            print(tab_col)
+            sql.replace("'terminal'", "1")
+            break
         table, column = tab_col.split(".")
         # Find all possible values for the column
-        values = all_values_from_db(db_name, table, column)
+        try:
+            values = all_values_from_db(
+                db_name, table, column, is_postgresql, database_path
+            )
+        except:
+            print(f"Error in finding values for {db_name}, {table}, {column}")
+            break
         # Check if any of the values are in the question
         for value in values:
             if value.lower() in target_text:
