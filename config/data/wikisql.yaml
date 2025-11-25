@@ -1,0 +1,4 @@
+name: wikisql
+database_path: /mnt/sdd/shpark/WikiSQL/data/converted/database_test
+table_path: /mnt/sdd/shpark/WikiSQL/data/converted/converted_spider_tables_test.json
+eval_data_path: /mnt/sdd/shpark/WikiSQL/data/converted/test.json

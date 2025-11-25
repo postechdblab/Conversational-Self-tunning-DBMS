@@ -1,0 +1,4 @@
+name: cosql
+database_path: /mnt/sdd/shpark/NL2QGM/cosql_dataset/database
+table_path: /mnt/sdd/shpark/NL2QGM/cosql_dataset/tables.json
+eval_data_path: /mnt/sdd/shpark/NL2QGM/cosql_dataset/cosql_dev.json

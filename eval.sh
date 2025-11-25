@@ -1,0 +1,1 @@
+CUDA_VISIBLE_DEVICES=3 python /root/dbadminbot/source/text2sql/eval.py
