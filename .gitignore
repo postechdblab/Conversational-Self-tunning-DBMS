@@ -40,7 +40,7 @@ next-env.d.ts
 source/text2sql/stanford-corenlp-full-2018-10-05/
 outputs/
 eval_results/
-__pycache__/
-*.pyc
 *.props
 CLAUDE.md
+**/__pycache__/**
+*.pyc
