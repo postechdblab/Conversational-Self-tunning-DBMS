@@ -1359,16 +1359,54 @@ class PipleLine(BOBase):
                 return
 
             from autotune.utils.config_space.util import convert_configurations_to_array
-            X = convert_configurations_to_array(self.history_container.configurations_all)
-            Y = self.history_container.get_transformed_perfs()
+            
+            # Get full history and filter for real observations
+            all_configs = self.history_container.configurations_all
+            flags = self.history_container.synthetic_flags
+            if len(flags) < len(all_configs):
+                flags = flags + [False] * (len(all_configs) - len(flags))
+            
+            # Prepare full dataset (Real + Synthetic)
+            X_all = convert_configurations_to_array(all_configs)
+            Y_all = self.history_container.get_transformed_perfs()
+            
+            # Prepare real-only dataset
+            non_synthetic_indices = [i for i, f in enumerate(flags) if not f and i < len(all_configs)]
+            
+            if len(non_synthetic_indices) > 0:
+                X_real = X_all[non_synthetic_indices]
+                Y_real = Y_all[non_synthetic_indices]
+                self.logger.info(f"[Augmentation-Ensemble] Prepared real-only dataset: {len(non_synthetic_indices)} samples")
+            else:
+                # Fallback if no real flags found
+                X_real = X_all
+                Y_real = Y_all
+                self.logger.warning("[Augmentation-Ensemble] No real observations found via flags! Using all data for real dataset.")
 
             # Train all surrogates
             trained_surrogates = []
             for s in surrogate_list:
                 try:
-                    s.train(X, Y)
+                    # Check if model is Gaussian Process (GP)
+                    # GPs have O(N^3) complexity and choke on large synthetic datasets
+                    is_gp = False
+                    model_type = str(type(s)).lower()
+                    if 'gaussianprocess' in model_type or 'gp' in model_type:
+                        is_gp = True
+                    
+                    if is_gp:
+                        # Train GPs on REAL data only to avoid O(N^3) explosion and feedback loops
+                        s.train(X_real, Y_real)
+                        self.logger.info(f"[Augmentation-Ensemble] Trained GP model on {len(X_real)} real samples")
+                    else:
+                        # Train Random Forests (and others) on ALL data (Real + Synthetic)
+                        # They handle larger datasets well (O(N log N)) and benefit from density
+                        s.train(X_all, Y_all)
+                        self.logger.info(f"[Augmentation-Ensemble] Trained {type(s).__name__} on {len(X_all)} total samples")
+                        
                     trained_surrogates.append(s)
-                except Exception:
+                except Exception as e:
+                    self.logger.warning(f"[Augmentation-Ensemble] Failed to train surrogate {type(s).__name__}: {e}")
                     continue
 
             if len(trained_surrogates) == 0:
