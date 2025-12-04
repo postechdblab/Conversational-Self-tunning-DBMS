@@ -1359,7 +1359,7 @@ class PipleLine(BOBase):
                 return
 
             from autotune.utils.config_space.util import convert_configurations_to_array
-            X = convert_configurations_to_array(self.history_container.configurations)
+            X = convert_configurations_to_array(self.history_container.configurations_all)
             Y = self.history_container.get_transformed_perfs()
 
             # Train all surrogates
@@ -1383,6 +1383,9 @@ class PipleLine(BOBase):
                     config = self._perturb_config(base_config)
                 else:
                     config = self.config_space.sample_configuration()
+                
+                # Convert to full space for consistent surrogate prediction
+                config = self.history_container.fill_default_value(config)
                 augmented_configs.append(config)
 
             # Predict with all surrogates and average means
@@ -1438,7 +1441,7 @@ class PipleLine(BOBase):
         
         # Train surrogate on current history
         from autotune.utils.config_space.util import convert_configurations_to_array
-        X = convert_configurations_to_array(self.history_container.configurations)
+        X = convert_configurations_to_array(self.history_container.configurations_all)
         Y = self.history_container.get_transformed_perfs()
         
         try:
@@ -1459,6 +1462,9 @@ class PipleLine(BOBase):
             else:
                 # Random sampling if no incumbents
                 config = self.config_space.sample_configuration()
+            
+            # Convert to full space
+            config = self.history_container.fill_default_value(config)
             augmented_configs.append(config)
         
         # Predict performance with surrogate
