@@ -1422,8 +1422,9 @@ class PipleLine(BOBase):
                 else:
                     config = self.config_space.sample_configuration()
                 
-                # Convert to full space for consistent surrogate prediction
-                config = self.history_container.fill_default_value(config)
+                # Do NOT convert to full space if we are in a compact space
+                # The optimizer expects configs in the CURRENT space (self.config_space)
+                # config = self.history_container.fill_default_value(config)
                 augmented_configs.append(config)
 
             # Predict with all surrogates and average means
@@ -1501,8 +1502,8 @@ class PipleLine(BOBase):
                 # Random sampling if no incumbents
                 config = self.config_space.sample_configuration()
             
-            # Convert to full space
-            config = self.history_container.fill_default_value(config)
+            # Do NOT convert to full space if we are in a compact space
+            # config = self.history_container.fill_default_value(config)
             augmented_configs.append(config)
         
         # Predict performance with surrogate
