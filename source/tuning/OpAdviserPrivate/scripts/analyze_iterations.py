@@ -166,10 +166,31 @@ def analyze_experiment(log_file, history_file):
         
         # Calculate Elapsed Time
         elapsed_seconds = None
-        if valid_iters:
-            best_iter = max(valid_iters)
-            if best_iter >= target - 5: 
-                 elapsed_seconds = iteration_data[best_iter]['elapsed_s']
+        if target in iteration_data:
+             elapsed_seconds = iteration_data[target]['elapsed_s']
+        else:
+             # Try interpolation
+             sorted_iters = sorted(iteration_data.keys())
+             prev_iter = None
+             next_iter = None
+             
+             for it in sorted_iters:
+                 if it < target:
+                     prev_iter = it
+                 elif it > target and next_iter is None:
+                     next_iter = it
+                     break
+             
+             if prev_iter is not None and next_iter is not None:
+                 # Interpolate
+                 t_p = iteration_data[prev_iter]['elapsed_s']
+                 t_n = iteration_data[next_iter]['elapsed_s']
+                 slope = (t_n - t_p) / (next_iter - prev_iter)
+                 elapsed_seconds = t_p + slope * (target - prev_iter)
+             elif prev_iter is not None:
+                 # Fallback to approximation if close enough
+                 if prev_iter >= target - 5:
+                      elapsed_seconds = iteration_data[prev_iter]['elapsed_s']
         
         results[target] = {
             'tps': max_tps,
