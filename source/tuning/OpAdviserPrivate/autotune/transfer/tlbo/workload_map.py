@@ -10,9 +10,9 @@ from autotune.utils.binner import Bin
 from autotune.knobs import knobDF2action
 from autotune.gp import gp_predict
 from autotune.utils.history_container import HistoryContainer
-from openbox.utils.config_space import Configuration
-from openbox.utils.config_space.util import convert_configurations_to_array
-from openbox.utils.config_space import ConfigurationSpace, UniformIntegerHyperparameter, CategoricalHyperparameter, UniformFloatHyperparameter
+from autotune.utils.config_space import Configuration
+from autotune.utils.config_space.util import convert_configurations_to_array
+from autotune.utils.config_space import ConfigurationSpace, UniformIntegerHyperparameter, CategoricalHyperparameter, UniformFloatHyperparameter
 
 
 class WorkloadMapping(BaseTLSurrogate):
@@ -83,5 +83,3 @@ class WorkloadMapping(BaseTLSurrogate):
     def predict(self, X: np.array):
         mu, var = self.target_surrogate.predict(X)
         return mu, var
-
-

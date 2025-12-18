@@ -1,9 +1,7 @@
-# License: MIT
-
 import numpy as np
 from autotune.transfer.tlbo.base import BaseTLSurrogate
 from autotune.utils.history_container import HistoryContainer
-from openbox.utils.config_space.util import convert_configurations_to_array
+from autotune.utils.config_space.util import convert_configurations_to_array
 
 
 class RGPE(BaseTLSurrogate):

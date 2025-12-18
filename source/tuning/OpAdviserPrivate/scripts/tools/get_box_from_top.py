@@ -14,7 +14,7 @@ from autotune.tuner import DBTuner
 from autotune.knobs import initialize_knobs, get_default_knobs
 from autotune.utils.config_space import ConfigurationSpace, UniformIntegerHyperparameter, CategoricalHyperparameter, UniformFloatHyperparameter
 from autotune.selector.selector import KnobSelector
-from openbox.utils.config_space.util import convert_configurations_to_array
+from autotune.utils.config_space.util import convert_configurations_to_array
 from autotune.utils.logging_utils import setup_logger, get_logger
 from autotune.utils.config_space import Configuration, ConfigurationSpace
 from autotune.transfer.tlbo.rgpe import RGPE
@@ -144,4 +144,3 @@ if __name__ == '__main__':
     output_file = '../experiment/gen_knobs/box_space_{}.json'.format(test_workload)
     with open(output_file, 'w') as fp:
         json.dump(knob_dict, fp, indent=4)
-

@@ -511,6 +511,7 @@ class PipleLine(BOBase):
                 logger.info("new configuration space: {}".format(new_config_space))
                 self.history_container.alter_configuration_space(new_config_space)
                 self.config_space = new_config_space
+                self._update_optimizers_space(new_config_space)
                 #2024-11-11: code for experiment
                 # self.history_container2.alter_configuration_space(new_config_space2)
                 # self.config_space2 = new_config_space2
@@ -531,6 +532,7 @@ class PipleLine(BOBase):
                     logger.info("new configuration space: {}".format(new_config_space))
                     self.history_container.alter_configuration_space(new_config_space)
                     self.config_space = new_config_space
+                    self._update_optimizers_space(new_config_space)
 
             elif self.incremental == 'decrease':
                 num_hps = int(self.num_hps_init * (0.6 **  incremental_step)) #- incremental_step * self.incremental_every
@@ -549,6 +551,7 @@ class PipleLine(BOBase):
                     logger.info("new configuration space: {}".format(new_config_space))
                     self.history_container.alter_configuration_space(new_config_space)
                     self.config_space = new_config_space
+                    self._update_optimizers_space(new_config_space)
 
     def select_optimizer(self, space, type='learned'):
         optimizer_name = [ 'smac', 'mbo', 'ddpg', 'ga']
@@ -834,6 +837,36 @@ class PipleLine(BOBase):
                             self.logger.info(f"[Ensemble] Retroactively marked observation {obs['index']} as synthetic (perf={obs['perf']})")
         
         self.logger.info(f"[Ensemble] Completed synthetic flag verification for {total_configs} observations")
+
+    def _update_optimizers_space(self, new_space):
+        """
+        Update the configuration space of all optimizers and re-initialize them if necessary.
+        This is crucial for ensemble mode where optimizers need to be synchronized with the global space.
+        """
+        self.logger.info(f"[PipleLine] Updating configuration space for all optimizers (size: {len(new_space.get_hyperparameters())})")
+        
+        # List of optimizers to update
+        optimizers_to_update = []
+        if self.ensemble_mode:
+            optimizers_to_update.extend(self.optimizer_list)
+        else:
+            if hasattr(self, 'optimizer') and self.optimizer is not None:
+                optimizers_to_update.append(self.optimizer)
+            
+        for opt in optimizers_to_update:
+            # Update the config space reference
+            opt.config_space = new_space
+            
+            # Re-initialize specific optimizers
+            if isinstance(opt, BO_Optimizer):
+                opt.setup_bo_basics(new_space)
+            elif isinstance(opt, GA_Optimizer):
+                # GA needs to re-initialize population with new space
+                opt.initialize(self.history_container)
+            elif isinstance(opt, DDPG_Optimizer):
+                # DDPG needs to rebuild network with new input/output dimensions
+                opt.model = None  # Force recreation of model
+                opt.initialize(self.history_container)
 
     def reset_context(self, context):
         self.current_context = context

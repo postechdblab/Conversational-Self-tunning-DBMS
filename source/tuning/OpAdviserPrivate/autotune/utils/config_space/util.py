@@ -25,8 +25,42 @@ def convert_configurations_to_array(configs: List[Configuration]) -> np.ndarray:
         Array with configuration hyperparameters. Inactive values are imputed
         with their default value.
     """
-    configs_array = np.array([config.get_array() for config in configs],
-                             dtype=np.float64)
+    try:
+        configs_array = np.array([config.get_array() for config in configs],
+                                 dtype=np.float64)
+    except Exception as e:
+        # Fallback for ragged arrays (mismatched config spaces)
+        # Use the space of the first configuration as the target space
+        target_space = configs[0].configuration_space
+        normalized_configs = []
+        
+        for i, config in enumerate(configs):
+            # Check if dimensions match
+            if len(config.get_array()) != len(target_space.get_hyperparameters()):
+                # Create a new config in the target space
+                # Copy values for overlapping hyperparameters
+                new_values = {}
+                config_dict = config.get_dictionary()
+                
+                for hp in target_space.get_hyperparameters():
+                    if hp.name in config_dict:
+                        new_values[hp.name] = config_dict[hp.name]
+                    else:
+                        # Use default value for missing hyperparameters
+                        new_values[hp.name] = hp.default_value
+                
+                # Create normalized configuration
+                normalized_config = Configuration(target_space, values=new_values)
+                normalized_configs.append(normalized_config)
+            else:
+                normalized_configs.append(config)
+        
+        # Retry with normalized configurations
+        configs_array = np.array([config.get_array() for config in normalized_configs],
+                                 dtype=np.float64)
+        # Update configs list reference if needed (though we only return the array)
+        configs = normalized_configs 
+    
     configuration_space = configs[0].configuration_space
     return impute_default_values(configuration_space, configs_array)
 

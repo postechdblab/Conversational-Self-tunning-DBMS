@@ -17,7 +17,7 @@ from autotune.utils.multi_objective import Hypervolume, get_pareto_front
 from autotune.utils.config_space.space_utils import get_config_from_dict
 from autotune.utils.visualization.plot_convergence import plot_convergence
 from autotune.utils.transform import  get_transform_function
-from openbox.utils.config_space.util import convert_configurations_to_array
+from autotune.utils.config_space.util import convert_configurations_to_array
 
 Perf = collections.namedtuple(
     'perf', ['cost', 'time', 'status', 'additional_info'])
@@ -630,7 +630,7 @@ class HistoryContainer(object):
         else:
             X_bench = config_bench.get_array().reshape(1,-1)
 
-        X = np.array([list(config.get_array()) for config in self.configurations])
+        X = convert_configurations_to_array(self.configurations)
         Y = -  np.array(self.get_transformed_perfs())
 
         # Fit a LightGBMRegressor with observations
@@ -718,7 +718,10 @@ class HistoryContainer(object):
         default_array = self.config_space.get_default_configuration().get_array()
         default_list = list()
         for i,config in enumerate(self.configurations):
-            if (config.get_array() == default_array).all():
+            config_array = config.get_array()
+            if config_array.shape != default_array.shape:
+                continue
+            if (config_array == default_array).all():
                 default_list.append(self.get_transformed_perfs()[i])
 
         if not len(default_list):
@@ -1023,4 +1026,3 @@ class MultiStartHistoryContainer(object):
             instance of configuration space
         """
         self.current.load_history_from_json(cs, fn)
-
