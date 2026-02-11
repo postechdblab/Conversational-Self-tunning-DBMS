@@ -274,7 +274,7 @@ export default function ChatWindow() {
                     });
                     setIsWaitingSummarization(false);
                 }
-                else {
+                else if (translationResult?.data?.pred_sql !== "conduct tuning") {
                     setIsWaitingSummarization(true);
                 }
             }
@@ -300,7 +300,7 @@ export default function ChatWindow() {
         }
         if (localQueryResult?.execution_times) {
             const c: TuningResultPair[] = [];
-            for (let i = 0; i < localQueryResult.execution_times.length; ++i) {
+            for (let i = 0; i < localQueryResult.execution_times.length && i < questionSqlPairs.length; ++i) {
                 c.push({
                     execution_time_after_tuning: localQueryResult.execution_times[i],
                     execution_time: questionSqlPairs[i].execution_time,

@@ -12,11 +12,11 @@ services:
             - TZ=Asia/Seoul
         volumes:
             - /etc/timezone:/etc/timezone:ro
-            - ./web/dbadminbot:/root/dbadminbot
+            - ./demo/dbadminbot/frontend:/root/dbadminbot
 
     DBAdminBot-backend:
         shm_size: 4gb
-        image: hyukkyukang/nl2qgm:v2
+        image: hyukkyukang/nl2qgm:latest
         container_name: DBAdminBot-backend
         stdin_open: true
         tty: true
@@ -25,7 +25,8 @@ services:
             - TZ=Asia/Seoul
         volumes:
             - /etc/timezone:/etc/timezone:ro
-            - ./:/root/dbadminbot/
+            - ./demo/dbadminbot/backend:/root/dbadminbot/
+            - ./source:/root/dbadminbot/source
             - redis_data:/root/dbadminbot/data/redis/
             - /mnt:/mnt
         deploy:
@@ -34,14 +35,16 @@ services:
                     devices:
                         - capabilities: [gpu]
 
-    DBAdminBot-redis:
+    DBadminBot-redis:
         image: redis:latest
-        container_name: DBAdminBot-redis
-        network_mode: "host"  # Changed from bridge to host
+        container_name: DBadminBot-redis
         volumes:
             - redis_data:/data
-        command: redis-server --port 6380  # Explicitly set port
-        # Remove the ports section when using host network
+        ports:
+            - target: 6379
+              published: 6379
+        networks:
+            - redis
 
     DBAdminBot-AnomalyExp:
         shm_size: 4gb
@@ -60,6 +63,11 @@ services:
                 reservations:
                     devices:
                         - capabilities: [gpu]
+
 volumes:
     redis_data:
         driver: local
+
+networks:
+    redis:
+        driver: bridge
