@@ -16,7 +16,7 @@ services:
 
     DBAdminBot-backend:
         shm_size: 4gb
-        image: hyukkyukang/nl2qgm:latest
+        image: anonymous824/nl2qgm:latest
         container_name: DBAdminBot-backend
         stdin_open: true
         tty: true
@@ -27,7 +27,9 @@ services:
             - /etc/timezone:/etc/timezone:ro
             - ./demo/dbadminbot/backend:/root/dbadminbot/
             - ./source:/root/dbadminbot/source
+            - ./config:/root/dbadminbot/config
             - redis_data:/root/dbadminbot/data/redis/
+            - /var/run/docker.sock:/var/run/docker.sock
             - /mnt:/mnt
         deploy:
             resources:
@@ -46,26 +48,41 @@ services:
         networks:
             - redis
 
-    DBAdminBot-AnomalyExp:
+    DBAdminBot-opadvisor:
+        image: anonymous824/opadvisor:latest
+        container_name: DBAdminBot-opadvisor
         shm_size: 4gb
-        image: hyukkyukang/anomaly_explanation:v2
-        container_name: DBAdminBot-AnomalyExp
         stdin_open: true
         tty: true
         network_mode: "host"
+        working_dir: /workspaces/OpAdviserPrivate
         environment:
             - TZ=Asia/Seoul
+            - PYTHONPATH=/workspaces/OpAdviserPrivate
+            - FLASK_RUN_PORT=1234
+            - FLASK_APP=server/app.py
         volumes:
-            - /etc/timezone:/etc/timezone:ro 
-            - ./source/diagnosis/detection/Anomaly_Explanation:/root/Anomaly_Explanation
+            - /etc/timezone:/etc/timezone:ro
+            - ./source/tuning/OpAdviserPrivate:/workspaces/OpAdviserPrivate
+            - /mnt/sdd/shpark/OpAdviser/lib:/usr/local/lib
+            - opadvisor_mysql:/var/lib/mysql
+        entrypoint: ["/bin/bash", "/workspaces/OpAdviserPrivate/entrypoint.sh"]
         deploy:
             resources:
-                reservations:
-                    devices:
-                        - capabilities: [gpu]
+                limits:
+                    memory: 16g
+        restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "curl", "-sf", "http://localhost:1234/health"]
+            interval: 30s
+            timeout: 10s
+            retries: 10
+            start_period: 120s
 
 volumes:
     redis_data:
+        driver: local
+    opadvisor_mysql:
         driver: local
 
 networks:

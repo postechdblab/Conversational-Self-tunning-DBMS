@@ -1,0 +1,443 @@
+
+==========
+== CUDA ==
+==========
+
+CUDA Version 12.9.1
+
+Container image Copyright (c) 2016-2023, NVIDIA CORPORATION & AFFILIATES. All rights reserved.
+
+This container image and its contents are governed by the NVIDIA Deep Learning Container License.
+By pulling and using the container, you accept the terms and conditions of this license:
+https://developer.nvidia.com/ngc/nvidia-deep-learning-container-license
+
+A copy of this license is made available in this container at /NGC-DL-CONTAINER-LICENSE for your convenience.
+
+[2026-02-12 05:20:22] INFO model_config.py:1084: Downcasting torch.float32 to torch.float16.
+[2026-02-12 05:20:22] WARNING model_config.py:888: mxfp4 quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+[2026-02-12 05:20:22] WARNING server_args.py:1314: Detected GPT-OSS model, enabling triton_kernels MOE kernel.
+[2026-02-12 05:20:23] server_args=ServerArgs(model_path='/mnt/sde/shpark/models/gpt-oss-20b', tokenizer_path='/mnt/sde/shpark/models/gpt-oss-20b', tokenizer_mode='auto', tokenizer_worker_num=1, skip_tokenizer_init=False, load_format='auto', model_loader_extra_config='{}', trust_remote_code=False, context_length=None, is_embedding=False, enable_multimodal=None, revision=None, model_impl='auto', host='0.0.0.0', port=30000, fastapi_root_path='', grpc_mode=False, skip_server_warmup=False, warmups=None, nccl_port=None, checkpoint_engine_wait_weights_before_ready=False, dtype='bfloat16', quantization=None, quantization_param_path=None, kv_cache_dtype='auto', enable_fp32_lm_head=False, modelopt_quant=None, modelopt_checkpoint_restore_path=None, modelopt_checkpoint_save_path=None, modelopt_export_path=None, quantize_and_serve=False, rl_quant_profile=None, mem_fraction_static=0.95, max_running_requests=None, max_queued_requests=None, max_total_tokens=None, chunked_prefill_size=4096, enable_dynamic_chunking=False, max_prefill_tokens=16384, prefill_max_requests=None, schedule_policy='fcfs', enable_priority_scheduling=False, abort_on_priority_when_disabled=False, schedule_low_priority_values_first=False, priority_scheduling_preemption_threshold=10, schedule_conservativeness=1.0, page_size=1, swa_full_tokens_ratio=0.8, disable_hybrid_swa_memory=False, radix_eviction_policy='lru', enable_prefill_delayer=False, prefill_delayer_max_delay_passes=30, prefill_delayer_token_usage_low_watermark=None, prefill_delayer_forward_passes_buckets=None, prefill_delayer_wait_seconds_buckets=None, device='cuda', tp_size=1, pp_size=1, pp_max_micro_batch_size=None, pp_async_batch_depth=0, stream_interval=1, stream_output=False, random_seed=164879555, constrained_json_whitespace_pattern=None, constrained_json_disable_any_whitespace=False, watchdog_timeout=300, soft_watchdog_timeout=None, dist_timeout=None, download_dir=None, model_checksum=None, base_gpu_id=0, gpu_id_step=1, sleep_on_idle=False, custom_sigquit_handler=None, log_level='info', log_level_http=None, log_requests=False, log_requests_level=2, log_requests_format='text', log_requests_target=None, uvicorn_access_log_exclude_prefixes=[], crash_dump_folder=None, show_time_cost=False, enable_metrics=False, enable_metrics_for_all_schedulers=False, tokenizer_metrics_custom_labels_header='x-custom-labels', tokenizer_metrics_allowed_custom_labels=None, bucket_time_to_first_token=None, bucket_inter_token_latency=None, bucket_e2e_request_latency=None, collect_tokens_histogram=False, prompt_tokens_buckets=None, generation_tokens_buckets=None, gc_warning_threshold_secs=0.0, decode_log_interval=40, enable_request_time_stats_logging=False, kv_events_config=None, enable_trace=False, otlp_traces_endpoint='localhost:4317', export_metrics_to_file=False, export_metrics_to_file_dir=None, api_key=None, admin_api_key=None, served_model_name='/mnt/sde/shpark/models/gpt-oss-20b', weight_version='default', chat_template=None, hf_chat_template_name=None, completion_template=None, file_storage_path='sglang_storage', enable_cache_report=False, reasoning_parser=None, tool_call_parser=None, tool_server=None, sampling_defaults='model', dp_size=1, load_balance_method='round_robin', dist_init_addr=None, nnodes=1, node_rank=0, json_model_override_args='{}', preferred_sampling_params=None, enable_lora=None, enable_lora_overlap_loading=None, max_lora_rank=None, lora_target_modules=None, lora_paths=None, max_loaded_loras=None, max_loras_per_batch=8, lora_eviction_policy='lru', lora_backend='csgmv', max_lora_chunk_size=16, attention_backend='triton', decode_attention_backend=None, prefill_attention_backend=None, sampling_backend='flashinfer', grammar_backend='xgrammar', mm_attention_backend=None, fp8_gemm_runner_backend='auto', fp4_gemm_runner_backend='auto', nsa_prefill_backend='flashmla_sparse', nsa_decode_backend='fa3', disable_flashinfer_autotune=False, speculative_algorithm=None, speculative_draft_model_path=None, speculative_draft_model_revision=None, speculative_draft_load_format=None, speculative_num_steps=None, speculative_eagle_topk=None, speculative_num_draft_tokens=None, speculative_accept_threshold_single=1.0, speculative_accept_threshold_acc=1.0, speculative_token_map=None, speculative_attention_mode='prefill', speculative_draft_attention_backend=None, speculative_moe_runner_backend='triton_kernel', speculative_moe_a2a_backend=None, speculative_draft_model_quantization=None, speculative_ngram_min_match_window_size=1, speculative_ngram_max_match_window_size=12, speculative_ngram_min_bfs_breadth=1, speculative_ngram_max_bfs_breadth=10, speculative_ngram_match_type='BFS', speculative_ngram_branch_length=18, speculative_ngram_capacity=10000000, enable_multi_layer_eagle=False, ep_size=1, moe_a2a_backend='none', moe_runner_backend='triton_kernel', flashinfer_mxfp4_moe_precision='default', enable_flashinfer_allreduce_fusion=False, deepep_mode='auto', ep_num_redundant_experts=0, ep_dispatch_algorithm=None, init_expert_location='trivial', enable_eplb=False, eplb_algorithm='auto', eplb_rebalance_num_iterations=1000, eplb_rebalance_layers_per_chunk=None, eplb_min_rebalancing_utilization_threshold=1.0, expert_distribution_recorder_mode=None, expert_distribution_recorder_buffer_size=1000, enable_expert_distribution_metrics=False, deepep_config=None, moe_dense_tp_size=None, elastic_ep_backend=None, mooncake_ib_device=None, max_mamba_cache_size=None, mamba_ssm_dtype='float32', mamba_full_memory_ratio=0.9, mamba_scheduler_strategy='no_buffer', mamba_track_interval=256, enable_hierarchical_cache=False, hicache_ratio=2.0, hicache_size=0, hicache_write_policy='write_through', hicache_io_backend='kernel', hicache_mem_layout='layer_first', disable_hicache_numa_detect=False, hicache_storage_backend=None, hicache_storage_prefetch_policy='best_effort', hicache_storage_backend_extra_config=None, hierarchical_sparse_attention_extra_config=None, enable_lmcache=False, kt_weight_path=None, kt_method='AMXINT4', kt_cpuinfer=None, kt_threadpool_count=2, kt_num_gpu_experts=None, kt_max_deferred_experts_per_token=None, dllm_algorithm=None, dllm_algorithm_config=None, enable_double_sparsity=False, ds_channel_config_path=None, ds_heavy_channel_num=32, ds_heavy_token_num=256, ds_heavy_channel_type='qk', ds_sparse_decode_threshold=4096, cpu_offload_gb=0, offload_group_size=-1, offload_num_in_group=1, offload_prefetch_step=1, offload_mode='cpu', multi_item_scoring_delimiter=None, disable_radix_cache=False, cuda_graph_max_bs=32, cuda_graph_bs=[1, 2, 4, 8, 12, 16, 24, 32], disable_cuda_graph=False, disable_cuda_graph_padding=False, enable_profile_cuda_graph=False, enable_cudagraph_gc=False, enable_layerwise_nvtx_marker=False, enable_nccl_nvls=False, enable_symm_mem=False, disable_flashinfer_cutlass_moe_fp4_allgather=False, enable_tokenizer_batch_encode=False, disable_tokenizer_batch_decode=False, disable_outlines_disk_cache=False, disable_custom_all_reduce=False, enable_mscclpp=False, enable_torch_symm_mem=False, disable_overlap_schedule=False, enable_mixed_chunk=False, enable_dp_attention=False, enable_dp_lm_head=False, enable_two_batch_overlap=False, enable_single_batch_overlap=False, tbo_token_distribution_threshold=0.48, enable_torch_compile=False, enable_piecewise_cuda_graph=False, enable_torch_compile_debug_mode=False, torch_compile_max_bs=32, piecewise_cuda_graph_max_tokens=4096, piecewise_cuda_graph_tokens=[4, 8, 12, 16, 20, 24, 28, 32, 48, 64, 80, 96, 112, 128, 144, 160, 176, 192, 208, 224, 240, 256, 288, 320, 352, 384, 416, 448, 480, 512, 640, 704, 768, 832, 896, 960, 1024, 1280, 1536, 1792, 2048, 2304, 2560, 2816, 3072, 3328, 3584, 3840, 4096], piecewise_cuda_graph_compiler='eager', torchao_config='', enable_nan_detection=False, enable_p2p_check=False, triton_attention_reduce_in_fp32=False, triton_attention_num_kv_splits=8, triton_attention_split_tile_size=None, num_continuous_decode_steps=1, delete_ckpt_after_loading=False, enable_memory_saver=False, enable_weights_cpu_backup=False, enable_draft_weights_cpu_backup=False, allow_auto_truncate=False, enable_custom_logit_processor=False, flashinfer_mla_disable_ragged=False, disable_shared_experts_fusion=False, disable_chunked_prefix_cache=False, disable_fast_image_processor=False, keep_mm_feature_on_device=False, enable_return_hidden_states=False, enable_return_routed_experts=False, scheduler_recv_interval=1, numa_node=None, enable_deterministic_inference=False, rl_on_policy_target=None, enable_attn_tp_input_scattered=False, enable_nsa_prefill_context_parallel=False, nsa_prefill_cp_mode='in-seq-split', enable_fused_qk_norm_rope=False, enable_precise_embedding_interpolation=False, enable_dynamic_batch_tokenizer=False, dynamic_batch_tokenizer_batch_size=32, dynamic_batch_tokenizer_batch_timeout=0.002, debug_tensor_dump_output_folder=None, debug_tensor_dump_layers=None, debug_tensor_dump_input_file=None, debug_tensor_dump_inject=False, disaggregation_mode='null', disaggregation_transfer_backend='mooncake', disaggregation_bootstrap_port=8998, disaggregation_decode_tp=None, disaggregation_decode_dp=None, disaggregation_prefill_pp=1, disaggregation_ib_device=None, disaggregation_decode_enable_offload_kvcache=False, disaggregation_decode_enable_fake_auto=False, num_reserved_decode_tokens=512, disaggregation_decode_polling_interval=1, encoder_only=False, language_only=False, encoder_transfer_backend='zmq_to_scheduler', encoder_urls=[], custom_weight_loader=[], weight_loader_disable_mmap=False, remote_instance_weight_loader_seed_instance_ip=None, remote_instance_weight_loader_seed_instance_service_port=None, remote_instance_weight_loader_send_weights_group_ports=None, remote_instance_weight_loader_backend='nccl', remote_instance_weight_loader_start_seed_via_transfer_engine=False, enable_pdmux=False, pdmux_config_path=None, sm_group_num=8, mm_max_concurrent_calls=32, mm_per_request_timeout=10.0, enable_broadcast_mm_inputs_process=False, enable_prefix_mm_cache=False, mm_enable_dp_encoder=False, mm_process_config={}, limit_mm_data_per_request=None, decrypted_config_file=None, decrypted_draft_config_file=None, forward_hooks=None)
+[2026-02-12 05:20:23] Downcasting torch.float32 to torch.bfloat16.
+[2026-02-12 05:20:23] mxfp4 quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+[2026-02-12 05:20:24] Using default HuggingFace chat template with detected content format: string
+[2026-02-12 05:20:30] Downcasting torch.float32 to torch.bfloat16.
+[2026-02-12 05:20:30] mxfp4 quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+[2026-02-12 05:20:31] Downcasting torch.float32 to torch.bfloat16.
+[2026-02-12 05:20:31] mxfp4 quantization is not fully optimized yet. The speed can be slower than non-quantized models.
+[2026-02-12 05:20:31] Init torch distributed begin.
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[Gloo] Rank 0 is connected to 0 peer ranks. Expected number of connected peer ranks is : 0
+[2026-02-12 05:20:32] Init torch distributed ends. mem usage=0.04 GB
+[2026-02-12 05:20:32] Ignore import error when loading sglang.srt.models.glmasr: cannot import name 'GlmAsrConfig' from 'transformers' (/usr/local/lib/python3.12/dist-packages/transformers/__init__.py)
+[2026-02-12 05:20:33] Load weight begin. avail mem=46.00 GB
+`torch_dtype` is deprecated! Use `dtype` instead!
+Loading safetensors checkpoint shards:   0% Completed | 0/3 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  67% Completed | 2/3 [00:00<00:00,  2.31it/s]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  1.66it/s]
+Loading safetensors checkpoint shards: 100% Completed | 3/3 [00:01<00:00,  1.76it/s]
+
+[2026-02-12 05:21:35] Load weight end. type=GptOssForCausalLM, dtype=torch.bfloat16, avail mem=32.94 GB, mem usage=13.05 GB.
+[2026-02-12 05:21:35] Using KV cache dtype: torch.bfloat16
+[2026-02-12 05:21:35] Use sliding window memory pool. full_layer_tokens=743690, swa_layer_tokens=594952
+[2026-02-12 05:21:36] KV Cache is allocated. #tokens: 594952, K size: 6.81 GB, V size: 6.81 GB
+[2026-02-12 05:21:36] KV Cache is allocated. #tokens: 743690, K size: 8.51 GB, V size: 8.51 GB
+[2026-02-12 05:21:36] SWAKVPool mem usage: 30.64 GB, swa size: 594952, full size: 743690
+[2026-02-12 05:21:36] Memory pool end. avail mem=0.90 GB
+[2026-02-12 05:21:36] Capture cuda graph begin. This can take up to several minutes. avail mem=0.88 GB
+[2026-02-12 05:21:36] Capture cuda graph bs [1, 2, 4, 8, 12, 16, 24, 32]
+  0%|          | 0/8 [00:00<?, ?it/s]Capturing batches (bs=32 avail_mem=0.83 GB):   0%|          | 0/8 [00:00<?, ?it/s]Capturing batches (bs=32 avail_mem=0.83 GB):  12%|█▎        | 1/8 [00:16<01:56, 16.65s/it]Capturing batches (bs=24 avail_mem=0.78 GB):  12%|█▎        | 1/8 [00:16<01:56, 16.65s/it]Capturing batches (bs=24 avail_mem=0.78 GB):  25%|██▌       | 2/8 [00:19<00:51,  8.55s/it]Capturing batches (bs=16 avail_mem=0.77 GB):  25%|██▌       | 2/8 [00:19<00:51,  8.55s/it]Capturing batches (bs=16 avail_mem=0.77 GB):  38%|███▊      | 3/8 [00:19<00:23,  4.73s/it]Capturing batches (bs=12 avail_mem=0.77 GB):  38%|███▊      | 3/8 [00:19<00:23,  4.73s/it]Capturing batches (bs=12 avail_mem=0.77 GB):  50%|█████     | 4/8 [00:21<00:13,  3.44s/it]Capturing batches (bs=8 avail_mem=0.77 GB):  50%|█████     | 4/8 [00:21<00:13,  3.44s/it] Capturing batches (bs=8 avail_mem=0.77 GB):  62%|██████▎   | 5/8 [00:22<00:08,  2.82s/it]Capturing batches (bs=4 avail_mem=0.76 GB):  62%|██████▎   | 5/8 [00:22<00:08,  2.82s/it]Capturing batches (bs=4 avail_mem=0.76 GB):  75%|███████▌  | 6/8 [00:25<00:05,  2.74s/it]Capturing batches (bs=2 avail_mem=0.76 GB):  75%|███████▌  | 6/8 [00:25<00:05,  2.74s/it]Capturing batches (bs=2 avail_mem=0.76 GB):  88%|████████▊ | 7/8 [00:27<00:02,  2.37s/it]Capturing batches (bs=1 avail_mem=0.75 GB):  88%|████████▊ | 7/8 [00:27<00:02,  2.37s/it]Capturing batches (bs=1 avail_mem=0.75 GB): 100%|██████████| 8/8 [00:31<00:00,  2.93s/it]Capturing batches (bs=1 avail_mem=0.75 GB): 100%|██████████| 8/8 [00:31<00:00,  3.90s/it]
+[2026-02-12 05:22:08] Capture cuda graph end. Time elapsed: 32.04 s. mem usage=0.14 GB. avail mem=0.75 GB.
+[2026-02-12 05:22:09] max_total_num_tokens=743690, chunked_prefill_size=4096, max_prefill_tokens=16384, max_running_requests=2614, context_len=131072, available_gpu_mem=0.75 GB
+[2026-02-12 05:22:10] INFO:     Started server process [1]
+[2026-02-12 05:22:10] INFO:     Waiting for application startup.
+[2026-02-12 05:22:10] Using default chat sampling params from model generation config: {'repetition_penalty': 1.0, 'temperature': 1.0, 'top_k': 50, 'top_p': 1.0}
+[2026-02-12 05:22:10] Using default chat sampling params from model generation config: {'repetition_penalty': 1.0, 'temperature': 1.0, 'top_k': 50, 'top_p': 1.0}
+[2026-02-12 05:22:12] INFO:     Application startup complete.
+[2026-02-12 05:22:12] INFO:     Uvicorn running on http://0.0.0.0:30000 (Press CTRL+C to quit)
+[2026-02-12 05:22:13] INFO:     172.18.0.1:33256 - "GET /health HTTP/1.1" 503 Service Unavailable
+[2026-02-12 05:22:13] INFO:     127.0.0.1:38984 - "GET /model_info HTTP/1.1" 200 OK
+[2026-02-12 05:22:13] Prefill batch, #new-seq: 1, #new-token: 6, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:22:22] INFO:     127.0.0.1:38998 - "POST /generate HTTP/1.1" 200 OK
+[2026-02-12 05:22:22] The server is fired up and ready to roll!
+[2026-02-12 05:22:23] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:22:24] INFO:     172.18.0.1:36416 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 05:40:26] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:40:27] INFO:     172.18.0.1:58604 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 05:42:06] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:42:07] INFO:     172.18.0.1:48424 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 05:45:45] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:45:46] INFO:     172.18.0.1:34108 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 05:50:17] Prefill batch, #new-seq: 1, #new-token: 267, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:50:23] Decode batch, #running-req: 1, #full token: 296, full token usage: 0.00, #swa token: 296, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.02, #queue-req: 0, 
+[2026-02-12 05:50:23] Decode batch, #running-req: 1, #full token: 336, full token usage: 0.00, #swa token: 336, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.38, #queue-req: 0, 
+[2026-02-12 05:50:24] INFO:     172.18.0.1:44656 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 05:50:29] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 05:50:30] Decode batch, #running-req: 1, #full token: 270, full token usage: 0.00, #swa token: 270, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 6.41, #queue-req: 0, 
+[2026-02-12 05:50:30] Decode batch, #running-req: 1, #full token: 310, full token usage: 0.00, #swa token: 310, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.61, #queue-req: 0, 
+[2026-02-12 05:50:30] Decode batch, #running-req: 1, #full token: 350, full token usage: 0.00, #swa token: 350, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.35, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=266), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 05:50:31] INFO:     172.18.0.1:37686 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:34:53] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:34:54] INFO:     172.18.0.1:41372 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 06:36:04] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:36:05] Decode batch, #running-req: 1, #full token: 283, full token usage: 0.00, #swa token: 283, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.01, #queue-req: 0, 
+[2026-02-12 06:36:05] Decode batch, #running-req: 1, #full token: 323, full token usage: 0.00, #swa token: 323, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.35, #queue-req: 0, 
+[2026-02-12 06:36:05] Decode batch, #running-req: 1, #full token: 363, full token usage: 0.00, #swa token: 363, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.18, #queue-req: 0, 
+[2026-02-12 06:36:05] INFO:     172.18.0.1:56882 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:40:37] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:40:37] Decode batch, #running-req: 1, #full token: 297, full token usage: 0.00, #swa token: 297, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.15, #queue-req: 0, 
+[2026-02-12 06:40:38] Decode batch, #running-req: 1, #full token: 337, full token usage: 0.00, #swa token: 337, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.44, #queue-req: 0, 
+[2026-02-12 06:40:38] INFO:     172.18.0.1:32838 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:44:20] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:44:20] Decode batch, #running-req: 1, #full token: 271, full token usage: 0.00, #swa token: 271, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.18, #queue-req: 0, 
+[2026-02-12 06:44:20] Decode batch, #running-req: 1, #full token: 311, full token usage: 0.00, #swa token: 311, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.35, #queue-req: 0, 
+[2026-02-12 06:44:21] Decode batch, #running-req: 1, #full token: 351, full token usage: 0.00, #swa token: 351, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.41, #queue-req: 0, 
+[2026-02-12 06:44:21] INFO:     172.18.0.1:55488 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:49:15] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:49:16] Decode batch, #running-req: 1, #full token: 285, full token usage: 0.00, #swa token: 285, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.14, #queue-req: 0, 
+[2026-02-12 06:49:16] Decode batch, #running-req: 1, #full token: 325, full token usage: 0.00, #swa token: 325, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.16, #queue-req: 0, 
+[2026-02-12 06:49:16] Decode batch, #running-req: 1, #full token: 365, full token usage: 0.00, #swa token: 365, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.53, #queue-req: 0, 
+[2026-02-12 06:49:16] INFO:     172.18.0.1:40248 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:51:59] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:52:00] Decode batch, #running-req: 1, #full token: 299, full token usage: 0.00, #swa token: 299, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.24, #queue-req: 0, 
+[2026-02-12 06:52:00] Decode batch, #running-req: 1, #full token: 339, full token usage: 0.00, #swa token: 339, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.06, #queue-req: 0, 
+[2026-02-12 06:52:00] INFO:     172.18.0.1:49380 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 06:56:30] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 06:56:30] Decode batch, #running-req: 1, #full token: 273, full token usage: 0.00, #swa token: 273, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.15, #queue-req: 0, 
+[2026-02-12 06:56:30] Decode batch, #running-req: 1, #full token: 313, full token usage: 0.00, #swa token: 313, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.56, #queue-req: 0, 
+[2026-02-12 06:56:31] Decode batch, #running-req: 1, #full token: 353, full token usage: 0.00, #swa token: 353, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.50, #queue-req: 0, 
+[2026-02-12 06:56:31] INFO:     172.18.0.1:58146 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:34:40] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:34:41] INFO:     172.18.0.1:57738 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 08:36:21] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:36:21] Decode batch, #running-req: 1, #full token: 286, full token usage: 0.00, #swa token: 286, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.01, #queue-req: 0, 
+[2026-02-12 08:36:22] Decode batch, #running-req: 1, #full token: 326, full token usage: 0.00, #swa token: 326, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.44, #queue-req: 0, 
+[2026-02-12 08:36:22] Decode batch, #running-req: 1, #full token: 366, full token usage: 0.00, #swa token: 366, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.39, #queue-req: 0, 
+[2026-02-12 08:36:22] INFO:     172.18.0.1:35064 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:36:46] Prefill batch, #new-seq: 1, #new-token: 763, #cached-token: 77, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:36:50] Decode batch, #running-req: 1, #full token: 873, full token usage: 0.00, #swa token: 796, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.43, #queue-req: 0, 
+[2026-02-12 08:36:50] Decode batch, #running-req: 1, #full token: 913, full token usage: 0.00, #swa token: 836, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.48, #queue-req: 0, 
+[2026-02-12 08:36:51] Decode batch, #running-req: 1, #full token: 953, full token usage: 0.00, #swa token: 876, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.50, #queue-req: 0, 
+[2026-02-12 08:36:51] Decode batch, #running-req: 1, #full token: 993, full token usage: 0.00, #swa token: 916, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.42, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=77), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:36:51] INFO:     172.18.0.1:54460 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:37:06] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:37:07] Decode batch, #running-req: 1, #full token: 304, full token usage: 0.00, #swa token: 227, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.57, #queue-req: 0, 
+[2026-02-12 08:37:07] Decode batch, #running-req: 1, #full token: 344, full token usage: 0.00, #swa token: 267, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.91, #queue-req: 0, 
+[2026-02-12 08:37:07] INFO:     172.18.0.1:57316 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:37:14] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:37:14] Decode batch, #running-req: 1, #full token: 278, full token usage: 0.00, #swa token: 201, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 5.30, #queue-req: 0, 
+[2026-02-12 08:37:15] Decode batch, #running-req: 1, #full token: 318, full token usage: 0.00, #swa token: 241, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.69, #queue-req: 0, 
+[2026-02-12 08:37:15] Decode batch, #running-req: 1, #full token: 358, full token usage: 0.00, #swa token: 281, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.79, #queue-req: 0, 
+[2026-02-12 08:37:15] INFO:     172.18.0.1:38992 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:37:36] Prefill batch, #new-seq: 1, #new-token: 33, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:37:37] Decode batch, #running-req: 1, #full token: 292, full token usage: 0.00, #swa token: 215, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.81, #queue-req: 0, 
+[2026-02-12 08:37:38] Decode batch, #running-req: 1, #full token: 332, full token usage: 0.00, #swa token: 255, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.91, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=234), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:37:38] INFO:     172.18.0.1:42318 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:37:39] Prefill batch, #new-seq: 1, #new-token: 125, #cached-token: 560, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:37:40] Decode batch, #running-req: 1, #full token: 688, full token usage: 0.00, #swa token: 611, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 18.89, #queue-req: 0, 
+[2026-02-12 08:37:40] Decode batch, #running-req: 1, #full token: 728, full token usage: 0.00, #swa token: 651, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.54, #queue-req: 0, 
+[2026-02-12 08:37:41] Decode batch, #running-req: 1, #full token: 768, full token usage: 0.00, #swa token: 691, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.53, #queue-req: 0, 
+[2026-02-12 08:37:41] Decode batch, #running-req: 1, #full token: 808, full token usage: 0.00, #swa token: 731, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.37, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=560), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:37:41] INFO:     172.18.0.1:33254 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:37:46] Prefill batch, #new-seq: 1, #new-token: 30, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:37:46] Decode batch, #running-req: 1, #full token: 274, full token usage: 0.00, #swa token: 197, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 8.05, #queue-req: 0, 
+[2026-02-12 08:37:46] Decode batch, #running-req: 1, #full token: 314, full token usage: 0.00, #swa token: 237, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.83, #queue-req: 0, 
+[2026-02-12 08:37:47] Decode batch, #running-req: 1, #full token: 354, full token usage: 0.00, #swa token: 277, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.86, #queue-req: 0, 
+[2026-02-12 08:37:47] Decode batch, #running-req: 1, #full token: 394, full token usage: 0.00, #swa token: 317, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.86, #queue-req: 0, 
+[2026-02-12 08:37:47] INFO:     172.18.0.1:33258 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:38:17] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 263, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:38:17] Decode batch, #running-req: 1, #full token: 291, full token usage: 0.00, #swa token: 214, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.32, #queue-req: 0, 
+[2026-02-12 08:38:18] Decode batch, #running-req: 1, #full token: 331, full token usage: 0.00, #swa token: 254, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.87, #queue-req: 0, 
+[2026-02-12 08:38:18] Decode batch, #running-req: 1, #full token: 371, full token usage: 0.00, #swa token: 294, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.85, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=263), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:38:18] INFO:     172.18.0.1:56336 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:38:33] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 263, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:38:33] Decode batch, #running-req: 1, #full token: 268, full token usage: 0.00, #swa token: 191, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.74, #queue-req: 0, 
+[2026-02-12 08:38:33] Decode batch, #running-req: 1, #full token: 308, full token usage: 0.00, #swa token: 231, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.57, #queue-req: 0, 
+[2026-02-12 08:38:33] Decode batch, #running-req: 1, #full token: 348, full token usage: 0.00, #swa token: 271, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.80, #queue-req: 0, 
+[2026-02-12 08:38:34] Decode batch, #running-req: 1, #full token: 388, full token usage: 0.00, #swa token: 311, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.84, #queue-req: 0, 
+[2026-02-12 08:38:34] INFO:     172.18.0.1:49998 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:39:12] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 263, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:39:12] Decode batch, #running-req: 1, #full token: 285, full token usage: 0.00, #swa token: 208, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.04, #queue-req: 0, 
+[2026-02-12 08:39:13] Decode batch, #running-req: 1, #full token: 325, full token usage: 0.00, #swa token: 248, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.45, #queue-req: 0, 
+[2026-02-12 08:39:13] Decode batch, #running-req: 1, #full token: 365, full token usage: 0.00, #swa token: 288, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.80, #queue-req: 0, 
+[2026-02-12 08:39:13] Decode batch, #running-req: 1, #full token: 405, full token usage: 0.00, #swa token: 328, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.87, #queue-req: 0, 
+[2026-02-12 08:39:13] INFO:     172.18.0.1:57342 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:42:03] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:42:04] INFO:     172.18.0.1:59732 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 08:42:51] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:42:51] Decode batch, #running-req: 1, #full token: 304, full token usage: 0.00, #swa token: 227, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.18, #queue-req: 0, 
+[2026-02-12 08:42:52] Decode batch, #running-req: 1, #full token: 344, full token usage: 0.00, #swa token: 267, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.11, #queue-req: 0, 
+[2026-02-12 08:42:52] INFO:     172.18.0.1:50618 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:16] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 839, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:16] Decode batch, #running-req: 1, #full token: 851, full token usage: 0.00, #swa token: 291, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.64, #queue-req: 0, 
+[2026-02-12 08:43:16] Decode batch, #running-req: 1, #full token: 891, full token usage: 0.00, #swa token: 331, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.05, #queue-req: 0, 
+[2026-02-12 08:43:17] Decode batch, #running-req: 1, #full token: 931, full token usage: 0.00, #swa token: 371, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.51, #queue-req: 0, 
+[2026-02-12 08:43:17] Decode batch, #running-req: 1, #full token: 971, full token usage: 0.00, #swa token: 411, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.56, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=839), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:43:17] INFO:     172.18.0.1:39944 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:19] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:19] Decode batch, #running-req: 1, #full token: 282, full token usage: 0.00, #swa token: 205, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 22.65, #queue-req: 0, 
+[2026-02-12 08:43:19] Decode batch, #running-req: 1, #full token: 322, full token usage: 0.00, #swa token: 245, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.08, #queue-req: 0, 
+[2026-02-12 08:43:20] Decode batch, #running-req: 1, #full token: 362, full token usage: 0.00, #swa token: 285, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.08, #queue-req: 0, 
+[2026-02-12 08:43:20] INFO:     172.18.0.1:52696 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:32] Prefill batch, #new-seq: 1, #new-token: 33, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:32] Decode batch, #running-req: 1, #full token: 296, full token usage: 0.00, #swa token: 219, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 3.14, #queue-req: 0, 
+[2026-02-12 08:43:33] Decode batch, #running-req: 1, #full token: 336, full token usage: 0.00, #swa token: 259, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.79, #queue-req: 0, 
+[2026-02-12 08:43:33] Decode batch, #running-req: 1, #full token: 376, full token usage: 0.00, #swa token: 299, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.73, #queue-req: 0, 
+[2026-02-12 08:43:33] INFO:     172.18.0.1:47356 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:34] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 684, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:35] Decode batch, #running-req: 1, #full token: 699, full token usage: 0.00, #swa token: 622, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 26.92, #queue-req: 0, 
+[2026-02-12 08:43:35] Decode batch, #running-req: 1, #full token: 739, full token usage: 0.00, #swa token: 662, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.51, #queue-req: 0, 
+[2026-02-12 08:43:35] Decode batch, #running-req: 1, #full token: 779, full token usage: 0.00, #swa token: 702, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.42, #queue-req: 0, 
+[2026-02-12 08:43:36] Decode batch, #running-req: 1, #full token: 819, full token usage: 0.00, #swa token: 742, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.28, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=684), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:43:36] INFO:     172.18.0.1:47372 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:43] Prefill batch, #new-seq: 1, #new-token: 31, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:43] Decode batch, #running-req: 1, #full token: 285, full token usage: 0.00, #swa token: 208, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 5.20, #queue-req: 0, 
+[2026-02-12 08:43:44] Decode batch, #running-req: 1, #full token: 325, full token usage: 0.00, #swa token: 248, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.28, #queue-req: 0, 
+[2026-02-12 08:43:44] INFO:     172.18.0.1:41620 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:43:55] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:43:56] Decode batch, #running-req: 1, #full token: 272, full token usage: 0.00, #swa token: 195, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 3.38, #queue-req: 0, 
+[2026-02-12 08:43:56] Decode batch, #running-req: 1, #full token: 312, full token usage: 0.00, #swa token: 235, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.25, #queue-req: 0, 
+[2026-02-12 08:43:56] Decode batch, #running-req: 1, #full token: 352, full token usage: 0.00, #swa token: 275, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.60, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=264), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:43:56] INFO:     172.18.0.1:44054 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:44:38] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:44:38] Decode batch, #running-req: 1, #full token: 296, full token usage: 0.00, #swa token: 219, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.96, #queue-req: 0, 
+[2026-02-12 08:44:38] Decode batch, #running-req: 1, #full token: 336, full token usage: 0.00, #swa token: 259, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.76, #queue-req: 0, 
+[2026-02-12 08:44:39] INFO:     172.18.0.1:56356 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:44:48] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:44:48] Decode batch, #running-req: 1, #full token: 280, full token usage: 0.00, #swa token: 203, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 4.26, #queue-req: 0, 
+[2026-02-12 08:44:48] Decode batch, #running-req: 1, #full token: 320, full token usage: 0.00, #swa token: 243, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.70, #queue-req: 0, 
+[2026-02-12 08:44:49] Decode batch, #running-req: 1, #full token: 360, full token usage: 0.00, #swa token: 283, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.75, #queue-req: 0, 
+[2026-02-12 08:44:49] INFO:     172.18.0.1:42614 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:45:22] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:45:23] INFO:     172.18.0.1:48514 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 08:46:51] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:46:52] Decode batch, #running-req: 1, #full token: 305, full token usage: 0.00, #swa token: 228, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.33, #queue-req: 0, 
+[2026-02-12 08:46:52] Decode batch, #running-req: 1, #full token: 345, full token usage: 0.00, #swa token: 268, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.10, #queue-req: 0, 
+[2026-02-12 08:46:52] INFO:     172.18.0.1:46682 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:47:17] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 839, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:47:17] Decode batch, #running-req: 1, #full token: 852, full token usage: 0.00, #swa token: 292, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.57, #queue-req: 0, 
+[2026-02-12 08:47:18] Decode batch, #running-req: 1, #full token: 892, full token usage: 0.00, #swa token: 332, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.64, #queue-req: 0, 
+[2026-02-12 08:47:18] Decode batch, #running-req: 1, #full token: 932, full token usage: 0.00, #swa token: 372, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.58, #queue-req: 0, 
+[2026-02-12 08:47:19] Decode batch, #running-req: 1, #full token: 972, full token usage: 0.00, #swa token: 412, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.61, #queue-req: 0, 
+[2026-02-12 08:47:19] INFO:     172.18.0.1:37984 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:47:28] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:47:28] Decode batch, #running-req: 1, #full token: 283, full token usage: 0.00, #swa token: 206, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 4.21, #queue-req: 0, 
+[2026-02-12 08:47:28] Decode batch, #running-req: 1, #full token: 323, full token usage: 0.00, #swa token: 246, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.17, #queue-req: 0, 
+[2026-02-12 08:47:29] Decode batch, #running-req: 1, #full token: 363, full token usage: 0.00, #swa token: 286, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.78, #queue-req: 0, 
+[2026-02-12 08:47:29] INFO:     172.18.0.1:44866 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:48:03] Prefill batch, #new-seq: 1, #new-token: 33, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:48:03] Decode batch, #running-req: 1, #full token: 297, full token usage: 0.00, #swa token: 220, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.17, #queue-req: 0, 
+[2026-02-12 08:48:03] Decode batch, #running-req: 1, #full token: 337, full token usage: 0.00, #swa token: 260, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.94, #queue-req: 0, 
+[2026-02-12 08:48:04] INFO:     172.18.0.1:44882 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:48:04] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 684, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:48:05] Decode batch, #running-req: 1, #full token: 692, full token usage: 0.00, #swa token: 615, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 28.68, #queue-req: 0, 
+[2026-02-12 08:48:05] Decode batch, #running-req: 1, #full token: 732, full token usage: 0.00, #swa token: 655, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.47, #queue-req: 0, 
+[2026-02-12 08:48:05] Decode batch, #running-req: 1, #full token: 772, full token usage: 0.00, #swa token: 695, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.43, #queue-req: 0, 
+[2026-02-12 08:48:06] Decode batch, #running-req: 1, #full token: 812, full token usage: 0.00, #swa token: 735, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.28, #queue-req: 0, 
+[2026-02-12 08:48:06] INFO:     172.18.0.1:44898 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:48:19] Prefill batch, #new-seq: 1, #new-token: 32, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:48:20] Decode batch, #running-req: 1, #full token: 279, full token usage: 0.00, #swa token: 202, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.87, #queue-req: 0, 
+[2026-02-12 08:48:20] Decode batch, #running-req: 1, #full token: 319, full token usage: 0.00, #swa token: 242, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.18, #queue-req: 0, 
+[2026-02-12 08:48:20] Decode batch, #running-req: 1, #full token: 359, full token usage: 0.00, #swa token: 282, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.70, #queue-req: 0, 
+[2026-02-12 08:48:21] Decode batch, #running-req: 1, #full token: 399, full token usage: 0.00, #swa token: 322, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.60, #queue-req: 0, 
+[2026-02-12 08:48:21] Decode batch, #running-req: 1, #full token: 439, full token usage: 0.00, #swa token: 362, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.66, #queue-req: 0, 
+[2026-02-12 08:48:22] Decode batch, #running-req: 1, #full token: 479, full token usage: 0.00, #swa token: 402, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.57, #queue-req: 0, 
+[2026-02-12 08:48:22] Decode batch, #running-req: 1, #full token: 519, full token usage: 0.00, #swa token: 442, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.66, #queue-req: 0, 
+[2026-02-12 08:48:22] INFO:     172.18.0.1:45168 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:48:23] Prefill batch, #new-seq: 1, #new-token: 92, #cached-token: 560, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:48:25] Decode batch, #running-req: 1, #full token: 684, full token usage: 0.00, #swa token: 607, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 15.26, #queue-req: 0, 
+[2026-02-12 08:48:25] Decode batch, #running-req: 1, #full token: 724, full token usage: 0.00, #swa token: 647, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.42, #queue-req: 0, 
+[2026-02-12 08:48:25] Decode batch, #running-req: 1, #full token: 764, full token usage: 0.00, #swa token: 687, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.56, #queue-req: 0, 
+[2026-02-12 08:48:25] INFO:     172.18.0.1:45172 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:48:35] Prefill batch, #new-seq: 1, #new-token: 29, #cached-token: 235, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:48:35] Decode batch, #running-req: 1, #full token: 279, full token usage: 0.00, #swa token: 202, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 3.92, #queue-req: 0, 
+[2026-02-12 08:48:36] Decode batch, #running-req: 1, #full token: 319, full token usage: 0.00, #swa token: 242, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.35, #queue-req: 0, 
+[2026-02-12 08:48:36] Decode batch, #running-req: 1, #full token: 359, full token usage: 0.00, #swa token: 282, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.41, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=235), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 08:48:36] INFO:     172.18.0.1:59164 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:49:21] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 263, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:49:21] Decode batch, #running-req: 1, #full token: 290, full token usage: 0.00, #swa token: 213, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.89, #queue-req: 0, 
+[2026-02-12 08:49:21] Decode batch, #running-req: 1, #full token: 330, full token usage: 0.00, #swa token: 253, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.73, #queue-req: 0, 
+[2026-02-12 08:49:22] Decode batch, #running-req: 1, #full token: 370, full token usage: 0.00, #swa token: 293, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.72, #queue-req: 0, 
+[2026-02-12 08:49:22] INFO:     172.18.0.1:34514 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:49:35] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 263, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:49:35] Decode batch, #running-req: 1, #full token: 302, full token usage: 0.00, #swa token: 225, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.96, #queue-req: 0, 
+[2026-02-12 08:49:36] Decode batch, #running-req: 1, #full token: 342, full token usage: 0.00, #swa token: 265, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.72, #queue-req: 0, 
+[2026-02-12 08:49:36] INFO:     172.18.0.1:44804 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:49:48] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:49:48] Decode batch, #running-req: 1, #full token: 275, full token usage: 0.00, #swa token: 198, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 3.22, #queue-req: 0, 
+[2026-02-12 08:49:48] Decode batch, #running-req: 1, #full token: 315, full token usage: 0.00, #swa token: 238, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.04, #queue-req: 0, 
+[2026-02-12 08:49:49] Decode batch, #running-req: 1, #full token: 355, full token usage: 0.00, #swa token: 278, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.76, #queue-req: 0, 
+[2026-02-12 08:49:49] INFO:     172.18.0.1:56710 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:50:11] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:50:11] Decode batch, #running-req: 1, #full token: 299, full token usage: 0.00, #swa token: 222, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.78, #queue-req: 0, 
+[2026-02-12 08:50:12] Decode batch, #running-req: 1, #full token: 339, full token usage: 0.00, #swa token: 262, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.67, #queue-req: 0, 
+[2026-02-12 08:50:12] INFO:     172.18.0.1:52666 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:50:55] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:50:55] Decode batch, #running-req: 1, #full token: 283, full token usage: 0.00, #swa token: 206, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.93, #queue-req: 0, 
+[2026-02-12 08:50:55] Decode batch, #running-req: 1, #full token: 323, full token usage: 0.00, #swa token: 246, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.50, #queue-req: 0, 
+[2026-02-12 08:50:56] INFO:     172.18.0.1:57384 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:54:42] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:54:42] Decode batch, #running-req: 1, #full token: 267, full token usage: 0.00, #swa token: 190, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.18, #queue-req: 0, 
+[2026-02-12 08:54:43] Decode batch, #running-req: 1, #full token: 307, full token usage: 0.00, #swa token: 230, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.20, #queue-req: 0, 
+[2026-02-12 08:54:43] Decode batch, #running-req: 1, #full token: 347, full token usage: 0.00, #swa token: 270, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.36, #queue-req: 0, 
+[2026-02-12 08:54:43] INFO:     172.18.0.1:41014 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:55:09] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:55:09] Decode batch, #running-req: 1, #full token: 291, full token usage: 0.00, #swa token: 214, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.52, #queue-req: 0, 
+[2026-02-12 08:55:10] Decode batch, #running-req: 1, #full token: 331, full token usage: 0.00, #swa token: 254, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.91, #queue-req: 0, 
+[2026-02-12 08:55:10] INFO:     172.18.0.1:43592 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 08:55:38] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:55:39] INFO:     172.18.0.1:56028 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 08:59:55] Prefill batch, #new-seq: 1, #new-token: 33, #cached-token: 234, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 08:59:56] Decode batch, #running-req: 1, #full token: 276, full token usage: 0.00, #swa token: 199, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.14, #queue-req: 0, 
+[2026-02-12 08:59:56] Decode batch, #running-req: 1, #full token: 316, full token usage: 0.00, #swa token: 239, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.50, #queue-req: 0, 
+[2026-02-12 08:59:56] Decode batch, #running-req: 1, #full token: 356, full token usage: 0.00, #swa token: 279, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.30, #queue-req: 0, 
+[2026-02-12 08:59:57] INFO:     172.18.0.1:57076 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:00:20] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 839, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:00:21] Decode batch, #running-req: 1, #full token: 863, full token usage: 0.00, #swa token: 303, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.65, #queue-req: 0, 
+[2026-02-12 09:00:21] Decode batch, #running-req: 1, #full token: 903, full token usage: 0.00, #swa token: 343, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.84, #queue-req: 0, 
+[2026-02-12 09:00:21] Decode batch, #running-req: 1, #full token: 943, full token usage: 0.00, #swa token: 383, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.58, #queue-req: 0, 
+[2026-02-12 09:00:22] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 1, #queue-req: 0, 
+[2026-02-12 09:00:23] Decode batch, #running-req: 2, #full token: 1185, full token usage: 0.00, #swa token: 625, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 41.57, #queue-req: 0, 
+[2026-02-12 09:00:23] INFO:     172.18.0.1:54428 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:00:23] Decode batch, #running-req: 1, #full token: 319, full token usage: 0.00, #swa token: 242, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 130.96, #queue-req: 0, 
+[2026-02-12 09:00:23] Decode batch, #running-req: 1, #full token: 359, full token usage: 0.00, #swa token: 282, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.97, #queue-req: 0, 
+[2026-02-12 09:00:23] INFO:     172.18.0.1:54440 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:00:47] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:00:47] Decode batch, #running-req: 1, #full token: 293, full token usage: 0.00, #swa token: 216, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.69, #queue-req: 0, 
+[2026-02-12 09:00:47] Decode batch, #running-req: 1, #full token: 333, full token usage: 0.00, #swa token: 256, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.28, #queue-req: 0, 
+[2026-02-12 09:00:48] INFO:     172.18.0.1:38626 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:00:49] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 684, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:00:49] Decode batch, #running-req: 1, #full token: 688, full token usage: 0.00, #swa token: 611, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 26.17, #queue-req: 0, 
+[2026-02-12 09:00:49] Decode batch, #running-req: 1, #full token: 728, full token usage: 0.00, #swa token: 651, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.70, #queue-req: 0, 
+[2026-02-12 09:00:50] Decode batch, #running-req: 1, #full token: 768, full token usage: 0.00, #swa token: 691, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.73, #queue-req: 0, 
+[2026-02-12 09:00:50] Decode batch, #running-req: 1, #full token: 808, full token usage: 0.00, #swa token: 731, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.60, #queue-req: 0, 
+[2026-02-12 09:00:50] INFO:     172.18.0.1:53852 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:00:55] Prefill batch, #new-seq: 1, #new-token: 29, #cached-token: 236, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:00:55] Decode batch, #running-req: 1, #full token: 274, full token usage: 0.00, #swa token: 197, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 7.85, #queue-req: 0, 
+[2026-02-12 09:00:56] Decode batch, #running-req: 1, #full token: 314, full token usage: 0.00, #swa token: 237, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.91, #queue-req: 0, 
+[2026-02-12 09:00:56] Decode batch, #running-req: 1, #full token: 354, full token usage: 0.00, #swa token: 277, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.97, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=236), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 09:00:56] INFO:     172.18.0.1:53862 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:02:01] Prefill batch, #new-seq: 1, #new-token: 30, #cached-token: 235, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:02:02] Decode batch, #running-req: 1, #full token: 290, full token usage: 0.00, #swa token: 213, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.61, #queue-req: 0, 
+[2026-02-12 09:02:02] Decode batch, #running-req: 1, #full token: 330, full token usage: 0.00, #swa token: 253, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.05, #queue-req: 0, 
+[2026-02-12 09:02:02] Decode batch, #running-req: 1, #full token: 370, full token usage: 0.00, #swa token: 293, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.06, #queue-req: 0, 
+[2026-02-12 09:02:03] INFO:     172.18.0.1:55970 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:02:30] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:02:31] Decode batch, #running-req: 1, #full token: 284, full token usage: 0.00, #swa token: 207, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.43, #queue-req: 0, 
+[2026-02-12 09:02:31] Decode batch, #running-req: 1, #full token: 324, full token usage: 0.00, #swa token: 247, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.56, #queue-req: 0, 
+[2026-02-12 09:02:31] Decode batch, #running-req: 1, #full token: 364, full token usage: 0.00, #swa token: 287, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.02, #queue-req: 0, 
+[2026-02-12 09:02:31] INFO:     172.18.0.1:56164 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 09:03:18] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 09:03:18] Decode batch, #running-req: 1, #full token: 283, full token usage: 0.00, #swa token: 206, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.85, #queue-req: 0, 
+[2026-02-12 09:03:19] Decode batch, #running-req: 1, #full token: 323, full token usage: 0.00, #swa token: 246, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.89, #queue-req: 0, 
+[2026-02-12 09:03:19] Decode batch, #running-req: 1, #full token: 363, full token usage: 0.00, #swa token: 286, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.03, #queue-req: 0, 
+[2026-02-12 09:03:19] INFO:     172.18.0.1:37440 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:42:05] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 0, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:42:06] INFO:     172.18.0.1:55340 - "GET /health HTTP/1.1" 200 OK
+[2026-02-12 12:43:35] Prefill batch, #new-seq: 1, #new-token: 33, #cached-token: 235, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:43:35] Decode batch, #running-req: 1, #full token: 284, full token usage: 0.00, #swa token: 207, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.00, #queue-req: 0, 
+[2026-02-12 12:43:35] Decode batch, #running-req: 1, #full token: 324, full token usage: 0.00, #swa token: 247, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.58, #queue-req: 0, 
+[2026-02-12 12:43:36] Decode batch, #running-req: 1, #full token: 364, full token usage: 0.00, #swa token: 287, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.26, #queue-req: 0, 
+[2026-02-12 12:43:36] INFO:     172.18.0.1:60782 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:43:59] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 839, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:44:00] Decode batch, #running-req: 1, #full token: 869, full token usage: 0.00, #swa token: 309, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.66, #queue-req: 0, 
+[2026-02-12 12:44:00] Decode batch, #running-req: 1, #full token: 909, full token usage: 0.00, #swa token: 349, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.79, #queue-req: 0, 
+[2026-02-12 12:44:00] Decode batch, #running-req: 1, #full token: 949, full token usage: 0.00, #swa token: 389, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.72, #queue-req: 0, 
+[2026-02-12 12:44:01] Decode batch, #running-req: 1, #full token: 989, full token usage: 0.00, #swa token: 429, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.78, #queue-req: 0, 
+[2026-02-12 12:44:01] INFO:     172.18.0.1:42034 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:44:20] Prefill batch, #new-seq: 1, #new-token: 31, #cached-token: 236, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:44:20] Decode batch, #running-req: 1, #full token: 300, full token usage: 0.00, #swa token: 223, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.05, #queue-req: 0, 
+[2026-02-12 12:44:21] Decode batch, #running-req: 1, #full token: 340, full token usage: 0.00, #swa token: 263, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.32, #queue-req: 0, 
+[2026-02-12 12:44:21] Decode batch, #running-req: 1, #full token: 380, full token usage: 0.00, #swa token: 303, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.95, #queue-req: 0, 
+[2026-02-12 12:44:21] INFO:     172.18.0.1:49788 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:44:22] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 684, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:44:23] Decode batch, #running-req: 1, #full token: 703, full token usage: 0.00, #swa token: 626, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 26.76, #queue-req: 0, 
+[2026-02-12 12:44:23] Decode batch, #running-req: 1, #full token: 743, full token usage: 0.00, #swa token: 666, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.67, #queue-req: 0, 
+[2026-02-12 12:44:23] Decode batch, #running-req: 1, #full token: 783, full token usage: 0.00, #swa token: 706, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.64, #queue-req: 0, 
+[2026-02-12 12:44:24] Decode batch, #running-req: 1, #full token: 823, full token usage: 0.00, #swa token: 746, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.59, #queue-req: 0, 
+[2026-02-12 12:44:24] INFO:     172.18.0.1:49804 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:44:39] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:44:40] Decode batch, #running-req: 1, #full token: 289, full token usage: 0.00, #swa token: 212, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.52, #queue-req: 0, 
+[2026-02-12 12:44:40] Decode batch, #running-req: 1, #full token: 329, full token usage: 0.00, #swa token: 252, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.04, #queue-req: 0, 
+[2026-02-12 12:44:40] INFO:     172.18.0.1:57044 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:45:28] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:45:28] Decode batch, #running-req: 1, #full token: 273, full token usage: 0.00, #swa token: 196, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.83, #queue-req: 0, 
+[2026-02-12 12:45:28] Decode batch, #running-req: 1, #full token: 313, full token usage: 0.00, #swa token: 236, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.81, #queue-req: 0, 
+[2026-02-12 12:45:29] Decode batch, #running-req: 1, #full token: 353, full token usage: 0.00, #swa token: 276, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.14, #queue-req: 0, 
+[2026-02-12 12:45:29] INFO:     172.18.0.1:50992 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:45:48] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:45:48] Decode batch, #running-req: 1, #full token: 297, full token usage: 0.00, #swa token: 220, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 2.06, #queue-req: 0, 
+[2026-02-12 12:45:48] Decode batch, #running-req: 1, #full token: 337, full token usage: 0.00, #swa token: 260, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.14, #queue-req: 0, 
+[2026-02-12 12:45:49] INFO:     172.18.0.1:42692 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:51:03] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:51:03] Decode batch, #running-req: 1, #full token: 281, full token usage: 0.00, #swa token: 204, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.13, #queue-req: 0, 
+[2026-02-12 12:51:04] Decode batch, #running-req: 1, #full token: 321, full token usage: 0.00, #swa token: 244, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.35, #queue-req: 0, 
+[2026-02-12 12:51:04] Decode batch, #running-req: 1, #full token: 0, full token usage: 0.00, #swa token: 0, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.22, #queue-req: 0, 
+[2026-02-12 12:51:04] INFO:     172.18.0.1:58272 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:51:08] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 267, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:51:09] Decode batch, #running-req: 1, #full token: 308, full token usage: 0.00, #swa token: 231, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 8.21, #queue-req: 0, 
+[2026-02-12 12:51:09] Decode batch, #running-req: 1, #full token: 348, full token usage: 0.00, #swa token: 271, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.24, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=267), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 12:51:09] INFO:     172.18.0.1:58272 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:51:16] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 266, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:51:16] Decode batch, #running-req: 1, #full token: 280, full token usage: 0.00, #swa token: 203, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 5.48, #queue-req: 0, 
+[2026-02-12 12:51:17] Decode batch, #running-req: 1, #full token: 320, full token usage: 0.00, #swa token: 243, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.17, #queue-req: 0, 
+[2026-02-12 12:51:17] Decode batch, #running-req: 1, #full token: 360, full token usage: 0.00, #swa token: 283, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.37, #queue-req: 0, 
+[2026-02-12 12:51:18] Decode batch, #running-req: 1, #full token: 400, full token usage: 0.00, #swa token: 323, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.24, #queue-req: 0, 
+[2026-02-12 12:51:18] INFO:     172.18.0.1:49794 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:51:38] Prefill batch, #new-seq: 1, #new-token: 30, #cached-token: 235, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:51:38] Decode batch, #running-req: 1, #full token: 303, full token usage: 0.00, #swa token: 226, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.91, #queue-req: 0, 
+[2026-02-12 12:51:39] Decode batch, #running-req: 1, #full token: 343, full token usage: 0.00, #swa token: 266, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.31, #queue-req: 0, 
+[2026-02-12 12:51:39] Decode batch, #running-req: 1, #full token: 383, full token usage: 0.00, #swa token: 306, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.96, #queue-req: 0, 
+[2026-02-12 12:51:40] Decode batch, #running-req: 1, #full token: 423, full token usage: 0.00, #swa token: 346, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.99, #queue-req: 0, 
+[2026-02-12 12:51:40] INFO:     172.18.0.1:58368 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:51:41] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 651, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:51:41] Decode batch, #running-req: 1, #full token: 690, full token usage: 0.00, #swa token: 613, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 21.84, #queue-req: 0, 
+[2026-02-12 12:51:42] Decode batch, #running-req: 1, #full token: 730, full token usage: 0.00, #swa token: 653, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.66, #queue-req: 0, 
+[2026-02-12 12:51:42] Decode batch, #running-req: 1, #full token: 770, full token usage: 0.00, #swa token: 693, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.66, #queue-req: 0, 
+/usr/local/lib/python3.12/dist-packages/pydantic/main.py:464: UserWarning: Pydantic serializer warnings:
+  PydanticSerializationUnexpectedValue(Expected `dict[str, int]` - serialized value may not be as expected [field_name='prompt_tokens_details', input_value=PromptTokenUsageInfo(cached_tokens=651), input_type=PromptTokenUsageInfo])
+  return self.__pydantic_serializer__.to_python(
+[2026-02-12 12:51:42] INFO:     172.18.0.1:58378 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:52:03] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:52:04] Decode batch, #running-req: 1, #full token: 286, full token usage: 0.00, #swa token: 209, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 1.87, #queue-req: 0, 
+[2026-02-12 12:52:04] Decode batch, #running-req: 1, #full token: 326, full token usage: 0.00, #swa token: 249, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 107.97, #queue-req: 0, 
+[2026-02-12 12:52:04] INFO:     172.18.0.1:44886 - "POST /v1/responses HTTP/1.1" 200 OK
+[2026-02-12 12:53:59] Prefill batch, #new-seq: 1, #new-token: 1, #cached-token: 264, full token usage: 0.00, swa token usage: 0.00, #running-req: 0, #queue-req: 0, 
+[2026-02-12 12:53:59] Decode batch, #running-req: 1, #full token: 270, full token usage: 0.00, #swa token: 193, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 0.35, #queue-req: 0, 
+[2026-02-12 12:54:00] Decode batch, #running-req: 1, #full token: 310, full token usage: 0.00, #swa token: 233, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 106.15, #queue-req: 0, 
+[2026-02-12 12:54:00] Decode batch, #running-req: 1, #full token: 350, full token usage: 0.00, #swa token: 273, swa token usage: 0.00, cuda graph: True, gen throughput (token/s): 108.22, #queue-req: 0, 
+[2026-02-12 12:54:00] INFO:     172.18.0.1:51148 - "POST /v1/responses HTTP/1.1" 200 OK

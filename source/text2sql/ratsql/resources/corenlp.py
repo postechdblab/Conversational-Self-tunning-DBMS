@@ -25,7 +25,8 @@ class CoreNLP:
         self.client = CoreNLPClient(endpoint="http://localhost:10000")
 
     def __del__(self):
-        self.client.stop()
+        if hasattr(self, "client"):
+            self.client.stop()
 
     def annotate(self, text, annotators=None, output_format=None, properties=None):
         try:

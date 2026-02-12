@@ -1,0 +1,1 @@
+@backend_server_v2.py 에서 llm container를 생성할 때, 내가 지정한 gpu_ids(config/remote/llm.yaml)에 해당하는 것만 visible한 container를 만들고, 이에 대해 container 내에서는 모든 gpu에 대해 command를 실행하도록 하면 될 것 같다.
