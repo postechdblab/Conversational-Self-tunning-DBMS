@@ -1,0 +1,15 @@
+host: localhost
+port: 30000
+tp: 1
+dp: 1
+mem_fraction_static: 0.95
+gpu_ids: [3]
+
+# Docker container settings
+model_path: /mnt/sde/shpark/models/gpt-oss-20b
+hf_token: ""
+docker_image: lmsysorg/sglang:latest
+mount_source: /mnt
+mount_target: /mnt
+health_check_timeout: 300
+health_check_interval: 10

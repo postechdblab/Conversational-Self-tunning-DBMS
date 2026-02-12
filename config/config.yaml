@@ -8,3 +8,4 @@ defaults:
   - conversation: default
   - diagnosis: default
   - data: spider
+  - remote: llm

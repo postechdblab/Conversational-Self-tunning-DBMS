@@ -39,7 +39,7 @@ class IntentInferer:
         self.tune_check_example_num = cfg.tune_check_example_num
         # self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
         self.client = OpenAI(
-            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+            base_url=f"http://{global_cfg.remote.host}:{global_cfg.remote.port}/v1", api_key="sk-123456"
         )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature

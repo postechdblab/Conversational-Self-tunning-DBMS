@@ -180,7 +180,8 @@ class MysqlDB:
                     logger.info('Failed: add {} to memory,cpuset:server'.format(self.pid))
 
         else:
-            proc = subprocess.Popen([self.mysqld, '--defaults-file={}'.format(self.mycnf)])
+            os.chmod(self.mycnf, 0o644)
+            proc = subprocess.Popen([self.mysqld, '--defaults-file={}'.format(self.mycnf), '--user=root'])
             self.pid = proc.pid
             if self.isolation_mode:
                 command = 'sudo cgclassify -g memory,cpuset:server ' + str(self.pid)

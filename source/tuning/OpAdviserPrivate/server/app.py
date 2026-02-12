@@ -116,6 +116,8 @@ SELECT @query_name, @query_time_ms;
                     if execution_times[i] > times[i]:
                         b = False
                 if b:
+                    queries.clear()
+                    times.clear()
                     return {
                         "execution_times": execution_times,
                     }
@@ -167,6 +169,20 @@ and variable_name!='session_track_system_variables';
             cursor.close()
         if "mydb" in locals():
             mydb.close()
+
+
+@app.route("/health")
+def health():
+    try:
+        mydb = mysql.connector.connect(**dbconfig)
+        cursor = mydb.cursor()
+        cursor.execute("SELECT 1")
+        cursor.fetchone()
+        cursor.close()
+        mydb.close()
+        return {"status": "ok"}
+    except Exception as e:
+        return {"status": "error", "detail": str(e)}, 503
 
 
 if __name__ == "__main__":
