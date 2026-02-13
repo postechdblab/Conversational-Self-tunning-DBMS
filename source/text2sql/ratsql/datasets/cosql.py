@@ -8,7 +8,6 @@ from pathlib import Path
 from typing import List, Dict
 
 import attr
-import psycopg2
 import torch
 import networkx as nx
 from tqdm import tqdm

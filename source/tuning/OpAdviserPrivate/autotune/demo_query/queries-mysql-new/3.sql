@@ -1,6 +1,6 @@
 
 select current_timestamp(6) into @query_start;
 set @query_name='3';
-SELECT stadium.Name, stadium.Capacity FROM stadium;
+SELECT s.Name, c.concert_Name FROM concert c JOIN stadium s ON c.Stadium_ID = s.Stadium_ID LIMIT 3;
 set @query_time_ms= timestampdiff(microsecond, @query_start, current_timestamp(6))/1000;
 SELECT @query_name, @query_time_ms;

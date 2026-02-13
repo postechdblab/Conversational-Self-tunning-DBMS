@@ -15,7 +15,7 @@ from config.path import ABS_CONFIG_DIR
 from waitress import serve
 
 from source.text2intent.intent_inferer import IntentInferer
-from source.text2sql.text_to_sql import Text2SQL
+from source.text2sql.text_to_sql import LLMBasedText2SQL
 from source.conversation.text2confidence.text_to_confidence import Text2Confidence
 from source.conversation.table2text.table_to_text import Table2Text
 
@@ -133,7 +133,7 @@ def text_to_sql() -> Dict:
         if rd_analysis.exists(redis_key):
             analyze_result = pickle.loads(rd_analysis.get(redis_key))
         else:
-            orig_item, preproc_item = translator.preprocess(
+            orig_item, preproc_item = translator.slm_translator.preprocess(
                 text, text_history_snapshot, db_id
             )
             analyze_result = confidence_calculator.analyze(
@@ -231,7 +231,7 @@ def main(cfg: DictConfig) -> None:
     ensure_llm_server(cfg.remote)
 
     # Initialize models
-    translator = Text2SQL(cfg, cfg.text2sql)
+    translator = LLMBasedText2SQL(cfg, cfg.text2sql)
     intent_inferer = IntentInferer(cfg, cfg.text2intent)
     confidence_calculator = Text2Confidence(cfg.conversation.text2confidence)
     table2text_model = Table2Text(cfg, cfg.conversation.table2text)

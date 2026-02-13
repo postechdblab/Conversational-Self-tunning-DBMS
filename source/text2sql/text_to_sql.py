@@ -43,9 +43,9 @@ class BaseText2SQL(abc.ABC):
 class LLMBasedText2SQL(BaseText2SQL):
     def __init__(self, global_cfg, cfg):
         self.database_path = global_cfg.data.database_path
-        # self.llm_address = f"http://{cfg.host}:{cfg.port}/generate"
+        self.cfg = cfg
         self.client = OpenAI(
-            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+            base_url=f"http://{global_cfg.remote.host}:{global_cfg.remote.port}/v1", api_key="sk-123456"
         )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
@@ -67,8 +67,15 @@ class LLMBasedText2SQL(BaseText2SQL):
     ) -> Tuple[List[Any], str]:
 
         # Load database schema
-        sqlite_path = f"{self.database_path}/{db_id}/{db_id}.sqlite"
-        db_engine = create_engine(f"sqlite:///{sqlite_path}")
+        db_type = self.cfg.get("db_type", "sqlite")
+        if db_type == "mysql":
+            mysql_cfg = self.cfg.mysql
+            db_engine = create_engine(
+                f"mysql+mysqlconnector://{mysql_cfg.user}:{mysql_cfg.password}@{mysql_cfg.host}:{mysql_cfg.port}/{db_id}"
+            )
+        else:
+            sqlite_path = f"{self.database_path}/{db_id}/{db_id}.sqlite"
+            db_engine = create_engine(f"sqlite:///{sqlite_path}")
         schema_engine = SchemaEngine(engine=db_engine, db_name=db_id)
         mschema = schema_engine.mschema
         if len(table_id) == 0:
@@ -227,13 +234,15 @@ class Text2SQL(BaseText2SQL):
 
         _, inferred_code = beams[0].inference_state.finalize()
 
+        mysql_config = dict(self.cfg.mysql) if self.cfg.get("mysql", None) else None
         inferred_code = add_value_one_sql(
             question=text,
             db_name=db_id,
             sql=inferred_code,
             history=text_history,
-            is_postgresql=self.cfg.is_postgresql,
+            db_type=self.cfg.db_type,
             database_path=self.db_path,
+            mysql_config=mysql_config,
         )
 
         return beams, inferred_code

@@ -1,0 +1,6 @@
+docker commit 3ce9c5d3bcc0 anonymous824/dbadminbot_tuning:latest
+docker commit b6b07a3c163e anonymous824/dbadminbot_backend:latest
+docker commit bf0c0d0f7c91 anonymous824/dbadminbot_frontend:latest
+docker push anonymous824/dbadminbot_tuning:latest
+docker push anonymous824/dbadminbot_backend:latest
+docker push anonymous824/dbadminbot_frontend:latest

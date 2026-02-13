@@ -60,6 +60,7 @@ services:
             - TZ=Asia/Seoul
             - PYTHONPATH=/workspaces/OpAdviserPrivate
             - FLASK_RUN_PORT=1234
+            - FLASK_RUN_HOST=0.0.0.0
             - FLASK_APP=server/app.py
         volumes:
             - /etc/timezone:/etc/timezone:ro
