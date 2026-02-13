@@ -48,7 +48,8 @@ CORS(app)
 logger = logging.getLogger("OpAdviserDemo")
 
 MAX_TUNING_ROUNDS = 10
-NO_IMPROVE_PATIENCE = 2
+NO_IMPROVE_PATIENCE = 5
+IMPROVE_THRESHOLD = 0.005  # 0.5% 이상 개선되어야 "개선"으로 판정
 
 parser = argparse.ArgumentParser()
 parser.add_argument(
@@ -103,6 +104,7 @@ SELECT @query_name, @query_time_ms;
                 )
         best_execution_times = None
         best_total_time = float('inf')
+        best_round = 0
         original_total_time = sum(times)
         no_improve_count = 0
         history_path = f"/workspaces/OpAdviserPrivate/repo/history_{args_tune['task_id']}.json"
@@ -145,16 +147,29 @@ SELECT @query_name, @query_time_ms;
                     )
 
                 current_total_time = sum(execution_times)
-                logger.info(
-                    f"[Tuning] Round {round_num + 1}: "
-                    f"total={current_total_time:.2f}ms "
-                    f"(original={original_total_time:.2f}ms)"
-                )
 
-                # Track best result
-                if current_total_time < best_total_time:
+                # Per-query diff 출력
+                logger.info("=" * 60)
+                logger.info(f"[Tuning] Round {round_num + 1}/{MAX_TUNING_ROUNDS} 결과:")
+                for i, (orig, curr) in enumerate(zip(times, execution_times)):
+                    diff = curr - orig
+                    pct = (diff / orig * 100) if orig != 0 else 0
+                    sign = "+" if diff >= 0 else ""
+                    logger.info(f"  Query {i}: {orig:.2f}ms → {curr:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)")
+                diff_total = current_total_time - original_total_time
+                pct_total = (diff_total / original_total_time * 100) if original_total_time != 0 else 0
+                sign_total = "+" if diff_total >= 0 else ""
+                logger.info(f"  {'─' * 40}")
+                logger.info(f"  Total: {original_total_time:.2f}ms → {current_total_time:.2f}ms (diff: {sign_total}{diff_total:.2f}ms, {sign_total}{pct_total:.2f}%)")
+                if best_execution_times is not None:
+                    logger.info(f"  Best: {best_total_time:.2f}ms (Round {best_round})")
+                logger.info("=" * 60)
+
+                # Track best result (require IMPROVE_THRESHOLD improvement to count)
+                if current_total_time < best_total_time * (1 - IMPROVE_THRESHOLD):
                     best_total_time = current_total_time
                     best_execution_times = list(execution_times)
+                    best_round = round_num + 1
                     no_improve_count = 0
                 else:
                     no_improve_count += 1
@@ -178,6 +193,10 @@ SELECT @query_name, @query_time_ms;
                     break
             except Exception as e:
                 logger.error(f"[Tuning] Measurement failed: {e}")
+                no_improve_count += 1
+                if no_improve_count >= NO_IMPROVE_PATIENCE:
+                    logger.info(f"[Tuning] Too many failures/no improvement, stopping")
+                    break
                 continue
             finally:
                 if "cursor" in locals():
@@ -191,6 +210,22 @@ SELECT @query_name, @query_time_ms;
         else:
             logger.info(f"[Tuning] Max rounds ({MAX_TUNING_ROUNDS}) reached.")
         result_times = best_execution_times if best_execution_times is not None else list(times)
+
+        # 최종 결과 요약
+        logger.info("=" * 60)
+        logger.info(f"[Tuning] 최종 결과 ({round_num + 1}라운드 후 종료):")
+        for i, (orig, final) in enumerate(zip(times, result_times)):
+            diff = final - orig
+            pct = (diff / orig * 100) if orig != 0 else 0
+            sign = "+" if diff >= 0 else ""
+            logger.info(f"  Query {i}: {orig:.2f}ms → {final:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)")
+        final_total = sum(result_times)
+        diff_total = final_total - original_total_time
+        pct_total = (diff_total / original_total_time * 100) if original_total_time != 0 else 0
+        sign = "+" if diff_total >= 0 else ""
+        logger.info(f"  Total: {original_total_time:.2f}ms → {final_total:.2f}ms (diff: {sign}{diff_total:.2f}ms, {sign}{pct_total:.2f}%)")
+        logger.info("=" * 60)
+
         queries.clear()
         times.clear()
         return {"execution_times": result_times}

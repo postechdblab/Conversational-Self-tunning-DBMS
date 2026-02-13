@@ -187,9 +187,9 @@ def preprocess_dataframe(df, interval):
     # Resample the data to 10-minute intervals and calculate the mean
 
     if 'analysis_time' in df.columns:
-        df_resampled = df.groupby('analysis_time').resample(f'{interval}S').mean()
+        df_resampled = df.groupby('analysis_time').resample(f'{interval}S').mean(numeric_only=True)
     else:
-        df_resampled = df.resample(f'{interval}S').mean()
+        df_resampled = df.resample(f'{interval}S').mean(numeric_only=True)
 
     df_resampled.reset_index(inplace = True)
     df_resampled.fillna(method='ffill', inplace=True)
@@ -248,9 +248,13 @@ def perform_data_query():
 
         # Where
         if recent_time_window == 'Custom':
-            sql_query += f"""WHERE timestamp BETWEEN '{start_time}' AND '{end_time}'
-                            AND dbid = '{db_id}'
-                            ORDER BY timestamp ASC;"""
+            if table in datasets:
+                sql_query += f"""WHERE timestamp BETWEEN '{start_time}' AND '{end_time}'
+                                ORDER BY timestamp ASC;"""
+            else:
+                sql_query += f"""WHERE timestamp BETWEEN '{start_time}' AND '{end_time}'
+                                AND dbid = '{db_id}'
+                                ORDER BY timestamp ASC;"""
         elif recent_time_window == 'All':
             if table in datasets:
                 sql_query += f"""ORDER BY timestamp ASC;"""
@@ -258,9 +262,13 @@ def perform_data_query():
                 sql_query += f"""WHERE dbid = '{db_id}'
                                 ORDER BY timestamp ASC;"""
         else:
-            sql_query += f"""WHERE timestamp >= NOW() - INTERVAL '{recent_time_window}'
-                            AND dbid = '{db_id}'
-                            ORDER BY timestamp ASC;"""
+            if table in datasets:
+                sql_query += f"""WHERE timestamp >= NOW() - INTERVAL '{recent_time_window}'
+                                ORDER BY timestamp ASC;"""
+            else:
+                sql_query += f"""WHERE timestamp >= NOW() - INTERVAL '{recent_time_window}'
+                                AND dbid = '{db_id}'
+                                ORDER BY timestamp ASC;"""
 
 
         df_metrics = pd.read_sql_query(sql_query, server_engine)
