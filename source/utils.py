@@ -11,7 +11,6 @@ from source.text2sql.ratsql.datasets.spider import load_tables, SpiderItem
 from typing import *
 
 import en_core_web_trf
-import psycopg2
 import spacy
 
 model = spacy.load("en_core_web_trf")
@@ -209,32 +208,48 @@ def all_values_from_db(
     db_name: str,
     table_name: str,
     column_name: str,
-    is_postgresql: bool,
+    db_type: str,
     database_path: str,
+    mysql_config: dict = None,
 ) -> List[str]:
-    if is_postgresql:
-        # Connect to DB
+    search_query = f"SELECT {column_name} FROM {table_name}"
+    if db_type == "mysql":
+        import mysql.connector
+
+        conn = mysql.connector.connect(
+            host=mysql_config["host"],
+            port=mysql_config["port"],
+            user=mysql_config["user"],
+            password=mysql_config["password"],
+            database=db_name,
+        )
+        cursor = conn.cursor()
+        cursor.execute(search_query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+        return [str(r[0]) for r in results] if results else []
+    elif db_type == "postgresql":
+        import psycopg2
+
         pg_config = (
             f"host=localhost port=5434 user=sqlbot password=sqlbot_pw dbname={db_name}"
         )
-        # Find value from DB (For string values)
         with psycopg2.connect(pg_config) as conn:
             with conn.cursor() as cursor:
-                search_query = f"SELECT {column_name} FROM {table_name}"
                 cursor.execute(search_query)
                 results = cursor.fetchall()
                 if not results:
                     return []
                 return [str(result[0]) for result in results]
     else:
-        # Connect to SQLite DB
+        # SQLite
         sqlite_path = f"{database_path}/{db_name}/{db_name}.sqlite"
         if not os.path.isfile(sqlite_path):
             return []
         with sqlite3.connect(str(sqlite_path), check_same_thread=False) as conn:
             conn.row_factory = sqlite3.Row
             cursor = conn.cursor()
-            search_query = f"SELECT {column_name} FROM {table_name}"
             cursor.execute(search_query)
             results = cursor.fetchall()
             if not results:
@@ -247,8 +262,9 @@ def add_value_one_sql(
     db_name: str,
     sql: str,
     history: str,
-    is_postgresql: bool,
+    db_type: str,
     database_path: str,
+    mysql_config: dict = None,
 ) -> str:
     """Assumption: There are no repeated values in the question."""
     # Parse history
@@ -280,7 +296,7 @@ def add_value_one_sql(
         # Find all possible values for the column
         try:
             values = all_values_from_db(
-                db_name, table, column, is_postgresql, database_path
+                db_name, table, column, db_type, database_path, mysql_config
             )
         except:
             print(f"Error in finding values for {db_name}, {table}, {column}")
@@ -307,7 +323,9 @@ def add_value_one_sql(
     return sql
 
 
-def infer_value_from_question(question, table, column, db, infer_value_cnt):
+def infer_value_from_question(
+    question, table, column, db, infer_value_cnt, db_type="sqlite", database_path="", mysql_config=None
+):
     def increase_value_cnt():
         infer_value_cnt[0] += 1
 
@@ -322,7 +340,6 @@ def infer_value_from_question(question, table, column, db, infer_value_cnt):
         words = sent.replace(".", "").replace("  ", " ").split(" ")
         return words
 
-    pg_config = "host=localhost port=5434 user=postgres password=postgres dbname=" + db
     # Try to find number values from string
     words = sent_to_words(question)
     values = [word for word in words if is_int(word)]
@@ -333,16 +350,45 @@ def infer_value_from_question(question, table, column, db, infer_value_cnt):
             tmp = infer_value_cnt[0]
             increase_value_cnt()
             return values[tmp]
+
     # Find value from DB (For string values)
-    with psycopg2.connect(pg_config) as conn:
-        with conn.cursor() as cursor:
-            search_query = f"SELECT {column} FROM {table}"
+    search_query = f"SELECT {column} FROM {table}"
+    if db_type == "mysql":
+        import mysql.connector
+
+        conn = mysql.connector.connect(
+            host=mysql_config["host"],
+            port=mysql_config["port"],
+            user=mysql_config["user"],
+            password=mysql_config["password"],
+            database=db,
+        )
+        cursor = conn.cursor()
+        cursor.execute(search_query)
+        results = cursor.fetchall()
+        cursor.close()
+        conn.close()
+    elif db_type == "postgresql":
+        import psycopg2
+
+        pg_config = f"host=localhost port=5434 user=postgres password=postgres dbname={db}"
+        with psycopg2.connect(pg_config) as conn:
+            with conn.cursor() as cursor:
+                cursor.execute(search_query)
+                results = cursor.fetchall()
+    else:
+        # SQLite
+        sqlite_path = f"{database_path}/{db}/{db}.sqlite"
+        if not os.path.isfile(sqlite_path):
+            return "value_not_found"
+        with sqlite3.connect(str(sqlite_path), check_same_thread=False) as conn:
+            cursor = conn.cursor()
             cursor.execute(search_query)
             results = cursor.fetchall()
-            if not results:
-                return "value_not_found"
-            for result in results:
-                if str(result[0]) in question:
-                    return result[0]
 
-            return result[0][0]
+    if not results:
+        return "value_not_found"
+    for result in results:
+        if str(result[0]) in question:
+            return result[0]
+    return result[0][0]

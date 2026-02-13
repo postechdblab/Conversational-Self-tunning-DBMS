@@ -37,6 +37,18 @@ done
 mysql -u root -S /var/run/mysqld/mysqld.sock \
   -e "ALTER USER 'root'@'localhost' IDENTIFIED BY 'password';" 2>/dev/null || true
 
+# 7.1. TCP(127.0.0.1) 접속 허용 (backend 컨테이너가 host network로 접속)
+mysql -u root -ppassword -S /var/run/mysqld/mysqld.sock \
+  -e "CREATE USER IF NOT EXISTS 'root'@'127.0.0.1' IDENTIFIED BY 'password'; \
+      GRANT ALL PRIVILEGES ON *.* TO 'root'@'127.0.0.1' WITH GRANT OPTION; \
+      FLUSH PRIVILEGES;" 2>/dev/null || true
+
+# 7.5. Buffer pool cold start 보장
+mysql -u root -ppassword -S /var/run/mysqld/mysqld.sock \
+  -e "SET GLOBAL innodb_buffer_pool_dump_at_shutdown = OFF;" 2>/dev/null || true
+mysql -u root -ppassword -S /var/run/mysqld/mysqld.sock \
+  -e "SET GLOBAL innodb_buffer_pool_load_at_startup = OFF;" 2>/dev/null || true
+
 # 8. concert_singer DB 존재 확인, 없으면 로드
 DB_EXISTS=$(mysql -u root -ppassword -S /var/run/mysqld/mysqld.sock -N \
   -e "SELECT SCHEMA_NAME FROM INFORMATION_SCHEMA.SCHEMATA WHERE SCHEMA_NAME='concert_singer';" 2>/dev/null)
@@ -44,6 +56,14 @@ if [ -z "$DB_EXISTS" ]; then
     mysql -u root -ppassword -S /var/run/mysqld/mysqld.sock < ${WORKDIR}/concert_singer.sql
     cd ${WORKDIR} && python concert_singer.py
 fi
+
+# 8.5. 튜닝 히스토리 초기화 (매 데모 세션마다 fresh start)
+rm -f ${WORKDIR}/repo/history_demo.json
+rm -f ${WORKDIR}/all.record
+rm -f ${WORKDIR}/space.record
+rm -f ${WORKDIR}/demo_sample_list
+rm -f ${WORKDIR}/demo_similarity_list
+echo "Tuning history cleared for fresh demo session"
 
 # 9. Flask 서버 시작
 cd ${WORKDIR}
