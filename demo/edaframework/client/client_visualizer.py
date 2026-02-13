@@ -188,6 +188,7 @@ def query_performance_data(config, table='all', metrics='all', task='timeseries 
         data = response.json() 
     else:
         print(f"Error sending configuration data. Status code: {response.status_code}")
+        data = {}
     return data
         
 def load_and_split_performance_data(config, table='all', metrics='all', time_interval=[None,None], split_date=None):

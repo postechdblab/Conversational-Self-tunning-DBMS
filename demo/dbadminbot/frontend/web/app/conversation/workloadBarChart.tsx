@@ -5,7 +5,7 @@ const isNumeric = (value: string): boolean => {
   return /^-?\d+$/.test(value);
 }
 
-const valueFormatter = (number: any) => `${new Intl.NumberFormat("us").format(number).toString()}`;
+const valueFormatter = (number: any) => `${new Intl.NumberFormat("us").format(number).toString()} ms`;
 
 const findCategoricalColIndex = (colNames: string[], rows: (string | number)[][]) => {
   // find the type of each column by checking the first row
@@ -66,7 +66,7 @@ export default function WorkloadBarChartWindow({ title, colNames, rows }: { titl
       <Title>{title}</Title>
       {isValidData ? (
         <React.Fragment>
-          <Subtitle>{`Summarization of SQL execution times`}</Subtitle>
+          <Subtitle>{`Summarization of SQL execution times (ms)`}</Subtitle>
           <BarChart
             className="mt-6"
             data={chartData}

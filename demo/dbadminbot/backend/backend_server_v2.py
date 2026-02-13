@@ -48,6 +48,13 @@ def Testing():
     return "<p>Hello, World!</p>"
 
 
+@app.route("/health")
+def health():
+    if translator is None:
+        return {"status": "initializing"}, 503
+    return {"status": "ok"}, 200
+
+
 @app.route("/reset_history")
 def reset_history() -> Dict:
     global text_history
@@ -235,6 +242,12 @@ def main(cfg: DictConfig) -> None:
     intent_inferer = IntentInferer(cfg, cfg.text2intent)
     confidence_calculator = Text2Confidence(cfg.conversation.text2confidence)
     table2text_model = Table2Text(cfg, cfg.conversation.table2text)
+
+    # Warm up CoreNLP server so the first query isn't slow
+    from source.text2sql.ratsql.resources import corenlp
+    logger.info("Warming up CoreNLP server...")
+    corenlp.annotate("warmup", annotators=["tokenize", "ssplit", "lemma"])
+    logger.info("CoreNLP server is ready.")
 
     # Initialize Redis (4 DBs)
     redis_cfg = cfg.redis
