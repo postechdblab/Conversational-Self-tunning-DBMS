@@ -1,8 +1,8 @@
+import os
 import random
 from typing import List, Tuple
 
 import mysql.connector
-import psycopg2
 import tqdm
 
 
@@ -77,58 +77,78 @@ def generate_random_data(num_rows: int) -> Tuple[List[tuple]]:
             )
         )
 
-    # # Generate singer data
-    # for _ in range(num_rows):
-    #     singer_data.append(
-    #         (
-    #             random.randint(7, 100),
-    #             random.choice(singer_names),
-    #             random.choice(countries),
-    #             random.choice(songs),
-    #             str(random.randint(1990, 2023)),
-    #             random.randint(20, 60),
-    #             random.choice([True, False]),
-    #         )
-    #     )
+    # Generate singer data
+    # Singer_ID 7+ (seed data is 1-6)
+    for i in tqdm.tqdm(range(7, num_rows)):
+        singer_data.append(
+            (
+                i,
+                random.choice(singer_names),
+                random.choice(countries),
+                random.choice(songs),
+                str(random.randint(1990, 2023)),
+                random.randint(20, 60),
+                random.choice([True, False]),
+            )
+        )
 
     # Generate concert data
-    # for _ in tqdm.tqdm(range(22_000_000, num_rows)):
-    #     concert_data.append(
-    #         (
-    #             _,
-    #             random.choice(concert_names),
-    #             random.choice(themes),
-    #             random.randint(1, 7),
-    #             str(random.randint(2010, 2023)),
-    #         )
-    #     )
+    # concert_ID 7+ (seed data is 1-6)
+    # Stadium_ID from seed (1-7,9,10; no 8 in seed) + generated (35020~num_rows-1)
+    valid_stadium_ids = [1, 2, 3, 4, 5, 6, 7, 9, 10] + list(range(35020, num_rows))
+    for i in tqdm.tqdm(range(7, num_rows)):
+        concert_data.append(
+            (
+                i,
+                random.choice(concert_names),
+                random.choice(themes),
+                random.choice(valid_stadium_ids),
+                str(random.randint(2010, 2023)),
+            )
+        )
 
     # Generate singer_in_concert data
-    # for _ in range(num_rows):
-    #     singer_concert_data.append((random.randint(1, 10), random.randint(1, 6)))
+    # (concert_ID, Singer_ID) is PK, so deduplicate
+    valid_singer_ids = list(range(1, 7)) + list(range(7, num_rows))
+    valid_concert_ids = list(range(1, 7)) + list(range(7, num_rows))
+    seen_pairs = set()
+    for concert_id in tqdm.tqdm(valid_concert_ids):
+        num_singers = random.randint(1, 3)
+        selected = random.sample(valid_singer_ids, min(num_singers, len(valid_singer_ids)))
+        for singer_id in selected:
+            pair = (concert_id, singer_id)
+            if pair not in seen_pairs:
+                seen_pairs.add(pair)
+                singer_concert_data.append(pair)
 
     return stadium_data, singer_data, concert_data, singer_concert_data
 
 
-def insert_to_mysql(data: Tuple[List[tuple]]) -> None:
+def insert_to_mysql(
+    data: Tuple[List[tuple]],
+    user: str = "root",
+    password: str = "password",
+    unix_socket: str = "/var/run/mysqld/mysqld.sock",
+) -> None:
+    _SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+    sql_file_path = os.path.join(_SCRIPT_DIR, "concert_singer.sql")
+
     try:
         conn = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="password",
+            user=user,
+            password=password,
             database="concert_singer",
-            port=3308,
+            unix_socket=unix_socket,
         )
     except mysql.connector.Error as err:
         if err.errno == mysql.connector.errorcode.ER_BAD_DB_ERROR:
             conn = mysql.connector.connect(
-                host="localhost",
-                user="root",
-                password="password",
-                port=3308,
+                user=user,
+                password=password,
+                unix_socket=unix_socket,
             )
             cursor = conn.cursor()
-            with open("/workspaces/OpAdviserPrivate/concert_singer.sql", "r") as f:
+            with open(sql_file_path, "r") as f:
                 for result in cursor.execute(f.read(), multi=True):
                     if result.with_rows:
                         print(f"Executed: {result.statement}")
@@ -141,20 +161,49 @@ def insert_to_mysql(data: Tuple[List[tuple]]) -> None:
     batch_size = 1000
 
     try:
-        for i in tqdm.tqdm(range(0, len(stadium_data), batch_size)):
-            # batch = concert_data[i : i + batch_size]
-            # cursor.executemany(
-            #     """
-            #     INSERT INTO concert (concert_ID, concert_Name, Theme, Stadium_ID, Year)
-            #     VALUES (%s, %s, %s, %s, %s)
-            # """,
-            #     batch,
-            # )
+        # 1. Stadium
+        for i in tqdm.tqdm(range(0, len(stadium_data), batch_size), desc="stadium"):
             batch = stadium_data[i : i + batch_size]
             cursor.executemany(
                 """
                 INSERT INTO stadium (Stadium_ID, Location, Name, Capacity, Highest, Lowest, Average)
                 VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """,
+                batch,
+            )
+            conn.commit()
+
+        # 2. Singer (no FK dependency)
+        for i in tqdm.tqdm(range(0, len(singer_data), batch_size), desc="singer"):
+            batch = singer_data[i : i + batch_size]
+            cursor.executemany(
+                """
+                INSERT INTO singer (Singer_ID, Name, Country, Song_Name, Song_release_year, Age, Is_male)
+                VALUES (%s, %s, %s, %s, %s, %s, %s)
+            """,
+                batch,
+            )
+            conn.commit()
+
+        # 3. Concert (FK → stadium)
+        for i in tqdm.tqdm(range(0, len(concert_data), batch_size), desc="concert"):
+            batch = concert_data[i : i + batch_size]
+            cursor.executemany(
+                """
+                INSERT INTO concert (concert_ID, concert_Name, Theme, Stadium_ID, Year)
+                VALUES (%s, %s, %s, %s, %s)
+            """,
+                batch,
+            )
+            conn.commit()
+
+        # 4. Singer_in_concert (FK → concert, singer)
+        for i in tqdm.tqdm(range(0, len(singer_concert_data), batch_size), desc="singer_in_concert"):
+            batch = singer_concert_data[i : i + batch_size]
+            cursor.executemany(
+                """
+                INSERT INTO singer_in_concert (concert_ID, Singer_ID)
+                VALUES (%s, %s)
             """,
                 batch,
             )

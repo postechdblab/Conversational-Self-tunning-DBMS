@@ -1,0 +1,4 @@
+docker commit 5ed4da92cfba anonymous824/dbeda_server:latest
+docker commit 278876363b77 anonymous824/dbeda_client:latest
+docker push anonymous824/dbeda_server:latest
+docker push anonymous824/dbeda_client:latest

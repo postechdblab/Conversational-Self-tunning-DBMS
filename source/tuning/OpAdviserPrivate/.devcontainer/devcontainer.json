@@ -14,8 +14,8 @@
 	//  "service": "opadviser",
 	// The optional 'workspaceFolder' property is the path VS Code should open by default when
 	// connected. This is typically a file mount in .devcontainer/docker-compose.yml
-	// "workspaceMount": "source=/mnt/sdd1/jeseok/OpAdviser,target=/workspaces/${localWorkspaceFolder},type=bind",
-	"workspaceFolder": "/root/${localWorkspaceFolder}",
+	"workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/${localWorkspaceFolderBasename},type=bind,consistency=cached",
+	"workspaceFolder": "/workspaces/${localWorkspaceFolderBasename}",
 	// Features to add to the dev container. More info: https://containers.dev/features.
 	// "features": {},
 	// Use 'forwardPorts' to make a list of ports inside the container available locally.
@@ -39,9 +39,9 @@
 		"--dns=1.0.0.1"
 	],
 	"mounts": [
-		"source=/mnt/nvme0n1/jeseok/mysql,target=/var/lib/mysql,type=bind,consistency=cached",
-		"source=/mnt/nvme0n1/jeseok/lib,target=/usr/local/lib,type=bind,consistency=cached",
-		"source=/mnt/nvme0n1/jeseok/root,target=/root,type=bind,consistency=cached"
+		"source=/mnt/sdd/shpark/OpAdviser/mysql,target=/var/lib/mysql,type=bind,consistency=cached",
+		"source=/mnt/sdd/shpark/OpAdviser/lib,target=/usr/local/lib,type=bind,consistency=cached",
+		"source=/mnt/sdd/shpark/OpAdviser/root,target=/root,type=bind,consistency=cached"
 	],
 	"containerEnv": {
 		"DOCKER_CLI_EXPERIMENTAL": "enabled"

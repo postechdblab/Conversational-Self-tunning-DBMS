@@ -12,15 +12,16 @@ from openai import OpenAI
 class Table2Text:
     """Converts database query result tables to natural language summaries using LLM."""
 
-    def __init__(self, cfg):
+    def __init__(self, global_cfg, cfg):
         """Initialize Table2Text with configuration.
 
         Args:
-            cfg: Configuration object with host, port, max_new_tokens, and temperature
+            global_cfg: Global configuration with remote LLM server settings
+            cfg: Table2text-specific configuration with max_new_tokens and temperature
         """
         # self.api_address = f"http://{cfg.host}:{cfg.port}"
         self.client = OpenAI(
-            base_url=f"http://{cfg.host}:{cfg.port}/v1", api_key="sk-123456"
+            base_url=f"http://{global_cfg.remote.host}:{global_cfg.remote.port}/v1", api_key="sk-123456"
         )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
@@ -256,7 +257,7 @@ class Table2Text:
 @hydra.main(version_base=None, config_path=ABS_CONFIG_DIR, config_name="config")
 def main(cfg: DictConfig) -> None:
     # Initialize Table2Text with configuration
-    table2text = Table2Text(cfg.conversation.table2text)
+    table2text = Table2Text(cfg, cfg.conversation.table2text)
 
     # Example table data
     example_table = [

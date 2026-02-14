@@ -3,7 +3,7 @@ version: "3"
 services:
     DBAdminBot-frontend:
         shm_size: 4gb
-        image: hyukkyukang/sqlbot:latest
+        image: anonymous824/dbadminbot_frontend:latest
         container_name: DBAdminBot-frontend
         stdin_open: true
         tty: true
@@ -12,11 +12,11 @@ services:
             - TZ=Asia/Seoul
         volumes:
             - /etc/timezone:/etc/timezone:ro
-            - ./web/dbadminbot:/root/dbadminbot
+            - ./demo/dbadminbot/frontend:/root/dbadminbot
 
     DBAdminBot-backend:
         shm_size: 4gb
-        image: hyukkyukang/nl2qgm:v2
+        image: anonymous824/dbadminbot_backend:latest
         container_name: DBAdminBot-backend
         stdin_open: true
         tty: true
@@ -25,8 +25,11 @@ services:
             - TZ=Asia/Seoul
         volumes:
             - /etc/timezone:/etc/timezone:ro
-            - ./:/root/dbadminbot/
+            - ./demo/dbadminbot/backend:/root/dbadminbot/
+            - ./source:/root/dbadminbot/source
+            - ./config:/root/dbadminbot/config
             - redis_data:/root/dbadminbot/data/redis/
+            - /var/run/docker.sock:/var/run/docker.sock
             - /mnt:/mnt
         deploy:
             resources:
@@ -34,32 +37,98 @@ services:
                     devices:
                         - capabilities: [gpu]
 
-    DBAdminBot-redis:
+    DBadminBot-redis:
         image: redis:latest
-        container_name: DBAdminBot-redis
-        network_mode: "host"  # Changed from bridge to host
+        container_name: DBadminBot-redis
         volumes:
             - redis_data:/data
-        command: redis-server --port 6380  # Explicitly set port
-        # Remove the ports section when using host network
+        ports:
+            - target: 6379
+              published: 6379
+        networks:
+            - redis
 
-    DBAdminBot-AnomalyExp:
+    DBAdminBot-opadvisor:
+        image: anonymous824/dbadminbot_tuning:latest
+        container_name: DBAdminBot-opadvisor
         shm_size: 4gb
-        image: hyukkyukang/anomaly_explanation:v2
-        container_name: DBAdminBot-AnomalyExp
         stdin_open: true
         tty: true
         network_mode: "host"
+        working_dir: /workspaces/OpAdviserPrivate
         environment:
             - TZ=Asia/Seoul
+            - PYTHONPATH=/workspaces/OpAdviserPrivate
+            - FLASK_RUN_PORT=1234
+            - FLASK_RUN_HOST=0.0.0.0
+            - FLASK_APP=server/app.py
         volumes:
-            - /etc/timezone:/etc/timezone:ro 
-            - ./source/diagnosis/detection/Anomaly_Explanation:/root/Anomaly_Explanation
+            - /etc/timezone:/etc/timezone:ro
+            - ./source/tuning/OpAdviserPrivate:/workspaces/OpAdviserPrivate
+            - /mnt/sdd/shpark/OpAdviser/lib:/usr/local/lib
+            - opadvisor_mysql:/var/lib/mysql
+        entrypoint: ["/bin/bash", "/workspaces/OpAdviserPrivate/entrypoint.sh"]
+        deploy:
+            resources:
+                limits:
+                    memory: 16g
+        restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "curl", "-sf", "http://localhost:1234/health"]
+            interval: 30s
+            timeout: 10s
+            retries: 10
+            start_period: 120s
+    DBEDA-server:
+        shm_size: 4gb
+        container_name: dbeda_server
+        image: anonymous824/dbeda_server:latest
+        stdin_open: true
+        tty: true
+        network_mode: "host"
+        build:
+          context: ./demo/edaframework/server
+          dockerfile: Dockerfile
+        environment:
+            - TZ=Asia/Seoul
+            - NVIDIA_VISIBLE_DEVICES=all
+        volumes:
+          - ./demo/edaframework:/root/DBEDA
+        deploy:
+          resources:
+            reservations:
+              devices:
+                - capabilities: [gpu]
+                  driver: nvidia
+
+    DBEDA-client:
+        shm_size: 4gb
+        container_name: dbeda_client
+        image: anonymous824/dbeda_client:latest
+        stdin_open: true
+        tty: true
+        network_mode: "host"
+        build:
+          context: ./demo/edaframework/client
+          dockerfile: Dockerfile
+        environment:
+            - TZ=Asia/Seoul
+            - NVIDIA_VISIBLE_DEVICES=all
+        volumes:
+          - ./demo/edaframework:/root/DBEDA
         deploy:
             resources:
                 reservations:
                     devices:
                         - capabilities: [gpu]
+
+
 volumes:
     redis_data:
         driver: local
+    opadvisor_mysql:
+        driver: local
+
+networks:
+    redis:
+        driver: bridge

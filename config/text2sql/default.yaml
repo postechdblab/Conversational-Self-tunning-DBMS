@@ -3,7 +3,12 @@ model_ckpt_dir_path: /mnt/sdd/shpark/logdir/cosql-model
 glist_output_path: /root/dbadminbot/eval_results/glist_wiki_gpt_oss_fixed.json
 plist_output_path: /root/dbadminbot/eval_results/plist_wiki_gpt_oss_fixed.json
 load_existing_results: false
-is_postgresql: false
+db_type: mysql  # sqlite, mysql, postgresql
+mysql:
+  host: localhost
+  port: 3308
+  user: root
+  password: password
 beam_size: 2
 max_steps: 150
 
