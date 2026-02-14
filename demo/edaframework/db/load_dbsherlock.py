@@ -12,7 +12,7 @@ csv_file_path = '/root/DBEDA/db/test_1.csv'
 df = pd.read_csv(csv_file_path)
 
 from datetime import datetime
-date_string = "2023-11-17"
+date_string = "2026-02-14"
 date_object = datetime.strptime(date_string, "%Y-%m-%d")
 
 # timestamp로 변환

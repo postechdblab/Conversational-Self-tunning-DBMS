@@ -4,6 +4,7 @@ import logging
 import os
 import pickle
 import random
+import threading
 from typing import *
 import requests
 import redis
@@ -82,6 +83,10 @@ result_analysis_model, analyser = get_model(config, model_type="result_analysis"
 global text_history
 text_history = ""
 
+# Locks for thread safety
+model_lock = threading.Lock()
+history_lock = threading.Lock()
+
 
 def generate_redis_key(text: str, db_id: str) -> str:
     return text + db_id
@@ -96,7 +101,8 @@ def Testing():
 @app.route("/reset_history")
 def reset_history() -> Dict:
     global text_history
-    text_history = ""
+    with history_lock:
+        text_history = ""
     logger.info("History Reset!")
     return {"response": True}
 
@@ -136,8 +142,6 @@ def text_to_sql() -> Dict:
     logger.info(
         f"DB_id: {db_id}, analyse: {analyse}, text: {text} reset_history: {reset_history} text_history: {text_history}"
     )
-    if reset_history:
-        text_history = ""
 
     response_list = requests.post(
         "http://0.0.0.0:5000/predict",
@@ -156,135 +160,141 @@ def text_to_sql() -> Dict:
         }
         return response
 
-    input_text = "<s> " + text + text_history
+    # Serialize access to shared models and text_history to prevent race conditions
+    with model_lock:
+        if reset_history:
+            text_history = ""
 
-    # check and return cached result
-    redis_key = generate_redis_key(text=input_text, db_id=db_id)
-    cache_used = False
-    if rd_text2sql.exists(redis_key):
-        logger.info(f"Returning cached result")
-        response = pickle.loads(rd_text2sql.get(redis_key))
-        cache_used = True
-        if not text_history.endswith(text):
-            text_history += " <s> " + text
-    else:
-        orig_item, preproc_item = text_to_sql_preprocessor.run(input_text, db_id)
+        input_text = "<s> " + text + text_history
 
-        if not text_history.endswith(text):
-            text_history += " <s> " + text
-
-        # translate text to sql
-        beams = spider_beam_search.beam_search_with_heuristics(
-            text_to_sql_model,
-            orig_item,
-            (preproc_item, None),
-            beam_size=config["model"]["text_to_sql"]["beam_size"],
-            max_steps=config["model"]["text_to_sql"]["max_steps"],
-        )
-        confidence = (
-            torch.softmax(torch.tensor([tmp.score for tmp in beams]), dim=0)
-            .cpu()
-            .numpy()[0]
-        )
-        sql_dict, inferred_code = beams[0].inference_state.finalize()
-        # Postprocess: Add missing values to the sql
-        inferred_code = add_value_one_sql(
-            question=text, db_name=db_id, sql=inferred_code, history=text_history
-        )
-        # Heuristic: refine confidence
-        if (
-            "where" in inferred_code.lower()
-            and "terminal" not in inferred_code.lower()
-            and confidence < 0.7
-        ):
-            confidence = min(confidence + 0.2, 1.0)
-
-        response["confidence"] = f"{confidence*100:.2f}"
-        response["pred_sql"] = inferred_code
-
-        # Save the result to redis
-        rd_text2sql.set(redis_key, pickle.dumps(response))
-
-    # analyse the result
-    if analyse and float(response["confidence"]) < 80:
-        if rd_analysis.exists(redis_key):
-            analyze_result = pickle.loads(rd_analysis.get(redis_key))
+        # check and return cached result
+        redis_key = generate_redis_key(text=input_text, db_id=db_id)
+        cache_used = False
+        if rd_text2sql.exists(redis_key):
+            logger.info(f"Returning cached result")
+            response = pickle.loads(rd_text2sql.get(redis_key))
+            cache_used = True
+            if not text_history.endswith(text):
+                text_history += " <s> " + text
         else:
-            if cache_used:
-                orig_item, preproc_item = text_to_sql_preprocessor.run(
-                    input_text, db_id
-                )
-            while_cnt = 6
-            while while_cnt:
-                try:
-                    input_raw, word_attributions = analyser.run(
-                        result_analysis_model, input_text, orig_item, preproc_item
-                    )
-                    print("input raw", input_raw)
-                    # Remove history
-                    input_text_splitted = input_text.split(" ")
-                    indices = [
-                        index for index, word in enumerate(input_raw) if word == "s"
-                    ]
-                    if len(indices) > 1:
-                        # Find the index of second s
-                        index = indices[1]
-                        input_raw = input_raw[: index - 1]
-                        word_attributions = word_attributions[: index - 1]
-                    print("new input raw", input_raw)
-                    noun_words, noun_scores = token_score_to_noun_score(
-                        tokens=input_raw[3:], token_scores=word_attributions[3:]
-                    )
-                    while_cnt = 0
+            orig_item, preproc_item = text_to_sql_preprocessor.run(input_text, db_id)
 
-                except:
-                    noun_words = input_text.split(" ")
-                    noun_scores = [0.1 for _ in range(len(noun_words))]
-                    noun_words, noun_scores = token_score_to_noun_score(
-                        tokens=noun_words, token_scores=noun_scores
-                    )
-                    while_cnt -= 1
+            if not text_history.endswith(text):
+                text_history += " <s> " + text
 
-            print("Noun words:", noun_words)
-            print("Noun scores:", noun_scores)
+            # translate text to sql
+            beams = spider_beam_search.beam_search_with_heuristics(
+                text_to_sql_model,
+                orig_item,
+                (preproc_item, None),
+                beam_size=config["model"]["text_to_sql"]["beam_size"],
+                max_steps=config["model"]["text_to_sql"]["max_steps"],
+            )
+            confidence = (
+                torch.softmax(torch.tensor([tmp.score for tmp in beams]), dim=0)
+                .cpu()
+                .numpy()[0]
+            )
+            sql_dict, inferred_code = beams[0].inference_state.finalize()
+            # Postprocess: Add missing values to the sql
+            inferred_code = add_value_one_sql(
+                question=text, db_name=db_id, sql=inferred_code, history=text_history
+            )
+            # Heuristic: refine confidence
+            if (
+                "where" in inferred_code.lower()
+                and "terminal" not in inferred_code.lower()
+                and confidence < 0.7
+            ):
+                confidence = min(confidence + 0.2, 1.0)
 
-            # Filter only one noun word with highest score
-            if noun_scores:
-                highest_score = max(noun_scores)
-                noun_words = [
-                    noun_words[idx]
-                    for idx, score in enumerate(noun_scores)
-                    if score == highest_score
-                ]
-                noun_scores = [highest_score]
-            if len(noun_words) > 0:
-                noun_word = noun_words[0]
-                noun_score = noun_scores[0]
-            else:
-                noun_word = ""
-                noun_score = 0.0
-
-            print(noun_word, noun_score)
-            analyze_result = {
-                "raw_input": noun_word,
-                "word_attributions": noun_score,
-            }
+            response["confidence"] = f"{confidence*100:.2f}"
+            response["pred_sql"] = inferred_code
 
             # Save the result to redis
-            rd_analysis.set(redis_key, pickle.dumps(analyze_result))
+            rd_text2sql.set(redis_key, pickle.dumps(response))
 
-        response["analyse_result"] = analyze_result
+        # analyse the result
+        if analyse and float(response["confidence"]) < 80:
+            if rd_analysis.exists(redis_key):
+                analyze_result = pickle.loads(rd_analysis.get(redis_key))
+            else:
+                if cache_used:
+                    orig_item, preproc_item = text_to_sql_preprocessor.run(
+                        input_text, db_id
+                    )
+                while_cnt = 6
+                while while_cnt:
+                    try:
+                        input_raw, word_attributions = analyser.run(
+                            result_analysis_model, input_text, orig_item, preproc_item
+                        )
+                        print("input raw", input_raw)
+                        # Remove history
+                        input_text_splitted = input_text.split(" ")
+                        indices = [
+                            index for index, word in enumerate(input_raw) if word == "s"
+                        ]
+                        if len(indices) > 1:
+                            # Find the index of second s
+                            index = indices[1]
+                            input_raw = input_raw[: index - 1]
+                            word_attributions = word_attributions[: index - 1]
+                        print("new input raw", input_raw)
+                        noun_words, noun_scores = token_score_to_noun_score(
+                            tokens=input_raw[3:], token_scores=word_attributions[3:]
+                        )
+                        while_cnt = 0
 
-    # guess the user's intent
-    input_changed = input_text[len("<s> ") :]
-    input_changed = input_changed.replace("<s>", "[CLS]")
-    if rd_user_intent.exists(redis_key):
-        user_intent = pickle.loads(rd_user_intent.get(redis_key))
-    else:
-        orig_item, preproc_item = text_to_sql_preprocessor.run(input_changed, db_id)
-        user_intent = nl2intent_inferer(text_to_intent_model, preproc_item)
-        rd_user_intent.set(redis_key, pickle.dumps(user_intent))
-    response["user_intent"] = user_intent[0]
+                    except:
+                        noun_words = input_text.split(" ")
+                        noun_scores = [0.1 for _ in range(len(noun_words))]
+                        noun_words, noun_scores = token_score_to_noun_score(
+                            tokens=noun_words, token_scores=noun_scores
+                        )
+                        while_cnt -= 1
+
+                print("Noun words:", noun_words)
+                print("Noun scores:", noun_scores)
+
+                # Filter only one noun word with highest score
+                if noun_scores:
+                    highest_score = max(noun_scores)
+                    noun_words = [
+                        noun_words[idx]
+                        for idx, score in enumerate(noun_scores)
+                        if score == highest_score
+                    ]
+                    noun_scores = [highest_score]
+                if len(noun_words) > 0:
+                    noun_word = noun_words[0]
+                    noun_score = noun_scores[0]
+                else:
+                    noun_word = ""
+                    noun_score = 0.0
+
+                print(noun_word, noun_score)
+                analyze_result = {
+                    "raw_input": noun_word,
+                    "word_attributions": noun_score,
+                }
+
+                # Save the result to redis
+                rd_analysis.set(redis_key, pickle.dumps(analyze_result))
+
+            response["analyse_result"] = analyze_result
+
+        # guess the user's intent
+        input_changed = input_text[len("<s> ") :]
+        input_changed = input_changed.replace("<s>", "[CLS]")
+        if rd_user_intent.exists(redis_key):
+            user_intent = pickle.loads(rd_user_intent.get(redis_key))
+        else:
+            orig_item, preproc_item = text_to_sql_preprocessor.run(input_changed, db_id)
+            user_intent = nl2intent_inferer(text_to_intent_model, preproc_item)
+            rd_user_intent.set(redis_key, pickle.dumps(user_intent))
+        response["user_intent"] = user_intent[0]
+
     logger.info(f"Response complete: {response['pred_sql']}")
     return response
 

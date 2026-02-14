@@ -637,7 +637,7 @@ class anomaly_detection_task_viz_template(base_task_viz_template):
         merged_df = derived_df
 
         n = 50
-        date_rng = pd.date_range(start="2023-10-27 00:00:00", periods=n, freq="60s")
+        date_rng = pd.date_range(start="2026-02-14 00:00:00", periods=n, freq="60s")
 
         # 더미 데이터 생성
         data = {
@@ -782,7 +782,7 @@ class anomaly_explanation_task_viz_template(base_task_viz_template):
         n = 50  # 데이터 포인트 수
 
         # 날짜 범위 생성
-        date_rng = pd.date_range(start="2023-10-27 00:00:00", periods=n, freq="60s")
+        date_rng = pd.date_range(start="2026-02-14 00:00:00", periods=n, freq="60s")
 
         # 더미 데이터 생성
         data = {

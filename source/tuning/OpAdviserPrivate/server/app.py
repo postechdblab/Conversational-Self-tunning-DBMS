@@ -47,8 +47,8 @@ CORS(app)
 
 logger = logging.getLogger("OpAdviserDemo")
 
-MAX_TUNING_ROUNDS = 10
-NO_IMPROVE_PATIENCE = 5
+MAX_TUNING_ROUNDS = 20
+NO_IMPROVE_PATIENCE = 20
 IMPROVE_THRESHOLD = 0.005  # 0.5% 이상 개선되어야 "개선"으로 판정
 
 parser = argparse.ArgumentParser()
@@ -103,11 +103,13 @@ SELECT @query_name, @query_time_ms;
 """
                 )
         best_execution_times = None
-        best_total_time = float('inf')
+        best_total_time = float("inf")
         best_round = 0
         original_total_time = sum(times)
         no_improve_count = 0
-        history_path = f"/workspaces/OpAdviserPrivate/repo/history_{args_tune['task_id']}.json"
+        history_path = (
+            f"/workspaces/OpAdviserPrivate/repo/history_{args_tune['task_id']}.json"
+        )
 
         for round_num in range(MAX_TUNING_ROUNDS):
             logger.info(f"[Tuning] Round {round_num + 1}/{MAX_TUNING_ROUNDS}")
@@ -155,12 +157,20 @@ SELECT @query_name, @query_time_ms;
                     diff = curr - orig
                     pct = (diff / orig * 100) if orig != 0 else 0
                     sign = "+" if diff >= 0 else ""
-                    logger.info(f"  Query {i}: {orig:.2f}ms → {curr:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)")
+                    logger.info(
+                        f"  Query {i}: {orig:.2f}ms → {curr:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)"
+                    )
                 diff_total = current_total_time - original_total_time
-                pct_total = (diff_total / original_total_time * 100) if original_total_time != 0 else 0
+                pct_total = (
+                    (diff_total / original_total_time * 100)
+                    if original_total_time != 0
+                    else 0
+                )
                 sign_total = "+" if diff_total >= 0 else ""
                 logger.info(f"  {'─' * 40}")
-                logger.info(f"  Total: {original_total_time:.2f}ms → {current_total_time:.2f}ms (diff: {sign_total}{diff_total:.2f}ms, {sign_total}{pct_total:.2f}%)")
+                logger.info(
+                    f"  Total: {original_total_time:.2f}ms → {current_total_time:.2f}ms (diff: {sign_total}{diff_total:.2f}ms, {sign_total}{pct_total:.2f}%)"
+                )
                 if best_execution_times is not None:
                     logger.info(f"  Best: {best_total_time:.2f}ms (Round {best_round})")
                 logger.info("=" * 60)
@@ -176,11 +186,12 @@ SELECT @query_name, @query_time_ms;
 
                 # Early exit 1: all queries improved
                 all_improved = all(
-                    execution_times[i] <= times[i]
-                    for i in range(len(times))
+                    execution_times[i] <= times[i] for i in range(len(times))
                 )
                 if all_improved:
-                    logger.info(f"[Tuning] All queries improved after {round_num + 1} rounds")
+                    logger.info(
+                        f"[Tuning] All queries improved after {round_num + 1} rounds"
+                    )
                     queries.clear()
                     times.clear()
                     return {"execution_times": execution_times}
@@ -209,7 +220,9 @@ SELECT @query_name, @query_time_ms;
             logger.info(f"[Tuning] Converged after {round_num + 1} rounds.")
         else:
             logger.info(f"[Tuning] Max rounds ({MAX_TUNING_ROUNDS}) reached.")
-        result_times = best_execution_times if best_execution_times is not None else list(times)
+        result_times = (
+            best_execution_times if best_execution_times is not None else list(times)
+        )
 
         # 최종 결과 요약
         logger.info("=" * 60)
@@ -218,12 +231,18 @@ SELECT @query_name, @query_time_ms;
             diff = final - orig
             pct = (diff / orig * 100) if orig != 0 else 0
             sign = "+" if diff >= 0 else ""
-            logger.info(f"  Query {i}: {orig:.2f}ms → {final:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)")
+            logger.info(
+                f"  Query {i}: {orig:.2f}ms → {final:.2f}ms (diff: {sign}{diff:.2f}ms, {sign}{pct:.2f}%)"
+            )
         final_total = sum(result_times)
         diff_total = final_total - original_total_time
-        pct_total = (diff_total / original_total_time * 100) if original_total_time != 0 else 0
+        pct_total = (
+            (diff_total / original_total_time * 100) if original_total_time != 0 else 0
+        )
         sign = "+" if diff_total >= 0 else ""
-        logger.info(f"  Total: {original_total_time:.2f}ms → {final_total:.2f}ms (diff: {sign}{diff_total:.2f}ms, {sign}{pct_total:.2f}%)")
+        logger.info(
+            f"  Total: {original_total_time:.2f}ms → {final_total:.2f}ms (diff: {sign}{diff_total:.2f}ms, {sign}{pct_total:.2f}%)"
+        )
         logger.info("=" * 60)
 
         queries.clear()
@@ -242,7 +261,7 @@ SELECT @query_name, @query_time_ms;
         execution_time = (end_time - start_time) / timedelta(milliseconds=1)
         times.append(execution_time)
         return {
-            "data": data[:10],
+            "data": data[:8],
             "execution_time": execution_time,
         }
     finally:

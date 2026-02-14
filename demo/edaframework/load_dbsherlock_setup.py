@@ -23,7 +23,7 @@ df = pd.DataFrame(values, columns=attributes)
 # Drop original Epoch and create timestamps at 60-second intervals (matching insert_dbsherlock_data.py)
 from datetime import timedelta
 df.drop(columns=['Epoch'], inplace=True)
-start_ts = datetime(2023, 11, 16, 15, 0, 10)
+start_ts = datetime(2026, 2, 14, 15, 0, 10)
 df['timestamp'] = [start_ts + timedelta(seconds=60 * i) for i in range(len(df))]
 
 # Normalize column names (matching db/load_dbsherlock.py line 22)
