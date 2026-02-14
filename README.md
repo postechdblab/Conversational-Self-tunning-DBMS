@@ -53,7 +53,7 @@ This multi-year research project (2018-2025) developed two main systems: **DBAdm
 - DBSherlock-based anomaly root cause explanation
 - Interactive dashboard with Panel/ipywidgets in Jupyter Lab
 
-<p align="left">
+<p align="Center">
   <img src="demo/edaframework/Screenshot.png" width="45%" alt="EDAframework Dashboard" />
   <br/><em>EDAframework Dashboard</em>
 </p>
