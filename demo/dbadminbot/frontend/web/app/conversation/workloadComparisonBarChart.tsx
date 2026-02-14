@@ -46,11 +46,12 @@ export default function WorkloadComparisonBarChartWindow({
     });
   }, [questionSqlPairs, tuningResultPairs, isValidData]);
 
-  // Bar chart data: reduction per query (ms saved)
-  const reductionChartData = useMemo(() => {
+  // Bar chart data: before vs after per query
+  const comparisonChartData = useMemo(() => {
     return perQueryData.map((row) => ({
       name: `qid: ${row.qid}`,
-      "Reduction (ms)": parseFloat(row.reduction.toFixed(2)),
+      "Before (ms)": parseFloat(row.before.toFixed(2)),
+      "After (ms)": parseFloat(row.after.toFixed(2)),
     }));
   }, [perQueryData]);
 
@@ -107,12 +108,12 @@ export default function WorkloadComparisonBarChartWindow({
             </TabList>
             <TabPanels>
               <TabPanel>
-                <Subtitle className="mt-2">Execution time reduction per query (before - after)</Subtitle>
+                <Subtitle className="mt-2">Execution time before vs after tuning</Subtitle>
                 <BarChart
-                  data={reductionChartData}
+                  data={comparisonChartData}
                   index="name"
-                  categories={["Reduction (ms)"]}
-                  colors={["emerald"]}
+                  categories={["Before (ms)", "After (ms)"]}
+                  colors={["rose", "emerald"]}
                   valueFormatter={(value) => `${value} ms`}
                 />
               </TabPanel>

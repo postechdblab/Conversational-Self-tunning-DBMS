@@ -50,7 +50,7 @@ def main() -> None:
     values = [d[1:] for d in data["values"]]
     # Append timestamp
     attributes.append("timestamp")
-    timestamp = datetime.datetime(2023,11,16,15,0,10)
+    timestamp = datetime.datetime(2026,2,14,15,0,10)
     for i, row in enumerate(values):
         row.append(timestamp.strftime('%Y-%m-%d %H:%M:%S'))
         timestamp += datetime.timedelta(seconds=60)

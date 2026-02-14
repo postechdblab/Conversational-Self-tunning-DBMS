@@ -13,7 +13,11 @@ export function useTranslatedSQLByQuestion(dbName: string, question: string, res
     const fetcher = swrKey ? () => getTranslationResult(dbName, question, resetHistory) : null;
 
     // Call useSWR at the top level, passing the key and fetcher.
-    const { data, error } = useSWR<translationResult>(swrKey, fetcher);
+    const { data, error } = useSWR<translationResult>(swrKey, fetcher, {
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+        dedupingInterval: 60000,
+    });
 
     // isLoading is not directly provided by useSWR, so it must be derived from `data` and `error`.
     const isLoading = !data && !error;
@@ -34,7 +38,10 @@ export function useResetTranslationHistory(doReset: boolean) {
     const fetcher = swrKey ? () => getTranslationResetResponse() : null;
 
     // Call useSWR at the top level, passing the key and fetcher.
-    const { data, error } = useSWR<boolean>(swrKey, fetcher);
+    const { data, error } = useSWR<boolean>(swrKey, fetcher, {
+        revalidateOnFocus: false,
+        revalidateOnReconnect: false,
+    });
 
     // isLoading is not directly provided by useSWR, so it must be derived from `data` and `error`.
     const isLoading = !data && !error;
