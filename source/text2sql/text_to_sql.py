@@ -10,7 +10,6 @@ from omegaconf import DictConfig
 from source.utils import One_time_Preprocesser, add_value_one_sql
 from source.text2sql.ratsql.commands.infer import Inferer
 from source.text2sql.ratsql.models.spider import spider_beam_search
-
 from source.text2sql.prompt.llama import llama_prompt, llama_fix_prompt
 from source.text2sql.prompt.oss import gpt_prompt, gpt_fix_prompt
 from source.text2sql.prompt.qwen import qwen_prompt, qwen_fix_prompt
@@ -45,7 +44,8 @@ class LLMBasedText2SQL(BaseText2SQL):
         self.database_path = global_cfg.data.database_path
         self.cfg = cfg
         self.client = OpenAI(
-            base_url=f"http://{global_cfg.remote.host}:{global_cfg.remote.port}/v1", api_key="sk-123456"
+            base_url=f"http://{global_cfg.remote.host}:{global_cfg.remote.port}/v1",
+            api_key="sk-123456",
         )
         self.max_new_tokens = cfg.max_new_tokens
         self.temperature = cfg.temperature
@@ -63,7 +63,12 @@ class LLMBasedText2SQL(BaseText2SQL):
             self.slm_translator = Text2SQL(global_cfg, cfg)
 
     def translate(
-        self, text: str, text_history: str, db_id: str, table_id: List[str] = []
+        self,
+        text: str,
+        text_history: str,
+        db_id: str,
+        table_id: List[str] = [],
+        confidence_calculator=None,
     ) -> Tuple[List[Any], str]:
 
         # Load database schema
@@ -91,6 +96,12 @@ class LLMBasedText2SQL(BaseText2SQL):
                     text_history,
                     db_id,
                 )
+                if confidence_calculator is not None:
+                    confidence = confidence_calculator.calculate(
+                        beams, original_inferred_code
+                    )
+                    if float(confidence) < 70:
+                        return beams, original_inferred_code
             except Exception as e:
                 print(f"Error in SLM translator: {e}")
                 original_inferred_code = ""
@@ -206,7 +217,12 @@ class Text2SQL(BaseText2SQL):
         self.model = model
 
     def translate(
-        self, text: str, text_history: str, db_id: str, table_id: List[str] = []
+        self,
+        text: str,
+        text_history: str,
+        db_id: str,
+        table_id: List[str] = [],
+        confidence_calculator=None,
     ) -> Tuple[List[Any], str]:
         """Translate natural language text to SQL query.
 
