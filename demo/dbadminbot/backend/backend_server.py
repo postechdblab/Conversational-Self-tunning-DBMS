@@ -107,6 +107,21 @@ def reset_history() -> Dict:
     return {"response": True}
 
 
+@app.route("/undo_last")
+def undo_last() -> Dict:
+    global text_history
+    with history_lock:
+        if not text_history:
+            return {"response": False}
+        last_sep_idx = text_history.rfind(" <s> ")
+        if last_sep_idx == -1:
+            text_history = ""
+        else:
+            text_history = text_history[:last_sep_idx]
+    logger.info(f"Undo last! Remaining history: {text_history}")
+    return {"response": True}
+
+
 @app.route("/table_to_text", methods=["POST"])
 def table_to_text() -> Dict:
     logger.info(f"Received table2text request from {request.remote_addr}")
