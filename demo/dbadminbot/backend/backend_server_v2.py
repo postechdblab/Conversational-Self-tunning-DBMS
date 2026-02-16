@@ -63,6 +63,20 @@ def reset_history() -> Dict:
     return {"response": True}
 
 
+@app.route("/undo_last")
+def undo_last() -> Dict:
+    global text_history
+    if not text_history:
+        return {"response": False}
+    last_sep_idx = text_history.rfind(" <s> ")
+    if last_sep_idx == -1:
+        text_history = ""
+    else:
+        text_history = text_history[:last_sep_idx]
+    logger.info(f"Undo last! Remaining history: {text_history}")
+    return {"response": True}
+
+
 @app.route("/table_to_text", methods=["POST"])
 def table_to_text() -> Dict:
     logger.info(f"Received table2text request from {request.remote_addr}")
@@ -127,7 +141,9 @@ def text_to_sql() -> Dict:
         if not text_history.endswith(text):
             text_history += " <s> " + text
     else:
-        beams, inferred_code = translator.translate(text, text_history, db_id)
+        beams, inferred_code = translator.translate(
+            text, text_history, db_id, confidence_calculator=confidence_calculator
+        )
         confidence = confidence_calculator.calculate(beams, inferred_code)
         response["confidence"] = f"{confidence:.2f}"
         response["pred_sql"] = inferred_code
@@ -136,7 +152,7 @@ def text_to_sql() -> Dict:
             text_history += " <s> " + text
 
     # Step 4: Attribution analysis
-    if analyse and float(response["confidence"]) < 80:
+    if analyse and float(response["confidence"]) < 70:
         if rd_analysis.exists(redis_key):
             analyze_result = pickle.loads(rd_analysis.get(redis_key))
         else:
@@ -176,20 +192,34 @@ def start_llm_container(cfg) -> str:
     log_file = os.path.join(log_dir, "llm_container.log")
 
     cmd = [
-        "docker", "run", "-d",
-        "--gpus", f"device={gpu_ids_str}",
-        "-p", f"{cfg.port}:{cfg.port}",
-        "--env", f"HF_TOKEN={cfg.hf_token}",
+        "docker",
+        "run",
+        "-d",
+        "--gpus",
+        f"device={gpu_ids_str}",
+        "-p",
+        f"{cfg.port}:{cfg.port}",
+        "--env",
+        f"HF_TOKEN={cfg.hf_token}",
         "--ipc=host",
-        "--mount", f"type=bind,source={cfg.mount_source},target={cfg.mount_target}",
+        "--mount",
+        f"type=bind,source={cfg.mount_source},target={cfg.mount_target}",
         cfg.docker_image,
-        "python3", "-m", "sglang.launch_server",
-        "--model-path", cfg.model_path,
-        "--host", "0.0.0.0",
-        "--port", str(cfg.port),
-        "--tp", str(cfg.tp),
-        "--dp", str(cfg.dp),
-        "--mem-fraction-static", str(cfg.mem_fraction_static),
+        "python3",
+        "-m",
+        "sglang.launch_server",
+        "--model-path",
+        cfg.model_path,
+        "--host",
+        "0.0.0.0",
+        "--port",
+        str(cfg.port),
+        "--tp",
+        str(cfg.tp),
+        "--dp",
+        str(cfg.dp),
+        "--mem-fraction-static",
+        str(cfg.mem_fraction_static),
     ]
     logger.info(f"Starting LLM container: {' '.join(cmd)}")
     container_id = subprocess.check_output(cmd).decode().strip()
@@ -199,7 +229,8 @@ def start_llm_container(cfg) -> str:
     log_fp = open(log_file, "w")
     subprocess.Popen(
         ["docker", "logs", "-f", container_id],
-        stdout=log_fp, stderr=log_fp,
+        stdout=log_fp,
+        stderr=log_fp,
     )
     logger.info(f"LLM container logs: {log_file}")
     return container_id
@@ -245,6 +276,7 @@ def main(cfg: DictConfig) -> None:
 
     # Warm up CoreNLP server so the first query isn't slow
     from source.text2sql.ratsql.resources import corenlp
+
     logger.info("Warming up CoreNLP server...")
     corenlp.annotate("warmup", annotators=["tokenize", "ssplit", "lemma"])
     logger.info("CoreNLP server is ready.")

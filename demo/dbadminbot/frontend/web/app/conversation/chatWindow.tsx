@@ -5,6 +5,7 @@ import { useTuningResultContext } from "@/context/dbtuningContext";
 import { useQueryResultContext } from "@/context/queryResultContext";
 import { useQuestionSqlContext } from "@/context/questionSqlContext";
 import { responseHeaderJson, responseMethodPost } from "@/lib/api/utils";
+import { getUndoLastResponse } from "@/lib/api/frontend/undo_last";
 import { MessageType, RESET_MESSAGE } from "@/lib/message/types";
 import { DBAdminBotMessageToMessageModel, filterMessagesByType, filterUserMessages } from "@/lib/message/utils";
 import { useResetTranslationHistory, useTranslatedSQLByQuestion } from "@/lib/model/text2sql/get";
@@ -12,7 +13,7 @@ import { TuningResultPair } from "@/lib/model/tuning/type";
 import { tunerQueryResult } from "@/lib/query/type";
 import { Button, ChatContainer, MainContainer, Message, MessageInput, MessageList, MessageSeparator, SendButton, TypingIndicator } from "@chatscope/chat-ui-kit-react";
 import "@chatscope/chat-ui-kit-styles/dist/default/styles.min.css";
-import React, { useEffect, useMemo, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { BsFillEraserFill } from "react-icons/bs";
 import striptags from 'striptags';
 
@@ -46,6 +47,7 @@ export default function ChatWindow() {
     const userMessages = useMemo(() => filterUserMessages(messages), [messages]);
 
     //3. Query and get result
+    const summaryAbortRef = useRef<AbortController | null>(null);
     const [localQueryResult, setLocalQueryResult] = useState<QueryResultState>();
     useEffect(() => {
         // Define the key for SWR based on the dbName and query.
@@ -78,15 +80,19 @@ export default function ChatWindow() {
     useEffect(() => {
         const rowValues = localQueryResult?.data?.data;
         if (rowValues) {
+            const controller = new AbortController();
+            summaryAbortRef.current = controller;
             fetch("/api/model/table2text", {
                 body: JSON.stringify({
                     rowValues: rowValues,
                 }),
-                ...responseHeaderJson, ...responseMethodPost
+                ...responseHeaderJson, ...responseMethodPost,
+                signal: controller.signal,
             }).then(res => res.json()).then(j => {
+                if (controller.signal.aborted) return;
                 const data = j as summarizationResult;
-                setMessages([
-                    ...messages,
+                setMessages(prev => [
+                    ...prev,
                     {
                         message: data.summary,
                         confidence: 100,
@@ -95,7 +101,11 @@ export default function ChatWindow() {
                     }
                 ]);
                 setIsWaitingSummarization(false);
+            }).catch(err => {
+                if (err.name === 'AbortError') return;
+                console.error("Summarization failed:", err);
             });
+            return () => controller.abort();
         }
     }, [localQueryResult?.data?.data]);
     const tmpResetResponse = useResetTranslationHistory(resetSession);
@@ -165,6 +175,40 @@ export default function ChatWindow() {
         ]);
         setIsWaitingTranslation(true);
         setInputMessage("");
+    };
+
+    const undoLastHandler = () => {
+        // Ignore while request is in progress
+        if (isWaitingTranslation || isWaitingSummarization || isWaitingTuning) return;
+
+        // Find last user message index
+        let lastUserIdx = -1;
+        for (let i = messages.length - 1; i >= 0; i--) {
+            if (messages[i].type === MessageType.isUser) {
+                lastUserIdx = i;
+                break;
+            }
+        }
+        // No user message to undo
+        if (lastUserIdx === -1) return;
+
+        // Cancel any in-flight table2text summarization fetch
+        summaryAbortRef.current?.abort();
+
+        // Remove last Q&A pair from UI (user message and everything after it)
+        setMessages(messages.slice(0, lastUserIdx));
+
+        // Remove last questionSqlPair
+        if (questionSqlPairs.length > 0) {
+            setQuestionSqlPairs(prev => prev.slice(0, -1));
+        }
+
+        // Clear query result table
+        setQueryResult(null);
+        setLocalQueryResult(undefined);
+
+        // Fire-and-forget: remove last entry from backend history
+        getUndoLastResponse().catch(e => console.error("Failed to undo last:", e));
     };
 
     // Reset message if the selected database is changed
@@ -392,7 +436,7 @@ export default function ChatWindow() {
                                     paddingLeft: "0.2em",
                                     paddingRight: "0.2em"
                                 }}
-                                onClick={() => setResetSession(true)}>
+                                onClick={undoLastHandler}>
                                 <BsFillEraserFill />
                             </Button>
                         </div>
