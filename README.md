@@ -208,6 +208,81 @@ bash scripts/stop_all.sh
 
 ---
 
+## Test Cases
+
+### DBAdminBot
+
+Step-by-step test scenario using the `concert_singer` database:
+
+1. **Select Database** — Choose `concert_singer` as the target database.
+
+2. **Invalid Table Query (Confidence-Based Clarification)** — Type: `show all animals`
+   - Expected: Returns `/* No animals table in the provided schema. */` with a low confidence score (~66%)
+   - The system asks: *"I'm not sure if I understand your question. Are you sure you mean 'animals'?"*
+   - This demonstrates the confidence-based query clarification feature.
+
+3. **Simple Aggregation Query** — Type: `For each stadium, how many concerts have been held there?`
+   - Expected SQL:
+     ```sql
+     SELECT s.Name, COUNT(c.concert_ID) AS concert_count
+     FROM stadium s LEFT JOIN concert c ON s.Stadium_ID = c.Stadium_ID
+     GROUP BY s.Name
+     ```
+
+4. **Complex Subquery** — Type: `Show me the unique concert IDs and stadium capacities for all concerts that were held in stadiums whose capacity is less than the average capacity of stadiums located in Peterhead.`
+   - Expected SQL:
+     ```sql
+     SELECT concert.concert_ID, stadium.Capacity
+     FROM concert JOIN stadium ON concert.Stadium_ID = stadium.Stadium_ID
+     WHERE stadium.Capacity < (
+       SELECT AVG(stadium.Capacity) FROM stadium WHERE stadium.Location = 'Peterhead'
+     )
+     ```
+
+5. **Conversational Context Follow-up** — Type: `Include the stadium IDs as well.`
+   - Expected: The system correctly uses conversational context to add `stadium.stadium_ID` to the previous query.
+   - Expected SQL:
+     ```sql
+     SELECT concert.concert_ID, stadium.stadium_ID, stadium.Capacity
+     FROM concert JOIN stadium ON concert.Stadium_ID = stadium.Stadium_ID
+     WHERE stadium.Capacity < (
+       SELECT AVG(stadium.Capacity) FROM stadium WHERE stadium.Location = 'Peterhead'
+     )
+     ```
+
+6. **DBMS Knob Tuning** — Type: `Optimize the DBMS for workload history.`
+   - Expected: The system detects tuning intent and initiates automated knob tuning via OpAdviser.
+
+### EDAframework
+
+Step-by-step demo scenario using the Jupyter Lab interface at `http://localhost:8888`:
+
+1. **Launch & Initialize** — Open `DBEDA.ipynb`, set configuration, connect to database, and call the visualization function.
+
+2. **Explore the Dashboard** — The visualization window has two main components:
+   - **Performance Table** (left): Shows available log data tables stored in the database.
+   - **DB Performance Analysis** (right): Interactive analysis panel for log data.
+
+3. **Configure Analysis** — Fill in a title for saving results, then select a data table to analyze (e.g., OS Metrics).
+
+4. **Set Time Range** — Select the time range for analysis (e.g., full time range).
+
+5. **Select Analysis Task** — Choose a task type. For basic time series data analysis, select **Time Series**.
+
+6. **Visualize Metrics** — Select a metric (e.g., Disk Write Bytes) and click **Draw** to display the time series graph. Add more metrics to compare them side by side.
+
+7. **Explore Additional Datasets** — Switch to other datasets such as **DBSherlock** to analyze metrics like Combined Average Latency, CPU User Core, etc.
+
+8. **Detect Anomalies** — Click **Show Anomaly** to run the anomaly detection model (DBAnomTransformer).
+   - Anomaly intervals are highlighted with red circles on the graph.
+   - Each interval is labeled with a predicted root cause (e.g., CPU Saturation).
+
+9. **Root Cause Analysis** — The framework automatically filters and displays only the metrics related to the predicted root cause (e.g., CPU System Core metrics), reducing the number of metrics to examine.
+
+10. **Verify Results** — Confirm that CPU core usage is elevated in the predicted anomaly intervals, validating the model's detection.
+
+---
+
 ## Volume Mounts Reference
 
 ### DBAdminBot
