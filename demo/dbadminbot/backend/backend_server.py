@@ -1,4 +1,3 @@
-import argparse
 import json
 import logging
 import os
@@ -80,7 +79,6 @@ text_to_intent_model, _ = get_model(
 result_analysis_model, analyser = get_model(config, model_type="result_analysis")
 
 # Initialize text history
-global text_history
 text_history = ""
 
 # Locks for thread safety
@@ -261,7 +259,7 @@ def text_to_sql() -> Dict:
                         )
                         while_cnt = 0
 
-                    except:
+                    except Exception:
                         noun_words = input_text.split(" ")
                         noun_scores = [0.1 for _ in range(len(noun_words))]
                         noun_words, noun_scores = token_score_to_noun_score(
