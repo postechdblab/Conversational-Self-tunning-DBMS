@@ -1,8 +1,6 @@
 import Card from "@/components/home/card";
-import ComponentGrid from "@/components/home/component-grid";
-import WebVitals from "@/components/home/web-vitals";
 import { Github, Youtube } from "@/components/shared/icons";
-import { DEMO_URL, DEMO_VIDEO_URL, DEPLOY_URL } from "@/lib/constants";
+import { DEMO_URL, DEMO_VIDEO_URL } from "@/lib/constants";
 import Image from "next/image";
 
 export default async function Home() {
@@ -99,7 +97,7 @@ const features = [
     xxlarge: false,
     demo: <Image
     src="/tuning.png"
-    alt="Deploy with Vercel"
+    alt="Feature screenshot"
     width={800}
     height={30}
     unoptimized
@@ -114,7 +112,7 @@ const features = [
       xxlarge: false,
       demo: <Image
     src="/workload_history.png"
-    alt="Deploy with Vercel"
+    alt="Feature screenshot"
     width={800}
     height={30}
     unoptimized
@@ -129,7 +127,7 @@ const features = [
     xxlarge: false,
     demo: <Image
     src="/tuning_result.png"
-    alt="Deploy with Vercel"
+    alt="Feature screenshot"
     width={800}
     height={30}
     unoptimized

@@ -62,7 +62,7 @@ export default function ChatWindow() {
                 body: JSON.stringify(query),
             }).then(res => res.json()).then(j => {
                 const data = j as tunerQueryResult;
-                const isTuning = query == "conduct tuning";
+                const isTuning = query === "conduct tuning";
                 setLocalQueryResult({
                     data,
                     isTuning,
@@ -353,7 +353,7 @@ export default function ChatWindow() {
                     sql: questionSqlPairs[i].sql,
                 })
             }
-            setTuningResultPairs(tuningResultPairs => c);
+            setTuningResultPairs(c);
             setTranslationHandled(true); // Mark as handled to avoid repeating
             setIsWaitingTuning(false);
         }
@@ -391,7 +391,7 @@ export default function ChatWindow() {
                     <ChatContainer>
                         <MessageList typingIndicator={isWaitingTranslation || isWaitingSummarization ? typingIndicator : null}>
                             {chatScopeMessages.map((message, idx) => (
-                                message.message == RESET_MESSAGE
+                                message.message === RESET_MESSAGE
                                     ?
                                     <MessageSeparator key={idx} content="End of session" />
                                     :

@@ -13,7 +13,6 @@ from typing import *
 import en_core_web_trf
 import spacy
 
-model = spacy.load("en_core_web_trf")
 model = en_core_web_trf.load()
 
 
@@ -107,7 +106,7 @@ def extract_nouns(
         w_pos = word.pos_
         # If the word is a noun
         if w_pos in target_pos:
-            if flag == False:
+            if not flag:
                 # If it is the beginning of a noun phrase
                 tmp_word.append(w_text)
                 flag = True
@@ -115,7 +114,7 @@ def extract_nouns(
                 # Add the word to the noun phrase (if it is not the beginning)
                 tmp_word.append(w_text)
         else:
-            if flag == True:
+            if flag:
                 # End of noun phrase
                 nouns.append(" ".join(tmp_word))
                 tmp_word = []
@@ -133,7 +132,7 @@ def extract_nouns(
 
 def token_score_to_noun_score(
     tokens: List[str], token_scores: List[float]
-) -> Tuple[List[str], List[int]]:
+) -> Tuple[List[str], List[float]]:
     words, word_scores = token_score_to_word_score(tokens, token_scores)
 
     nouns = extract_nouns(sentence=" ".join(words), enable_PROPN=True)
@@ -288,17 +287,16 @@ def add_value_one_sql(
         tab_col = sql[:terminal_start_idx].strip().split(" ")[-2]
         try:
             table, column = tab_col.split(".")
-        except:
+        except Exception:
             print(tab_col)
-            sql.replace("'terminal'", "1")
+            sql = sql.replace("'terminal'", "1")
             break
-        table, column = tab_col.split(".")
         # Find all possible values for the column
         try:
             values = all_values_from_db(
                 db_name, table, column, db_type, database_path, mysql_config
             )
-        except:
+        except Exception:
             print(f"Error in finding values for {db_name}, {table}, {column}")
             break
         # Check if any of the values are in the question
@@ -333,7 +331,7 @@ def infer_value_from_question(
         try:
             int(word)
             return True
-        except:
+        except ValueError:
             return False
 
     def sent_to_words(sent):
